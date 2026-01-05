@@ -206,12 +206,12 @@ export default async function BlogPage() {
       </section>
 
       {/* Newsletter CTA */}
-      <section className="section bg-primary text-white">
+      <section className="section bg-gray-100">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">
             ¿Quieres recibir nuestros artículos?
           </h2>
-          <p className="text-xl text-white/90 mb-8">
+          <p className="text-xl text-gray-700 mb-8">
             Suscríbete a nuestro newsletter y mantente al día con consejos, guías y novedades sobre reformas y arquitectura técnica en Murcia.
           </p>
           <NewsletterForm variant="inline" />

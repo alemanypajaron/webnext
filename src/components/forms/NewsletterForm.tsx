@@ -60,7 +60,7 @@ export default function NewsletterForm({
           onChange={(e) => setEmail(e.target.value)}
           placeholder="tu@email.com"
           disabled={isPending}
-          className="flex-1 px-4 py-3 rounded-lg border-2 border-white/30 bg-white/10 text-white placeholder:text-white/60 focus:outline-none focus:border-accent transition-all disabled:opacity-50"
+          className="flex-1 px-4 py-3 rounded-lg border-2 border-gray-300 bg-white text-gray-900 placeholder:text-gray-500 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all disabled:opacity-50"
           required
         />
         <button
