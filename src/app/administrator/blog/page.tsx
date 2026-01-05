@@ -19,7 +19,7 @@ export default async function AdminBlogPage() {
     .from('blog_articulos')
     .select(`
       *,
-      categoria:id_categoria(*)
+      categoria:categorias_blog!categoria_id(*)
     `)
     .order('fecha_publicacion', { ascending: false });
 
