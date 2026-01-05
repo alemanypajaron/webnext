@@ -16,15 +16,21 @@ export default function AdminLoginPage() {
     try {
       const result = await loginAction(email, password);
       
-      if (!result.success) {
+      // Si llegamos aquí, hubo un error (redirect() no retorna)
+      if (result && !result.success) {
         toast.error(`Error: ${result.error}`);
+        setLoading(false);
       }
-      // Si es exitoso, loginAction redirige automáticamente
-    } catch (error) {
-      toast.error('Error al iniciar sesión');
-      console.error(error);
-    } finally {
-      setLoading(false);
+      // Si es exitoso, loginAction redirige automáticamente y nunca llega aquí
+    } catch (error: any) {
+      // redirect() lanza un error NEXT_REDIRECT, lo cual es normal
+      // Solo mostramos error si NO es un NEXT_REDIRECT
+      if (error?.message && !error.message.includes('NEXT_REDIRECT')) {
+        toast.error('Error al iniciar sesión');
+        console.error(error);
+        setLoading(false);
+      }
+      // Si es NEXT_REDIRECT, dejamos que la redirección ocurra sin mostrar error
     }
   };
 
