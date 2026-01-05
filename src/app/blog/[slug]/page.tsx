@@ -67,7 +67,7 @@ export default async function BlogArticuloPage({ params }: Props) {
   return (
     <>
       {/* Tracker de visitas (invisible) */}
-      <VisitasTracker articuloId={articulo.id} slug={articulo.slug} />
+      <VisitasTracker articuloId={articulo.id || ''} slug={articulo.slug || slug} />
       
       {/* Hero del artículo */}
       <section className="relative h-[70vh] min-h-[600px]">
