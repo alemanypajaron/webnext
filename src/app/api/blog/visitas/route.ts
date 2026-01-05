@@ -18,29 +18,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Incrementar visitas usando raw SQL para evitar problemas de RLS
-    const { data, error } = await supabase.rpc('incrementar_visitas_articulo', {
+    // Incrementar visitas usando la función PostgreSQL
+    const { error } = await supabase.rpc('incrementar_visitas_articulo', {
       articulo_id: articuloId
     });
 
     if (error) {
       console.error('Error al incrementar visitas:', error);
-      
-      // Fallback: intentar con UPDATE directo
-      const { error: updateError } = await supabase
-        .from('blog_articulos')
-        .update({ 
-          visitas: supabase.raw('visitas + 1')
-        })
-        .eq('id', articuloId);
-
-      if (updateError) {
-        console.error('Error en fallback:', updateError);
-        return NextResponse.json(
-          { error: 'Error al incrementar visitas' },
-          { status: 500 }
-        );
-      }
+      return NextResponse.json(
+        { error: 'Error al incrementar visitas' },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({ success: true });
