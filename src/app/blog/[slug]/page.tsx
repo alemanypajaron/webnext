@@ -97,13 +97,7 @@ export default async function BlogArticuloPage({ params }: Props) {
 
             {/* Categoría */}
             {articulo.categoria && (
-              <span
-                className="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4"
-                style={{
-                  backgroundColor: articulo.categoria.color || '#F9B513',
-                  color: '#0A2230',
-                }}
-              >
+              <span className="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 bg-accent text-primary shadow-lg">
                 {articulo.categoria.nombre}
               </span>
             )}
@@ -299,13 +293,7 @@ export default async function BlogArticuloPage({ params }: Props) {
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     {relacionado.categoria && (
-                      <span
-                        className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold"
-                        style={{
-                          backgroundColor: relacionado.categoria.color || '#F9B513',
-                          color: '#0A2230',
-                        }}
-                      >
+                      <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-accent text-primary shadow-md">
                         {relacionado.categoria.nombre}
                       </span>
                     )}

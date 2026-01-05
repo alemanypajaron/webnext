@@ -91,13 +91,7 @@ export default async function BlogPage() {
                       {/* Categoría */}
                       {articulo.categoria && (
                         <div className="absolute top-4 left-4">
-                          <span
-                            className="px-3 py-1 rounded-full text-xs font-semibold"
-                            style={{
-                              backgroundColor: articulo.categoria.color || '#F9B513',
-                              color: '#0A2230',
-                            }}
-                          >
+                          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-accent text-primary shadow-md">
                             {articulo.categoria.nombre}
                           </span>
                         </div>
