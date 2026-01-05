@@ -81,30 +81,33 @@ export default async function BlogArticuloPage({ params }: Props) {
         <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/50 to-primary/90" />
         <div className="absolute inset-0 flex items-end">
           <div className="max-w-4xl mx-auto px-6 pb-16 w-full">
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm text-white rounded-lg hover:bg-white/20 transition-all mb-6 border border-white/30"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
+            {/* Botón volver y categoría en la misma línea, bien alineados */}
+            <div className="flex items-center gap-4 mb-6">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm text-white rounded-lg hover:bg-white/20 transition-all border border-white/30"
               >
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
-              Volver al Blog
-            </Link>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+                Volver al Blog
+              </Link>
 
-            {/* Categoría */}
-            {articulo.categoria && (
-              <span className="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 bg-accent text-primary shadow-lg">
-                {articulo.categoria.nombre}
-              </span>
-            )}
+              {/* Categoría */}
+              {articulo.categoria && (
+                <span className="inline-block px-4 py-2 rounded-full text-sm font-semibold bg-accent text-primary shadow-lg">
+                  {articulo.categoria.nombre}
+                </span>
+              )}
+            </div>
 
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6 drop-shadow-lg">
               {articulo.titulo}
