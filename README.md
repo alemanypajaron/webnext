@@ -24,9 +24,14 @@ Sitio web completo para **Alemán y Pajarón**, aparejadores especializados en g
 **✨ PROYECTO COMPLETO Y EN PRODUCCIÓN**
 
 - ✅ 21 páginas completamente funcionales
-- ✅ 6 páginas de servicios con contenido SEO optimizado
-- ✅ Componentes reutilizables (Header, Footer, FAQ, PageHeader)
+- ✅ 6 páginas de servicios con contenido SEO optimizado e íconos homogeneizados
+- ✅ Componentes reutilizables (Header, Footer, FAQ, PageHeader, Newsletter)
 - ✅ SEO completo (metadata, sitemap, robots.txt, JSON-LD)
+- ✅ Blog con editor TinyMCE profesional
+- ✅ Panel de administración completo (contactos, presupuestos, blog, proyectos, newsletter)
+- ✅ Sistema de gestión de imágenes con Supabase Storage
+- ✅ Formularios funcionales (contacto, presupuesto, newsletter)
+- ✅ Contador de visitas en artículos del blog
 - ✅ Diseño responsive y accesible
 - ✅ Deploy automático con Vercel
 - ✅ Imágenes optimizadas
@@ -83,9 +88,13 @@ Si vas a desarrollar localmente, crea un archivo `.env.local` en la raíz:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=tu-project-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=tu-anon-key
+SUPABASE_SERVICE_ROLE_KEY=tu-service-role-key
+NEXT_PUBLIC_TINYMCE_API_KEY=tu-tinymce-api-key
 ```
 
 **En Vercel estas variables ya están configuradas** en Settings → Environment Variables.
+
+📖 **Más info:** Ver [`CREAR_ENV_LOCAL.md`](CREAR_ENV_LOCAL.md) y [`CONFIGURAR_TINYMCE_VERCEL.md`](CONFIGURAR_TINYMCE_VERCEL.md)
 
 ---
 
@@ -96,33 +105,61 @@ webnext/
 ├── src/
 │   ├── app/                          # App Router de Next.js
 │   │   ├── actions/                  # Server Actions
-│   │   │   └── forms.ts              # Envío de formularios
+│   │   │   ├── forms.ts              # Envío de formularios
+│   │   │   ├── admin.ts              # Operaciones admin (CRUD)
+│   │   │   └── auth.ts               # Autenticación admin
+│   │   ├── administrator/            # 🔐 Panel de administración
+│   │   │   ├── login/                # Login admin
+│   │   │   ├── page.tsx              # Dashboard (contactos)
+│   │   │   ├── presupuestos/         # Gestión presupuestos
+│   │   │   ├── blog/                 # CMS Blog (crear, editar, eliminar)
+│   │   │   ├── proyectos/            # Gestión proyectos
+│   │   │   └── layout.tsx            # Layout admin con navegación
+│   │   ├── api/                      # API Routes
+│   │   │   └── blog/imagenes/        # Subida de imágenes a Supabase Storage
 │   │   ├── layout.tsx                # Layout principal (Header + Footer)
 │   │   ├── page.tsx                  # Home
-│   │   ├── globals.css               # Estilos globales + Tailwind
-│   │   ├── favicon.ico               # Favicon
+│   │   ├── globals.css               # Estilos globales + Tailwind + Blog
 │   │   ├── opengraph-image.tsx       # OG image dinámica
 │   │   ├── twitter-image.tsx         # Twitter card dinámica
 │   │   ├── sitemap.ts                # Sitemap XML
 │   │   ├── robots.ts                 # Robots.txt
+│   │   ├── middleware.ts             # Protección rutas admin
 │   │   ├── nosotros/                 # Sobre nosotros
 │   │   ├── contacto/                 # Contacto + formulario
 │   │   ├── presupuesto/              # Solicitud presupuesto
 │   │   ├── servicios/                # 6 servicios + índice
 │   │   │   ├── page.tsx              # Índice de servicios
-│   │   │   ├── asesoramiento-tecnico/
-│   │   │   ├── direccion-obra/
-│   │   │   ├── diseno-espacios/
-│   │   │   ├── gestion-proyectos/
-│   │   │   ├── licencias-permisos/
-│   │   │   └── reformas-integrales/
-│   │   ├── blog/                     # Blog (estructura lista)
-│   │   ├── proyectos/                # Portfolio
+│   │   │   ├── asesoramiento-tecnico/ # Con íconos amarillos
+│   │   │   ├── direccion-obra/        # Con íconos amarillos
+│   │   │   ├── diseno-espacios/       # Con íconos amarillos
+│   │   │   ├── gestion-proyectos/     # Con íconos amarillos
+│   │   │   ├── licencias-permisos/    # Con íconos amarillos
+│   │   │   └── reformas-integrales/   # Con íconos amarillos
+│   │   ├── blog/                     # Blog dinámico
+│   │   │   ├── page.tsx              # Lista de artículos + Newsletter
+│   │   │   └── [slug]/               # Artículo individual + Visitas
+│   │   ├── proyectos/                # Portfolio dinámico
+│   │   │   ├── page.tsx              # Lista de proyectos
+│   │   │   └── [slug]/               # Proyecto individual
 │   │   └── legal/                    # Aviso legal, Privacidad, Cookies
 │   ├── components/
+│   │   ├── admin/                    # 🔐 Componentes admin
+│   │   │   ├── AdminNav.tsx          # Navegación del admin
+│   │   │   ├── ContactosTable.tsx    # Tabla contactos
+│   │   │   ├── PresupuestosTable.tsx # Tabla presupuestos
+│   │   │   ├── BlogArticulosTable.tsx # Tabla blog
+│   │   │   ├── ProyectosTable.tsx    # Tabla proyectos
+│   │   │   ├── BlogArticuloForm.tsx  # Formulario blog (crear/editar)
+│   │   │   ├── ProyectoForm.tsx      # Formulario proyecto
+│   │   │   ├── RichTextEditor.tsx    # Editor TinyMCE
+│   │   │   └── ImagenSelectorModal.tsx # Gestor de imágenes
+│   │   ├── blog/
+│   │   │   └── VisitasTracker.tsx    # Contador de visitas
 │   │   ├── forms/                    # Formularios con Supabase
 │   │   │   ├── ContactForm.tsx       # Formulario de contacto
-│   │   │   └── PresupuestoForm.tsx   # Formulario de presupuesto
+│   │   │   ├── PresupuestoForm.tsx   # Formulario de presupuesto
+│   │   │   └── NewsletterForm.tsx    # Formulario de newsletter
 │   │   ├── layout/
 │   │   │   ├── Header.tsx            # Navegación principal
 │   │   │   └── Footer.tsx            # Footer con enlaces + créditos
@@ -134,7 +171,10 @@ webnext/
 │   │   └── seo/
 │   │       └── JsonLd.tsx            # Structured data
 │   └── lib/
-│       ├── supabase.ts               # Cliente de Supabase
+│       ├── supabase.ts               # Cliente de Supabase (público)
+│       ├── supabase-server.ts        # Cliente Supabase con auth
+│       ├── supabase-admin.ts         # Cliente admin (Service Role)
+│       ├── data.ts                   # Funciones de fetch de datos
 │       └── structuredData.ts         # Helpers para JSON-LD
 ├── public/
 │   ├── img/                          # Logos
@@ -162,7 +202,9 @@ webnext/
 | **React** | 19.0.0 | UI Library |
 | **TypeScript** | 5.x | Tipado estático |
 | **Tailwind CSS** | 3.4.1 | Estilos utility-first |
-| **Supabase** | Latest | Base de datos PostgreSQL + Backend |
+| **Supabase** | Latest | Base de datos PostgreSQL + Auth + Storage |
+| **TinyMCE** | Latest | Editor WYSIWYG para blog |
+| **React Hot Toast** | Latest | Notificaciones toast |
 | **Google Fonts** | - | Inter + Poppins |
 
 ---
@@ -275,26 +317,72 @@ Cada una con:
 
 ## ✨ Características Completas del Sistema
 
+### 🔐 Panel de Administración
+- ✅ **Login con Supabase Auth** (protegido con middleware)
+- ✅ **Dashboard completo** con navegación por tabs
+- ✅ **Gestión de Contactos** (ver, marcar estado, eliminar)
+- ✅ **Gestión de Presupuestos** (ver, cambiar estado: pendiente/respondido/atendido/rechazado/aceptado, eliminar)
+- ✅ **CMS de Blog** (crear, editar, eliminar artículos)
+  - Editor **TinyMCE** profesional con menús completos
+  - Gestión de imágenes integrada con Supabase Storage
+  - Selector de imágenes existentes o subida nueva
+  - Vista previa de imagen destacada
+  - Campo de fecha de publicación editable
+  - Marcar artículos como destacados
+- ✅ **Gestión de Proyectos** (crear, editar, eliminar, marcar como destacado)
+- ✅ **Gestión de Newsletter** (ver suscriptores)
+- ✅ **Bypass RLS** con Service Role Key para operaciones admin
+- ✅ **Notificaciones toast** para feedback inmediato
+
+### 📝 Editor de Contenido (TinyMCE)
+- ✅ **Menús completos**: File, Edit, View, Insert, Format, Tools, Table, Help
+- ✅ **Toolbar profesional** con todas las opciones de formato
+- ✅ **Interfaz en español**
+- ✅ **Integración con gestor de imágenes** (modal personalizado)
+- ✅ **Botón "Leer Más"** personalizado (como Joomla)
+- ✅ **Vista código HTML** para edición avanzada
+- ✅ **Autoguardado** del contenido
+
+### 🖼️ Gestor de Imágenes
+- ✅ **Supabase Storage** (bucket: `blog-images`)
+- ✅ **Subida de imágenes** (JPG, PNG, GIF, WEBP, máx 5MB)
+- ✅ **Validación de formato** y tamaño
+- ✅ **Galería de imágenes** existentes con preview
+- ✅ **Selección visual** con checkbox
+- ✅ **Drag & drop** para subir
+- ✅ **URLs públicas** generadas automáticamente
+- ✅ **Integrado en TinyMCE** para insertar en contenido
+
 ### 🗄️ Base de Datos (Supabase)
 - ✅ **7 tablas configuradas**: proyectos, imágenes, blog, categorías, contactos, presupuestos, newsletter
 - ✅ **Row Level Security (RLS)** en todas las tablas
-- ✅ **Políticas de seguridad** configuradas (lectura pública, escritura controlada)
+- ✅ **Políticas de seguridad** configuradas (lectura pública, escritura admin)
+- ✅ **Supabase Storage** para imágenes del blog
+- ✅ **Triggers automáticos** para `updated_at` y `actualizado_at`
 - ✅ **Datos de ejemplo** incluidos (1 proyecto, 1 artículo, 4 categorías)
-- ✅ **Triggers automáticos** para updated_at
+- ✅ **Service Role Key** para operaciones admin sin restricciones RLS
 
 ### 📄 Páginas Dinámicas (SSG)
 - ✅ **generateStaticParams** para pre-renderizar en build time
 - ✅ **Metadata dinámica** por proyecto/artículo
 - ✅ **Páginas ilimitadas** desde base de datos
 - ✅ **Galería de imágenes** múltiple por proyecto
-- ✅ **Contador de visitas** en artículos
+- ✅ **Contador de visitas** en artículos del blog
+- ✅ **Artículos relacionados** automáticos
+- ✅ **Compartir en redes** (Facebook, Twitter/X, LinkedIn)
 
 ### 📝 Formularios Funcionales
+- ✅ **Formulario de Contacto** (guardado en Supabase)
+- ✅ **Formulario de Presupuesto** (con tipos de servicio y presupuesto)
+- ✅ **Formulario de Newsletter** (suscripción directa, inline y centered)
+  - Validación de email en tiempo real
+  - Detección de emails duplicados
+  - Mensaje de bienvenida personalizado
 - ✅ **Validación en tiempo real** (email, campos requeridos)
 - ✅ **Estados de carga** con spinners animados
-- ✅ **Feedback visual** (éxito/error con colores)
+- ✅ **Feedback visual** con toasts (éxito/error/info)
 - ✅ **Reseteo automático** tras envío exitoso
-- ✅ **Guardado en Supabase** automático
+- ✅ **Server Actions** para procesamiento seguro
 
 ### 🎨 UI/UX
 - ✅ **Diseño responsive** perfecto en móvil/tablet/desktop
@@ -303,6 +391,18 @@ Cada una con:
 - ✅ **Compartir en redes** (Facebook, Twitter, LinkedIn)
 - ✅ **Categorías con colores** personalizados
 - ✅ **Tags y etiquetas** en artículos
+- ✅ **Íconos homogeneizados** en servicios (fondo amarillo + ícono azul)
+- ✅ **Tipografía consistente** en todo el blog
+  - Headings con Poppins
+  - Cuerpo con Inter
+  - Tamaños y espaciados optimizados
+  - Line-height mejorado para legibilidad
+- ✅ **Estilos de contenido** mejorados para artículos del blog
+  - H2 con borde inferior amarillo
+  - Listas con bullets claros
+  - Blockquotes con estilo personalizado
+  - Código inline y bloques destacados
+  - Tablas responsive con headers oscuros
 
 ---
 
@@ -607,23 +707,34 @@ import Script from 'next/script'
 
 ## 🎯 Próximos Pasos (Roadmap)
 
+### ✅ Completado Recientemente
+- ✅ Sistema de gestión de contenido (CMS completo con TinyMCE)
+- ✅ Panel de administración funcional
+- ✅ Gestión de imágenes con Supabase Storage
+- ✅ Formulario de newsletter integrado
+- ✅ Contador de visitas en artículos
+- ✅ Editor profesional de blog
+
 ### Corto Plazo
 - [ ] Configurar dominio personalizado `alemanypajaron.es`
-- [ ] Conectar formularios a servicio de email (Resend/SendGrid)
-- [ ] Implementar artículos de blog con contenido
-- [ ] Añadir casos de estudio de proyectos con imágenes
+- [ ] Conectar formularios a servicio de email (Resend/SendGrid para notificaciones)
+- [ ] Implementar envío masivo de newsletters
+- [ ] Añadir más casos de estudio de proyectos con imágenes
 
 ### Medio Plazo
-- [ ] Sistema de gestión de contenido (CMS headless)
+- [ ] Panel para gestionar suscriptores de newsletter (exportar, enviar)
 - [ ] Multiidioma (ES/EN)
 - [ ] Portal de clientes
 - [ ] Integración con CRM
+- [ ] Sistema de comentarios en blog
+- [ ] Búsqueda de artículos y proyectos
 
 ### Optimizaciones
-- [ ] Convertir imágenes a WebP/AVIF
+- [ ] Convertir imágenes a WebP/AVIF automáticamente
 - [ ] Implementar ISR en blog
 - [ ] A/B testing con Vercel
 - [ ] PWA (Progressive Web App)
+- [ ] Lazy loading de imágenes en galerías
 
 ---
 

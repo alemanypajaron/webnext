@@ -6,10 +6,166 @@
 
 ## 📊 Resumen del Contenido
 
-**Total de páginas:** 21  
-**Páginas de servicios:** 6 (todas con contenido SEO completo)  
+**Total de páginas:** 21 estáticas + dinámicas (blog y proyectos)  
+**Páginas de servicios:** 6 (todas con contenido SEO completo e íconos homogeneizados)  
 **Palabras totales:** ~15,000+  
 **Optimizado para:** SEO local Murcia  
+**Blog:** Sistema CMS completo con editor TinyMCE  
+**Newsletter:** Formulario de suscripción funcional  
+**Admin:** Panel completo de gestión  
+
+---
+
+## 🔐 Panel de Administración
+
+**URL:** `/administrator` (requiere login)
+
+### Funcionalidades del Panel Admin:
+
+✅ **Gestión de Contactos:**
+- Ver todos los contactos recibidos desde el formulario
+- Marcar como: leído, respondido
+- Eliminar contactos
+- Estadísticas de contactos nuevos
+
+✅ **Gestión de Presupuestos:**
+- Ver todas las solicitudes de presupuesto
+- Cambiar estado: pendiente, respondido, atendido, rechazado, aceptado
+- Eliminar presupuestos
+- Estadísticas por estado
+
+✅ **CMS de Blog (TinyMCE):**
+- Crear artículos nuevos
+- Editar artículos existentes
+- Eliminar artículos
+- **Editor TinyMCE** con menús completos (File, Edit, View, Insert, Format, Tools, Table, Help)
+- **Gestor de imágenes integrado:**
+  - Subir imágenes a Supabase Storage
+  - Seleccionar de imágenes existentes
+  - Drag & drop
+  - Preview de imagen destacada
+- Marcar artículos como destacados
+- Editar fecha de publicación
+- Gestión de categorías
+- Tags y etiquetas
+
+✅ **Gestión de Proyectos:**
+- Crear proyectos nuevos
+- Editar proyectos existentes
+- Eliminar proyectos
+- Marcar proyectos como destacados
+- Galería de imágenes por proyecto
+
+✅ **Gestión de Newsletter:**
+- Ver lista de suscriptores
+- Email y nombre de cada suscriptor
+- Fecha de suscripción
+- Estado (activo/inactivo)
+
+---
+
+## 📧 Formulario de Newsletter
+
+**Ubicación:** Página del blog (`/blog`) al final
+
+### Características:
+
+✅ **Diseño inline** (input + botón en la misma línea)
+✅ **Validación de email** en tiempo real
+✅ **Detección de duplicados** (email ya suscrito)
+✅ **Guardado en Supabase** (tabla `newsletter`)
+✅ **Feedback con toasts** (éxito, error, duplicado)
+✅ **Estados de carga** ("Suscribiendo...")
+✅ **Reset automático** tras suscripción exitosa
+
+### Campos:
+- Email (obligatorio, validado)
+- Nombre (opcional, no se pide en la versión inline)
+
+### Mensajes:
+- ✅ "¡Gracias por suscribirte! Te mantendremos informado."
+- ❌ "Este email ya está suscrito a nuestro newsletter."
+- ❌ "Por favor, introduce un email válido."
+
+---
+
+## 📝 Editor de Blog (TinyMCE)
+
+**Integración completa de TinyMCE** en el panel admin:
+
+### Menús disponibles:
+- **File:** Nuevo, vista previa
+- **Edit:** Deshacer, rehacer, buscar, reemplazar
+- **View:** Código fuente, bloques visuales, pantalla completa
+- **Insert:** Imagen, enlace, tabla, media, horizontal line, emoji
+- **Format:** Negrita, cursiva, subrayado, tachado, colores, estilos
+- **Tools:** Corrector ortográfico, estadísticas de palabras
+- **Table:** Insertar tabla, propiedades, filas, columnas
+- **Help:** Atajos de teclado, ayuda
+
+### Toolbar:
+```
+Undo/Redo | Blocks | Bold Italic ForeColor BackColor | 
+AlignLeft AlignCenter AlignRight AlignJustify | 
+BulList NumList Outdent Indent | Read More PageBreak | 
+RemoveFormat | Image Link | Code | Help
+```
+
+### Funciones especiales:
+- **Botón "Leer Más"** personalizado (como Joomla)
+- **Gestión de imágenes** integrada con Supabase Storage
+- **Vista de código HTML** para edición avanzada
+- **Interfaz en español**
+- **Autoguardado** del contenido
+- **Validación** de contenido antes de guardar
+
+---
+
+## 🎨 Homogeneización de Íconos en Servicios
+
+**Estilo aplicado a todas las páginas de servicios:**
+
+✅ **Diseño consistente:**
+- Fondo amarillo sólido (`bg-accent`)
+- Ícono azul oscuro (`text-primary`)
+- Forma circular o cuadrada con bordes redondeados
+- Tamaño consistente (48x48px o 56x56px)
+- Sombra suave para profundidad
+
+✅ **Páginas actualizadas:**
+1. Asesoramiento Técnico
+2. Dirección de Obra (referencia)
+3. Diseño de Espacios
+4. Gestión de Proyectos
+5. Licencias y Permisos
+6. Reformas Integrales
+
+---
+
+## 📊 Tipografía del Blog
+
+**Mejoras aplicadas al contenido de los artículos:**
+
+### Fuentes:
+- **Headings (H1-H6):** Poppins, font-weight: 600-700
+- **Cuerpo (p, li):** Inter, line-height: 1.6
+
+### Estilos de contenido:
+- **H2:** Borde inferior amarillo (`border-b border-accent`)
+- **H3:** Tamaño 1.875rem, margin-top: 2rem
+- **Listas:** Bullets amarillos, padding-left: 1.25rem
+- **Blockquotes:** Borde izquierdo amarillo, cursiva, padding: 1rem
+- **Código inline:** Fondo gris, padding: 0.375rem 0.5rem, border-radius
+- **Tablas:** Headers oscuros, filas alternadas, bordes sutiles
+- **Enlaces:** Color amarillo, subrayado en hover
+- **Imágenes:** Border-radius: 0.75rem, sombra, margin vertical
+
+### Espaciado:
+- **Párrafos:** margin-bottom: 1rem
+- **Secciones:** margin-top: 3rem, margin-bottom: 2rem
+- **Listas:** margin-bottom: 1.5rem, gap entre items: 0.75rem
+
+---
 
 ---
 

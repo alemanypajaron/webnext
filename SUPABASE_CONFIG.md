@@ -14,12 +14,23 @@ NEXT_PUBLIC_SUPABASE_URL=your-project-url-here
 # Tu Publishable (anon) API Key
 # Es la key pública, segura para el frontend
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+
+# Tu Service Role Key (SOLO PARA ADMIN - NUNCA EN FRONTEND)
+# Esta key bypasea Row Level Security y permite operaciones admin
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
+
+# API Key de TinyMCE (editor de blog)
+NEXT_PUBLIC_TINYMCE_API_KEY=your-tinymce-api-key-here
 ```
 
 **⚠️ IMPORTANTE:**
 - El archivo `.env.local` NO se sube a GitHub (está en .gitignore)
 - Las variables con prefijo `NEXT_PUBLIC_` están disponibles en el navegador
-- Usa la **anon key** (no la service_role key) para el frontend
+- La **anon key** es pública y segura para el frontend
+- La **service_role key** es PRIVADA y solo se usa en el servidor (panel admin)
+- La **TinyMCE API key** es necesaria para el editor de blog
+
+📖 **Ayuda para crear este archivo:** Ver [`CREAR_ENV_LOCAL.md`](CREAR_ENV_LOCAL.md)
 
 ---
 
@@ -37,7 +48,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 3. **Abre Environment Variables:**
    - En el menú lateral izquierdo: **"Environment Variables"**
 
-4. **Añade las 2 variables:**
+4. **Añade las 4 variables:**
 
    **Variable 1:**
    - **Key:** `NEXT_PUBLIC_SUPABASE_URL`
@@ -50,6 +61,21 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
    - **Value:** Tu Publishable API Key (eyJhbGc...)
    - **Environments:** ✅ Production, ✅ Preview, ✅ Development
    - Click "Save"
+
+   **Variable 3 (NUEVA - PARA PANEL ADMIN):**
+   - **Key:** `SUPABASE_SERVICE_ROLE_KEY`
+   - **Value:** Tu Service Role Key (eyJhbGc... - **NO ES LA MISMA QUE ANON**)
+   - **Environments:** ✅ Production, ✅ Preview, ✅ Development
+   - Click "Save"
+   - ⚠️ **IMPORTANTE**: Esta key bypasea RLS y permite operaciones admin
+
+   **Variable 4 (NUEVA - PARA EDITOR TINYMCE):**
+   - **Key:** `NEXT_PUBLIC_TINYMCE_API_KEY`
+   - **Value:** Tu TinyMCE API Key (obtener en https://www.tiny.cloud)
+   - **Environments:** ✅ Production, ✅ Preview, ✅ Development
+   - Click "Save"
+
+📖 **Ayuda con TinyMCE:** Ver [`CONFIGURAR_TINYMCE_VERCEL.md`](CONFIGURAR_TINYMCE_VERCEL.md)
 
 5. **Redesplegar (si ya está desplegado):**
    - Ve a "Deployments"
@@ -69,6 +95,14 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 4. **Copia:**
    - **Project URL:** En "Project URL" (https://xxx.supabase.co)
    - **anon public key:** En "Project API keys" → `anon` `public`
+   - **service_role key:** En "Project API keys" → `service_role` `secret` (⚠️ **SOLO PARA BACKEND**)
+
+**⚠️ IMPORTANTE: Service Role Key**
+- La `service_role` key **bypasea Row Level Security**
+- Solo se usa en el servidor (nunca en el frontend)
+- Permite operaciones admin sin restricciones
+- Mantenla segura y nunca la expongas en el código del navegador
+- En el proyecto se usa en `src/lib/supabase-admin.ts` para operaciones del panel admin
 
 ---
 
@@ -160,19 +194,41 @@ SELECT * FROM estadisticas_formularios;
 
 ---
 
-## 🚀 Próximos Pasos
+## 🚀 Estado Actual del Proyecto
 
-Después de configurar las variables:
+✅ **Sistema Completamente Funcional:**
 
-1. ✅ Ejecutar schemas SQL en Supabase (ver `/supabase/README.md`)
-   - Primero: `/supabase/supabase-schema.sql` (formularios)
-   - Segundo: `/supabase/supabase-schema-proyectos-blog.sql` (proyectos y blog)
-2. ✅ Instalar `@supabase/supabase-js`
-3. ✅ Cliente de Supabase (`src/lib/supabase.ts`)
-4. ✅ Acciones del servidor (`src/app/actions/forms.ts`)
-5. ⏳ Conectar formularios de contacto y presupuesto
-6. ⏳ Testing local
-7. ⏳ Deploy a Vercel
+1. ✅ Schemas SQL ejecutados en Supabase (ver `/supabase/README.md`)
+   - ✅ `/supabase/supabase-schema.sql` (formularios)
+   - ✅ `/supabase/supabase-schema-proyectos-blog.sql` (proyectos y blog)
+   - ✅ `/supabase/fix-rls-policies.sql` (políticas admin)
+   - ✅ `/supabase/fix-trigger-blog.sql` (trigger actualizado_at)
+   - ✅ `/supabase/politicas-storage-definitivas.sql` (storage imágenes)
+2. ✅ Cliente de Supabase instalado y configurado
+   - ✅ `src/lib/supabase.ts` (cliente público)
+   - ✅ `src/lib/supabase-server.ts` (cliente con auth)
+   - ✅ `src/lib/supabase-admin.ts` (cliente admin con Service Role)
+3. ✅ Acciones del servidor (`src/app/actions/`)
+   - ✅ `forms.ts` (contacto, presupuesto, newsletter)
+   - ✅ `admin.ts` (CRUD completo admin)
+   - ✅ `auth.ts` (autenticación admin)
+4. ✅ Formularios conectados y funcionales
+   - ✅ Contacto → tabla `contactos`
+   - ✅ Presupuesto → tabla `presupuestos`
+   - ✅ Newsletter → tabla `newsletter`
+5. ✅ Panel de Administración (`/administrator`)
+   - ✅ Login con Supabase Auth
+   - ✅ Gestión de contactos
+   - ✅ Gestión de presupuestos
+   - ✅ CMS de blog con TinyMCE
+   - ✅ Gestión de proyectos
+   - ✅ Gestor de imágenes (Supabase Storage)
+6. ✅ Blog dinámico con:
+   - ✅ Artículos desde Supabase
+   - ✅ Contador de visitas
+   - ✅ Editor TinyMCE profesional
+   - ✅ Gestión de imágenes
+7. ✅ Deploy en Vercel con todas las variables configuradas
 
 ---
 

@@ -263,24 +263,39 @@ Vercel Dashboard → Settings → Build & Development Settings
 
 ### Variables de Entorno
 
-**Añadir en Vercel:**
+**Variables requeridas en Vercel:**
+
 ```
 Settings → Environment Variables → Add
-
-Variable: GOOGLE_VERIFICATION_CODE
-Value: tu_codigo_aqui
-Environment: Production, Preview, Development
 ```
+
+**1. Supabase (Obligatorias):**
+- `NEXT_PUBLIC_SUPABASE_URL` → Tu Project URL de Supabase
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` → Tu Publishable Key de Supabase
+- `SUPABASE_SERVICE_ROLE_KEY` → Tu Service Role Key (para panel admin)
+
+**2. TinyMCE (Obligatoria):**
+- `NEXT_PUBLIC_TINYMCE_API_KEY` → Tu API Key de TinyMCE (editor de blog)
+
+**3. Opcionales:**
+- `GOOGLE_VERIFICATION_CODE` → Si usas Google Search Console
+
+**Environments:** Marca ✅ Production, ✅ Preview, ✅ Development en todas
 
 **Usar en el código:**
 ```typescript
-const code = process.env.GOOGLE_VERIFICATION_CODE
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const tinymceKey = process.env.NEXT_PUBLIC_TINYMCE_API_KEY
 ```
 
-**Importante:** Después de añadir variables de entorno, hacer redeploy:
+**⚠️ IMPORTANTE:** Después de añadir variables de entorno, hacer redeploy:
 ```
-Deployments → Latest → ⋯ → Redeploy
+Deployments → Latest → ⋯ → Redeploy → "Redeploy without cache"
 ```
+
+📖 **Más info:**
+- Ver [`SUPABASE_CONFIG.md`](SUPABASE_CONFIG.md) para Supabase
+- Ver [`CONFIGURAR_TINYMCE_VERCEL.md`](CONFIGURAR_TINYMCE_VERCEL.md) para TinyMCE
 
 ---
 

@@ -164,17 +164,76 @@ Password: [la contraseña que configuraste]
 
 ---
 
-### **📝 Gestión de Blog** (`/administrator/blog`)
+### **📝 CMS de Blog** (`/administrator/blog`)
 
-⏳ **PRÓXIMAMENTE:**  
-- Crear nuevos artículos
-- Editar artículos existentes
-- Eliminar artículos
-- Editor WYSIWYG tipo Joomla/WordPress
-- Subida de imágenes
-- Gestión de categorías
-- Publicar/despublicar
-- Marcar como destacado
+✅ **FUNCIONAL - Editor TinyMCE Profesional:**  
+- ✅ Crear nuevos artículos
+- ✅ Editar artículos existentes
+- ✅ Eliminar artículos
+- ✅ **Editor TinyMCE** con menús completos (File, Edit, View, Insert, Format, Tools, Table, Help)
+- ✅ **Gestor de imágenes integrado:**
+  - Subir imágenes a Supabase Storage
+  - Seleccionar de galería existente
+  - Drag & drop
+  - Preview en tiempo real
+- ✅ Gestión de categorías
+- ✅ Marcar como destacado
+- ✅ **Editar fecha de publicación**
+- ✅ Tags y etiquetas
+- ✅ Imagen destacada con selector visual
+- ✅ Vista previa del artículo
+- ✅ Contador de visitas
+
+**Estados:**
+- ⭐ **Destacado**: Aparece en la home y listados principales
+- 📅 **Fecha de publicación**: Editable manualmente
+- 👁️ **Visitas**: Contador automático
+- 📂 **Categoría**: Asignación visual
+
+---
+
+### **🏗️ Gestión de Proyectos** (`/administrator/proyectos`)
+
+✅ **FUNCIONAL:**  
+- ✅ Ver todos los proyectos
+- ✅ Crear nuevos proyectos
+- ✅ Editar proyectos existentes
+- ✅ Eliminar proyectos
+- ✅ Marcar como destacado
+- ✅ Galería de imágenes múltiple
+- ✅ Información completa:
+  - Título y slug
+  - Descripción larga y corta
+  - Ubicación
+  - Presupuesto
+  - Superficie
+  - Duración
+  - Cliente
+  - Estado (completado/en curso)
+- ✅ Servicios asociados al proyecto
+- ✅ Imagen destacada
+
+**Estados:**
+- ⭐ **Destacado**: Aparece en la home
+- ✅ **Completado**: Proyecto finalizado
+- 🔄 **En Curso**: Proyecto en ejecución
+
+---
+
+### **📧 Gestión de Newsletter** (`/administrator/newsletter`)
+
+✅ **VISUALIZACIÓN:**  
+- ✅ Ver todos los suscriptores
+- ✅ Email y nombre de cada suscriptor
+- ✅ Fecha de suscripción
+- ✅ Estado (activo/inactivo)
+- ✅ Estado de confirmación
+
+⏳ **PRÓXIMAMENTE:**
+- Envío masivo de newsletters
+- Exportar lista de suscriptores
+- Gestionar bajas
+- Segmentación de suscriptores
 
 ---
 
@@ -214,7 +273,18 @@ Password: [la contraseña que configuraste]
   ```
   NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
   NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGc...
+  SUPABASE_SERVICE_ROLE_KEY=eyJhbGc...
+  NEXT_PUBLIC_TINYMCE_API_KEY=hzc5ul...
   ```
+
+**⚠️ IMPORTANTE sobre Service Role Key:**
+- La `SUPABASE_SERVICE_ROLE_KEY` es **CRÍTICA** para el funcionamiento del panel admin
+- Esta key bypasea Row Level Security y permite operaciones de admin
+- Debe estar configurada en Vercel para que el panel funcione correctamente
+- **NUNCA** expongas esta key en el código del frontend
+- Se usa únicamente en Server Actions y API Routes del servidor
+
+📖 **Más info:** Ver [`SUPABASE_CONFIG.md`](SUPABASE_CONFIG.md) y [`CONFIGURAR_TINYMCE_VERCEL.md`](CONFIGURAR_TINYMCE_VERCEL.md)
 
 ---
 
