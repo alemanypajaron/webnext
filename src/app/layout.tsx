@@ -23,19 +23,19 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Alemán y Pajarón | Arquitectura Técnica en Murcia',
+    default: 'Alemán y Pajarón | Gestión de Obras y Proyectos en Murcia',
     template: '%s | Alemán y Pajarón',
   },
   description:
-    'Estudio de arquitectura técnica en Murcia especializado en dirección de obra, gestión de proyectos, licencias y reformas integrales. Más de 15 años de experiencia.',
+    'Aparejadores en Murcia especializados en dirección de obra, gestión de proyectos, licencias y reformas integrales. Más de 15 años de experiencia.',
   keywords: [
-    'arquitectura técnica murcia',
-    'arquitecto técnico murcia',
     'aparejador murcia',
+    'gestión obras murcia',
     'dirección de obra murcia',
     'reformas integrales murcia',
     'licencia de obra murcia',
     'gestión proyectos construcción murcia',
+    'coordinación obras murcia',
   ],
   authors: [{ name: 'Alemán y Pajarón' }],
   creator: 'Alemán y Pajarón',
@@ -49,10 +49,27 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: [
+      { url: '/img/favicon_png.png', sizes: 'any' },
+      { url: '/img/favicon_png.png', sizes: '16x16', type: 'image/png' },
+      { url: '/img/favicon_png.png', sizes: '32x32', type: 'image/png' },
+      { url: '/img/favicon_png.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/img/favicon_png.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/img/favicon_png.png',
+      },
+    ],
+  },
   openGraph: {
-    title: 'Alemán y Pajarón | Arquitectura Técnica en Murcia',
+    title: 'Alemán y Pajarón | Gestión de Obras y Proyectos en Murcia',
     description:
-      'Estudio de arquitectura técnica en Murcia especializado en dirección de obra, gestión de proyectos, licencias y reformas integrales.',
+      'Aparejadores en Murcia especializados en dirección de obra, gestión de proyectos, licencias y reformas integrales.',
     url: 'https://alemanypajaron.es',
     siteName: 'Alemán y Pajarón',
     locale: 'es_ES',
@@ -62,15 +79,15 @@ export const metadata: Metadata = {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Alemán y Pajarón - Arquitectura Técnica Murcia',
+        alt: 'Alemán y Pajarón - Gestión de Obras Murcia',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Alemán y Pajarón | Arquitectura Técnica en Murcia',
+    title: 'Alemán y Pajarón | Gestión de Obras y Proyectos en Murcia',
     description:
-      'Estudio de arquitectura técnica en Murcia especializado en dirección de obra, gestión de proyectos y reformas integrales.',
+      'Aparejadores en Murcia especializados en dirección de obra, gestión de proyectos y reformas integrales.',
     images: ['/twitter-image'],
   },
   robots: {
@@ -84,6 +101,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  manifest: '/manifest.json',
   verification: googleVerification ? { google: googleVerification } : undefined,
 };
 
