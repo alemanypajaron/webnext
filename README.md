@@ -147,15 +147,29 @@ NEXT_PUBLIC_SUPABASE_URL=tu-project-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=tu-anon-key
 ```
 
-2. **Ejecuta el schema en Supabase:**
+2. **Ejecuta los schemas en Supabase:**
+   
+   **Paso 1:** Si ya ejecutaste el schema de formularios, salta al Paso 2.
+   Si no, ejecuta `supabase/supabase-schema.sql` (formularios).
+   
+   **Paso 2:** Ejecuta `supabase-schema-proyectos-blog.sql` (nuevas tablas):
    - Ve a tu proyecto en [Supabase Dashboard](https://supabase.com/dashboard)
    - Abre el **SQL Editor**
-   - Copia y ejecuta el contenido de `supabase-schema.sql`
+   - Copia y ejecuta el contenido completo
+   - Esto creará tablas + datos de ejemplo
 
 3. **Verifica las tablas:**
+   
+   **Formularios:**
    - ✅ `contactos` → Formulario de contacto
    - ✅ `presupuestos` → Solicitudes de presupuesto
    - ✅ `newsletter` → Suscriptores (opcional)
+   
+   **Proyectos y Blog:**
+   - ✅ `proyectos` → Portfolio de proyectos
+   - ✅ `imagenes_proyectos` → Galería múltiple por proyecto
+   - ✅ `categorias_blog` → Categorías de artículos
+   - ✅ `blog_articulos` → Artículos completos con SEO
 
 4. **Configura en Vercel:**
    - Settings → Environment Variables
@@ -172,10 +186,26 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=tu-anon-key
 - ✅ **/** - Home con hero, servicios, stats
 - ✅ **/nosotros** - Historia y valores del estudio
 - ✅ **/servicios** - Índice de servicios
-- ✅ **/contacto** - Formulario de contacto
-- ✅ **/presupuesto** - Solicitud de presupuesto
-- ✅ **/blog** - Listado de artículos
-- ✅ **/proyectos** - Portfolio de proyectos
+- ✅ **/contacto** - Formulario de contacto (conectado a Supabase)
+- ✅ **/presupuesto** - Solicitud de presupuesto (conectado a Supabase)
+- ✅ **/blog** - Listado dinámico de artículos desde Supabase
+- ✅ **/proyectos** - Portfolio dinámico desde Supabase
+
+### Páginas Dinámicas (2 tipos)
+- ✅ **/proyectos/[slug]** - Páginas individuales de proyectos (SSG)
+  - Hero con imagen principal
+  - Detalles completos del proyecto
+  - Galería de imágenes
+  - Sidebar con info y servicios
+  - CTAs integrados
+  
+- ✅ **/blog/[slug]** - Páginas individuales de artículos (SSG)
+  - Hero con imagen destacada
+  - Contenido HTML enriquecido
+  - Meta información (autor, fecha, tiempo lectura)
+  - Compartir en redes sociales
+  - Artículos relacionados
+  - Contador de visitas
 
 ### Servicios (6 páginas completas)
 Cada una con:
@@ -199,7 +229,40 @@ Cada una con:
 - ✅ **/legal/privacidad**
 - ✅ **/legal/cookies**
 
-**Total: 21 páginas**
+**Total: 21 páginas estáticas + Páginas dinámicas ilimitadas (proyectos y blog)**
+
+---
+
+## ✨ Características Completas del Sistema
+
+### 🗄️ Base de Datos (Supabase)
+- ✅ **7 tablas configuradas**: proyectos, imágenes, blog, categorías, contactos, presupuestos, newsletter
+- ✅ **Row Level Security (RLS)** en todas las tablas
+- ✅ **Políticas de seguridad** configuradas (lectura pública, escritura controlada)
+- ✅ **Datos de ejemplo** incluidos (1 proyecto, 1 artículo, 4 categorías)
+- ✅ **Triggers automáticos** para updated_at
+
+### 📄 Páginas Dinámicas (SSG)
+- ✅ **generateStaticParams** para pre-renderizar en build time
+- ✅ **Metadata dinámica** por proyecto/artículo
+- ✅ **Páginas ilimitadas** desde base de datos
+- ✅ **Galería de imágenes** múltiple por proyecto
+- ✅ **Contador de visitas** en artículos
+
+### 📝 Formularios Funcionales
+- ✅ **Validación en tiempo real** (email, campos requeridos)
+- ✅ **Estados de carga** con spinners animados
+- ✅ **Feedback visual** (éxito/error con colores)
+- ✅ **Reseteo automático** tras envío exitoso
+- ✅ **Guardado en Supabase** automático
+
+### 🎨 UI/UX
+- ✅ **Diseño responsive** perfecto en móvil/tablet/desktop
+- ✅ **Hover effects** y animaciones suaves
+- ✅ **Cards modernas** con sombras y transiciones
+- ✅ **Compartir en redes** (Facebook, Twitter, LinkedIn)
+- ✅ **Categorías con colores** personalizados
+- ✅ **Tags y etiquetas** en artículos
 
 ---
 
@@ -222,18 +285,29 @@ Accent Dark:   #E0A410
 
 ### Componentes UI
 
+**Componentes de Layout:**
 - Header responsive con navegación sticky
 - Footer con enlaces, contacto y redes sociales
-- FAQ con acordeones animados
 - PageHeader dinámico con imagen de fondo
 - Botón WhatsApp flotante
 - Scroll to top animado
-- Cards de servicios con hover effects
+
+**Componentes de Contenido:**
+- Cards de proyectos con galería
+- Cards de blog con categorías
+- FAQ con acordeones animados
 - **Formularios funcionales** con Supabase:
   - Formulario de contacto con validación
   - Formulario de presupuesto completo
   - Feedback en tiempo real (éxito/error)
   - Estados de carga (loading spinners)
+
+**Componentes de Servicio:**
+- Hero sections con overlays
+- Stats y métricas
+- Galerías de imágenes responsive
+- Botones de compartir en redes
+- Badges y etiquetas dinámicas
 
 ---
 
@@ -264,9 +338,11 @@ Accent Dark:   #E0A410
 ✅ **Performance**:
 - Imágenes optimizadas con `next/image`
 - Server Components por defecto
-- Static Generation (21/21 páginas)
+- **Static Generation** (21 páginas base + proyectos y blog dinámicos)
+- **ISR (Incremental Static Regeneration)** listo
 - CSS optimizado con Tailwind
 - Fonts optimizados con `next/font`
+- **Edge-ready** para deploy global
 
 ---
 
