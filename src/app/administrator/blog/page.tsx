@@ -1,18 +1,22 @@
 import { createClient } from '@/lib/supabase-server';
+import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import BlogArticulosTable from '@/components/admin/BlogArticulosTable';
 
 export default async function AdminBlogPage() {
-  const supabase = await createClient();
-  
+  // Verificar autenticación
+  const supabaseAuth = await createClient();
   const {
     data: { user },
-  } = await supabase.auth.getUser();
+  } = await supabaseAuth.auth.getUser();
 
   if (!user) {
     redirect('/administrator/login');
   }
+
+  // Usar cliente admin para leer datos
+  const supabase = getSupabaseAdmin();
 
   // Obtener artículos con sus categorías
   const { data: articulos, error } = await supabase
@@ -134,4 +138,3 @@ export default async function AdminBlogPage() {
     </div>
   );
 }
-

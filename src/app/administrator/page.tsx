@@ -1,17 +1,21 @@
 import { createClient } from '@/lib/supabase-server';
+import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { redirect } from 'next/navigation';
 import ContactosTable from '@/components/admin/ContactosTable';
 
 export default async function AdminContactosPage() {
-  const supabase = await createClient();
-  
+  // Verificar autenticación
+  const supabaseAuth = await createClient();
   const {
     data: { user },
-  } = await supabase.auth.getUser();
+  } = await supabaseAuth.auth.getUser();
 
   if (!user) {
     redirect('/administrator/login');
   }
+
+  // Usar cliente admin para leer datos
+  const supabase = getSupabaseAdmin();
 
   // Obtener contactos
   const { data: contactos, error } = await supabase
@@ -89,4 +93,3 @@ export default async function AdminContactosPage() {
     </div>
   );
 }
-

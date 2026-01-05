@@ -1,6 +1,7 @@
-import { createClient } from '@/lib/supabase-server';
+import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { redirect, notFound } from 'next/navigation';
 import BlogArticuloForm from '@/components/admin/BlogArticuloForm';
+import { createClient } from '@/lib/supabase-server';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -8,15 +9,19 @@ interface Props {
 
 export default async function EditarBlogArticuloPage({ params }: Props) {
   const { id } = await params;
-  const supabase = await createClient();
   
+  // Verificar autenticación usando el cliente con cookies
+  const supabaseAuth = await createClient();
   const {
     data: { user },
-  } = await supabase.auth.getUser();
+  } = await supabaseAuth.auth.getUser();
 
   if (!user) {
     redirect('/administrator/login');
   }
+
+  // Usar cliente admin para leer datos (bypasea RLS)
+  const supabase = getSupabaseAdmin();
 
   // Obtener el artículo
   const { data: articulo, error } = await supabase
@@ -67,4 +72,3 @@ export default async function EditarBlogArticuloPage({ params }: Props) {
     </div>
   );
 }
-

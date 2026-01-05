@@ -1,17 +1,21 @@
 import { createClient } from '@/lib/supabase-server';
+import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { redirect } from 'next/navigation';
 import PresupuestosTable from '@/components/admin/PresupuestosTable';
 
 export default async function AdminPresupuestosPage() {
-  const supabase = await createClient();
-  
+  // Verificar autenticación
+  const supabaseAuth = await createClient();
   const {
     data: { user },
-  } = await supabase.auth.getUser();
+  } = await supabaseAuth.auth.getUser();
 
   if (!user) {
     redirect('/administrator/login');
   }
+
+  // Usar cliente admin para leer datos
+  const supabase = getSupabaseAdmin();
 
   // Obtener presupuestos
   const { data: presupuestos, error } = await supabase
@@ -108,4 +112,3 @@ export default async function AdminPresupuestosPage() {
     </div>
   );
 }
-
