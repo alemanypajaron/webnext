@@ -1,6 +1,6 @@
 # Alemán y Pajarón - Web Corporativa Next.js
 
-**Sitio web profesional de arquitectura técnica construido con Next.js 15, React 19, TypeScript y Tailwind CSS**
+**Sitio web profesional de gestión de obras y proyectos construido con Next.js 15, React 19, TypeScript y Tailwind CSS**
 
 🌐 **En producción:** [webnext-one.vercel.app](https://webnext-one.vercel.app)  
 📦 **Repositorio:** [github.com/alemanypajaron/webnext](https://github.com/alemanypajaron/webnext)
@@ -9,7 +9,7 @@
 
 ## 🎯 Sobre el Proyecto
 
-Sitio web completo para **Alemán y Pajarón**, estudio de arquitectura técnica en Murcia, especializado en:
+Sitio web completo para **Alemán y Pajarón**, aparejadores especializados en gestión de obras y proyectos en Murcia:
 - Dirección de obra
 - Reformas integrales
 - Gestión de proyectos
@@ -556,7 +556,7 @@ import Script from 'next/script'
 - **Web desarrollada por:** [ESKALA marketing digital](https://www.eskaladigital.com)
 - **Framework:** Next.js by Vercel
 - **Hosting:** Vercel
-- **Diseño:** Basado en arquitectura técnica moderna
+- **Diseño:** Basado en gestión profesional de obras
 
 ---
 

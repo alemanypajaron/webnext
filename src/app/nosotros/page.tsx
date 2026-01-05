@@ -4,8 +4,8 @@ import type { Metadata } from 'next';
 import PageHeader from '@/components/ui/PageHeader';
 
 export const metadata: Metadata = {
-  title: 'Sobre Nosotros | Alemán y Pajarón - Arquitectos Técnicos en Murcia',
-  description: 'Conoce a Alemán y Pajarón, estudio de arquitectura técnica en Murcia con más de 15 años de experiencia en dirección de obra y gestión de proyectos.',
+  title: 'Sobre Nosotros | Alemán y Pajarón - Gestión de Obras en Murcia',
+  description: 'Conoce a Alemán y Pajarón, aparejadores especializados en gestión de obras y proyectos en Murcia con más de 15 años de experiencia en dirección de obra.',
   robots: 'index, follow',
   alternates: {
     canonical: '/nosotros',
@@ -62,7 +62,7 @@ export default function NosotrosPage() {
       <PageHeader
         badge="Conócenos"
         title="Sobre Nosotros"
-        subtitle="Arquitectos técnicos en Murcia con vocación de servicio"
+        subtitle="Aparejadores en Murcia especializados en gestión de obras y proyectos"
         image="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Equipo Alemán y Pajarón Murcia"
       />
@@ -89,10 +89,10 @@ export default function NosotrosPage() {
                 Más de 15 años construyendo confianza en Murcia
               </h2>
               <p className="text-xl text-gray-700 mb-4 leading-relaxed">
-                Alemán y Pajarón nació de la pasión por la arquitectura técnica y el compromiso con hacer las cosas bien.
+                Alemán y Pajarón nació de la pasión por la gestión de obras y proyectos y el compromiso con hacer las cosas bien.
               </p>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                Desde 2009, hemos acompañado a cientos de clientes en Murcia en sus proyectos de construcción, reforma y rehabilitación. Nuestra filosofía es simple: ofrecer un servicio técnico de calidad con un trato cercano y personalizado.
+                Desde 2009, hemos acompañado a cientos de clientes en Murcia en sus proyectos de construcción, reforma y rehabilitación. Nuestra filosofía es simple: ofrecer un servicio profesional de calidad con un trato cercano y personalizado.
               </p>
               <p className="text-gray-600 leading-relaxed">
                 Creemos que cada proyecto merece atención individualizada. Por eso, nos involucramos desde el primer momento, asesorando, planificando y supervisando cada detalle.

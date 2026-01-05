@@ -5,9 +5,9 @@ import JsonLd from '@/components/seo/JsonLd';
 import { localBusinessJsonLd, websiteJsonLd } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Arquitectos Técnicos en Murcia | Dirección de Obra y Reformas',
+  title: 'Gestión de Obras y Proyectos en Murcia | Dirección de Obra y Reformas',
   description:
-    'Arquitectos técnicos colegiados en Murcia. Especialistas en dirección de obra, gestión de proyectos, licencias y reformas integrales. Más de 15 años de experiencia. Presupuesto sin compromiso.',
+    'Aparejadores colegiados en Murcia. Especialistas en dirección de obra, gestión de proyectos, licencias y reformas integrales. Más de 15 años de experiencia. Presupuesto sin compromiso.',
   alternates: {
     canonical: '/',
   },
@@ -104,7 +104,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=80"
-            alt="Arquitectos técnicos en Murcia - Dirección de obra y reformas"
+            alt="Gestión de obras y proyectos en Murcia - Dirección de obra y reformas"
             fill
             className="object-cover"
             priority
@@ -116,15 +116,15 @@ export default function Home() {
         <div className="relative z-10 max-w-[1280px] mx-auto px-6 py-32 text-white">
           <div className="max-w-4xl">
             <span className="inline-block px-4 py-2 bg-accent text-primary rounded-full text-sm font-bold mb-6">
-              Arquitectura Técnica en Murcia
+              Gestión de Obras y Proyectos en Murcia
             </span>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 leading-tight text-white drop-shadow-lg">
-              Arquitectos Técnicos en Murcia: <span className="text-accent drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">Dirección de Obra</span> y Reformas
-              Integrales
+              Especialistas en <span className="text-accent drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">Dirección de Obra</span> y Gestión de
+              Proyectos en Murcia
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed">
-              Más de 15 años transformando ideas en espacios reales en Murcia. Dirección de obra, gestión de
-              proyectos, licencias y reformas.
+              Más de 15 años coordinando y ejecutando proyectos de construcción en Murcia. Dirección de obra, gestión integral,
+              licencias y reformas.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-16">
               <Link
@@ -207,7 +207,7 @@ export default function Home() {
               <div className="relative z-10">
                 <Image
                   src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-                  alt="Estudio de arquitectura técnica en Murcia"
+                  alt="Gestión de obras y proyectos en Murcia"
                   width={600}
                   height={700}
                   className="rounded-2xl shadow-2xl"
@@ -221,11 +221,11 @@ export default function Home() {
                 Sobre Nosotros
               </span>
               <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-6">
-                Estudio de Arquitectura Técnica en Murcia con más de 15 años de experiencia
+                Especialistas en Gestión de Obras y Proyectos en Murcia con más de 15 años de experiencia
               </h2>
               <p className="text-xl text-gray-700 mb-4 leading-relaxed">
-                Somos un estudio con más de 15 años de experiencia en dirección y gestión de proyectos de
-                construcción en Murcia.
+                Somos aparejadores colegiados con más de 15 años de experiencia en dirección de obra y coordinación de
+                proyectos de construcción en Murcia.
               </p>
               <p className="text-gray-600 mb-8 leading-relaxed">
                 Nuestro enfoque combina rigor técnico con atención personalizada, asegurando que cada proyecto se

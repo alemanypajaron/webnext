@@ -20,7 +20,7 @@ const Footer = () => {
               />
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed">
-              Estudio de arquitectura técnica en Murcia especializado en dirección de obra,
+              Aparejadores en Murcia especializados en dirección de obra,
               gestión de proyectos y reformas integrales.
             </p>
             <div className="flex space-x-4">
