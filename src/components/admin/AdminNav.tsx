@@ -134,27 +134,6 @@ export default function AdminNav() {
 
           {/* Botones de acción */}
           <div className="flex items-center space-x-4">
-            <Link
-              href="/"
-              target="_blank"
-              className="text-gray-600 hover:text-primary transition-colors"
-              title="Ver sitio web"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M2 12h20" />
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-              </svg>
-            </Link>
-
             <button
               onClick={handleLogout}
               className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all"
