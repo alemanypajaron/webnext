@@ -34,9 +34,26 @@ Sitio web completo para **Alemán y Pajarón**, aparejadores especializados en g
 
 ---
 
-## 🚀 Inicio Rápido
+## 🚀 Acceso a la Aplicación
 
-### Instalación Local
+### ✅ Producción (RECOMENDADO)
+
+**La aplicación está desplegada y funcionando en Vercel:**
+
+🌐 **URL Principal:** [https://webnext-one.vercel.app](https://webnext-one.vercel.app)
+
+**No es necesario ejecutar nada en local.** La aplicación está completamente operativa en Vercel con:
+- ✅ Deploy automático al hacer push a GitHub
+- ✅ HTTPS configurado
+- ✅ CDN global
+- ✅ Supabase integrado
+- ✅ Panel de administración funcional
+
+---
+
+### 🛠 Desarrollo Local (OPCIONAL)
+
+**Solo si necesitas desarrollar o probar cambios localmente:**
 
 ```bash
 # 1. Clonar el repositorio
@@ -46,19 +63,29 @@ cd webnext
 # 2. Instalar dependencias
 npm install
 
-# 3. Iniciar servidor de desarrollo
+# 3. Crear archivo .env.local con tus credenciales de Supabase
+# Ver sección "Variables de Entorno" abajo
+
+# 4. Iniciar servidor de desarrollo
 npm run dev
 ```
 
 **Servidor local:** [http://localhost:3000](http://localhost:3000)
 
-### Variables de Entorno (Opcional)
+⚠️ **NOTA IMPORTANTE:** Una vez que la aplicación está en Vercel, **no es necesario ejecutar el servidor local** a menos que estés desarrollando nuevas funcionalidades.
 
-Crea un archivo `.env.local`:
+---
+
+### 🔐 Variables de Entorno (Solo desarrollo local)
+
+Si vas a desarrollar localmente, crea un archivo `.env.local` en la raíz:
 
 ```env
-GOOGLE_VERIFICATION_CODE=tu_codigo_aqui
+NEXT_PUBLIC_SUPABASE_URL=tu-project-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu-anon-key
 ```
+
+**En Vercel estas variables ya están configuradas** en Settings → Environment Variables.
 
 ---
 
@@ -361,17 +388,21 @@ Accent Dark:   #E0A410
 
 ## 📝 Scripts NPM
 
+**⚠️ Solo necesarios para desarrollo local (opcional):**
+
 ```bash
-# Desarrollo
+# Desarrollo Local (OPCIONAL)
 npm run dev          # Servidor local en puerto 3000
 
-# Producción
+# Build Local (NO NECESARIO - Vercel lo hace automáticamente)
 npm run build        # Build optimizado para producción
 npm start            # Servidor de producción
 
 # Calidad de código
 npm run lint         # ESLint check
 ```
+
+**Para cambios en producción:** Solo haz `git push` y Vercel hace el build y deploy automáticamente.
 
 ---
 
@@ -440,45 +471,107 @@ GOOGLE_VERIFICATION_CODE = tu_codigo
 
 ## 🔄 Workflow de Desarrollo
 
-### Para Desarrolladores
+### ✅ Workflow Principal (Sin servidor local)
+
+**Para cualquier cambio en producción:**
 
 ```bash
-# 1. Clonar y configurar
+# 1. Hacer cambios directamente en los archivos
+# (Usando VS Code, Cursor, o cualquier editor)
+
+# 2. Commit y push
+git add .
+git commit -m "feat/fix/content: descripción del cambio"
+git push origin main
+
+# 3. Vercel detecta el push automáticamente
+# → Build (~45 segundos)
+# → Deploy automático
+# → ✅ En producción en ~1 minuto
+```
+
+**No necesitas:**
+- ❌ Ejecutar `npm run dev`
+- ❌ Ejecutar `npm run build`
+- ❌ Abrir `localhost:3000`
+- ❌ Ningún servidor local
+
+**Solo necesitas:**
+- ✅ Editar archivos
+- ✅ `git push`
+- ✅ Esperar ~1 minuto
+
+---
+
+### 🧪 Workflow con Desarrollo Local (OPCIONAL)
+
+**Solo si quieres probar cambios antes de subirlos:**
+
+```bash
+# 1. Clonar y configurar (primera vez)
 git clone https://github.com/alemanypajaron/webnext.git
 cd webnext
 npm install
 
-# 2. Crear branch para nueva feature
-git checkout -b feature/nueva-funcionalidad
+# 2. Crear .env.local con credenciales de Supabase
+# (Ver sección "Variables de Entorno")
 
 # 3. Desarrollar localmente
 npm run dev
 # Hacer cambios...
+# Probar en http://localhost:3000
 
-# 4. Commit y push
+# 4. Cuando esté listo, commit y push
+git add .
+git commit -m "feat: nueva funcionalidad"
+git push origin main
+
+# 5. ✅ Deploy automático a producción
+```
+
+---
+
+### 📝 Para Cambios de Contenido
+
+**El más simple de todos:**
+
+```bash
+# Ejemplo: Actualizar texto en la home
+1. Abrir archivo: src/app/page.tsx
+2. Editar el texto que necesites
+3. Guardar
+4. git add .
+5. git commit -m "content: actualizar home"
+6. git push
+7. ✅ En producción en 1 minuto (sin tocar npm ni localhost)
+```
+
+---
+
+### 🔀 Workflow con Branches (Avanzado)
+
+**Para features grandes o experimentales:**
+
+```bash
+# 1. Crear branch para nueva feature
+git checkout -b feature/nueva-funcionalidad
+
+# 2. Hacer cambios y commit
 git add .
 git commit -m "feat: nueva funcionalidad"
 git push origin feature/nueva-funcionalidad
 
-# 5. Vercel crea preview deployment automático
+# 3. Vercel crea preview deployment automático
 # URL preview: webnext-git-feature-nueva-funcionalidad-*.vercel.app
 
-# 6. Merge a main cuando esté listo
-# → Deploy automático a producción
-```
+# 4. Probar en la URL de preview
 
-### Para Contenido/Marketing
+# 5. Merge a main cuando esté listo
+git checkout main
+git merge feature/nueva-funcionalidad
+git push origin main
 
-```bash
-# Solo necesitas editar archivos y hacer push
-# Todo el proceso de deploy es automático
-
-# Ejemplo: Actualizar texto en home
-1. Editar: src/app/page.tsx
-2. git add .
-3. git commit -m "content: actualizar home"
-4. git push
-5. ✅ En producción en 1 minuto
+# 6. ✅ Deploy automático a producción
 ```
 
 ---
