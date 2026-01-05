@@ -3,10 +3,11 @@ import { redirect, notFound } from 'next/navigation';
 import ProyectoForm from '@/components/admin/ProyectoForm';
 
 interface Props {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function EditarProyectoPage({ params }: Props) {
+  const { id } = await params;
   const supabase = await createClient();
   
   const {
@@ -21,7 +22,7 @@ export default async function EditarProyectoPage({ params }: Props) {
   const { data: proyecto, error } = await supabase
     .from('proyectos')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .single();
 
   if (error || !proyecto) {

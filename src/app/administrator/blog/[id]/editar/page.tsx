@@ -3,10 +3,11 @@ import { redirect, notFound } from 'next/navigation';
 import BlogArticuloForm from '@/components/admin/BlogArticuloForm';
 
 interface Props {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function EditarBlogArticuloPage({ params }: Props) {
+  const { id } = await params;
   const supabase = await createClient();
   
   const {
@@ -21,7 +22,7 @@ export default async function EditarBlogArticuloPage({ params }: Props) {
   const { data: articulo, error } = await supabase
     .from('blog_articulos')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .single();
 
   if (error || !articulo) {
