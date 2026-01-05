@@ -15,12 +15,70 @@ export const metadata: Metadata = {
 
 export default function AsesoramientoTecnicoPage() {
   const servicios = [
-    { title: 'Informes Técnicos', desc: 'Evaluación detallada del estado de inmuebles, patologías constructivas y soluciones técnicas.' },
-    { title: 'Estudios de Viabilidad', desc: 'Análisis técnico y económico de proyectos antes de empezar. Evita sorpresas.' },
-    { title: 'Before You Buy', desc: 'Inspección técnica antes de comprar. Conoce el estado real del inmueble.' },
-    { title: 'Valoraciones', desc: 'Tasación técnica de inmuebles para compraventa o valoración patrimonial.' },
-    { title: 'Asesoría en Compras', desc: 'Te acompañamos en visitas y te asesoramos antes de decidir tu compra.' },
-    { title: 'Consultoría Técnica', desc: 'Resolución de dudas técnicas sobre construcción, instalaciones y normativa.' },
+    {
+      title: 'Informes Técnicos',
+      desc: 'Evaluación detallada del estado de inmuebles, patologías constructivas y soluciones técnicas.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="16" y1="13" x2="8" y2="13" />
+          <line x1="16" y1="17" x2="8" y2="17" />
+          <polyline points="10 9 9 9 8 9" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Estudios de Viabilidad',
+      desc: 'Análisis técnico y económico de proyectos antes de empezar. Evita sorpresas.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <line x1="12" y1="20" x2="12" y2="10" />
+          <line x1="18" y1="20" x2="18" y2="4" />
+          <line x1="6" y1="20" x2="6" y2="16" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Before You Buy',
+      desc: 'Inspección técnica antes de comprar. Conoce el estado real del inmueble.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Valoraciones',
+      desc: 'Tasación técnica de inmuebles para compraventa o valoración patrimonial.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <line x1="12" y1="1" x2="12" y2="23" />
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Asesoría en Compras',
+      desc: 'Te acompañamos en visitas y te asesoramos antes de decidir tu compra.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Consultoría Técnica',
+      desc: 'Resolución de dudas técnicas sobre construcción, instalaciones y normativa.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+          <line x1="12" y1="17" x2="12.01" y2="17" />
+        </svg>
+      ),
+    },
   ];
 
   return (
@@ -81,8 +139,11 @@ export default function AsesoramientoTecnicoPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {servicios.map((servicio) => (
               <div key={servicio.title} className="bg-white p-8 rounded-xl shadow-lg">
+                <div className="w-16 h-16 bg-accent rounded-lg flex items-center justify-center text-primary mb-6">
+                  {servicio.icon}
+                </div>
                 <h3 className="text-xl font-heading font-semibold text-primary mb-3">{servicio.title}</h3>
-                <p className="text-gray-600">{servicio.desc}</p>
+                <p className="text-gray-600 leading-relaxed">{servicio.desc}</p>
               </div>
             ))}
           </div>
@@ -217,8 +278,8 @@ export default function AsesoramientoTecnicoPage() {
                 icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253',
               },
             ].map((caso) => (
-              <div key={caso.title} className="bg-gray-50 p-8 rounded-xl">
-                <div className="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center text-accent mb-6">
+              <div key={caso.title} className="bg-white p-8 rounded-xl shadow-lg">
+                <div className="w-16 h-16 bg-accent rounded-lg flex items-center justify-center text-primary mb-6">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="28"

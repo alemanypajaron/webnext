@@ -77,11 +77,11 @@ export default function ReformasIntegralesPage() {
               { title: 'Reforma de Oficinas', desc: 'Espacios de trabajo modernos y funcionales adaptados a las necesidades de tu empresa.', icon: 'M3 3h18M3 21h18' },
             ].map((item) => (
               <div key={item.title} className="bg-white p-8 rounded-xl shadow-lg">
-                <div className="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-accent rounded-lg flex items-center justify-center text-primary mb-6">
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d={item.icon} /></svg>
                 </div>
                 <h3 className="text-xl font-heading font-semibold text-primary mb-3">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
+                <p className="text-gray-600 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>

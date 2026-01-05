@@ -15,12 +15,87 @@ export const metadata: Metadata = {
 
 export default function DisenoEspaciosPage() {
   const servicios = [
-    { title: 'Distribución Interior', desc: 'Optimización de espacios para aprovechar cada metro cuadrado.' },
-    { title: 'Renders 3D', desc: 'Visualiza tu proyecto antes de construirlo con imágenes realistas.' },
-    { title: 'Selección de Materiales', desc: 'Asesoramiento en acabados, pavimentos, revestimientos y carpintería.' },
-    { title: 'Diseño de Iluminación', desc: 'Proyecto lumínico para crear ambientes y optimizar consumo.' },
-    { title: 'Diseño de Mobiliario', desc: 'Soluciones a medida integradas en el espacio.' },
-    { title: 'Interiorismo Técnico', desc: 'Diseño con criterio constructivo y viabilidad técnica.' },
+    {
+      title: 'Distribución Interior',
+      desc: 'Optimización de espacios para aprovechar cada metro cuadrado.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+          <line x1="3" y1="9" x2="21" y2="9" />
+          <line x1="9" y1="21" x2="9" y2="9" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Renders 3D',
+      desc: 'Visualiza tu proyecto antes de construirlo con imágenes realistas.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" />
+          <line x1="7" y1="2" x2="7" y2="22" />
+          <line x1="17" y1="2" x2="17" y2="22" />
+          <line x1="2" y1="12" x2="22" y2="12" />
+          <line x1="2" y1="7" x2="7" y2="7" />
+          <line x1="2" y1="17" x2="7" y2="17" />
+          <line x1="17" y1="17" x2="22" y2="17" />
+          <line x1="17" y1="7" x2="22" y2="7" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Selección de Materiales',
+      desc: 'Asesoramiento en acabados, pavimentos, revestimientos y carpintería.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+          <polyline points="7.5 4.21 12 6.81 16.5 4.21" />
+          <polyline points="7.5 19.79 7.5 14.6 3 12" />
+          <polyline points="21 12 16.5 14.6 16.5 19.79" />
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+          <line x1="12" y1="22.08" x2="12" y2="12" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Diseño de Iluminación',
+      desc: 'Proyecto lumínico para crear ambientes y optimizar consumo.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Diseño de Mobiliario',
+      desc: 'Soluciones a medida integradas en el espacio.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M3 9v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9" />
+          <path d="M3 11h18v6H3z" />
+          <path d="M7 3v4" />
+          <path d="M17 3v4" />
+          <path d="M3 7h18" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Interiorismo Técnico',
+      desc: 'Diseño con criterio constructivo y viabilidad técnica.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+        </svg>
+      ),
+    },
   ];
 
   return (
@@ -81,8 +156,11 @@ export default function DisenoEspaciosPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {servicios.map((servicio) => (
               <div key={servicio.title} className="bg-white p-8 rounded-xl shadow-lg">
+                <div className="w-16 h-16 bg-accent rounded-lg flex items-center justify-center text-primary mb-6">
+                  {servicio.icon}
+                </div>
                 <h3 className="text-xl font-heading font-semibold text-primary mb-3">{servicio.title}</h3>
-                <p className="text-gray-600">{servicio.desc}</p>
+                <p className="text-gray-600 leading-relaxed">{servicio.desc}</p>
               </div>
             ))}
           </div>

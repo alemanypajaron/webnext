@@ -80,14 +80,14 @@ export default function LicenciasPermisosPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {tiposLicencias.map((licencia, i) => (
               <div key={i} className="bg-white p-8 rounded-xl shadow-lg">
-                <div className="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-accent rounded-lg flex items-center justify-center text-primary mb-6">
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                     <polyline points="14 2 14 8 20 8" />
                   </svg>
                 </div>
                 <h3 className="text-xl font-heading font-semibold text-primary mb-3">{licencia.title}</h3>
-                <p className="text-gray-600">{licencia.desc}</p>
+                <p className="text-gray-600 leading-relaxed">{licencia.desc}</p>
               </div>
             ))}
           </div>

@@ -13,6 +13,71 @@ export const metadata: Metadata = {
 };
 
 export default function GestionProyectosPage() {
+  const serviciosIncluidos = [
+    {
+      title: 'Planificación Estratégica',
+      desc: 'Definición de objetivos, cronograma, presupuesto y recursos necesarios para tu proyecto.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Coordinación de Equipos',
+      desc: 'Gestión y coordinación de todos los agentes: constructora, gremios, proveedores y técnicos.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Control de Plazos',
+      desc: 'Seguimiento del cronograma, identificación de desviaciones y medidas correctoras.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Control de Costes',
+      desc: 'Supervisión de presupuesto, certificaciones y gestión de desviaciones económicas.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <line x1="12" y1="1" x2="12" y2="23" />
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Gestión de Riesgos',
+      desc: 'Identificación, evaluación y mitigación de riesgos que puedan afectar al proyecto.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Comunicación',
+      desc: 'Informes periódicos, reuniones de seguimiento y comunicación fluida con todas las partes.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+      ),
+    },
+  ];
+
   const fases = [
     { num: '1', title: 'Análisis', desc: 'Estudiamos tu proyecto, necesidades y objetivos para definir la estrategia.' },
     { num: '2', title: 'Planificación', desc: 'Creamos cronograma detallado con hitos, fases y recursos necesarios.' },
@@ -69,7 +134,32 @@ export default function GestionProyectosPage() {
         </div>
       </section>
 
+      {/* Servicios incluidos */}
       <section className="section bg-gray-50">
+        <div className="max-w-[1280px] mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-4">
+              Incluido en el servicio
+            </span>
+            <h2 className="text-4xl font-heading font-bold text-primary">¿Qué incluye la gestión de proyectos?</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {serviciosIncluidos.map((servicio) => (
+              <div key={servicio.title} className="bg-white p-8 rounded-xl shadow-lg">
+                <div className="w-16 h-16 bg-accent rounded-lg flex items-center justify-center text-primary mb-6">
+                  {servicio.icon}
+                </div>
+                <h3 className="text-xl font-heading font-semibold text-primary mb-3">{servicio.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{servicio.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Fases */}
+      <section className="section">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-4">Nuestro método</span>
