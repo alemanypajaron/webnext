@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -38,6 +38,7 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const imagePickerCallbackRef = useRef<((url: string) => void) | null>(null);
   const [formData, setFormData] = useState({
     titulo: articulo?.titulo || '',
     slug: articulo?.slug || '',
@@ -52,6 +53,19 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
     meta_descripcion: articulo?.meta_descripcion || '',
     meta_keywords: articulo?.meta_keywords?.join(', ') || '',
   });
+
+  // Escuchar evento del image picker de TinyMCE
+  useEffect(() => {
+    const handleImagePicker = (event: any) => {
+      imagePickerCallbackRef.current = event.detail.callback;
+      setModalOpen(true);
+    };
+
+    window.addEventListener('openImagePicker', handleImagePicker);
+    return () => {
+      window.removeEventListener('openImagePicker', handleImagePicker);
+    };
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -455,8 +469,21 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
       {/* Modal de gestión de imágenes */}
       <ImagenSelectorModal
         isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        onSelect={(url) => setFormData(prev => ({ ...prev, imagen_destacada: url }))}
+        onClose={() => {
+          setModalOpen(false);
+          imagePickerCallbackRef.current = null;
+        }}
+        onSelect={(url) => {
+          // Si hay un callback de TinyMCE, usarlo (es para insertar en el contenido)
+          if (imagePickerCallbackRef.current) {
+            imagePickerCallbackRef.current(url);
+            imagePickerCallbackRef.current = null;
+          } else {
+            // Si no, es para la imagen destacada
+            setFormData(prev => ({ ...prev, imagen_destacada: url }));
+          }
+          setModalOpen(false);
+        }}
         currentImage={formData.imagen_destacada}
       />
     </form>
