@@ -24,11 +24,7 @@ export default function RichTextEditor({ content, onChange, placeholder = 'Escri
 
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({
-        heading: {
-          levels: [1, 2, 3, 4],
-        },
-      }),
+      StarterKit,
       TextAlign.configure({
         types: ['heading', 'paragraph'],
       }),
@@ -42,11 +38,6 @@ export default function RichTextEditor({ content, onChange, placeholder = 'Escri
       Color,
       Highlight.configure({
         multicolor: true,
-      }),
-      CodeBlock.configure({
-        HTMLAttributes: {
-          class: 'bg-gray-900 text-white p-4 rounded-lg my-4 font-mono text-sm',
-        },
       }),
     ],
     content,
