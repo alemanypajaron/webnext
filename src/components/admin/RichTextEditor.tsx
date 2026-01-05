@@ -18,7 +18,7 @@ export default function RichTextEditor({
 
   return (
     <Editor
-      apiKey="no-api-key"  // Usa la versión gratuita sin API key
+      apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY || "no-api-key"}
       onInit={(_evt: any, editor: any) => editorRef.current = editor}
       initialValue={content}
       init={{
