@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getBlogArticuloBySlug, getBlogArticulosSlugs, getBlogArticulosDestacados } from '@/lib/data';
+import VisitasTracker from '@/components/blog/VisitasTracker';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -65,6 +66,9 @@ export default async function BlogArticuloPage({ params }: Props) {
 
   return (
     <>
+      {/* Tracker de visitas (invisible) */}
+      <VisitasTracker articuloId={articulo.id} slug={articulo.slug} />
+      
       {/* Hero del artículo */}
       <section className="relative h-[70vh] min-h-[600px]">
         <Image
