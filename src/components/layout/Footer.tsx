@@ -253,29 +253,46 @@ const Footer = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="mt-12 pt-8 border-t border-primary-light flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-gray-400 text-sm">
-            © {currentYear} Alemán y Pajarón. Todos los derechos reservados.
-          </p>
-          <div className="flex space-x-6">
-            <Link
-              href="/legal/aviso-legal"
-              className="text-gray-400 hover:text-accent transition-colors text-sm"
+        <div className="mt-12 pt-8 border-t border-primary-light">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 mb-4">
+            <p className="text-gray-400 text-sm">
+              © {currentYear} Alemán y Pajarón. Todos los derechos reservados.
+            </p>
+            <div className="flex space-x-6">
+              <Link
+                href="/legal/aviso-legal"
+                className="text-gray-400 hover:text-accent transition-colors text-sm"
+              >
+                Aviso Legal
+              </Link>
+              <Link
+                href="/legal/privacidad"
+                className="text-gray-400 hover:text-accent transition-colors text-sm"
+              >
+                Privacidad
+              </Link>
+              <Link
+                href="/legal/cookies"
+                className="text-gray-400 hover:text-accent transition-colors text-sm"
+              >
+                Cookies
+              </Link>
+            </div>
+          </div>
+          
+          {/* Nueva línea con corazón y créditos */}
+          <div className="text-center text-gray-400 text-sm pt-4 border-t border-primary-light/50">
+            Hecho con{' '}
+            <span className="text-red-500 inline-block animate-pulse">❤️</span>
+            {' '}en Murcia · Web desarrollada por{' '}
+            <a
+              href="https://www.eskaladigital.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:text-accent-dark transition-colors font-medium"
             >
-              Aviso Legal
-            </Link>
-            <Link
-              href="/legal/privacidad"
-              className="text-gray-400 hover:text-accent transition-colors text-sm"
-            >
-              Privacidad
-            </Link>
-            <Link
-              href="/legal/cookies"
-              className="text-gray-400 hover:text-accent transition-colors text-sm"
-            >
-              Cookies
-            </Link>
+              ESKALA marketing digital
+            </a>
           </div>
         </div>
       </div>
