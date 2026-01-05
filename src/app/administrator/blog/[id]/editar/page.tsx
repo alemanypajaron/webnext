@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default async function EditarBlogArticuloPage({ params }: Props) {
-  const supabase = createClient();
+  const supabase = await createClient();
   
   const {
     data: { user },

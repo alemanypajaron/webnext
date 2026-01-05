@@ -4,7 +4,7 @@ import Link from 'next/link';
 import BlogArticulosTable from '@/components/admin/BlogArticulosTable';
 
 export default async function AdminBlogPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   
   const {
     data: { user },

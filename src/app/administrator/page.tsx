@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import ContactosTable from '@/components/admin/ContactosTable';
 
 export default async function AdminContactosPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   
   const {
     data: { user },

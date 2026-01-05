@@ -8,7 +8,7 @@ import { revalidatePath } from 'next/cache';
 // =====================================================
 
 export async function updateContacto(id: string, data: { leido?: boolean; respondido?: boolean }) {
-  const supabase = createClient();
+  const supabase = await createClient();
   
   const { error } = await supabase
     .from('contactos')
@@ -25,7 +25,7 @@ export async function updateContacto(id: string, data: { leido?: boolean; respon
 }
 
 export async function deleteContacto(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   
   const { error } = await supabase
     .from('contactos')
@@ -49,7 +49,7 @@ export async function updatePresupuesto(
   id: string,
   data: { leido?: boolean; respondido?: boolean; estado?: string }
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
   
   const { error } = await supabase
     .from('presupuestos')
@@ -66,7 +66,7 @@ export async function updatePresupuesto(
 }
 
 export async function deletePresupuesto(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   
   const { error } = await supabase
     .from('presupuestos')
@@ -100,7 +100,7 @@ export async function createBlogArticulo(data: {
   meta_descripcion?: string;
   meta_keywords?: string[];
 }) {
-  const supabase = createClient();
+  const supabase = await createClient();
   
   const { data: articulo, error } = await supabase
     .from('blog_articulos')
@@ -135,7 +135,7 @@ export async function updateBlogArticulo(
     meta_keywords?: string[];
   }
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
   
   const { error } = await supabase
     .from('blog_articulos')
@@ -153,7 +153,7 @@ export async function updateBlogArticulo(
 }
 
 export async function deleteBlogArticulo(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   
   const { error } = await supabase
     .from('blog_articulos')

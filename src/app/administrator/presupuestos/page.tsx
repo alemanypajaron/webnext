@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import PresupuestosTable from '@/components/admin/PresupuestosTable';
 
 export default async function AdminPresupuestosPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   
   const {
     data: { user },
