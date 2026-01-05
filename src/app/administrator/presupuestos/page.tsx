@@ -89,13 +89,13 @@ export default async function AdminPresupuestosPage() {
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600 mb-1">Enviados</p>
-              <p className="text-3xl font-bold text-green-600">
-                {presupuestos?.filter((p) => p.estado === 'enviado').length || 0}
+              <p className="text-sm text-gray-600 mb-1">Aceptados</p>
+              <p className="text-3xl font-bold text-emerald-600">
+                {presupuestos?.filter((p) => p.estado === 'aceptado').length || 0}
               </p>
             </div>
-            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-green-600">
+            <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-emerald-600">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>

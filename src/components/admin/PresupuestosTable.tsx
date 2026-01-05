@@ -49,12 +49,14 @@ export default function PresupuestosTable({ presupuestos }: { presupuestos: Pres
       pendiente: 'bg-yellow-100 text-yellow-800',
       en_proceso: 'bg-blue-100 text-blue-800',
       enviado: 'bg-green-100 text-green-800',
+      aceptado: 'bg-emerald-100 text-emerald-800',
       rechazado: 'bg-red-100 text-red-800',
     };
     const nombres = {
       pendiente: 'Pendiente',
       en_proceso: 'En Proceso',
       enviado: 'Enviado',
+      aceptado: 'Aceptado',
       rechazado: 'Rechazado',
     };
     return { clase: badges[estado as keyof typeof badges], nombre: nombres[estado as keyof typeof nombres] };
@@ -161,6 +163,7 @@ export default function PresupuestosTable({ presupuestos }: { presupuestos: Pres
                       <option value="pendiente">Pendiente</option>
                       <option value="en_proceso">En Proceso</option>
                       <option value="enviado">Enviado</option>
+                      <option value="aceptado">Aceptado</option>
                       <option value="rechazado">Rechazado</option>
                     </select>
                   </td>
