@@ -1,17 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-
-// Cliente de Supabase para storage
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { createClient } from '@/lib/supabase-server';
 
 const BUCKET_NAME = 'blog-images';
 
 // GET: Listar todas las imágenes del bucket de Supabase
 export async function GET() {
   try {
+    const supabase = await createClient();
+    
     const { data: files, error } = await supabase.storage
       .from(BUCKET_NAME)
       .list('', {
@@ -58,6 +54,19 @@ export async function GET() {
 // POST: Subir una nueva imagen a Supabase Storage
 export async function POST(request: NextRequest) {
   try {
+    const supabase = await createClient();
+    
+    // Verificar que el usuario está autenticado
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    
+    if (authError || !user) {
+      console.error('Usuario no autenticado:', authError);
+      return NextResponse.json(
+        { error: 'Debes iniciar sesión para subir imágenes' },
+        { status: 401 }
+      );
+    }
+
     const formData = await request.formData();
     const file = formData.get('file') as File;
 
@@ -134,6 +143,18 @@ export async function POST(request: NextRequest) {
 // DELETE: Eliminar una imagen de Supabase Storage
 export async function DELETE(request: NextRequest) {
   try {
+    const supabase = await createClient();
+    
+    // Verificar que el usuario está autenticado
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    
+    if (authError || !user) {
+      return NextResponse.json(
+        { error: 'Debes iniciar sesión para eliminar imágenes' },
+        { status: 401 }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
     const filename = searchParams.get('filename');
 
