@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import PageHeader from '@/components/ui/PageHeader';
+import NewsletterForm from '@/components/forms/NewsletterForm';
 import { getBlogArticulos, getCategoriasBlog } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -211,11 +212,9 @@ export default async function BlogPage() {
             ¿Quieres recibir nuestros artículos?
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            Suscríbete a nuestro newsletter y mantente al día con consejos, guías y novedades sobre arquitectura técnica en Murcia.
+            Suscríbete a nuestro newsletter y mantente al día con consejos, guías y novedades sobre reformas y arquitectura técnica en Murcia.
           </p>
-          <Link href="/contacto" className="btn bg-accent text-primary hover:bg-accent-dark">
-            Suscribirme
-          </Link>
+          <NewsletterForm variant="inline" />
         </div>
       </section>
     </>
