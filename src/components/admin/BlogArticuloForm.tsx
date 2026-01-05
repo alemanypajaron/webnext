@@ -3,8 +3,10 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import toast from 'react-hot-toast';
 import RichTextEditor from './RichTextEditor';
+import ImagenSelectorModal from './ImagenSelectorModal';
 import { createBlogArticulo, updateBlogArticulo } from '@/app/actions/admin';
 
 interface Categoria {
@@ -35,6 +37,7 @@ interface BlogArticuloFormProps {
 export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     titulo: articulo?.titulo || '',
     slug: articulo?.slug || '',
@@ -251,27 +254,73 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
 
           {/* Imagen destacada */}
           <div className="md:col-span-2">
-            <label htmlFor="imagen_destacada" className="block text-sm font-semibold text-gray-700 mb-2">
-              URL Imagen Destacada *
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Imagen Destacada *
             </label>
-            <input
-              type="url"
-              id="imagen_destacada"
-              name="imagen_destacada"
-              value={formData.imagen_destacada}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-              placeholder="https://images.unsplash.com/photo-..."
-            />
-            {formData.imagen_destacada && (
-              <div className="mt-3 relative w-full h-48 rounded-lg overflow-hidden border border-gray-200">
-                <img
-                  src={formData.imagen_destacada}
-                  alt="Preview"
-                  className="w-full h-full object-cover"
-                />
+            
+            {formData.imagen_destacada ? (
+              <div className="space-y-3">
+                {/* Preview de la imagen */}
+                <div className="relative w-full h-64 rounded-lg overflow-hidden border-2 border-gray-200 group">
+                  <Image
+                    src={formData.imagen_destacada}
+                    alt="Preview"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  {/* Overlay con botones */}
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setModalOpen(true)}
+                      className="px-4 py-2 bg-white text-primary rounded-lg font-semibold hover:bg-accent transition-colors"
+                    >
+                      Cambiar Imagen
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, imagen_destacada: '' }))}
+                      className="px-4 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-colors"
+                    >
+                      Quitar
+                    </button>
+                  </div>
+                </div>
+                {/* URL de la imagen */}
+                <p className="text-xs text-gray-500 font-mono bg-gray-50 px-3 py-2 rounded border border-gray-200">
+                  {formData.imagen_destacada}
+                </p>
               </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setModalOpen(true)}
+                className="w-full px-6 py-8 border-2 border-dashed border-gray-300 rounded-lg hover:border-accent hover:bg-accent/5 transition-all group"
+              >
+                <div className="flex flex-col items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="text-gray-400 group-hover:text-accent transition-colors mb-3"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <polyline points="21 15 16 10 5 21" />
+                  </svg>
+                  <p className="text-gray-700 font-semibold mb-1">
+                    Seleccionar o Subir Imagen
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    Haz clic para abrir el gestor de imágenes
+                  </p>
+                </div>
+              </button>
             )}
           </div>
         </div>
@@ -402,6 +451,14 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
           {loading ? 'Guardando...' : articulo ? 'Actualizar Artículo' : 'Crear Artículo'}
         </button>
       </div>
+
+      {/* Modal de gestión de imágenes */}
+      <ImagenSelectorModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onSelect={(url) => setFormData(prev => ({ ...prev, imagen_destacada: url }))}
+        currentImage={formData.imagen_destacada}
+      />
     </form>
   );
 }
