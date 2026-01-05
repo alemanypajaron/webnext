@@ -227,7 +227,8 @@ Todas las 6 páginas de servicios incluyen:
 - asesoramiento técnico murcia
 - consultoría construcción murcia
 - informe técnico murcia
-- arquitecto técnico murcia
+- técnico edificación murcia
+- gestor obras murcia
 
 ### 2. Dirección de Obra
 **URL:** `/servicios/direccion-obra`
@@ -249,7 +250,8 @@ Todas las 6 páginas de servicios incluyen:
 **Keywords:**
 - dirección de obra murcia
 - director de obra murcia
-- arquitecto técnico murcia dirección obra
+- técnico edificación murcia dirección obra
+- gestor obras murcia
 - supervisión obra murcia
 
 ### 3. Diseño de Espacios
@@ -347,7 +349,7 @@ Todas las 6 páginas de servicios incluyen:
 - CTA final
 
 **SEO:**
-- Keywords: arquitectura técnica murcia, arquitecto técnico murcia
+- Keywords: técnico edificación murcia, gestor obras murcia, gestión proyectos murcia
 - JSON-LD: LocalBusiness + WebSite
 
 ### Nosotros (/nosotros)
@@ -425,7 +427,7 @@ Todas las 6 páginas de servicios incluyen:
 
 Ejemplos:
 - Asesoramiento Técnico en Murcia: Consultoría Profesional
-- Dirección de Obra en Murcia: Arquitecto Técnico Colegiado
+- Dirección de Obra en Murcia: Gestor de Obras Colegiado
 ```
 
 **Títulos H2:**
@@ -447,7 +449,7 @@ Ejemplos:
 
 **Repetir naturalmente:**
 - Murcia (en casi cada sección)
-- Arquitecto técnico / Arquitectura técnica
+- Técnico de edificación / Gestor de obras
 - Nombre del servicio
 - Variaciones (dirección obra, director obra, etc.)
 

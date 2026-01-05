@@ -9,7 +9,7 @@
 
 ## 🎯 Sobre el Proyecto
 
-Sitio web completo para **Alemán y Pajarón**, aparejadores especializados en gestión de obras y proyectos en Murcia:
+Sitio web completo para **Alemán y Pajarón**, técnicos de edificación y gestores de obras especializados en gestión de proyectos en Murcia:
 - Dirección de obra
 - Reformas integrales
 - Gestión de proyectos
