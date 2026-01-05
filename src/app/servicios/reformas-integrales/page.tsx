@@ -8,7 +8,7 @@ import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '
 
 export const metadata: Metadata = {
   title: 'Reformas Integrales en Murcia | Alemán y Pajarón',
-  description: 'Reformas integrales en Murcia. Transformación completa de viviendas, locales y oficinas. Gestión integral del proyecto con arquitectos técnicos.',
+  description: 'Reformas integrales en Murcia. Transformación completa de viviendas, locales y oficinas. Gestión integral del proyecto con técnicos de edificación.',
   alternates: {
     canonical: '/servicios/reformas-integrales',
   },
@@ -24,7 +24,7 @@ export default function ReformasIntegralesPage() {
           serviceType: 'Reformas integrales',
           name: 'Reformas Integrales en Murcia',
           description:
-            'Reformas integrales en Murcia. Transformación completa de viviendas, locales y oficinas. Gestión integral del proyecto con arquitectos técnicos.',
+            'Reformas integrales en Murcia. Transformación completa de viviendas, locales y oficinas. Gestión integral del proyecto con gestores de obras.',
         })}
       />
       <JsonLd
@@ -53,7 +53,7 @@ export default function ReformasIntegralesPage() {
               <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-4">Transformación completa</span>
               <h2 className="text-4xl font-heading font-bold text-primary mb-6">Tu reforma en las mejores manos</h2>
               <p className="text-xl text-gray-700 mb-4">Gestionamos tu reforma integral en Murcia de principio a fin: diseño, licencias, ejecución y entrega.</p>
-              <p className="text-gray-600 mb-4">Como arquitectos técnicos, aportamos el conocimiento necesario para que tu reforma se ejecute correctamente, cumpliendo normativa y optimizando presupuesto.</p>
+              <p className="text-gray-600 mb-4">Como técnicos de edificación, aportamos el conocimiento necesario para que tu reforma se ejecute correctamente, cumpliendo normativa y optimizando presupuesto.</p>
               <p className="text-gray-600">Coordinamos todos los gremios y supervisamos cada fase de la obra para garantizar un resultado impecable.</p>
             </div>
             <div className="relative">
@@ -173,7 +173,7 @@ export default function ReformasIntegralesPage() {
                 Ventajas
               </span>
               <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-                ¿Por qué confiar tu reforma a arquitectos técnicos?
+                ¿Por qué confiar tu reforma a gestores de obras profesionales?
               </h2>
               <div className="space-y-4">
                 {[

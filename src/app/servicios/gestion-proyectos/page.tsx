@@ -7,8 +7,8 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Gestión de Proyectos en Murcia | Alemán y Pajarón - Arquitectos Técnicos',
-  description: 'Gestión integral de proyectos de construcción en Murcia. Planificación, coordinación, control de costes y plazos. Arquitectos técnicos especializados.',
+  title: 'Gestión de Proyectos en Murcia | Alemán y Pajarón - Técnicos de Edificación',
+  description: 'Gestión integral de proyectos de construcción en Murcia. Planificación, coordinación, control de costes y plazos. Gestores de obras especializados.',
   alternates: { canonical: '/servicios/gestion-proyectos' },
 };
 

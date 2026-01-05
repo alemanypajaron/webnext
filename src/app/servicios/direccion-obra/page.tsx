@@ -7,15 +7,15 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Dirección de Obra en Murcia | Arquitecto Técnico Colegiado | Precio y Servicios',
-  description: 'Dirección de obra en Murcia por arquitectos técnicos colegiados. Supervisión técnica profesional, control de calidad, cumplimiento de plazos y presupuesto. Presupuesto sin compromiso.',
-  keywords: 'dirección de obra murcia, director de obra murcia, arquitecto técnico murcia dirección obra, dirección obra murcia precio, aparejador murcia dirección obra, supervisión obra murcia, control calidad obra murcia',
+  title: 'Dirección de Obra en Murcia | Técnico de Edificación Colegiado | Precio y Servicios',
+  description: 'Dirección de obra en Murcia por técnicos de edificación colegiados. Supervisión técnica profesional, control de calidad, cumplimiento de plazos y presupuesto. Presupuesto sin compromiso.',
+  keywords: 'dirección de obra murcia, director de obra murcia, técnico edificación murcia dirección obra, dirección obra murcia precio, gestor obras murcia dirección obra, supervisión obra murcia, control calidad obra murcia',
   alternates: {
     canonical: '/servicios/direccion-obra',
   },
   openGraph: {
-    title: 'Dirección de Obra en Murcia | Arquitecto Técnico Colegiado',
-    description: 'Dirección de obra en Murcia por arquitectos técnicos colegiados. Supervisión técnica profesional y control de calidad.',
+    title: 'Dirección de Obra en Murcia | Técnico de Edificación Colegiado',
+    description: 'Dirección de obra en Murcia por gestores de obras colegiados. Supervisión técnica profesional y control de calidad.',
     type: 'website',
     url: 'https://alemanypajaron.es/servicios/direccion-obra',
   },
@@ -95,7 +95,7 @@ export default function DireccionObraPage() {
           serviceType: 'Dirección de obra',
           name: 'Dirección de Obra en Murcia',
           description:
-            'Dirección de obra en Murcia por arquitectos técnicos colegiados. Supervisión técnica profesional, control de calidad, cumplimiento de plazos y presupuesto. Presupuesto sin compromiso.',
+            'Dirección de obra en Murcia por técnicos de edificación colegiados. Supervisión técnica profesional, control de calidad, cumplimiento de plazos y presupuesto. Presupuesto sin compromiso.',
         })}
       />
       <JsonLd
@@ -110,7 +110,7 @@ export default function DireccionObraPage() {
 
       <PageHeader
         badge="Servicios"
-        title="Dirección de Obra en Murcia: Arquitecto Técnico Colegiado"
+        title="Dirección de Obra en Murcia: Gestor de Obras Colegiado"
         subtitle="Supervisión técnica profesional de obras en Murcia. Control de calidad, cumplimiento de plazos y normativa vigente."
         image="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Dirección de obra Murcia"
@@ -133,7 +133,7 @@ export default function DireccionObraPage() {
                 cumpliendo normativa, plazos y presupuesto.
               </p>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                Como arquitectos técnicos colegiados en Murcia, nos encargamos de supervisar todos los aspectos de
+                Como técnicos de edificación colegiados en Murcia, nos encargamos de supervisar todos los aspectos de
                 la ejecución de tu obra, desde el replanteo inicial hasta la entrega final.
               </p>
               <p className="text-gray-600 leading-relaxed">
@@ -288,7 +288,7 @@ export default function DireccionObraPage() {
             {[
               {
                 title: 'Colegiados y Asegurados',
-                desc: 'Arquitectos técnicos colegiados con seguro de responsabilidad civil profesional.',
+                desc: 'Técnicos de edificación colegiados con seguro de responsabilidad civil profesional.',
               },
               {
                 title: 'Conocimiento Local',
@@ -324,7 +324,7 @@ export default function DireccionObraPage() {
           {
             question: '¿Es obligatoria la dirección de obra?',
             answer:
-              'Sí, la Ley de Ordenación de la Edificación (LOE) exige dirección facultativa en obras. El arquitecto técnico es el director de ejecución de obra.',
+              'Sí, la Ley de Ordenación de la Edificación (LOE) exige dirección facultativa en obras. El técnico de edificación es el director de ejecución de obra.',
           },
           {
             question: '¿Cuántas visitas hace el director de obra?',

@@ -7,9 +7,9 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Asesoramiento Técnico en Murcia | Arquitectos Técnicos Alemán y Pajarón',
+  title: 'Asesoramiento Técnico en Murcia | Técnicos de Edificación Alemán y Pajarón',
   description: 'Asesoramiento técnico especializado en Murcia: informes técnicos, estudios de viabilidad, análisis de inmuebles y consultoría para construcción y reformas.',
-  keywords: 'asesoramiento técnico murcia, consultoría construcción murcia, informe técnico murcia, arquitecto técnico murcia, aparejador murcia, estudio viabilidad murcia',
+  keywords: 'asesoramiento técnico murcia, consultoría construcción murcia, informe técnico murcia, técnico edificación murcia, gestor obras murcia, estudio viabilidad murcia',
   alternates: { canonical: '/servicios/asesoramiento-tecnico' },
 };
 
@@ -317,7 +317,7 @@ export default function AsesoramientoTecnicoPage() {
           {
             question: '¿El informe técnico es válido para el banco o la justicia?',
             answer:
-              'Sí, nuestros informes están firmados por arquitectos técnicos colegiados y tienen validez legal.',
+              'Sí, nuestros informes están firmados por técnicos de edificación colegiados y tienen validez legal.',
           },
           {
             question: '¿Puedo usar el informe para negociar el precio de compra?',
@@ -336,7 +336,7 @@ export default function AsesoramientoTecnicoPage() {
       <section className="section bg-gray-100">
         <div className="max-w-[1280px] mx-auto px-6 text-center">
           <h2 className="text-4xl font-heading font-bold mb-4 text-primary">¿Necesitas asesoramiento técnico en Murcia?</h2>
-          <p className="text-xl text-gray-700 mb-8">Consulta con nuestros arquitectos técnicos colegiados</p>
+          <p className="text-xl text-gray-700 mb-8">Consulta con nuestros gestores de obras colegiados</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/presupuesto" className="px-8 py-4 bg-accent text-primary font-semibold rounded-lg hover:bg-accent-dark transition-all text-center text-lg shadow-lg">Solicitar Presupuesto</Link>
             <a href="tel:+34650075842" className="px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary-light transition-all text-center text-lg border-2 border-primary">650 075 842</a>

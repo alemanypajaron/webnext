@@ -7,7 +7,7 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Diseño de Espacios en Murcia | Arquitectos Técnicos Alemán y Pajarón',
+  title: 'Diseño de Espacios en Murcia | Técnicos de Edificación Alemán y Pajarón',
   description: 'Diseño de espacios funcionales en Murcia. Interiorismo técnico, optimización de distribuciones para viviendas, locales comerciales y oficinas. Expertos en Murcia.',
   keywords: 'diseño espacios murcia, diseño interiores murcia, interiorismo técnico murcia, distribución vivienda murcia, diseño local comercial murcia',
   alternates: { canonical: '/servicios/diseno-espacios' },
@@ -253,7 +253,7 @@ export default function DisenoEspaciosPage() {
             <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-4">
               Ventajas
             </span>
-            <h2 className="text-4xl font-heading font-bold text-primary">¿Por qué diseñar con arquitectos técnicos?</h2>
+            <h2 className="text-4xl font-heading font-bold text-primary">¿Por qué diseñar con gestores de obras?</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

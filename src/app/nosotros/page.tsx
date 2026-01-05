@@ -5,7 +5,7 @@ import PageHeader from '@/components/ui/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Sobre Nosotros | Alemán y Pajarón - Gestión de Obras en Murcia',
-  description: 'Conoce a Alemán y Pajarón, aparejadores especializados en gestión de obras y proyectos en Murcia con más de 15 años de experiencia en dirección de obra.',
+  description: 'Conoce a Alemán y Pajarón, técnicos de edificación especializados en gestión de obras y proyectos en Murcia con más de 15 años de experiencia en dirección de obra.',
   robots: 'index, follow',
   alternates: {
     canonical: '/nosotros',
@@ -62,7 +62,7 @@ export default function NosotrosPage() {
       <PageHeader
         badge="Conócenos"
         title="Sobre Nosotros"
-        subtitle="Aparejadores en Murcia especializados en gestión de obras y proyectos"
+        subtitle="Gestores de obras en Murcia especializados en gestión de obras y proyectos"
         image="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Equipo Alemán y Pajarón Murcia"
       />

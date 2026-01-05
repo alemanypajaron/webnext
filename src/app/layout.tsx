@@ -27,10 +27,10 @@ export const metadata: Metadata = {
     template: '%s | Alemán y Pajarón',
   },
   description:
-    'Aparejadores en Murcia especializados en dirección de obra, gestión de proyectos, licencias y reformas integrales. Más de 15 años de experiencia.',
+    'Técnicos de edificación en Murcia especializados en dirección de obra, gestión de proyectos, licencias y reformas integrales. Más de 15 años de experiencia.',
   keywords: [
-    'aparejador murcia',
-    'gestión obras murcia',
+    'técnico edificación murcia',
+    'gestor obras murcia',
     'dirección de obra murcia',
     'reformas integrales murcia',
     'licencia de obra murcia',
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Alemán y Pajarón | Gestión de Obras y Proyectos en Murcia',
     description:
-      'Aparejadores en Murcia especializados en dirección de obra, gestión de proyectos, licencias y reformas integrales.',
+      'Gestores de obras en Murcia especializados en dirección de obra, gestión de proyectos, licencias y reformas integrales.',
     url: 'https://alemanypajaron.es',
     siteName: 'Alemán y Pajarón',
     locale: 'es_ES',
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Alemán y Pajarón | Gestión de Obras y Proyectos en Murcia',
     description:
-      'Aparejadores en Murcia especializados en dirección de obra, gestión de proyectos y reformas integrales.',
+      'Técnicos de edificación en Murcia especializados en dirección de obra, gestión de proyectos y reformas integrales.',
     images: ['/twitter-image'],
   },
   robots: {

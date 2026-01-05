@@ -7,7 +7,7 @@ import { localBusinessJsonLd, websiteJsonLd } from '@/lib/structuredData';
 export const metadata: Metadata = {
   title: 'Gestión de Obras y Proyectos en Murcia | Dirección de Obra y Reformas',
   description:
-    'Aparejadores colegiados en Murcia. Especialistas en dirección de obra, gestión de proyectos, licencias y reformas integrales. Más de 15 años de experiencia. Presupuesto sin compromiso.',
+    'Gestores de obras y técnicos de edificación en Murcia. Especialistas en dirección de obra, gestión de proyectos, licencias y reformas integrales. Más de 15 años de experiencia. Presupuesto sin compromiso.',
   alternates: {
     canonical: '/',
   },
@@ -224,7 +224,7 @@ export default function Home() {
                 Especialistas en Gestión de Obras y Proyectos en Murcia con más de 15 años de experiencia
               </h2>
               <p className="text-xl text-gray-700 mb-4 leading-relaxed">
-                Somos aparejadores colegiados con más de 15 años de experiencia en dirección de obra y coordinación de
+                Somos técnicos de edificación especializados con más de 15 años de experiencia en dirección de obra y coordinación de
                 proyectos de construcción en Murcia.
               </p>
               <p className="text-gray-600 mb-8 leading-relaxed">

@@ -20,7 +20,7 @@ const Footer = () => {
               />
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed">
-              Aparejadores en Murcia especializados en dirección de obra,
+              Gestores de obras en Murcia especializados en dirección de obra,
               gestión de proyectos y reformas integrales.
             </p>
             <div className="flex space-x-4">
