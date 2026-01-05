@@ -32,10 +32,6 @@ export default function RichTextEditor({
           'emoticons', 'codesample', 'pagebreak', 'nonbreaking', 'directionality',
           'visualchars'
         ],
-        toolbar: 'undo redo | blocks | ' +
-          'bold italic forecolor backcolor | alignleft aligncenter ' +
-          'alignright alignjustify | bullist numlist outdent indent | ' +
-          'removeformat | image link | code | help',
         toolbar_mode: 'sliding',
         content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size:14px }',
         placeholder: placeholder,
@@ -96,7 +92,7 @@ export default function RichTextEditor({
             }
           });
         },
-        // Añadir "Leer Más" a la toolbar
+        // Toolbar con todos los botones incluyendo "Leer Más"
         toolbar: 'undo redo | blocks | ' +
           'bold italic forecolor backcolor | alignleft aligncenter ' +
           'alignright alignjustify | bullist numlist outdent indent | ' +
