@@ -28,17 +28,9 @@ export default function RichTextEditor({ content, onChange, placeholder = 'Escri
         heading: {
           levels: [1, 2, 3, 4],
         },
-        // Desactivar CodeBlock de StarterKit para usar nuestra versión personalizada
-        codeBlock: false,
       }),
       TextAlign.configure({
         types: ['heading', 'paragraph'],
-      }),
-      Link.configure({
-        openOnClick: false,
-        HTMLAttributes: {
-          class: 'text-accent hover:underline',
-        },
       }),
       Image.configure({
         HTMLAttributes: {
