@@ -48,7 +48,7 @@ const Header = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/img/logo-dark.svg"
+              src="/images/logo-dark.svg"
               alt="Alemán y Pajarón"
               width={160}
               height={40}

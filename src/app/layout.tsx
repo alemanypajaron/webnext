@@ -51,18 +51,18 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/img/favicon_png.png', sizes: 'any' },
-      { url: '/img/favicon_png.png', sizes: '16x16', type: 'image/png' },
-      { url: '/img/favicon_png.png', sizes: '32x32', type: 'image/png' },
-      { url: '/img/favicon_png.png', sizes: '192x192', type: 'image/png' },
+      { url: '/images/favicon_png.png', sizes: 'any' },
+      { url: '/images/favicon_png.png', sizes: '16x16', type: 'image/png' },
+      { url: '/images/favicon_png.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/favicon_png.png', sizes: '192x192', type: 'image/png' },
     ],
     apple: [
-      { url: '/img/favicon_png.png', sizes: '180x180', type: 'image/png' },
+      { url: '/images/favicon_png.png', sizes: '180x180', type: 'image/png' },
     ],
     other: [
       {
         rel: 'mask-icon',
-        url: '/img/favicon_png.png',
+        url: '/images/favicon_png.png',
       },
     ],
   },

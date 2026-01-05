@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="space-y-4">
             <Link href="/" className="inline-block">
               <Image
-                src="/img/logo.svg"
+                src="/images/logo.svg"
                 alt="Alemán y Pajarón"
                 width={160}
                 height={40}
