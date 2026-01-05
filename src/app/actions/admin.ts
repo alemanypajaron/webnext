@@ -150,7 +150,12 @@ export async function updateBlogArticulo(
     meta_keywords?: string[];
   }
 ) {
+  console.log('[UPDATE BLOG] Starting update for ID:', id);
+  console.log('[UPDATE BLOG] Data:', JSON.stringify(data, null, 2));
+  
   const supabase = getSupabaseAdmin();
+  
+  console.log('[UPDATE BLOG] Supabase client created');
   
   const { error } = await supabase
     .from('blog_articulos')
@@ -158,10 +163,12 @@ export async function updateBlogArticulo(
     .eq('id', id);
 
   if (error) {
-    console.error('Error updating blog articulo:', error);
-    throw new Error(error.message);
+    console.error('[UPDATE BLOG] Error updating blog articulo:', error);
+    throw new Error(`Error al actualizar: ${error.message}`);
   }
 
+  console.log('[UPDATE BLOG] Update successful');
+  
   revalidatePath('/administrator/blog');
   revalidatePath('/blog');
   return { success: true };
