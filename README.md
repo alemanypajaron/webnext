@@ -112,9 +112,12 @@ webnext/
 ├── public/
 │   ├── img/                          # Logos
 │   └── images/                       # Imágenes
+├── supabase/                         # ⚠️ SCHEMAS SQL (siempre aquí)
+│   ├── README.md                     # Documentación de schemas
+│   ├── supabase-schema.sql           # Schema formularios
+│   └── supabase-schema-proyectos-blog.sql  # Schema proyectos y blog
 ├── .gitignore
 ├── .env.local                        # Variables de entorno (NO en Git)
-├── supabase-schema.sql               # Schema SQL para Supabase
 ├── SUPABASE_CONFIG.md                # Documentación Supabase
 ├── next.config.ts                    # Configuración Next.js
 ├── tailwind.config.js                # Configuración Tailwind
@@ -149,14 +152,24 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=tu-anon-key
 
 2. **Ejecuta los schemas en Supabase:**
    
-   **Paso 1:** Si ya ejecutaste el schema de formularios, salta al Paso 2.
-   Si no, ejecuta `supabase/supabase-schema.sql` (formularios).
+   📁 **IMPORTANTE:** Todos los schemas SQL están en `/supabase/`
    
-   **Paso 2:** Ejecuta `supabase-schema-proyectos-blog.sql` (nuevas tablas):
+   **Paso 1 - Formularios básicos:**
+   - Ejecuta `/supabase/supabase-schema.sql` (si aún no lo hiciste)
+   - Tablas: contactos, presupuestos, newsletter
+   
+   **Paso 2 - Proyectos y Blog:**
+   - Ejecuta `/supabase/supabase-schema-proyectos-blog.sql`
+   - Tablas: proyectos, imagenes_proyectos, categorias_blog, blog_articulos
+   - **Incluye datos de ejemplo** (1 proyecto, 1 artículo, 4 categorías)
+   
+   **Cómo ejecutar:**
    - Ve a tu proyecto en [Supabase Dashboard](https://supabase.com/dashboard)
    - Abre el **SQL Editor**
-   - Copia y ejecuta el contenido completo
-   - Esto creará tablas + datos de ejemplo
+   - Copia el contenido del archivo SQL
+   - Pégalo y ejecuta (click "Run")
+   
+   📖 **Más info:** Ver `/supabase/README.md`
 
 3. **Verifica las tablas:**
    

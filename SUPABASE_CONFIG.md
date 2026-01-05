@@ -164,10 +164,12 @@ SELECT * FROM estadisticas_formularios;
 
 Después de configurar las variables:
 
-1. ✅ Ejecutar `supabase-schema.sql` en Supabase
+1. ✅ Ejecutar schemas SQL en Supabase (ver `/supabase/README.md`)
+   - Primero: `/supabase/supabase-schema.sql` (formularios)
+   - Segundo: `/supabase/supabase-schema-proyectos-blog.sql` (proyectos y blog)
 2. ✅ Instalar `@supabase/supabase-js`
-3. ⏳ Crear cliente de Supabase (`src/lib/supabase.ts`)
-4. ⏳ Crear acciones del servidor (`src/app/actions/forms.ts`)
+3. ✅ Cliente de Supabase (`src/lib/supabase.ts`)
+4. ✅ Acciones del servidor (`src/app/actions/forms.ts`)
 5. ⏳ Conectar formularios de contacto y presupuesto
 6. ⏳ Testing local
 7. ⏳ Deploy a Vercel
