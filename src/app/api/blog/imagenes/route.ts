@@ -1,34 +1,49 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, readdir } from 'fs/promises';
-import { join } from 'path';
-import { existsSync, mkdirSync } from 'fs';
+import { createClient } from '@supabase/supabase-js';
 
-// GET: Listar todas las imágenes en /public/images/blog
+// Cliente de Supabase para storage
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
+const BUCKET_NAME = 'blog-images';
+
+// GET: Listar todas las imágenes del bucket de Supabase
 export async function GET() {
   try {
-    const blogImagesPath = join(process.cwd(), 'public', 'images', 'blog');
-    
-    // Crear la carpeta si no existe
-    if (!existsSync(blogImagesPath)) {
-      mkdirSync(blogImagesPath, { recursive: true });
-      return NextResponse.json({ imagenes: [] });
+    const { data: files, error } = await supabase.storage
+      .from(BUCKET_NAME)
+      .list('', {
+        limit: 100,
+        sortBy: { column: 'created_at', order: 'desc' },
+      });
+
+    if (error) {
+      console.error('Error listando imágenes:', error);
+      return NextResponse.json(
+        { error: 'Error al listar imágenes' },
+        { status: 500 }
+      );
     }
 
-    // Leer todos los archivos de la carpeta
-    const files = await readdir(blogImagesPath);
-    
-    // Filtrar solo imágenes (jpg, jpeg, png, gif, webp)
-    const imagenes = files.filter(file => {
-      const ext = file.toLowerCase().split('.').pop();
-      return ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext || '');
-    });
-
     // Mapear a URLs públicas
-    const imagenesConUrl = imagenes.map(filename => ({
-      nombre: filename,
-      url: `/images/blog/${filename}`,
-      fecha: new Date().toISOString(), // Podrías usar fs.stat para obtener la fecha real
-    }));
+    const imagenesConUrl = (files || [])
+      .filter((file) => {
+        const ext = file.name.toLowerCase().split('.').pop();
+        return ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext || '');
+      })
+      .map((file) => {
+        const { data } = supabase.storage
+          .from(BUCKET_NAME)
+          .getPublicUrl(file.name);
+
+        return {
+          nombre: file.name,
+          url: data.publicUrl,
+          fecha: file.created_at || new Date().toISOString(),
+        };
+      });
 
     return NextResponse.json({ imagenes: imagenesConUrl });
   } catch (error) {
@@ -40,7 +55,7 @@ export async function GET() {
   }
 }
 
-// POST: Subir una nueva imagen
+// POST: Subir una nueva imagen a Supabase Storage
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
@@ -76,42 +91,47 @@ export async function POST(request: NextRequest) {
     const originalName = file.name.replace(/\s+/g, '-').toLowerCase();
     const filename = `${timestamp}-${originalName}`;
 
-    // Convertir el archivo a buffer
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
+    // Convertir el archivo a ArrayBuffer
+    const arrayBuffer = await file.arrayBuffer();
 
-    // Ruta donde se guardará
-    const blogImagesPath = join(process.cwd(), 'public', 'images', 'blog');
-    
-    // Crear la carpeta si no existe
-    if (!existsSync(blogImagesPath)) {
-      mkdirSync(blogImagesPath, { recursive: true });
+    // Subir a Supabase Storage
+    const { data, error } = await supabase.storage
+      .from(BUCKET_NAME)
+      .upload(filename, arrayBuffer, {
+        contentType: file.type,
+        cacheControl: '3600',
+        upsert: false,
+      });
+
+    if (error) {
+      console.error('Error subiendo a Supabase:', error);
+      return NextResponse.json(
+        { error: `Error al subir la imagen: ${error.message}` },
+        { status: 500 }
+      );
     }
 
-    const filepath = join(blogImagesPath, filename);
-
-    // Guardar el archivo
-    await writeFile(filepath, buffer);
-
-    // Devolver la URL pública
-    const url = `/images/blog/${filename}`;
+    // Obtener URL pública
+    const { data: publicUrlData } = supabase.storage
+      .from(BUCKET_NAME)
+      .getPublicUrl(filename);
 
     return NextResponse.json({
       success: true,
-      url,
+      url: publicUrlData.publicUrl,
       filename,
       message: 'Imagen subida correctamente',
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error al subir imagen:', error);
     return NextResponse.json(
-      { error: 'Error al subir la imagen' },
+      { error: `Error al subir la imagen: ${error.message || 'Error desconocido'}` },
       { status: 500 }
     );
   }
 }
 
-// DELETE: Eliminar una imagen (opcional, por si quieres implementarlo)
+// DELETE: Eliminar una imagen de Supabase Storage
 export async function DELETE(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -124,14 +144,21 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    const filepath = join(process.cwd(), 'public', 'images', 'blog', filename);
+    const { error } = await supabase.storage
+      .from(BUCKET_NAME)
+      .remove([filename]);
 
-    // Aquí podrías implementar la eliminación del archivo
-    // Por seguridad, solo lo haremos si el usuario es admin (verificar sesión)
+    if (error) {
+      console.error('Error eliminando imagen:', error);
+      return NextResponse.json(
+        { error: 'Error al eliminar la imagen' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
-      message: 'Funcionalidad de eliminación pendiente de implementar',
+      message: 'Imagen eliminada correctamente',
     });
   } catch (error) {
     console.error('Error al eliminar imagen:', error);
@@ -141,4 +168,3 @@ export async function DELETE(request: NextRequest) {
     );
   }
 }
-
