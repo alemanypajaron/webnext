@@ -25,6 +25,76 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
 // Tipos TypeScript para las tablas
 // =====================================================
 
+// --- PROYECTOS ---
+export interface Proyecto {
+  id?: string;
+  titulo: string;
+  slug: string;
+  descripcion_corta: string;
+  descripcion_completa: string;
+  ubicacion: string;
+  ano: number;
+  superficie?: string;
+  presupuesto?: string;
+  duracion?: string;
+  servicios?: string[];
+  estado?: 'completado' | 'en_curso' | 'pausado';
+  imagen_principal: string;
+  cliente?: string;
+  destacado?: boolean;
+  orden?: number;
+  created_at?: string;
+  updated_at?: string;
+  publicado?: boolean;
+}
+
+export interface ImagenProyecto {
+  id?: string;
+  proyecto_id: string;
+  url: string;
+  alt_text?: string;
+  descripcion?: string;
+  orden?: number;
+  created_at?: string;
+}
+
+// --- BLOG ---
+export interface CategoríaBlog {
+  id?: string;
+  nombre: string;
+  slug: string;
+  descripcion?: string;
+  color?: string;
+  orden?: number;
+  created_at?: string;
+}
+
+export interface BlogArticulo {
+  id?: string;
+  titulo: string;
+  slug: string;
+  resumen: string;
+  contenido: string;
+  autor?: string;
+  imagen_destacada: string;
+  categoria_id?: string;
+  fecha_publicacion?: string;
+  actualizado_at?: string;
+  publicado?: boolean;
+  destacado?: boolean;
+  visitas?: number;
+  tiempo_lectura?: number;
+  tags?: string[];
+  meta_descripcion?: string;
+  meta_keywords?: string[];
+}
+
+// Tipo extendido para incluir la categoría
+export interface BlogArticuloConCategoria extends BlogArticulo {
+  categoria?: CategoríaBlog;
+}
+
+// --- FORMULARIOS ---
 export interface Contacto {
   id?: string;
   nombre: string;
