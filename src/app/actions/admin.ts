@@ -170,3 +170,101 @@ export async function deleteBlogArticulo(id: string) {
   return { success: true };
 }
 
+// =====================================================
+// PROYECTOS
+// =====================================================
+
+export async function createProyecto(data: {
+  titulo: string;
+  slug: string;
+  descripcion_corta: string;
+  descripcion_completa: string;
+  ubicacion: string;
+  ano: number;
+  superficie: number;
+  presupuesto?: number;
+  duracion?: number;
+  servicios: string[];
+  estado: string;
+  imagen_principal: string;
+  cliente?: string;
+  publicado: boolean;
+  destacado: boolean;
+  meta_descripcion?: string;
+  meta_keywords?: string[];
+}) {
+  const supabase = await createClient();
+  
+  const { data: proyecto, error } = await supabase
+    .from('proyectos')
+    .insert([data])
+    .select()
+    .single();
+
+  if (error) {
+    console.error('Error creating proyecto:', error);
+    throw new Error(error.message);
+  }
+
+  revalidatePath('/administrator/proyectos');
+  revalidatePath('/proyectos');
+  return { success: true, proyecto };
+}
+
+export async function updateProyecto(
+  id: string,
+  data: {
+    titulo?: string;
+    slug?: string;
+    descripcion_corta?: string;
+    descripcion_completa?: string;
+    ubicacion?: string;
+    ano?: number;
+    superficie?: number;
+    presupuesto?: number;
+    duracion?: number;
+    servicios?: string[];
+    estado?: string;
+    imagen_principal?: string;
+    cliente?: string;
+    publicado?: boolean;
+    destacado?: boolean;
+    meta_descripcion?: string;
+    meta_keywords?: string[];
+  }
+) {
+  const supabase = await createClient();
+  
+  const { error } = await supabase
+    .from('proyectos')
+    .update({ ...data, updated_at: new Date().toISOString() })
+    .eq('id', id);
+
+  if (error) {
+    console.error('Error updating proyecto:', error);
+    throw new Error(error.message);
+  }
+
+  revalidatePath('/administrator/proyectos');
+  revalidatePath('/proyectos');
+  return { success: true };
+}
+
+export async function deleteProyecto(id: string) {
+  const supabase = await createClient();
+  
+  const { error } = await supabase
+    .from('proyectos')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.error('Error deleting proyecto:', error);
+    throw new Error(error.message);
+  }
+
+  revalidatePath('/administrator/proyectos');
+  revalidatePath('/proyectos');
+  return { success: true };
+}
+
