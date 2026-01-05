@@ -177,39 +177,92 @@ export default function GestionProyectosPage() {
         </div>
       </section>
 
-      {/* Beneficios */}
-      <section className="section">
+      {/* Beneficios con Estadísticas */}
+      <section className="section bg-gradient-to-br from-primary via-primary-light to-primary">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-4">
-              Ventajas
+            <span className="inline-block px-4 py-2 bg-accent text-primary rounded-full text-sm font-semibold mb-4">
+              Resultados comprobados
             </span>
-            <h2 className="text-4xl font-heading font-bold text-primary">¿Por qué contratar gestión de proyectos?</h2>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
+              ¿Por qué contratar gestión de proyectos?
+            </h2>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+              Más de 15 años gestionando proyectos en Murcia con resultados medibles
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Estadísticas destacadas */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center hover:bg-white/15 transition-all">
+              <div className="text-5xl md:text-6xl font-bold text-accent mb-4">95%</div>
+              <div className="text-lg md:text-xl font-semibold text-white mb-2">Cumplimiento de plazos</div>
+              <p className="text-white/80">Proyectos entregados en fecha prevista</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center hover:bg-white/15 transition-all">
+              <div className="text-5xl md:text-6xl font-bold text-accent mb-4">-20%</div>
+              <div className="text-lg md:text-xl font-semibold text-white mb-2">Ahorro medio</div>
+              <p className="text-white/80">Reducción de costes por optimización</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center hover:bg-white/15 transition-all">
+              <div className="text-5xl md:text-6xl font-bold text-accent mb-4">100%</div>
+              <div className="text-lg md:text-xl font-semibold text-white mb-2">Satisfacción</div>
+              <p className="text-white/80">Clientes que repiten con nosotros</p>
+            </div>
+          </div>
+
+          {/* Ventajas clave con iconos */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              'Cumplimiento de plazos garantizado',
-              'Control exhaustivo del presupuesto',
-              'Coordinación eficiente de todos los gremios',
-              'Un solo interlocutor para todo',
-              'Menor estrés y dedicación por tu parte',
-              'Optimización de recursos y costes',
+              {
+                title: 'Un único interlocutor',
+                desc: 'Olvídate de gestionar múltiples proveedores. Nosotros coordinamos todo.',
+                icon: (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                ),
+              },
+              {
+                title: 'Máximo control presupuestario',
+                desc: 'Seguimiento exhaustivo de cada euro invertido. Sin sorpresas al final.',
+                icon: (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="12" y1="1" x2="12" y2="23" />
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                  </svg>
+                ),
+              },
+              {
+                title: 'Tranquilidad garantizada',
+                desc: 'Tú a lo tuyo, nosotros gestionamos toda la complejidad del proyecto.',
+                icon: (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                ),
+              },
+              {
+                title: 'Optimización de recursos',
+                desc: 'Maximizamos eficiencia y minimizamos desperdicios en materiales y tiempo.',
+                icon: (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                  </svg>
+                ),
+              },
             ].map((beneficio, i) => (
-              <div key={i} className="flex items-start space-x-4 bg-gray-50 p-6 rounded-xl">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className="text-accent flex-shrink-0 mt-1"
-                >
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span className="text-lg text-gray-700">{beneficio}</span>
+              <div key={i} className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all group">
+                <div className="flex items-start gap-6">
+                  <div className="w-16 h-16 bg-accent rounded-xl flex items-center justify-center text-primary flex-shrink-0 group-hover:scale-110 transition-transform">
+                    {beneficio.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-heading font-bold text-primary mb-3">{beneficio.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{beneficio.desc}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
