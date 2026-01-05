@@ -56,8 +56,9 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
 
   // Escuchar evento del image picker de TinyMCE
   useEffect(() => {
-    const handleImagePicker = (event: any) => {
-      imagePickerCallbackRef.current = event.detail.callback;
+    const handleImagePicker = (event: Event) => {
+      const customEvent = event as CustomEvent<{ callback: (url: string) => void }>;
+      imagePickerCallbackRef.current = customEvent.detail.callback;
       setModalOpen(true);
     };
 

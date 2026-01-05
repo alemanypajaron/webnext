@@ -19,7 +19,7 @@ export default function RichTextEditor({
   return (
     <Editor
       apiKey="no-api-key"  // Usa la versión gratuita sin API key
-      onInit={(evt, editor) => editorRef.current = editor}
+      onInit={(_evt: any, editor: any) => editorRef.current = editor}
       initialValue={content}
       init={{
         height: 600,
@@ -45,7 +45,7 @@ export default function RichTextEditor({
         image_title: true,
         automatic_uploads: false,
         file_picker_types: 'image',
-        file_picker_callback: function (cb, value, meta) {
+        file_picker_callback: (cb: (url: string, meta?: { alt?: string }) => void, value: string, meta: { filetype: string }) => {
           if (meta.filetype === 'image') {
             // Abrir el modal de gestión de imágenes
             const event = new CustomEvent('openImagePicker', {
@@ -86,7 +86,7 @@ export default function RichTextEditor({
         // Configuración de formato de bloques
         block_formats: 'Párrafo=p; Título 1=h1; Título 2=h2; Título 3=h3; Título 4=h4; Cita=blockquote; Preformateado=pre',
         // Botones personalizados
-        setup: (editor) => {
+        setup: (editor: any) => {
           // Botón "Leer Más" tipo Joomla
           editor.ui.registry.addButton('readmore', {
             text: '📖 Leer Más',
@@ -107,7 +107,7 @@ export default function RichTextEditor({
         // Configuración de idioma español
         language_url: 'https://cdn.jsdelivr.net/npm/tinymce-lang/langs7/es.js',
       }}
-      onEditorChange={(newContent) => {
+      onEditorChange={(newContent: string) => {
         onChange(newContent);
       }}
     />
