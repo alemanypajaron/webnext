@@ -5,8 +5,7 @@ import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
 import TextAlign from '@tiptap/extension-text-align';
-import TextStyle from '@tiptap/extension-text-style';
-import Color from '@tiptap/extension-color';
+import { Color } from '@tiptap/extension-color';
 import { useEffect } from 'react';
 
 interface RichTextEditorProps {
@@ -37,7 +36,6 @@ export default function RichTextEditor({ content, onChange, placeholder = 'Escri
           class: 'max-w-full h-auto rounded-lg',
         },
       }),
-      TextStyle,
       Color,
     ],
     content,
