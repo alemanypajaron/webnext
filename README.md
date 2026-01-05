@@ -68,6 +68,8 @@ GOOGLE_VERIFICATION_CODE=tu_codigo_aqui
 webnext/
 ├── src/
 │   ├── app/                          # App Router de Next.js
+│   │   ├── actions/                  # Server Actions
+│   │   │   └── forms.ts              # Envío de formularios
 │   │   ├── layout.tsx                # Layout principal (Header + Footer)
 │   │   ├── page.tsx                  # Home
 │   │   ├── globals.css               # Estilos globales + Tailwind
@@ -91,6 +93,9 @@ webnext/
 │   │   ├── proyectos/                # Portfolio
 │   │   └── legal/                    # Aviso legal, Privacidad, Cookies
 │   ├── components/
+│   │   ├── forms/                    # Formularios con Supabase
+│   │   │   ├── ContactForm.tsx       # Formulario de contacto
+│   │   │   └── PresupuestoForm.tsx   # Formulario de presupuesto
 │   │   ├── layout/
 │   │   │   ├── Header.tsx            # Navegación principal
 │   │   │   └── Footer.tsx            # Footer con enlaces + créditos
@@ -102,11 +107,15 @@ webnext/
 │   │   └── seo/
 │   │       └── JsonLd.tsx            # Structured data
 │   └── lib/
+│       ├── supabase.ts               # Cliente de Supabase
 │       └── structuredData.ts         # Helpers para JSON-LD
 ├── public/
 │   ├── img/                          # Logos
 │   └── images/                       # Imágenes
 ├── .gitignore
+├── .env.local                        # Variables de entorno (NO en Git)
+├── supabase-schema.sql               # Schema SQL para Supabase
+├── SUPABASE_CONFIG.md                # Documentación Supabase
 ├── next.config.ts                    # Configuración Next.js
 ├── tailwind.config.js                # Configuración Tailwind
 ├── tsconfig.json                     # Configuración TypeScript
@@ -123,7 +132,37 @@ webnext/
 | **React** | 19.0.0 | UI Library |
 | **TypeScript** | 5.x | Tipado estático |
 | **Tailwind CSS** | 3.4.1 | Estilos utility-first |
+| **Supabase** | Latest | Base de datos PostgreSQL + Backend |
 | **Google Fonts** | - | Inter + Poppins |
+
+---
+
+## 🗄️ Supabase (Base de Datos)
+
+### **Configuración:**
+
+1. **Crea archivo `.env.local`** en la raíz:
+```env
+NEXT_PUBLIC_SUPABASE_URL=tu-project-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu-anon-key
+```
+
+2. **Ejecuta el schema en Supabase:**
+   - Ve a tu proyecto en [Supabase Dashboard](https://supabase.com/dashboard)
+   - Abre el **SQL Editor**
+   - Copia y ejecuta el contenido de `supabase-schema.sql`
+
+3. **Verifica las tablas:**
+   - ✅ `contactos` → Formulario de contacto
+   - ✅ `presupuestos` → Solicitudes de presupuesto
+   - ✅ `newsletter` → Suscriptores (opcional)
+
+4. **Configura en Vercel:**
+   - Settings → Environment Variables
+   - Añade `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - Redeploy
+
+📖 **Documentación completa:** Ver [`SUPABASE_CONFIG.md`](SUPABASE_CONFIG.md)
 
 ---
 
@@ -190,6 +229,11 @@ Accent Dark:   #E0A410
 - Botón WhatsApp flotante
 - Scroll to top animado
 - Cards de servicios con hover effects
+- **Formularios funcionales** con Supabase:
+  - Formulario de contacto con validación
+  - Formulario de presupuesto completo
+  - Feedback en tiempo real (éxito/error)
+  - Estados de carga (loading spinners)
 
 ---
 

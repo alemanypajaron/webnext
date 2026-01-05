@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import PageHeader from '@/components/ui/PageHeader';
+import ContactForm from '@/components/forms/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Contacto',
@@ -73,28 +74,7 @@ export default function ContactoPage() {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-8 rounded-2xl">
-              <h2 className="text-2xl font-heading font-bold text-primary mb-6">Envíanos un mensaje</h2>
-              <form className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
-                  <input type="text" className="w-full px-4 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                  <input type="email" className="w-full px-4 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Teléfono</label>
-                  <input type="tel" className="w-full px-4 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
-                  <textarea rows={4} className="w-full px-4 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"></textarea>
-                </div>
-                <button type="submit" className="w-full btn btn-primary text-lg py-4">Enviar Mensaje</button>
-              </form>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </section>
