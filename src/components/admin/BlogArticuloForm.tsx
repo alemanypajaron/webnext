@@ -31,6 +31,7 @@ interface BlogArticuloFormProps {
     tags: string[];
     meta_descripcion?: string;
     meta_keywords?: string[];
+    fecha_publicacion?: string;
   };
 }
 
@@ -39,6 +40,23 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const imagePickerCallbackRef = useRef<((url: string) => void) | null>(null);
+  // Función auxiliar para convertir fecha ISO a formato datetime-local
+  const formatDateForInput = (isoDate?: string) => {
+    if (!isoDate) return '';
+    try {
+      const date = new Date(isoDate);
+      // Formato: YYYY-MM-DDTHH:mm
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      return `${year}-${month}-${day}T${hours}:${minutes}`;
+    } catch {
+      return '';
+    }
+  };
+
   const [formData, setFormData] = useState({
     titulo: articulo?.titulo || '',
     slug: articulo?.slug || '',
@@ -52,6 +70,7 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
     tags: articulo?.tags?.join(', ') || '',
     meta_descripcion: articulo?.meta_descripcion || '',
     meta_keywords: articulo?.meta_keywords?.join(', ') || '',
+    fecha_publicacion: formatDateForInput(articulo?.fecha_publicacion) || formatDateForInput(new Date().toISOString()),
   });
 
   // Escuchar evento del image picker de TinyMCE
@@ -145,6 +164,7 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
         tags: formData.tags ? formData.tags.split(',').map(t => t.trim()).filter(Boolean) : [],
         meta_descripcion: formData.meta_descripcion.trim() || undefined,
         meta_keywords: formData.meta_keywords ? formData.meta_keywords.split(',').map(k => k.trim()).filter(Boolean) : undefined,
+        fecha_publicacion: formData.fecha_publicacion ? new Date(formData.fecha_publicacion).toISOString() : new Date().toISOString(),
       };
 
       if (articulo) {
@@ -359,6 +379,26 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
           Opciones de Publicación
         </h2>
         <div className="space-y-4">
+          {/* Fecha de Publicación */}
+          <div>
+            <label htmlFor="fecha_publicacion" className="block text-sm font-semibold text-gray-700 mb-2">
+              Fecha de Publicación *
+            </label>
+            <input
+              type="datetime-local"
+              id="fecha_publicacion"
+              name="fecha_publicacion"
+              value={formData.fecha_publicacion}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+            />
+            <p className="text-xs text-gray-500 mt-1">
+              Esta fecha determina cuándo se publicó el artículo y su orden en el blog
+            </p>
+          </div>
+
+          {/* Checkboxes */}
           <div className="flex items-center">
             <input
               type="checkbox"

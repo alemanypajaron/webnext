@@ -114,6 +114,7 @@ export async function createBlogArticulo(data: {
   tags: string[];
   meta_descripcion?: string;
   meta_keywords?: string[];
+  fecha_publicacion?: string;
 }) {
   const supabase = getSupabaseAdmin();
   
@@ -148,6 +149,7 @@ export async function updateBlogArticulo(
     tags?: string[];
     meta_descripcion?: string;
     meta_keywords?: string[];
+    fecha_publicacion?: string;
   }
 ) {
   console.log('[UPDATE BLOG] Starting update for ID:', id);
