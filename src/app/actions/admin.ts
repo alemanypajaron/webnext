@@ -1,14 +1,29 @@
 'use server';
 
-import { createClient } from '@/lib/supabase-server';
+import { createClient } from '@supabase/supabase-js';
 import { revalidatePath } from 'next/cache';
+
+// Cliente admin para operaciones que necesitan bypasear RLS
+// La seguridad la proporciona el middleware de autenticación del admin panel
+function getSupabaseAdmin() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+  
+  return createClient(url, serviceKey || anonKey, {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false,
+    },
+  });
+}
 
 // =====================================================
 // CONTACTOS
 // =====================================================
 
 export async function updateContacto(id: string, data: { leido?: boolean; respondido?: boolean }) {
-  const supabase = await createClient();
+  const supabase = getSupabaseAdmin();
   
   const { error } = await supabase
     .from('contactos')
@@ -25,7 +40,7 @@ export async function updateContacto(id: string, data: { leido?: boolean; respon
 }
 
 export async function deleteContacto(id: string) {
-  const supabase = await createClient();
+  const supabase = getSupabaseAdmin();
   
   const { error } = await supabase
     .from('contactos')
@@ -49,7 +64,7 @@ export async function updatePresupuesto(
   id: string,
   data: { leido?: boolean; respondido?: boolean; estado?: string }
 ) {
-  const supabase = await createClient();
+  const supabase = getSupabaseAdmin();
   
   const { error } = await supabase
     .from('presupuestos')
@@ -66,7 +81,7 @@ export async function updatePresupuesto(
 }
 
 export async function deletePresupuesto(id: string) {
-  const supabase = await createClient();
+  const supabase = getSupabaseAdmin();
   
   const { error } = await supabase
     .from('presupuestos')
@@ -100,7 +115,7 @@ export async function createBlogArticulo(data: {
   meta_descripcion?: string;
   meta_keywords?: string[];
 }) {
-  const supabase = await createClient();
+  const supabase = getSupabaseAdmin();
   
   const { data: articulo, error } = await supabase
     .from('blog_articulos')
@@ -135,7 +150,7 @@ export async function updateBlogArticulo(
     meta_keywords?: string[];
   }
 ) {
-  const supabase = await createClient();
+  const supabase = getSupabaseAdmin();
   
   const { error } = await supabase
     .from('blog_articulos')
@@ -153,7 +168,7 @@ export async function updateBlogArticulo(
 }
 
 export async function deleteBlogArticulo(id: string) {
-  const supabase = await createClient();
+  const supabase = getSupabaseAdmin();
   
   const { error } = await supabase
     .from('blog_articulos')
@@ -193,7 +208,7 @@ export async function createProyecto(data: {
   meta_descripcion?: string;
   meta_keywords?: string[];
 }) {
-  const supabase = await createClient();
+  const supabase = getSupabaseAdmin();
   
   const { data: proyecto, error } = await supabase
     .from('proyectos')
@@ -233,7 +248,7 @@ export async function updateProyecto(
     meta_keywords?: string[];
   }
 ) {
-  const supabase = await createClient();
+  const supabase = getSupabaseAdmin();
   
   const { error } = await supabase
     .from('proyectos')
@@ -251,7 +266,7 @@ export async function updateProyecto(
 }
 
 export async function deleteProyecto(id: string) {
-  const supabase = await createClient();
+  const supabase = getSupabaseAdmin();
   
   const { error } = await supabase
     .from('proyectos')
@@ -267,4 +282,3 @@ export async function deleteProyecto(id: string) {
   revalidatePath('/proyectos');
   return { success: true };
 }
-
