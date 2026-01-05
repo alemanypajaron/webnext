@@ -253,8 +253,8 @@ const Footer = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="mt-12 pt-8 border-t border-primary-light">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 mb-4">
+        <div className="mt-8 pt-6 border-t border-primary-light space-y-3">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
             <p className="text-gray-400 text-sm">
               © {currentYear} Alemán y Pajarón. Todos los derechos reservados.
             </p>
@@ -280,8 +280,8 @@ const Footer = () => {
             </div>
           </div>
           
-          {/* Nueva línea con corazón y créditos */}
-          <div className="text-center text-gray-400 text-sm pt-4 border-t border-primary-light/50">
+          {/* Línea con corazón y créditos */}
+          <div className="text-center text-gray-400 text-sm">
             Hecho con{' '}
             <span className="text-red-500 inline-block animate-pulse">❤️</span>
             {' '}en Murcia · Web desarrollada por{' '}
@@ -291,7 +291,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="text-accent hover:text-accent-dark transition-colors font-medium"
             >
-              ESKALA marketing digital
+              ESKALA Agencia de Marketing Digital
             </a>
           </div>
         </div>
