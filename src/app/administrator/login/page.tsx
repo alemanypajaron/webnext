@@ -1,36 +1,25 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
+import { loginAction } from '@/app/actions/auth';
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (error) {
-        toast.error(`Error: ${error.message}`);
-        return;
+      const result = await loginAction(email, password);
+      
+      if (!result.success) {
+        toast.error(`Error: ${result.error}`);
       }
-
-      if (data.user) {
-        toast.success('¡Inicio de sesión exitoso!');
-        router.push('/administrator');
-        router.refresh();
-      }
+      // Si es exitoso, loginAction redirige automáticamente
     } catch (error) {
       toast.error('Error al iniciar sesión');
       console.error(error);

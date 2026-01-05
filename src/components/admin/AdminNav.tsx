@@ -1,13 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
+import { usePathname } from 'next/navigation';
+import { logoutAction } from '@/app/actions/auth';
 import toast from 'react-hot-toast';
 
 export default function AdminNav() {
   const pathname = usePathname();
-  const router = useRouter();
 
   // No mostrar navegación en la página de login
   if (pathname === '/administrator/login') {
@@ -16,10 +15,8 @@ export default function AdminNav() {
 
   const handleLogout = async () => {
     try {
-      await supabase.auth.signOut();
+      await logoutAction();
       toast.success('Sesión cerrada correctamente');
-      router.push('/administrator/login');
-      router.refresh();
     } catch (error) {
       toast.error('Error al cerrar sesión');
       console.error(error);
