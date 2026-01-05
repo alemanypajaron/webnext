@@ -208,3 +208,252 @@
     transform: translateX(0);
   }
 }
+
+/* ====================================
+   ESTILOS PARA CONTENIDO DE BLOG
+   ==================================== */
+
+/* Asegurar tipografía consistente en el contenido del artículo */
+article.prose {
+  font-family: var(--font-inter);
+  color: #374151;
+}
+
+/* Resetear estilos inline que puedan venir de TinyMCE */
+article.prose * {
+  font-family: inherit !important;
+}
+
+/* Headings con tipografía Poppins */
+article.prose h1,
+article.prose h2,
+article.prose h3,
+article.prose h4,
+article.prose h5,
+article.prose h6 {
+  font-family: var(--font-poppins) !important;
+  color: #0A2230 !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Tamaños específicos para cada heading */
+article.prose h1 {
+  font-size: 2.5rem !important;
+  margin-top: 3rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+article.prose h2 {
+  font-size: 2rem !important;
+  margin-top: 3rem !important;
+  padding-bottom: 0.75rem !important;
+  border-bottom: 2px solid rgba(249, 181, 19, 0.3) !important;
+}
+
+article.prose h3 {
+  font-size: 1.5rem !important;
+  margin-top: 2rem !important;
+}
+
+article.prose h4 {
+  font-size: 1.25rem !important;
+  margin-top: 1.75rem !important;
+}
+
+/* Párrafos con buen espaciado */
+article.prose p {
+  font-size: 1.125rem !important;
+  line-height: 1.8 !important;
+  margin-bottom: 1.5rem !important;
+  color: #374151 !important;
+}
+
+/* Listas con buen espaciado */
+article.prose ul,
+article.prose ol {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+  padding-left: 1.75rem !important;
+}
+
+article.prose li {
+  font-size: 1.125rem !important;
+  line-height: 1.8 !important;
+  margin-bottom: 0.75rem !important;
+  color: #374151 !important;
+}
+
+article.prose ul li {
+  list-style-type: disc !important;
+}
+
+article.prose ol li {
+  list-style-type: decimal !important;
+}
+
+/* Listas anidadas */
+article.prose ul ul,
+article.prose ol ul {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+article.prose ul ul li,
+article.prose ol ul li {
+  list-style-type: circle !important;
+}
+
+/* Enlaces con color accent */
+article.prose a {
+  color: #F9B513 !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid transparent !important;
+  transition: all 0.2s ease !important;
+}
+
+article.prose a:hover {
+  color: #E0A410 !important;
+  border-bottom-color: #E0A410 !important;
+}
+
+/* Texto en negrita */
+article.prose strong,
+article.prose b {
+  font-weight: 700 !important;
+  color: #0A2230 !important;
+}
+
+/* Texto en cursiva */
+article.prose em,
+article.prose i {
+  font-style: italic !important;
+}
+
+/* Citas */
+article.prose blockquote {
+  border-left: 4px solid #F9B513 !important;
+  background-color: rgba(249, 181, 19, 0.05) !important;
+  padding: 1.5rem !important;
+  margin: 2rem 0 !important;
+  font-style: italic !important;
+  color: #4B5563 !important;
+  border-radius: 0 0.5rem 0.5rem 0 !important;
+}
+
+article.prose blockquote p {
+  margin-bottom: 0.5rem !important;
+}
+
+/* Código inline */
+article.prose code {
+  background-color: rgba(249, 181, 19, 0.1) !important;
+  color: #F9B513 !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 0.25rem !important;
+  font-size: 0.9em !important;
+  font-family: 'Courier New', monospace !important;
+}
+
+/* Bloques de código */
+article.prose pre {
+  background-color: #1F2937 !important;
+  color: #F3F4F6 !important;
+  padding: 1.5rem !important;
+  border-radius: 0.75rem !important;
+  overflow-x: auto !important;
+  margin: 2rem 0 !important;
+}
+
+article.prose pre code {
+  background-color: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  font-size: 0.9rem !important;
+}
+
+/* Imágenes */
+article.prose img {
+  border-radius: 0.75rem !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+  margin: 2.5rem auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Líneas horizontales */
+article.prose hr {
+  border: none !important;
+  border-top: 2px solid #E5E7EB !important;
+  margin: 3rem 0 !important;
+}
+
+/* Tablas */
+article.prose table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 2rem 0 !important;
+  overflow: hidden !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+article.prose th {
+  background-color: #0A2230 !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  padding: 1rem !important;
+  text-align: left !important;
+  font-size: 0.95rem !important;
+}
+
+article.prose td {
+  padding: 1rem !important;
+  border-bottom: 1px solid #E5E7EB !important;
+  color: #374151 !important;
+  font-size: 1rem !important;
+}
+
+article.prose tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+article.prose tbody tr:nth-child(even) {
+  background-color: #F9FAFB !important;
+}
+
+/* Eliminar margin del primer y último elemento */
+article.prose > *:first-child {
+  margin-top: 0 !important;
+}
+
+article.prose > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Responsive: tamaños más pequeños en móvil */
+@media (max-width: 768px) {
+  article.prose h1 {
+    font-size: 2rem !important;
+  }
+
+  article.prose h2 {
+    font-size: 1.75rem !important;
+  }
+
+  article.prose h3 {
+    font-size: 1.5rem !important;
+  }
+
+  article.prose h4 {
+    font-size: 1.25rem !important;
+  }
+
+  article.prose p,
+  article.prose li {
+    font-size: 1rem !important;
+  }
+}
