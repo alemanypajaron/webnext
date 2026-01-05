@@ -1,80 +1,115 @@
-# Alemán y Pajarón - Next.js App
+# Alemán y Pajarón - Web Corporativa Next.js
 
-**Aplicación web moderna construida con Next.js 16, React 19, TypeScript y Tailwind CSS**
+**Sitio web profesional de arquitectura técnica construido con Next.js 15, React 19, TypeScript y Tailwind CSS**
+
+🌐 **En producción:** [webnext-one.vercel.app](https://webnext-one.vercel.app)  
+📦 **Repositorio:** [github.com/alemanypajaron/webnext](https://github.com/alemanypajaron/webnext)
 
 ---
 
-## ✅ **MIGRACIÓN COMPLETADA AL 100%**
+## 🎯 Sobre el Proyecto
 
-El proyecto ha sido completamente migrado de HTML estático a Next.js.
+Sitio web completo para **Alemán y Pajarón**, estudio de arquitectura técnica en Murcia, especializado en:
+- Dirección de obra
+- Reformas integrales
+- Gestión de proyectos
+- Licencias y permisos
+- Asesoramiento técnico
+- Diseño de espacios
+
+---
+
+## ✅ Estado del Proyecto
+
+**✨ PROYECTO COMPLETO Y EN PRODUCCIÓN**
+
+- ✅ 21 páginas completamente funcionales
+- ✅ 6 páginas de servicios con contenido SEO optimizado
+- ✅ Componentes reutilizables (Header, Footer, FAQ, PageHeader)
+- ✅ SEO completo (metadata, sitemap, robots.txt, JSON-LD)
+- ✅ Diseño responsive y accesible
+- ✅ Deploy automático con Vercel
+- ✅ Imágenes optimizadas
+- ✅ Analytics integrado
 
 ---
 
 ## 🚀 Inicio Rápido
 
+### Instalación Local
+
 ```bash
-# Instalar dependencias (solo la primera vez)
+# 1. Clonar el repositorio
+git clone https://github.com/alemanypajaron/webnext.git
+cd webnext
+
+# 2. Instalar dependencias
 npm install
 
-# Iniciar servidor de desarrollo
+# 3. Iniciar servidor de desarrollo
 npm run dev
 ```
 
-**La aplicación estará disponible en:** [http://localhost:3000](http://localhost:3000)
+**Servidor local:** [http://localhost:3000](http://localhost:3000)
 
----
+### Variables de Entorno (Opcional)
 
-## 📄 Páginas Migradas (TODAS)
+Crea un archivo `.env.local`:
 
-### ✅ Páginas Principales
-- **Home** (`/`) - Página principal con hero, servicios, sobre nosotros
-- **Nosotros** (`/nosotros`) - Historia, valores del estudio
-- **Contacto** (`/contacto`) - Formulario de contacto e información
-- **Presupuesto** (`/presupuesto`) - Solicitud de presupuesto detallado
-
-### ✅ Servicios
-- **Índice de Servicios** (`/servicios`)
-- **Asesoramiento Técnico** (`/servicios/asesoramiento-tecnico`)
-- **Dirección de Obra** (`/servicios/direccion-obra`)
-- **Diseño de Espacios** (`/servicios/diseno-espacios`)
-- **Gestión de Proyectos** (`/servicios/gestion-proyectos`)
-- **Licencias y Permisos** (`/servicios/licencias-permisos`)
-- **Reformas Integrales** (`/servicios/reformas-integrales`)
-
-### ✅ Blog y Proyectos
-- **Blog** (`/blog`) - Listado de artículos
-- **Proyectos** (`/proyectos`) - Portfolio
-
-### ✅ Páginas Legales
-- **Aviso Legal** (`/legal/aviso-legal`)
-- **Privacidad** (`/legal/privacidad`)
-- **Cookies** (`/legal/cookies`)
+```env
+GOOGLE_VERIFICATION_CODE=tu_codigo_aqui
+```
 
 ---
 
 ## 📁 Estructura del Proyecto
 
 ```
-ALEMANYPAJARON/
+webnext/
 ├── src/
-│   ├── app/                    # App Router de Next.js
-│   │   ├── layout.tsx          # Layout principal con Header/Footer
-│   │   ├── page.tsx            # Página de inicio
-│   │   ├── nosotros/
-│   │   ├── contacto/
-│   │   ├── presupuesto/
-│   │   ├── servicios/          # 6 servicios + índice
-│   │   ├── blog/
-│   │   ├── proyectos/
-│   │   └── legal/              # 3 páginas legales
+│   ├── app/                          # App Router de Next.js
+│   │   ├── layout.tsx                # Layout principal (Header + Footer)
+│   │   ├── page.tsx                  # Home
+│   │   ├── globals.css               # Estilos globales + Tailwind
+│   │   ├── favicon.ico               # Favicon
+│   │   ├── opengraph-image.tsx       # OG image dinámica
+│   │   ├── twitter-image.tsx         # Twitter card dinámica
+│   │   ├── sitemap.ts                # Sitemap XML
+│   │   ├── robots.ts                 # Robots.txt
+│   │   ├── nosotros/                 # Sobre nosotros
+│   │   ├── contacto/                 # Contacto + formulario
+│   │   ├── presupuesto/              # Solicitud presupuesto
+│   │   ├── servicios/                # 6 servicios + índice
+│   │   │   ├── page.tsx              # Índice de servicios
+│   │   │   ├── asesoramiento-tecnico/
+│   │   │   ├── direccion-obra/
+│   │   │   ├── diseno-espacios/
+│   │   │   ├── gestion-proyectos/
+│   │   │   ├── licencias-permisos/
+│   │   │   └── reformas-integrales/
+│   │   ├── blog/                     # Blog (estructura lista)
+│   │   ├── proyectos/                # Portfolio
+│   │   └── legal/                    # Aviso legal, Privacidad, Cookies
 │   ├── components/
-│   │   ├── layout/             # Header, Footer
-│   │   └── ui/                 # WhatsApp, ScrollToTop
-│   └── lib/                    # Utilidades
-├── public/                     # Archivos estáticos
-│   ├── img/                    # Logos
-│   └── images/                 # Imágenes
-├── _OLD_HTML_BACKUP/           # ⚠️ Backup archivos HTML antiguos
+│   │   ├── layout/
+│   │   │   ├── Header.tsx            # Navegación principal
+│   │   │   └── Footer.tsx            # Footer con enlaces + créditos
+│   │   ├── ui/
+│   │   │   ├── FAQ.tsx               # Componente preguntas frecuentes
+│   │   │   ├── PageHeader.tsx        # Header de páginas internas
+│   │   │   ├── ScrollToTop.tsx       # Botón volver arriba
+│   │   │   └── WhatsAppButton.tsx    # Botón WhatsApp flotante
+│   │   └── seo/
+│   │       └── JsonLd.tsx            # Structured data
+│   └── lib/
+│       └── structuredData.ts         # Helpers para JSON-LD
+├── public/
+│   ├── img/                          # Logos
+│   └── images/                       # Imágenes
+├── .gitignore
+├── next.config.ts                    # Configuración Next.js
+├── tailwind.config.js                # Configuración Tailwind
+├── tsconfig.json                     # Configuración TypeScript
 └── package.json
 ```
 
@@ -82,98 +117,354 @@ ALEMANYPAJARON/
 
 ## 🛠 Stack Tecnológico
 
-- **Framework:** Next.js 16.1.1 (App Router)
-- **React:** 19.2.3
-- **TypeScript:** 5.x
-- **Estilos:** Tailwind CSS 3.x
-- **Fuentes:** Google Fonts (Inter + Poppins)
-- **Optimización:** next/image, Server Components
+| Tecnología | Versión | Uso |
+|------------|---------|-----|
+| **Next.js** | 15.1.6 | Framework React con App Router |
+| **React** | 19.0.0 | UI Library |
+| **TypeScript** | 5.x | Tipado estático |
+| **Tailwind CSS** | 3.4.1 | Estilos utility-first |
+| **Google Fonts** | - | Inter + Poppins |
 
 ---
 
-## ✨ Características Implementadas
+## 📄 Páginas del Sitio
 
-✅ Todas las páginas migradas (20+ páginas)  
-✅ Componentes reutilizables (Header, Footer, WhatsApp, ScrollToTop)  
-✅ SEO optimizado con metadata de Next.js  
-✅ Diseño responsive completo  
-✅ Imágenes optimizadas con next/image  
-✅ Animaciones y transiciones  
-✅ Navegación funcional entre todas las páginas  
-✅ Formularios de contacto y presupuesto  
+### Páginas Principales (7)
+- ✅ **/** - Home con hero, servicios, stats
+- ✅ **/nosotros** - Historia y valores del estudio
+- ✅ **/servicios** - Índice de servicios
+- ✅ **/contacto** - Formulario de contacto
+- ✅ **/presupuesto** - Solicitud de presupuesto
+- ✅ **/blog** - Listado de artículos
+- ✅ **/proyectos** - Portfolio de proyectos
+
+### Servicios (6 páginas completas)
+Cada una con:
+- Descripción detallada del servicio
+- Proceso paso a paso
+- Beneficios y ventajas
+- Casos de uso
+- FAQ con preguntas frecuentes
+- CTA (call to action)
+- SEO optimizado (metadata + JSON-LD)
+
+1. ✅ **/servicios/asesoramiento-tecnico**
+2. ✅ **/servicios/direccion-obra**
+3. ✅ **/servicios/diseno-espacios**
+4. ✅ **/servicios/gestion-proyectos**
+5. ✅ **/servicios/licencias-permisos**
+6. ✅ **/servicios/reformas-integrales**
+
+### Páginas Legales (3)
+- ✅ **/legal/aviso-legal**
+- ✅ **/legal/privacidad**
+- ✅ **/legal/cookies**
+
+**Total: 21 páginas**
 
 ---
 
-## 📝 Scripts Disponibles
+## 🎨 Diseño
 
-```bash
-npm run dev      # Servidor de desarrollo (puerto 3000)
-npm run build    # Construir para producción
-npm start        # Servidor de producción
-npm run lint     # Ejecutar ESLint
-```
-
----
-
-## 🎨 Paleta de Colores
+### Paleta de Colores
 
 ```css
-Primary: #0A2230 (Azul oscuro)
-Accent: #F9B513 (Amarillo dorado)
+Primary:       #0A2230  /* Azul oscuro */
+Primary Light: #0F2D3F
+Primary Dark:  #050F16
+Accent:        #F9B513  /* Amarillo dorado */
+Accent Dark:   #E0A410
 ```
+
+### Tipografía
+
+- **Títulos:** Poppins (Google Fonts)
+- **Cuerpo:** Inter (Google Fonts)
+
+### Componentes UI
+
+- Header responsive con navegación sticky
+- Footer con enlaces, contacto y redes sociales
+- FAQ con acordeones animados
+- PageHeader dinámico con imagen de fondo
+- Botón WhatsApp flotante
+- Scroll to top animado
+- Cards de servicios con hover effects
 
 ---
 
-## 🚀 Despliegue
+## 🔍 SEO & Performance
 
-### Vercel (Recomendado - Gratis)
+### Optimizaciones Implementadas
 
-1. Conecta tu repositorio de GitHub
-2. Vercel detectará automáticamente Next.js
-3. Deploy automático en cada push
+✅ **Metadata completa** en todas las páginas:
+- Title dinámico por página
+- Description optimizada
+- Keywords locales (Murcia)
+- Canonical URLs
+- Open Graph (Facebook, LinkedIn)
+- Twitter Cards
 
-### Netlify
+✅ **Structured Data (JSON-LD)**:
+- LocalBusiness
+- Service (en cada servicio)
+- WebSite
+- BreadcrumbList
+
+✅ **Archivos SEO**:
+- `sitemap.xml` dinámico
+- `robots.txt` configurado
+- OpenGraph image dinámica
+- Twitter image dinámica
+
+✅ **Performance**:
+- Imágenes optimizadas con `next/image`
+- Server Components por defecto
+- Static Generation (21/21 páginas)
+- CSS optimizado con Tailwind
+- Fonts optimizados con `next/font`
+
+---
+
+## 📝 Scripts NPM
 
 ```bash
-# Build command
-npm run build
+# Desarrollo
+npm run dev          # Servidor local en puerto 3000
 
-# Publish directory
-.next
+# Producción
+npm run build        # Build optimizado para producción
+npm start            # Servidor de producción
+
+# Calidad de código
+npm run lint         # ESLint check
 ```
 
 ---
 
-## 📦 Archivos Antiguos
+## 🚀 Deploy & CI/CD
 
-Los archivos HTML estáticos originales están en la carpeta **`_OLD_HTML_BACKUP/`**
+### Deploy en Vercel (Configurado y Activo)
 
-**Puedes eliminarlos cuando estés seguro de que todo funciona correctamente.**
+**URL de Producción:** https://webnext-one.vercel.app
+
+#### Configuración Actual:
+
+```yaml
+Framework: Next.js (detectado automáticamente)
+Build Command: npm run build
+Output Directory: .next
+Install Command: npm install
+Node Version: 20.x
+```
+
+#### Workflow de Deploy:
+
+```bash
+# 1. Hacer cambios en código local
+git add .
+git commit -m "feat: descripción del cambio"
+
+# 2. Push a GitHub
+git push origin main
+
+# 3. Vercel detecta el push automáticamente
+#    - Inicia build (~45 segundos)
+#    - Ejecuta tests (si los hay)
+#    - Deploy automático
+#    - URL actualizada
+
+# 4. ✅ Deploy completado
+#    Producción actualizada en ~1 minuto
+```
+
+#### URLs Disponibles:
+
+- **Producción:** `webnext-one.vercel.app`
+- **Git Branch:** `webnext-git-main-ivan-alemans-projects.vercel.app`
+- **Preview (por commit):** `webnext-[hash].vercel.app`
+
+#### Monitoreo en Vercel:
+
+- **Dashboard:** https://vercel.com/dashboard
+- **Build Logs:** Ver progreso y errores en tiempo real
+- **Runtime Logs:** Monitorear errores en producción
+- **Analytics:** Métricas de tráfico y performance
+- **Speed Insights:** Core Web Vitals
+
+### Deploy Alternativo (Netlify)
+
+```bash
+# Build settings
+Build command: npm run build
+Publish directory: .next
+
+# Environment variables (opcional)
+GOOGLE_VERIFICATION_CODE = tu_codigo
+```
 
 ---
 
-## 📞 Contacto
+## 🔄 Workflow de Desarrollo
 
-**Alemán y Pajarón**
-- 📱 Teléfono: 650 075 842
-- 📧 Email: ivan@alemanypajaron.es
-- 📍 Ubicación: Murcia, España
-- 🌐 Web: alemanypajaron.es
+### Para Desarrolladores
 
-**Horario:** Lunes a Viernes: 8:00 - 16:00
+```bash
+# 1. Clonar y configurar
+git clone https://github.com/alemanypajaron/webnext.git
+cd webnext
+npm install
+
+# 2. Crear branch para nueva feature
+git checkout -b feature/nueva-funcionalidad
+
+# 3. Desarrollar localmente
+npm run dev
+# Hacer cambios...
+
+# 4. Commit y push
+git add .
+git commit -m "feat: nueva funcionalidad"
+git push origin feature/nueva-funcionalidad
+
+# 5. Vercel crea preview deployment automático
+# URL preview: webnext-git-feature-nueva-funcionalidad-*.vercel.app
+
+# 6. Merge a main cuando esté listo
+# → Deploy automático a producción
+```
+
+### Para Contenido/Marketing
+
+```bash
+# Solo necesitas editar archivos y hacer push
+# Todo el proceso de deploy es automático
+
+# Ejemplo: Actualizar texto en home
+1. Editar: src/app/page.tsx
+2. git add .
+3. git commit -m "content: actualizar home"
+4. git push
+5. ✅ En producción en 1 minuto
+```
 
 ---
 
-## 🎯 Próximos Pasos (Opcional)
+## 📊 Analytics & Monitoreo
 
-- [ ] Conectar formularios a servicio de email (EmailJS, Resend, etc.)
-- [ ] Agregar Google Analytics
-- [ ] Implementar artículos de blog completos
-- [ ] Agregar casos de estudio de proyectos con imágenes
-- [ ] Configurar sitemap.xml y robots.txt
-- [ ] Optimizar imágenes (convertir a WebP)
+### Vercel Analytics (Incluido)
+
+- ✅ **Web Analytics**: Visitantes, páginas vistas, países
+- ✅ **Speed Insights**: Core Web Vitals en tiempo real
+- ✅ **Deployment History**: Historial completo de deploys
+
+### Configurar Google Analytics (Opcional)
+
+Añadir en `src/app/layout.tsx`:
+
+```tsx
+import Script from 'next/script'
+
+// En el return del layout
+<Script src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" />
+<Script id="google-analytics">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  `}
+</Script>
+```
 
 ---
 
-**✅ Migración completada:** Enero 2026  
-**🚀 Proyecto listo para producción**
+## 🎯 Próximos Pasos (Roadmap)
+
+### Corto Plazo
+- [ ] Configurar dominio personalizado `alemanypajaron.es`
+- [ ] Conectar formularios a servicio de email (Resend/SendGrid)
+- [ ] Implementar artículos de blog con contenido
+- [ ] Añadir casos de estudio de proyectos con imágenes
+
+### Medio Plazo
+- [ ] Sistema de gestión de contenido (CMS headless)
+- [ ] Multiidioma (ES/EN)
+- [ ] Portal de clientes
+- [ ] Integración con CRM
+
+### Optimizaciones
+- [ ] Convertir imágenes a WebP/AVIF
+- [ ] Implementar ISR en blog
+- [ ] A/B testing con Vercel
+- [ ] PWA (Progressive Web App)
+
+---
+
+## 📞 Información de Contacto
+
+### Alemán y Pajarón
+- 📱 **Teléfono:** 650 075 842
+- 📧 **Email:** ivan@alemanypajaron.es
+- 📍 **Ubicación:** Murcia, España
+- 🕐 **Horario:** Lunes a Viernes, 8:00 - 16:00
+- 🌐 **Web:** https://webnext-one.vercel.app
+
+### Redes Sociales
+- **Instagram:** [@alemanypajaron](https://www.instagram.com/alemanypajaron/)
+- **LinkedIn:** [Alemán y Pajarón](https://www.linkedin.com/company/alemanypajaron/)
+
+---
+
+## 🤝 Créditos
+
+**Desarrollado con ❤️ en Murcia**
+
+- **Web desarrollada por:** [ESKALA marketing digital](https://www.eskaladigital.com)
+- **Framework:** Next.js by Vercel
+- **Hosting:** Vercel
+- **Diseño:** Basado en arquitectura técnica moderna
+
+---
+
+## 📄 Licencia
+
+© 2026 Alemán y Pajarón. Todos los derechos reservados.
+
+---
+
+## 🆘 Soporte & Troubleshooting
+
+### Problemas Comunes
+
+**Error: Puerto 3000 en uso**
+```bash
+# Windows
+netstat -ano | findstr :3000
+taskkill /PID [numero] /F
+
+# Mac/Linux
+lsof -ti:3000 | xargs kill -9
+```
+
+**Error: node_modules**
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
+
+**Build falla en Vercel**
+- Revisar Build Logs en Vercel Dashboard
+- Verificar que no haya errores de TypeScript
+- Comprobar que todas las imágenes existan
+
+### Contacto para Soporte Técnico
+
+📧 ivan@alemanypajaron.es  
+💬 WhatsApp: +34 650 075 842
+
+---
+
+**✨ Proyecto en producción desde Enero 2026**  
+**🚀 Deploy automático configurado**  
+**📈 SEO optimizado para Murcia**
