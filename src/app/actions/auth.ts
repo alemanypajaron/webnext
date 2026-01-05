@@ -2,7 +2,6 @@
 
 import { createClient } from '@/lib/supabase-server';
 import { redirect } from 'next/navigation';
-import { RedirectType } from 'next/dist/client/components/redirect';
 
 export async function loginAction(email: string, password: string) {
   const supabase = await createClient();
@@ -19,7 +18,7 @@ export async function loginAction(email: string, password: string) {
   if (data.user) {
     // redirect() lanza un error NEXT_REDIRECT para funcionar
     // No necesita return porque nunca llega a ejecutarse
-    redirect('/administrator', RedirectType.push);
+    redirect('/administrator');
   }
 
   return { success: false, error: 'Error al iniciar sesión' };
