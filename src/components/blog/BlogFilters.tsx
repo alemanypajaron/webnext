@@ -3,11 +3,11 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import type { BlogArticulo, CategoriasBlog } from '@/lib/supabase';
+import type { BlogArticulo, CategoríaBlog } from '@/lib/supabase';
 
 interface BlogFiltersProps {
   articulos: BlogArticulo[];
-  categorias: CategoriasBlog[];
+  categorias: CategoríaBlog[];
 }
 
 type SortOption = 'recientes' | 'antiguos' | 'populares';
