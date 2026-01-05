@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
-import { deleteProyecto } from '@/app/actions/admin';
+import { deleteProyecto, updateProyecto } from '@/app/actions/admin';
 
 interface Proyecto {
   id: string;
@@ -14,11 +14,38 @@ interface Proyecto {
   cliente?: string;
   imagen_principal: string;
   publicado: boolean;
+  destacado: boolean;
 }
 
 export default function ProyectosTable({ proyectos }: { proyectos: Proyecto[] }) {
   const router = useRouter();
   const [processingId, setProcessingId] = useState<string | null>(null);
+
+  const handleTogglePublicado = async (id: string, currentPublicado: boolean) => {
+    setProcessingId(id);
+    try {
+      await updateProyecto(id, { publicado: !currentPublicado });
+      toast.success(currentPublicado ? 'Proyecto despublicado' : 'Proyecto publicado');
+      router.refresh();
+    } catch (error) {
+      toast.error('Error al actualizar el proyecto');
+    } finally {
+      setProcessingId(null);
+    }
+  };
+
+  const handleToggleDestacado = async (id: string, currentDestacado: boolean) => {
+    setProcessingId(id);
+    try {
+      await updateProyecto(id, { destacado: !currentDestacado });
+      toast.success(currentDestacado ? 'Quitado de destacados' : 'Marcado como destacado');
+      router.refresh();
+    } catch (error) {
+      toast.error('Error al actualizar el proyecto');
+    } finally {
+      setProcessingId(null);
+    }
+  };
 
   const handleDelete = async (id: string, titulo: string) => {
     if (!confirm(`¿Estás seguro de que deseas eliminar "${titulo}"?`)) {
@@ -128,32 +155,43 @@ export default function ProyectosTable({ proyectos }: { proyectos: Proyecto[] })
                   <div className="text-sm text-gray-900">{proyecto.cliente || '-'}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {proyecto.publicado ? (
-                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                      Publicado
+                  <div className="flex flex-col space-y-1">
+                    <span
+                      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                        proyecto.publicado
+                          ? 'bg-green-100 text-green-800'
+                          : 'bg-gray-100 text-gray-800'
+                      }`}
+                    >
+                      {proyecto.publicado ? 'Publicado' : 'Borrador'}
                     </span>
-                  ) : (
-                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                      Borrador
-                    </span>
-                  )}
+                    {proyecto.destacado && (
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                        ⭐ Destacado
+                      </span>
+                    )}
+                  </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <div className="flex items-center justify-end space-x-3">
+                  <div className="flex items-center justify-end space-x-2">
+                    {/* Ver en el sitio */}
                     <Link
                       href={`/proyectos/${proyecto.slug}`}
                       target="_blank"
-                      className="text-primary hover:text-accent transition-colors"
+                      className="text-blue-600 hover:text-blue-900"
                       title="Ver en el sitio"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                        <circle cx="12" cy="12" r="3" />
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
                       </svg>
                     </Link>
+
+                    {/* Editar */}
                     <Link
                       href={`/administrator/proyectos/${proyecto.id}/editar`}
-                      className="text-blue-600 hover:text-blue-900 transition-colors"
+                      className="text-accent hover:text-accent-dark"
                       title="Editar"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -161,10 +199,40 @@ export default function ProyectosTable({ proyectos }: { proyectos: Proyecto[] })
                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
                       </svg>
                     </Link>
+
+                    {/* Toggle Publicado */}
+                    <button
+                      onClick={() => handleTogglePublicado(proyecto.id, proyecto.publicado)}
+                      disabled={processingId === proyecto.id}
+                      className={`${
+                        proyecto.publicado ? 'text-green-600 hover:text-green-900' : 'text-gray-400 hover:text-gray-600'
+                      } disabled:opacity-50`}
+                      title={proyecto.publicado ? 'Despublicar' : 'Publicar'}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill={proyecto.publicado ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </button>
+
+                    {/* Toggle Destacado */}
+                    <button
+                      onClick={() => handleToggleDestacado(proyecto.id, proyecto.destacado)}
+                      disabled={processingId === proyecto.id}
+                      className={`${
+                        proyecto.destacado ? 'text-yellow-600 hover:text-yellow-800' : 'text-gray-400 hover:text-gray-600'
+                      } disabled:opacity-50`}
+                      title={proyecto.destacado ? 'Quitar de destacados' : 'Marcar como destacado'}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill={proyecto.destacado ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    </button>
+
+                    {/* Eliminar */}
                     <button
                       onClick={() => handleDelete(proyecto.id, proyecto.titulo)}
                       disabled={processingId === proyecto.id}
-                      className="text-red-600 hover:text-red-900 disabled:opacity-50 transition-colors"
+                      className="text-red-600 hover:text-red-900 disabled:opacity-50"
                       title="Eliminar"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
