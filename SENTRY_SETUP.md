@@ -192,3 +192,4 @@ npm uninstall @sentry/nextjs
 **✅ Listo para activar cuando quieras**  
 **🆓 100% gratis hasta 10K errores/mes**
 
+

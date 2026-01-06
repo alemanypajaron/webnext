@@ -49,3 +49,4 @@ WHERE id = 'blog-images';
 -- ✅ No habrá errores de RLS
 -- =====================================================
 
+

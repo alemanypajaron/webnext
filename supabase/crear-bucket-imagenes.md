@@ -106,3 +106,4 @@ https://[tu-proyecto].supabase.co/storage/v1/object/public/blog-images/123456789
 → Verifica que el bucket sea público
 → Verifica la URL en el navegador
 
+

@@ -108,3 +108,4 @@ export function getShimmerDataURL(width: number = 100, height: number = 100): st
   return `data:image/svg+xml;base64,${base64}`;
 }
 
+

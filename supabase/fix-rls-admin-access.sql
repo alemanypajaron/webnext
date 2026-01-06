@@ -132,3 +132,4 @@ CREATE POLICY "Público puede ver categorías"
 -- ✅ Público puede actualizar contador de visitas en blog
 -- =====================================================
 
+

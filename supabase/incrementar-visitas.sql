@@ -43,3 +43,4 @@ GRANT EXECUTE ON FUNCTION incrementar_visitas_articulo(UUID) TO authenticated;
 -- UPDATE en la tabla blog_articulos.
 -- =====================================================
 
+

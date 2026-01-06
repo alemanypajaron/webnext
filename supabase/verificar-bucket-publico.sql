@@ -30,3 +30,4 @@ WHERE bucket_id = 'blog-images';
 -- Si hay políticas listadas → Pueden estar bloqueando el acceso
 -- =====================================================
 
+

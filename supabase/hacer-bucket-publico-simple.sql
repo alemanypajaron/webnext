@@ -23,3 +23,4 @@ WHERE id = 'blog-images';
 -- public: true  ← DEBE SER TRUE
 -- =====================================================
 
+

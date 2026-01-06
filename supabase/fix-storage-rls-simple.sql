@@ -67,3 +67,4 @@ VALUES (
 -- =====================================================
 SELECT * FROM storage.policies WHERE bucket_id = 'blog-images';
 
+

@@ -63,3 +63,4 @@ WITH CHECK (bucket_id = 'blog-images');
 -- 4. Usuarios autenticados pueden actualizar imagenes (UPDATE)
 -- =====================================================
 
+

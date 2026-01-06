@@ -299,3 +299,4 @@ export default function BlogArticulosTable({ articulos }: { articulos: BlogArtic
   );
 }
 
+

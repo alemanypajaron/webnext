@@ -45,3 +45,4 @@ WHERE id = 'blog-images';
 -- Si da error = ❌ El bucket NO es público
 -- =====================================================
 
+
