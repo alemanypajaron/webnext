@@ -5,6 +5,10 @@ export const metadata = {
   title: 'Gestor Multimedia',
 };
 
+// Deshabilitar caché para que siempre obtenga las imágenes más recientes
+export const revalidate = 0;
+export const dynamic = 'force-dynamic';
+
 export default async function MultimediaPage() {
   const supabase = getSupabaseAdmin();
 
