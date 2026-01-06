@@ -7,8 +7,6 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import ScrollToTop from '@/components/ui/ScrollToTop';
-import CookiePanel from '@/components/cookies/CookiePanel';
-import ConditionalAnalytics from '@/components/cookies/ConditionalAnalytics';
 
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '0RDY_vpUpTMgVPTIlKlOknWHNu_iRjPnSprwINucMgg';
 
@@ -117,8 +115,24 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} ${poppins.variable}`}>
       <head>
-        {/* Google Analytics cargado condicionalmente según consentimiento */}
-        <ConditionalAnalytics />
+        {/* Google Analytics - NO se ejecuta en /administrator */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-EH39D527MS"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            // No ejecutar Analytics en páginas de administración
+            if (!window.location.pathname.startsWith('/administrator')) {
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-EH39D527MS', {
+                anonymize_ip: true
+              });
+            }
+          `}
+        </Script>
       </head>
       <body className="font-sans antialiased bg-white text-gray-900">
         <Header />
@@ -126,7 +140,6 @@ export default function RootLayout({
         <Footer />
         <WhatsAppButton />
         <ScrollToTop />
-        <CookiePanel />
         <SpeedInsights />
       </body>
     </html>
