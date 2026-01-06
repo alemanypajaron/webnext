@@ -1,10 +1,15 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/structuredData';
-import { getSupabaseClient } from '@/lib/supabase';
+import { createClient } from '@supabase/supabase-js';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
-  const supabase = getSupabaseClient();
+  
+  // Crear cliente de Supabase
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
 
   // Páginas estáticas principales
   const staticRoutes: MetadataRoute.Sitemap = [
