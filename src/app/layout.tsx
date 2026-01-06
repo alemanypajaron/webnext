@@ -124,15 +124,15 @@ export default function RootLayout({
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
-            // No ejecutar Analytics en páginas de administración
-            if (!window.location.pathname.startsWith('/administrator')) {
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-EH39D527MS', {
-                anonymize_ip: true
-              });
-            }
+            // Inicializar gtag sin enviar page_view automático
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            // Solo configurar Analytics, NO enviar page_view automático (lo hará PageViewTracker)
+            gtag('config', 'G-EH39D527MS', {
+              send_page_view: false,
+              anonymize_ip: true
+            });
           `}
         </Script>
       </head>
