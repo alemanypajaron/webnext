@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getBlogArticuloBySlug, getBlogArticulosSlugs, getBlogArticulosDestacados } from '@/lib/data';
 import VisitasTracker from '@/components/blog/VisitasTracker';
+import VisitasDisplay from '@/components/blog/VisitasDisplay';
 
 // ============================================
 // ISR: Regenerar página cada minuto (para cambios rápidos en el admin)
