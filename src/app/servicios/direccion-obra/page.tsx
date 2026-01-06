@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: 'Dirección de Obra en Murcia | Técnico de Edificación Colegiado',
     description: 'Dirección de obra en Murcia por gestores de obras colegiados. Supervisión técnica profesional y control de calidad.',
     type: 'website',
-    url: 'https://alemanypajaron.es/servicios/direccion-obra',
+    url: 'https://www.alemanypajaron.es/servicios/direccion-obra',
   },
 };
 

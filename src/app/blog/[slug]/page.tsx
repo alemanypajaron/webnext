@@ -244,7 +244,7 @@ export default async function BlogArticuloPage({ params }: Props) {
               <div className="flex gap-3">
                 <a
                   href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                    `https://alemanypajaron.es/blog/${articulo.slug}`
+                    `https://www.alemanypajaron.es/blog/${articulo.slug}`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -257,7 +257,7 @@ export default async function BlogArticuloPage({ params }: Props) {
                 </a>
                 <a
                   href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
-                    `https://alemanypajaron.es/blog/${articulo.slug}`
+                    `https://www.alemanypajaron.es/blog/${articulo.slug}`
                   )}&text=${encodeURIComponent(articulo.titulo)}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -270,7 +270,7 @@ export default async function BlogArticuloPage({ params }: Props) {
                 </a>
                 <a
                   href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-                    `https://alemanypajaron.es/blog/${articulo.slug}`
+                    `https://www.alemanypajaron.es/blog/${articulo.slug}`
                   )}&title=${encodeURIComponent(articulo.titulo)}`}
                   target="_blank"
                   rel="noopener noreferrer"

@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://alemanypajaron.es'),
+  metadataBase: new URL('https://www.alemanypajaron.es'),
   alternates: {
     canonical: '/',
   },
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     title: 'Alemán y Pajarón | Gestión de Obras y Proyectos en Murcia',
     description:
       'Gestores de obras en Murcia especializados en dirección de obra, gestión de proyectos, licencias y reformas integrales.',
-    url: 'https://alemanypajaron.es',
+    url: 'https://www.alemanypajaron.es',
     siteName: 'Alemán y Pajarón',
     locale: 'es_ES',
     type: 'website',
