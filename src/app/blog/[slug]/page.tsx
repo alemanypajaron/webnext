@@ -183,7 +183,20 @@ export default async function BlogArticuloPage({ params }: Props) {
       {/* Contenido del artículo */}
       <section className="section">
         <div className="max-w-4xl mx-auto px-6">
-          {/* Resumen ELIMINADO - El primer párrafo del contenido es el resumen */}
+          {/* Disclaimer IA */}
+          <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg mb-8">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl">⚠️</span>
+              <div>
+                <h3 className="text-lg font-semibold text-yellow-800 mb-2">
+                  Contenido generado con IA
+                </h3>
+                <p className="text-sm text-gray-700 mb-0">
+                  Este artículo, incluyendo textos e imágenes, ha sido generado con ayuda de Inteligencia Artificial. El contenido tiene finalidad meramente informativa y divulgativa, y <strong>no debe utilizarse como guía técnica, jurídica o profesional</strong> para ningún proyecto. Para consultas profesionales, <Link href="/contacto" className="text-primary hover:underline font-semibold">contacta con nosotros</Link>.
+                </p>
+              </div>
+            </div>
+          </div>
 
           {/* Contenido principal */}
           <article

@@ -80,6 +80,16 @@ export default function AvisoLegalPage() {
                 Alemán y Pajarón excluye, con las limitaciones que establece la ley, cualquier responsabilidad por los daños y perjuicios de toda naturaleza que pudieran deberse a la falta de disponibilidad o de continuidad del funcionamiento del Sitio Web y de los servicios habilitados en el mismo, así como por los errores en el acceso a las distintas páginas web o a aquellas desde las que se prestan los citados servicios.
               </p>
 
+              {/* Disclaimer contenido del blog */}
+              <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg my-6">
+                <h3 className="text-xl font-semibold text-yellow-800 mt-0 mb-3">
+                  ⚠️ Importante: Contenido del Blog
+                </h3>
+                <p className="mb-0 text-gray-800">
+                  <strong>Los contenidos publicados en el blog de este sitio web, incluyendo textos e imágenes, son generados con ayuda de herramientas de Inteligencia Artificial.</strong> Alemán y Pajarón no se hace responsable de la exactitud, vigencia o aplicabilidad de dicho contenido. Los artículos del blog tienen una finalidad meramente informativa y divulgativa, y en ningún caso deben ser utilizados como guía técnica, jurídica o profesional para ningún proyecto de construcción, reforma o actuación técnica. Para cualquier consulta profesional, recomendamos encarecidamente contactar directamente con nuestros servicios de asesoramiento técnico.
+                </p>
+              </div>
+
               {/* Enlaces externos */}
               <h2 className="text-2xl font-heading font-bold text-primary">6. Enlaces Externos</h2>
               <p>
