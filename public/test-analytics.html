@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Google Analytics - Alemán y Pajarón</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1 { color: #0A2230; margin-bottom: 10px; }
+        h2 { color: #0A2230; font-size: 20px; margin-top: 20px; }
+        .status { padding: 10px; border-radius: 5px; margin: 10px 0; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        .warning { background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; }
+        button {
+            background: #F9B513;
+            color: #0A2230;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #E0A410; }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .log {
+            background: #000;
+            color: #0f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🔍 Test de Google Analytics</h1>
+        <p>Esta página te ayuda a verificar si Google Analytics está funcionando correctamente en tu sitio web.</p>
+    </div>
+
+    <div class="card">
+        <h2>📊 Estado de Google Analytics</h2>
+        <div id="status"></div>
+        
+        <h2>🧪 Acciones de Test</h2>
+        <button onclick="testPageView()">📄 Enviar Page View</button>
+        <button onclick="testEvent()">⚡ Enviar Evento Custom</button>
+        <button onclick="checkDataLayer()">🔍 Ver DataLayer</button>
+        <button onclick="clearLogs()">🗑️ Limpiar Logs</button>
+        
+        <h2>📝 Logs de Consola</h2>
+        <div id="logs" class="log"></div>
+    </div>
+
+    <div class="card">
+        <h2>✅ Cómo verificar que funciona:</h2>
+        <ol>
+            <li><strong>Abre Google Analytics:</strong> <a href="https://analytics.google.com/" target="_blank">analytics.google.com</a></li>
+            <li>Ve a <strong>Informes → Tiempo real → Descripción general</strong></li>
+            <li>Deberías ver <strong>1 usuario activo</strong> (tú)</li>
+            <li>Haz clic en los botones de test arriba</li>
+            <li>Los eventos deberían aparecer en <strong>Tiempo real → Eventos</strong></li>
+        </ol>
+        
+        <h2>🔧 Solución de problemas:</h2>
+        <ul>
+            <li>Si no ves el usuario activo: Verifica que aceptaste las cookies en el sitio principal</li>
+            <li>Si los scripts no cargan: Revisa la consola del navegador (F12)</li>
+            <li>Si hay errores: Verifica que el ID de Analytics sea correcto: <code>G-EH39D527MS</code></li>
+        </ul>
+    </div>
+
+    <script>
+        // Logging personalizado
+        const logElement = document.getElementById('logs');
+        const originalLog = console.log;
+        const originalError = console.error;
+        
+        function addLog(message, type = 'log') {
+            const color = type === 'error' ? '#f00' : type === 'warn' ? '#ff0' : '#0f0';
+            logElement.innerHTML += `<div style="color: ${color}">[${new Date().toLocaleTimeString()}] ${message}</div>`;
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addLog(args.join(' '), 'log');
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addLog(args.join(' '), 'error');
+        };
+
+        // Cargar Google Analytics
+        const script1 = document.createElement('script');
+        script1.async = true;
+        script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-EH39D527MS';
+        script1.onload = () => {
+            addLog('✅ Script de gtag.js cargado', 'log');
+            checkStatus();
+        };
+        script1.onerror = () => {
+            addLog('❌ Error al cargar gtag.js', 'error');
+            document.getElementById('status').innerHTML = '<div class="error">❌ Error al cargar Google Analytics</div>';
+        };
+        document.head.appendChild(script1);
+
+        // Inicializar Analytics
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EH39D527MS', {
+            anonymize_ip: true,
+            send_page_view: true
+        });
+        
+        addLog('⚙️ Inicializando Google Analytics...', 'log');
+        addLog('📊 ID de Analytics: G-EH39D527MS', 'log');
+
+        // Verificar estado
+        function checkStatus() {
+            setTimeout(() => {
+                if (typeof gtag === 'function' && window.dataLayer && window.dataLayer.length > 0) {
+                    document.getElementById('status').innerHTML = `
+                        <div class="success">
+                            ✅ Google Analytics cargado correctamente<br>
+                            📊 ID: G-EH39D527MS<br>
+                            🔢 DataLayer items: ${window.dataLayer.length}
+                        </div>
+                    `;
+                    addLog('✅ Google Analytics funcionando correctamente', 'log');
+                } else {
+                    document.getElementById('status').innerHTML = '<div class="error">❌ Google Analytics no detectado</div>';
+                    addLog('❌ Google Analytics no detectado', 'error');
+                }
+            }, 2000);
+        }
+
+        // Funciones de test
+        function testPageView() {
+            gtag('event', 'page_view', {
+                'page_title': 'Test Page',
+                'page_location': window.location.href
+            });
+            addLog('📄 Page view enviado', 'log');
+            alert('Page view enviado. Revisa Google Analytics → Tiempo real');
+        }
+
+        function testEvent() {
+            gtag('event', 'test_event', {
+                'event_category': 'Test',
+                'event_label': 'Manual Test',
+                'value': 1
+            });
+            addLog('⚡ Evento custom enviado: test_event', 'log');
+            alert('Evento enviado. Revisa Google Analytics → Tiempo real → Eventos');
+        }
+
+        function checkDataLayer() {
+            console.log('DataLayer actual:', window.dataLayer);
+            addLog(`🔍 DataLayer tiene ${window.dataLayer.length} items`, 'log');
+            alert(`DataLayer tiene ${window.dataLayer.length} items. Revisa la consola para ver el contenido completo.`);
+        }
+
+        function clearLogs() {
+            logElement.innerHTML = '';
+            addLog('🗑️ Logs limpiados', 'log');
+        }
+
+        // Auto-check al cargar
+        window.addEventListener('load', checkStatus);
+    </script>
+</body>
+</html>
+
