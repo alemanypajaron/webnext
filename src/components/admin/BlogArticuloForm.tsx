@@ -113,6 +113,27 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
     setFormData((prev) => ({ ...prev, contenido: html }));
   };
 
+  // Función para extraer el primer párrafo del contenido HTML
+  const extractFirstParagraph = (html: string): string => {
+    // Crear un elemento temporal para parsear el HTML
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    
+    // Buscar el primer párrafo con texto
+    const paragraphs = tempDiv.querySelectorAll('p');
+    for (const p of paragraphs) {
+      const text = p.textContent?.trim() || '';
+      if (text.length > 0) {
+        // Limitar a 200 caracteres
+        return text.length > 200 ? text.substring(0, 200) + '...' : text;
+      }
+    }
+    
+    // Si no hay párrafos, extraer el texto plano
+    const plainText = tempDiv.textContent?.trim() || '';
+    return plainText.length > 200 ? plainText.substring(0, 200) + '...' : plainText;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -126,11 +147,6 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
       }
       if (!formData.slug.trim()) {
         toast.error('El slug es obligatorio');
-        setLoading(false);
-        return;
-      }
-      if (!formData.resumen.trim()) {
-        toast.error('El resumen es obligatorio');
         setLoading(false);
         return;
       }
@@ -150,11 +166,14 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
         return;
       }
 
+      // Auto-generar resumen del primer párrafo si está vacío
+      const resumenFinal = formData.resumen.trim() || extractFirstParagraph(formData.contenido);
+
       // Preparar datos
       const data = {
         titulo: formData.titulo.trim(),
         slug: formData.slug.trim(),
-        resumen: formData.resumen.trim(),
+        resumen: resumenFinal,
         contenido: formData.contenido,
         autor: formData.autor.trim(),
         imagen_destacada: formData.imagen_destacada.trim(),
@@ -270,22 +289,8 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
             </select>
           </div>
 
-          {/* Resumen */}
-          <div className="md:col-span-2">
-            <label htmlFor="resumen" className="block text-sm font-semibold text-gray-700 mb-2">
-              Resumen *
-            </label>
-            <textarea
-              id="resumen"
-              name="resumen"
-              value={formData.resumen}
-              onChange={handleChange}
-              required
-              rows={3}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none"
-              placeholder="Breve descripción del artículo (aparecerá en las tarjetas del blog)"
-            />
-          </div>
+          {/* Resumen - AUTO-GENERADO del primer párrafo del contenido */}
+          {/* CAMPO ELIMINADO: El resumen se extrae automáticamente del primer párrafo del contenido */}
 
           {/* Imagen destacada */}
           <div className="md:col-span-2">

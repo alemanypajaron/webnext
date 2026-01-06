@@ -191,10 +191,7 @@ export default async function BlogArticuloPage({ params }: Props) {
       {/* Contenido del artículo */}
       <section className="section">
         <div className="max-w-4xl mx-auto px-6">
-          {/* Resumen */}
-          <div className="bg-accent/10 border-l-4 border-accent p-6 rounded-r-lg mb-12">
-            <p className="text-lg text-gray-700 leading-relaxed">{articulo.resumen}</p>
-          </div>
+          {/* Resumen ELIMINADO - El primer párrafo del contenido es el resumen */}
 
           {/* Contenido principal */}
           <article
