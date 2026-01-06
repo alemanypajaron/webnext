@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Política de Cookies',
+  alternates: {
+    canonical: 'https://www.alemanypajaron.es/legal/cookies',
+  },
 };
 
 export default function CookiesPage() {

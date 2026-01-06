@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Política de Privacidad',
+  alternates: {
+    canonical: 'https://www.alemanypajaron.es/legal/privacidad',
+  },
 };
 
 export default function PrivacidadPage() {

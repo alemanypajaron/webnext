@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Aviso Legal',
+  alternates: {
+    canonical: 'https://www.alemanypajaron.es/legal/aviso-legal',
+  },
 };
 
 export default function AvisoLegalPage() {
