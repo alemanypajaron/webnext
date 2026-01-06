@@ -13,7 +13,7 @@ export default function ConditionalAnalytics() {
     setIsAdmin(adminPath);
 
     if (adminPath) {
-      console.log('[Analytics] Bloqueado en página de administración');
+      console.log('[Analytics] 🚫 Bloqueado en página de administración');
       return;
     }
     
@@ -22,26 +22,41 @@ export default function ConditionalAnalytics() {
       const consent = localStorage.getItem('cookie-consent');
       const hasConsent = consent === 'accepted';
       
+      console.log('[Analytics] Verificando consentimiento:', consent);
+      
       if (hasConsent && !shouldLoadAnalytics) {
         console.log('[Analytics] ✅ Consentimiento aceptado - Cargando Google Analytics');
         setShouldLoadAnalytics(true);
       } else if (!hasConsent && shouldLoadAnalytics) {
-        console.log('[Analytics] ❌ Consentimiento rechazado - Analytics no se cargará');
+        console.log('[Analytics] ❌ Consentimiento rechazado o retirado');
         setShouldLoadAnalytics(false);
+      } else if (hasConsent && shouldLoadAnalytics) {
+        console.log('[Analytics] ℹ️ Analytics ya cargado');
+      } else if (!hasConsent && !shouldLoadAnalytics) {
+        console.log('[Analytics] ⏳ Esperando consentimiento...');
       }
       
       return hasConsent;
     };
     
     // Verificar inmediatamente
-    const initialConsent = checkConsent();
+    checkConsent();
     
-    // Verificar periódicamente por si el usuario cambia la configuración
-    const interval = setInterval(() => {
+    // Escuchar evento de cambio de consentimiento
+    const handleConsentUpdate = () => {
+      console.log('[Analytics] 🔔 Evento de consentimiento detectado');
       checkConsent();
-    }, 1000);
+    };
     
-    return () => clearInterval(interval);
+    window.addEventListener('cookie-consent-updated', handleConsentUpdate);
+    
+    // También verificar periódicamente como backup
+    const interval = setInterval(checkConsent, 2000);
+    
+    return () => {
+      window.removeEventListener('cookie-consent-updated', handleConsentUpdate);
+      clearInterval(interval);
+    };
   }, [shouldLoadAnalytics]);
 
   // No cargar si es admin

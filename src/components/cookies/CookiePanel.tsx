@@ -25,22 +25,33 @@ export default function CookiePanel() {
   const handleAccept = () => {
     const consent = analyticsCookies ? 'accepted' : 'rejected';
     localStorage.setItem('cookie-consent', consent);
+    console.log('[CookiePanel] Consentimiento guardado:', consent);
     setIsExpanded(false);
     setHasConsent(true);
+    
+    // Disparar evento para que ConditionalAnalytics lo detecte
+    window.dispatchEvent(new Event('cookie-consent-updated'));
   };
 
   const handleRejectAll = () => {
     localStorage.setItem('cookie-consent', 'rejected');
+    console.log('[CookiePanel] Todas las cookies rechazadas');
     setAnalyticsCookies(false);
     setIsExpanded(false);
     setHasConsent(true);
+    
+    window.dispatchEvent(new Event('cookie-consent-updated'));
   };
 
   const handleAcceptAll = () => {
     localStorage.setItem('cookie-consent', 'accepted');
+    console.log('[CookiePanel] Todas las cookies aceptadas');
     setAnalyticsCookies(true);
     setIsExpanded(false);
     setHasConsent(true);
+    
+    // Disparar evento para que ConditionalAnalytics lo detecte
+    window.dispatchEvent(new Event('cookie-consent-updated'));
   };
 
   return (
