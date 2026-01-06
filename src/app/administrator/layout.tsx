@@ -6,6 +6,9 @@ export const metadata = {
   robots: {
     index: false,
     follow: false,
+    nocache: true,
+    noarchive: true,
+    noimageindex: true,
   },
 };
 

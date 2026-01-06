@@ -114,17 +114,20 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} ${poppins.variable}`}>
       <head>
-        {/* Google Analytics */}
+        {/* Google Analytics - NO se ejecuta en /administrator */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-EH39D527MS"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-EH39D527MS');
+            // No ejecutar Analytics en páginas de administración
+            if (!window.location.pathname.startsWith('/administrator')) {
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-EH39D527MS');
+            }
           `}
         </Script>
       </head>
