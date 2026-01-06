@@ -377,12 +377,12 @@ export default function BlogFilters({ articulos, categorias }: BlogFiltersProps)
           <h3 className="text-lg font-heading font-bold mb-2">
             ¿Necesitas ayuda con tu proyecto?
           </h3>
-          <p className="text-sm text-white/90 mb-4">
+          <p className="text-sm text-white mb-4">
             Contacta con nosotros y te ayudaremos con tu reforma en Murcia
           </p>
           <Link
             href="/contacto"
-            className="block w-full text-center px-4 py-2 bg-accent text-primary font-semibold rounded-lg hover:bg-accent-dark transition-all"
+            className="block w-full text-center px-4 py-2 bg-white text-primary font-bold rounded-lg hover:bg-accent hover:text-primary-dark transition-all shadow-md hover:shadow-lg"
           >
             Contactar
           </Link>
