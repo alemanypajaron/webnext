@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import toast from 'react-hot-toast';
+import ConfirmModal from '@/components/ui/ConfirmModal';
 
 interface Imagen {
   name: string;
@@ -25,6 +26,7 @@ export default function MultimediaGallery({
   const [eliminando, setEliminando] = useState(false);
   const [imagenModal, setImagenModal] = useState<Imagen | null>(null);
   const [vistaGrid, setVistaGrid] = useState<'grid' | 'list'>('grid');
+  const [mostrarConfirmEliminar, setMostrarConfirmEliminar] = useState(false);
 
   // Seleccionar/deseleccionar imagen
   const toggleSeleccion = (nombre: string) => {
@@ -86,21 +88,17 @@ export default function MultimediaGallery({
     }
   };
 
-  // Eliminar imágenes seleccionadas
-  const eliminarSeleccionadas = async () => {
+  // Mostrar modal de confirmación
+  const solicitarEliminar = () => {
     if (seleccionadas.size === 0) {
       toast.error('No hay imágenes seleccionadas');
       return;
     }
+    setMostrarConfirmEliminar(true);
+  };
 
-    if (
-      !confirm(
-        `¿Eliminar ${seleccionadas.size} imagen(es)? Esta acción no se puede deshacer.`
-      )
-    ) {
-      return;
-    }
-
+  // Eliminar imágenes seleccionadas
+  const eliminarSeleccionadas = async () => {
     setEliminando(true);
 
     try {
@@ -118,10 +116,11 @@ export default function MultimediaGallery({
       await Promise.all(promesas);
       
       // Actualizar estado eliminando las imágenes del array
+      const cantidadEliminadas = seleccionadas.size;
       setImagenes(imagenes.filter((img) => !seleccionadas.has(img.name)));
       setSeleccionadas(new Set());
       
-      toast.success(`${seleccionadas.size} imagen(es) eliminada(s)`);
+      toast.success(`${cantidadEliminadas} imagen(es) eliminada(s)`);
     } catch (error) {
       console.error('Error:', error);
       toast.error('Error al eliminar algunas imágenes');
@@ -169,7 +168,7 @@ export default function MultimediaGallery({
 
           {/* Eliminar seleccionadas */}
           <button
-            onClick={eliminarSeleccionadas}
+            onClick={solicitarEliminar}
             disabled={seleccionadas.size === 0 || eliminando}
             className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
@@ -408,6 +407,18 @@ export default function MultimediaGallery({
           ))}
         </div>
       )}
+
+      {/* Modal de confirmación de eliminación */}
+      <ConfirmModal
+        isOpen={mostrarConfirmEliminar}
+        onClose={() => setMostrarConfirmEliminar(false)}
+        onConfirm={eliminarSeleccionadas}
+        title="¿Eliminar imágenes?"
+        message={`Se eliminarán ${seleccionadas.size} imagen(es). Esta acción no se puede deshacer.`}
+        confirmText="Sí, eliminar"
+        cancelText="Cancelar"
+        type="danger"
+      />
 
       {/* Modal de detalles */}
       {imagenModal && (
