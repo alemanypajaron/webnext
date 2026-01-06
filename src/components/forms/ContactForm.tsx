@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { submitContactForm } from '@/app/actions/forms';
 
 export default function ContactForm() {
@@ -136,6 +137,25 @@ export default function ContactForm() {
             disabled={isSubmitting}
             className="w-full px-4 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
           ></textarea>
+        </div>
+
+        <div className="flex items-start">
+          <input
+            type="checkbox"
+            id="acepta_privacidad"
+            name="acepta_privacidad"
+            value="true"
+            required
+            disabled={isSubmitting}
+            className="mt-1 mr-3 w-4 h-4 text-accent border-gray-300 rounded focus:ring-accent disabled:opacity-50 disabled:cursor-not-allowed"
+          />
+          <label htmlFor="acepta_privacidad" className="text-sm text-gray-600">
+            Acepto la{' '}
+            <Link href="/legal/privacidad" className="text-accent hover:underline" target="_blank">
+              política de privacidad
+            </Link>{' '}
+            y el tratamiento de mis datos <span className="text-red-500">*</span>
+          </label>
         </div>
 
         <button
