@@ -136,7 +136,9 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="font-sans antialiased bg-white text-gray-900">
-        <PageViewTracker />
+        <Suspense fallback={null}>
+          <PageViewTracker />
+        </Suspense>
         <Header />
         <main className="min-h-screen pt-20">{children}</main>
         <Footer />
