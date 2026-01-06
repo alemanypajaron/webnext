@@ -4,6 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getProyectoBySlug, getImagenesProyecto, getProyectosSlugs } from '@/lib/data';
 
+// ============================================
+// ISR: Regenerar página cada hora
+// ============================================
+export const revalidate = 3600; // 1 hora en segundos
+
 type Props = {
   params: Promise<{ slug: string }>;
 };

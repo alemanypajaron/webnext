@@ -5,6 +5,11 @@ import Link from 'next/link';
 import { getBlogArticuloBySlug, getBlogArticulosSlugs, getBlogArticulosDestacados } from '@/lib/data';
 import VisitasTracker from '@/components/blog/VisitasTracker';
 
+// ============================================
+// ISR: Regenerar página cada hora
+// ============================================
+export const revalidate = 3600; // 1 hora en segundos
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
