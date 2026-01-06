@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico Analytics - Alemán y Pajarón</title>
+    
+    <!-- Google Analytics DIRECTO -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EH39D527MS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EH39D527MS', {
+            anonymize_ip: true,
+            send_page_view: true
+        });
+        console.log('✅ Google Analytics cargado con ID: G-EH39D527MS');
+    </script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #0A2230;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        .status {
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .success { background: #d4edda; color: #155724; border: 2px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 2px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 2px solid #bee5eb; }
+        button {
+            background: #F9B513;
+            color: #0A2230;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: all 0.3s;
+        }
+        button:hover { background: #E0A410; transform: translateY(-2px); }
+        .code {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            margin: 15px 0;
+            font-size: 14px;
+            border-left: 4px solid #F9B513;
+        }
+        .instructions {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 4px solid #ffc107;
+        }
+        .instructions h3 { color: #856404; margin-bottom: 10px; }
+        .instructions ol { margin-left: 20px; }
+        .instructions li { margin: 8px 0; color: #856404; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Diagnóstico de Google Analytics</h1>
+        
+        <div id="status"></div>
+        
+        <div class="code">
+            <strong>ID de Analytics:</strong> G-EH39D527MS<br>
+            <strong>Página actual:</strong> <span id="current-url"></span>
+        </div>
+        
+        <div>
+            <button onclick="enviarEvento()">📊 Enviar Evento de Test</button>
+            <button onclick="verificarDataLayer()">🔍 Ver DataLayer</button>
+            <button onclick="location.reload()">🔄 Recargar Página</button>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 Instrucciones:</h3>
+            <ol>
+                <li><strong>Abre Google Analytics:</strong> <a href="https://analytics.google.com/" target="_blank">analytics.google.com</a></li>
+                <li>Ve a <strong>Informes → Tiempo real → Descripción general</strong></li>
+                <li>Deberías ver <strong>1 usuario activo</strong> (esta página)</li>
+                <li>Haz clic en "Enviar Evento de Test"</li>
+                <li>Ve a <strong>Tiempo real → Eventos</strong></li>
+                <li>Deberías ver el evento <strong>"diagnostico_test"</strong></li>
+            </ol>
+        </div>
+        
+        <div id="console-output" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        // Mostrar URL actual
+        document.getElementById('current-url').textContent = window.location.href;
+        
+        // Verificar estado de Analytics
+        setTimeout(() => {
+            const statusDiv = document.getElementById('status');
+            
+            if (typeof gtag === 'function' && window.dataLayer && window.dataLayer.length > 0) {
+                statusDiv.innerHTML = `
+                    <div class="status success">
+                        ✅ Google Analytics está funcionando correctamente<br>
+                        📊 DataLayer tiene ${window.dataLayer.length} items
+                    </div>
+                `;
+                console.log('✅ Analytics OK');
+                console.log('DataLayer:', window.dataLayer);
+            } else {
+                statusDiv.innerHTML = `
+                    <div class="status error">
+                        ❌ Google Analytics NO detectado<br>
+                        Verifica la consola del navegador (F12)
+                    </div>
+                `;
+                console.error('❌ Analytics NO funciona');
+            }
+        }, 2000);
+        
+        // Enviar evento de test
+        function enviarEvento() {
+            if (typeof gtag === 'function') {
+                gtag('event', 'diagnostico_test', {
+                    'event_category': 'Diagnostico',
+                    'event_label': 'Test Manual',
+                    'value': 1
+                });
+                alert('✅ Evento enviado!\n\nRevisa Google Analytics → Tiempo real → Eventos\nDeberías ver "diagnostico_test"');
+                console.log('📊 Evento "diagnostico_test" enviado');
+            } else {
+                alert('❌ gtag no está definido. Analytics no funciona.');
+                console.error('❌ gtag no existe');
+            }
+        }
+        
+        // Ver DataLayer
+        function verificarDataLayer() {
+            console.log('=== DATALAYER COMPLETO ===');
+            console.log(window.dataLayer);
+            console.log('=========================');
+            alert(`DataLayer tiene ${window.dataLayer ? window.dataLayer.length : 0} items.\n\nRevisa la consola (F12) para ver el contenido completo.`);
+        }
+        
+        // Log automático
+        console.log('=== DIAGNÓSTICO ANALYTICS ===');
+        console.log('ID:', 'G-EH39D527MS');
+        console.log('URL:', window.location.href);
+        console.log('gtag existe:', typeof gtag);
+        console.log('dataLayer existe:', typeof window.dataLayer);
+        console.log('============================');
+    </script>
+</body>
+</html>
+
