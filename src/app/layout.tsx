@@ -7,6 +7,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import ScrollToTop from '@/components/ui/ScrollToTop';
+import PageViewTracker from '@/components/analytics/PageViewTracker';
 
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '0RDY_vpUpTMgVPTIlKlOknWHNu_iRjPnSprwINucMgg';
 
@@ -135,6 +136,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="font-sans antialiased bg-white text-gray-900">
+        <PageViewTracker />
         <Header />
         <main className="min-h-screen pt-20">{children}</main>
         <Footer />
