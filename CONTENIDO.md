@@ -20,6 +20,15 @@
 
 **URL:** `/administrator` (requiere login)
 
+### ⚠️ **Seguridad y Privacidad:**
+
+El panel admin está **completamente oculto** de motores de búsqueda:
+- ❌ **No indexado** por Google (meta `noindex, nofollow, nocache, noarchive, noimageindex`)
+- ❌ **Bloqueado** en `robots.txt` (`Disallow: /administrator/`)
+- ❌ **Analytics NO registra** tráfico del admin (condicional en script)
+- ❌ **No archivable** en Google Cache ni Wayback Machine
+- ✅ **Solo accesible** con autenticación válida
+
 ### Funcionalidades del Panel Admin:
 
 ✅ **Gestión de Contactos:**
@@ -61,6 +70,14 @@
 - Email y nombre de cada suscriptor
 - Fecha de suscripción
 - Estado (activo/inactivo)
+
+✅ **Gestión de Multimedia:**
+- Ver todas las imágenes de Supabase Storage
+- Subir nuevas imágenes (drag & drop)
+- Eliminar imágenes con modal de confirmación
+- Selección múltiple
+- Preview de imágenes
+- Estadísticas de almacenamiento
 
 ---
 

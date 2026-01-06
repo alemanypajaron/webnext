@@ -332,8 +332,10 @@ Cada una con:
   - Marcar artículos como destacados
 - ✅ **Gestión de Proyectos** (crear, editar, eliminar, marcar como destacado)
 - ✅ **Gestión de Newsletter** (ver suscriptores)
+- ✅ **Gestión de Multimedia** (subir, eliminar, organizar imágenes de Supabase Storage)
 - ✅ **Bypass RLS** con Service Role Key para operaciones admin
 - ✅ **Notificaciones toast** para feedback inmediato
+- ✅ **Completamente oculto** de motores de búsqueda, robots, Analytics y cache público
 
 ### 📝 Editor de Contenido (TinyMCE)
 - ✅ **Menús completos**: File, Edit, View, Insert, Format, Tools, Table, Help
@@ -471,10 +473,12 @@ Accent Dark:   #E0A410
 - BreadcrumbList
 
 ✅ **Archivos SEO**:
-- `sitemap.xml` dinámico
-- `robots.txt` configurado
+- `sitemap.xml` dinámico (incluye páginas estáticas, blog, proyectos)
+- `robots.txt` configurado (bloquea `/administrator`)
 - OpenGraph image dinámica
 - Twitter image dinámica
+- **Google Analytics** integrado (excluye `/administrator`)
+- **Google Search Console** verificado
 
 ✅ **Performance**:
 - Imágenes optimizadas con `next/image`
@@ -682,30 +686,29 @@ git push origin main
 
 ## 📊 Analytics & Monitoreo
 
+### Google Analytics (Configurado)
+
+- ✅ **Tracking ID:** `G-EH39D527MS`
+- ✅ **Integrado** en `src/app/layout.tsx`
+- ✅ **Páginas públicas:** Analytics activo
+- ✅ **Panel admin (`/administrator`):** Analytics bloqueado (no registra tráfico)
+- ✅ **Google Search Console:** Verificado
+
 ### Vercel Analytics (Incluido)
 
 - ✅ **Web Analytics**: Visitantes, páginas vistas, países
 - ✅ **Speed Insights**: Core Web Vitals en tiempo real
 - ✅ **Deployment History**: Historial completo de deploys
 
-### Configurar Google Analytics (Opcional)
+### Privacidad del Panel Admin
 
-Añadir en `src/app/layout.tsx`:
-
-```tsx
-import Script from 'next/script'
-
-// En el return del layout
-<Script src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" />
-<Script id="google-analytics">
-  {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  `}
-</Script>
-```
+El panel de administración (`/administrator`) está **completamente oculto**:
+- ❌ **No indexado** por Google (robots.txt + meta noindex)
+- ❌ **No rastreado** por bots (disallow en robots.txt)
+- ❌ **No registrado** en Analytics (condicional en script)
+- ❌ **No cacheable** en buscadores (meta nocache)
+- ❌ **No archivable** en Wayback Machine (meta noarchive)
+- ✅ **Solo accesible** con autenticación válida
 
 ---
 

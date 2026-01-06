@@ -271,39 +271,28 @@ Vercel Dashboard → Settings → Build & Development Settings
 
 ### Variables de Entorno
 
-**Variables requeridas en Vercel:**
+**Variables requeridas en Vercel (4 total):**
 
 ```
 Settings → Environment Variables → Add
 ```
 
-**1. Supabase (Obligatorias):**
+**1. Supabase (3 variables obligatorias):**
 - `NEXT_PUBLIC_SUPABASE_URL` → Tu Project URL de Supabase
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY` → Tu Publishable Key de Supabase
-- `SUPABASE_SERVICE_ROLE_KEY` → Tu Service Role Key (para panel admin)
+- `SUPABASE_SERVICE_ROLE_KEY` → Tu Service Role Key (⚠️ **CRÍTICA** para panel admin)
 
-**2. TinyMCE (Obligatoria):**
+**2. TinyMCE (1 variable obligatoria):**
 - `NEXT_PUBLIC_TINYMCE_API_KEY` → Tu API Key de TinyMCE (editor de blog)
-
-**3. Opcionales:**
-- `GOOGLE_VERIFICATION_CODE` → Si usas Google Search Console
 
 **Environments:** Marca ✅ Production, ✅ Preview, ✅ Development en todas
 
-**Usar en el código:**
-```typescript
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const tinymceKey = process.env.NEXT_PUBLIC_TINYMCE_API_KEY
-```
-
-**⚠️ IMPORTANTE:** Después de añadir variables de entorno, hacer redeploy:
+**⚠️ IMPORTANTE:** Después de añadir variables de entorno, **REDEPLOY OBLIGATORIO**:
 ```
 Deployments → Latest → ⋯ → Redeploy → "Redeploy without cache"
 ```
 
-📖 **Más info:**
-- Ver [`SUPABASE_CONFIG.md`](SUPABASE_CONFIG.md) para Supabase
-- Ver [`CONFIGURAR_TINYMCE_VERCEL.md`](CONFIGURAR_TINYMCE_VERCEL.md) para TinyMCE
+📖 **Guía completa de configuración:** Ver [`CREAR_ENV_LOCAL.md`](CREAR_ENV_LOCAL.md) (incluye local + Vercel + TinyMCE)
 
 ---
 
