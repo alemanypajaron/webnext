@@ -32,30 +32,52 @@ export default function CookieBanner() {
   };
 
   const handleAcceptAll = () => {
-    localStorage.setItem('cookie-consent', 'accepted');
-    setShowBanner(false);
-    setHasConsent(true);
-    // Recargar para activar Google Analytics
-    window.location.reload();
+    try {
+      localStorage.setItem('cookie-consent', 'accepted');
+      setShowBanner(false);
+      setHasConsent(true);
+      
+      // Esperar un momento para asegurar que se guardó en localStorage
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
+    } catch (error) {
+      console.error('Error al guardar consentimiento:', error);
+    }
   };
 
   const handleRejectAll = () => {
-    localStorage.setItem('cookie-consent', 'rejected');
-    setShowBanner(false);
-    setHasConsent(true);
-    // Opcional: Recargar para asegurar que no se carga Analytics
-    window.location.reload();
+    try {
+      localStorage.setItem('cookie-consent', 'rejected');
+      setShowBanner(false);
+      setHasConsent(true);
+      
+      // Esperar un momento para asegurar que se guardó en localStorage
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
+    } catch (error) {
+      console.error('Error al guardar consentimiento:', error);
+    }
   };
 
   const handleAcceptSelected = () => {
-    // Por ahora, solo tenemos cookies técnicas (siempre) y Analytics (opcional)
-    const analyticsCheckbox = document.getElementById('analytics-cookies') as HTMLInputElement;
-    const consent = analyticsCheckbox?.checked ? 'accepted' : 'rejected';
-    
-    localStorage.setItem('cookie-consent', consent);
-    setShowBanner(false);
-    setHasConsent(true);
-    window.location.reload();
+    try {
+      // Por ahora, solo tenemos cookies técnicas (siempre) y Analytics (opcional)
+      const analyticsCheckbox = document.getElementById('analytics-cookies') as HTMLInputElement;
+      const consent = analyticsCheckbox?.checked ? 'accepted' : 'rejected';
+      
+      localStorage.setItem('cookie-consent', consent);
+      setShowBanner(false);
+      setHasConsent(true);
+      
+      // Esperar un momento para asegurar que se guardó en localStorage
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
+    } catch (error) {
+      console.error('Error al guardar consentimiento:', error);
+    }
   };
 
   return (
