@@ -14,11 +14,11 @@ export default async function MultimediaPage() {
 
   console.log('[MULTIMEDIA PAGE] Cargando página de multimedia');
 
-  // Obtener todas las imágenes del bucket
+  // Obtener todas las imágenes del bucket (sin límite)
   const { data: files, error } = await supabase.storage
     .from('blog-images')
     .list('', {
-      limit: 100,
+      limit: 1000, // Aumentar límite a 1000 imágenes
       offset: 0,
       sortBy: { column: 'created_at', order: 'desc' },
     });
@@ -123,10 +123,19 @@ export default async function MultimediaPage() {
         <div className="bg-white rounded-lg shadow p-6 border-l-4 border-purple-500">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm">Límite de Bucket</p>
-              <p className="text-xl font-bold text-gray-900 mt-1">
-                100 MB <span className="text-sm text-gray-500">/ 1 GB</span>
+              <p className="text-gray-500 text-sm">Tamaño Promedio</p>
+              <p className="text-2xl font-bold text-gray-900 mt-1">
+                {imagenes.length > 0
+                  ? (
+                      imagenes.reduce((sum, img) => sum + img.size, 0) /
+                      imagenes.length /
+                      1024 /
+                      1024
+                    ).toFixed(2)
+                  : '0.00'}{' '}
+                MB
               </p>
+              <p className="text-xs text-gray-500 mt-1">por imagen</p>
             </div>
             <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
               <svg
@@ -139,7 +148,7 @@ export default async function MultimediaPage() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                 />
               </svg>
             </div>
