@@ -4,6 +4,9 @@ import Image from 'next/image';
 import PageHeader from '@/components/ui/PageHeader';
 import { getProyectos } from '@/lib/data';
 
+// ISR: Regenerar cada hora
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: 'Proyectos',
   description: 'Portfolio de proyectos de arquitectura técnica en Murcia. Reformas integrales, dirección de obra y más.',

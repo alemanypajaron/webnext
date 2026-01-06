@@ -5,6 +5,9 @@ import NewsletterForm from '@/components/forms/NewsletterForm';
 import BlogFilters from '@/components/blog/BlogFilters';
 import { getBlogArticulos, getCategoriasBlog } from '@/lib/data';
 
+// ISR: Regenerar cada hora
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: 'Blog',
   description: 'Blog de arquitectura técnica en Murcia. Consejos, guías y novedades sobre construcción, reformas y licencias.',
