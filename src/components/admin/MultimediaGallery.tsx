@@ -64,11 +64,20 @@ export default function MultimediaGallery({
         return await res.json();
       });
 
-      await Promise.all(promesas);
-      toast.success(`${files.length} imágenes subidas correctamente`);
+      const resultados = await Promise.all(promesas);
       
-      // Recargar página
-      window.location.reload();
+      // Añadir nuevas imágenes al estado
+      const nuevasImagenes: Imagen[] = resultados.map((r) => ({
+        name: r.filename,
+        url: r.url,
+        size: 0, // El tamaño se obtendrá en el próximo refresh
+        createdAt: new Date().toISOString(),
+        lastModified: new Date().toISOString(),
+      }));
+      
+      setImagenes([...nuevasImagenes, ...imagenes]);
+      
+      toast.success(`${files.length} imágenes subidas correctamente`);
     } catch (error) {
       console.error('Error:', error);
       toast.error('Error al subir algunas imágenes');
@@ -107,10 +116,12 @@ export default function MultimediaGallery({
       });
 
       await Promise.all(promesas);
-      toast.success(`${seleccionadas.size} imagen(es) eliminada(s)`);
       
-      // Recargar página
-      window.location.reload();
+      // Actualizar estado eliminando las imágenes del array
+      setImagenes(imagenes.filter((img) => !seleccionadas.has(img.name)));
+      setSeleccionadas(new Set());
+      
+      toast.success(`${seleccionadas.size} imagen(es) eliminada(s)`);
     } catch (error) {
       console.error('Error:', error);
       toast.error('Error al eliminar algunas imágenes');
