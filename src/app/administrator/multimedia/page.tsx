@@ -8,6 +8,8 @@ export const metadata = {
 export default async function MultimediaPage() {
   const supabase = getSupabaseAdmin();
 
+  console.log('[MULTIMEDIA PAGE] Cargando página de multimedia');
+
   // Obtener todas las imágenes del bucket
   const { data: files, error } = await supabase.storage
     .from('blog-images')
@@ -18,7 +20,9 @@ export default async function MultimediaPage() {
     });
 
   if (error) {
-    console.error('Error al obtener imágenes:', error);
+    console.error('[MULTIMEDIA PAGE] Error al obtener imágenes:', error);
+  } else {
+    console.log(`[MULTIMEDIA PAGE] Encontrados ${files?.length || 0} archivos`);
   }
 
   // Obtener URLs públicas para cada imagen
@@ -26,6 +30,8 @@ export default async function MultimediaPage() {
     const { data } = supabase.storage
       .from('blog-images')
       .getPublicUrl(file.name);
+
+    console.log(`[MULTIMEDIA PAGE] Imagen: ${file.name}, tamaño: ${file.metadata?.size || 0} bytes`);
 
     return {
       name: file.name,
@@ -35,6 +41,8 @@ export default async function MultimediaPage() {
       lastModified: file.updated_at,
     };
   }) || [];
+
+  console.log(`[MULTIMEDIA PAGE] Total imágenes cargadas: ${imagenes.length}`);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

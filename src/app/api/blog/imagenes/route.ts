@@ -28,6 +28,7 @@ const getSupabaseAdmin = () => {
 // GET: Listar todas las imágenes del bucket de Supabase
 export async function GET() {
   try {
+    console.log('[GET] Listando imágenes del bucket:', BUCKET_NAME);
     const supabase = getSupabaseAdmin();
     
     const { data: files, error } = await supabase.storage
@@ -38,12 +39,14 @@ export async function GET() {
       });
 
     if (error) {
-      console.error('Error listando imágenes:', error);
+      console.error('[GET] Error listando imágenes:', error);
       return NextResponse.json(
         { error: 'Error al listar imágenes' },
         { status: 500 }
       );
     }
+
+    console.log(`[GET] Encontrados ${files?.length || 0} archivos en total`);
 
     // Mapear a URLs públicas
     const imagenesConUrl = (files || [])
@@ -56,16 +59,23 @@ export async function GET() {
           .from(BUCKET_NAME)
           .getPublicUrl(file.name);
 
+        console.log(`[GET] Archivo: ${file.name}, tamaño: ${file.metadata?.size || 0} bytes`);
+
         return {
           nombre: file.name,
           url: data.publicUrl,
+          tamano: file.metadata?.size || 0,
           fecha: file.created_at || new Date().toISOString(),
+          actualizado: file.updated_at || file.created_at || new Date().toISOString(),
         };
       });
 
+    console.log(`[GET] Devolviendo ${imagenesConUrl.length} imágenes válidas`);
+
     return NextResponse.json({ imagenes: imagenesConUrl });
   } catch (error: any) {
-    console.error('Error al listar imágenes:', error);
+    console.error('[GET] Error inesperado al listar imágenes:', error);
+    console.error('[GET] Stack trace:', error.stack);
     return NextResponse.json(
       { error: error.message || 'Error al listar imágenes' },
       { status: 500 }
