@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Inter, Poppins } from 'next/font/google';
-import Script from 'next/script';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Suspense } from 'react';
 import './globals.css';
@@ -9,6 +8,8 @@ import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import PageViewTracker from '@/components/analytics/PageViewTracker';
+import ConditionalAnalytics from '@/components/cookies/ConditionalAnalytics';
+import CookiePanel from '@/components/cookies/CookiePanel';
 
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '0RDY_vpUpTMgVPTIlKlOknWHNu_iRjPnSprwINucMgg';
 
@@ -117,41 +118,14 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} ${poppins.variable}`}>
       <head>
-        {/* Google Analytics - NO se ejecuta en /administrator */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-EH39D527MS"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            // Limpiar localStorage de cookies obsoletas (del sistema anterior)
-            if (typeof window !== 'undefined' && window.localStorage) {
-              localStorage.removeItem('cookie-consent');
-              localStorage.removeItem('cookieConsent');
-            }
-            
-            // No ejecutar Analytics en páginas de administración
-            if (!window.location.pathname.startsWith('/administrator')) {
-              // Inicializar Google Analytics
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              
-              // Configurar Analytics CON page_view automático para la carga inicial
-              gtag('config', 'G-EH39D527MS', {
-                send_page_view: true,
-                anonymize_ip: true
-              });
-              
-              console.log('[Analytics] 🎯 Inicializado correctamente');
-            }
-          `}
-        </Script>
+        {/* Google Analytics cargado condicionalmente según consentimiento */}
+        <ConditionalAnalytics />
       </head>
       <body className="font-sans antialiased bg-white text-gray-900">
         <Suspense fallback={null}>
           <PageViewTracker />
         </Suspense>
+        <CookiePanel />
         <Header />
         <main className="min-h-screen pt-20">{children}</main>
         <Footer />
