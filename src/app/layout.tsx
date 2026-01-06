@@ -7,7 +7,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import ScrollToTop from '@/components/ui/ScrollToTop';
-import CookieBanner from '@/components/cookies/CookieBanner';
+import CookiePanel from '@/components/cookies/CookiePanel';
 import ConditionalAnalytics from '@/components/cookies/ConditionalAnalytics';
 
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '0RDY_vpUpTMgVPTIlKlOknWHNu_iRjPnSprwINucMgg';
@@ -126,7 +126,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppButton />
         <ScrollToTop />
-        <CookieBanner />
+        <CookiePanel />
         <SpeedInsights />
       </body>
     </html>

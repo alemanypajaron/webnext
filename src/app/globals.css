@@ -2,20 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Animación para el banner de cookies */
-@keyframes slide-up {
+/* Animación para el panel lateral de cookies */
+@keyframes slide-in-left {
   from {
-    transform: translateY(100%);
+    transform: translateX(-100%);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: translateX(0);
     opacity: 1;
   }
 }
 
-.animate-slide-up {
-  animation: slide-up 0.4s ease-out;
+.animate-slide-in-left {
+  animation: slide-in-left 0.3s ease-out;
 }
 
 @layer base {
