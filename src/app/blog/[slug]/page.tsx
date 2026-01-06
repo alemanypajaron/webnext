@@ -171,24 +171,10 @@ export default async function BlogArticuloPage({ params }: Props) {
                 </svg>
                 {articulo.tiempo_lectura || 5} min de lectura
               </div>
-              {articulo.visitas && articulo.visitas > 0 && (
-                <div className="flex items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="mr-2"
-                  >
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                  {articulo.visitas} visitas
-                </div>
-              )}
+              <VisitasDisplay 
+                articuloId={articulo.id || ''} 
+                visitasIniciales={articulo.visitas || 0} 
+              />
             </div>
           </div>
         </div>
