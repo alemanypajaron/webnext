@@ -124,6 +124,12 @@ export default function RootLayout({
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
+            // Limpiar localStorage de cookies obsoletas (del sistema anterior)
+            if (typeof window !== 'undefined' && window.localStorage) {
+              localStorage.removeItem('cookie-consent');
+              localStorage.removeItem('cookieConsent');
+            }
+            
             // Inicializar gtag sin enviar page_view automático
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
