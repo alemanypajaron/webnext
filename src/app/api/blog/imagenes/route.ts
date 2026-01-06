@@ -82,17 +82,21 @@ export async function POST(request: NextRequest) {
     const file = formData.get('file') as File;
 
     if (!file) {
+      console.error('[UPLOAD] No se proporcionó archivo');
       return NextResponse.json(
         { error: 'No se proporcionó ningún archivo' },
         { status: 400 }
       );
     }
 
+    console.log(`[UPLOAD] Iniciando subida: ${file.name}, tipo: ${file.type}, tamaño: ${file.size} bytes`);
+
     // Validar que sea una imagen
     const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
     if (!validTypes.includes(file.type)) {
+      console.error(`[UPLOAD] Tipo de archivo no válido: ${file.type}`);
       return NextResponse.json(
-        { error: 'El archivo debe ser una imagen (JPG, PNG, GIF, WEBP)' },
+        { error: `El archivo debe ser una imagen (JPG, PNG, GIF, WEBP). Recibido: ${file.type}` },
         { status: 400 }
       );
     }
@@ -100,19 +104,30 @@ export async function POST(request: NextRequest) {
     // Validar tamaño (máximo 5MB)
     const maxSize = 5 * 1024 * 1024; // 5MB
     if (file.size > maxSize) {
+      const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+      console.error(`[UPLOAD] Archivo demasiado grande: ${sizeMB}MB (máx: 5MB)`);
       return NextResponse.json(
-        { error: 'La imagen no puede superar los 5MB' },
+        { error: `La imagen es demasiado grande (${sizeMB}MB). Máximo: 5MB` },
         { status: 400 }
       );
     }
 
-    // Crear un nombre de archivo único
+    // Crear un nombre de archivo único y sanitizado
     const timestamp = Date.now();
-    const originalName = file.name.replace(/\s+/g, '-').toLowerCase();
+    // Remover caracteres especiales, tildes, espacios
+    const originalName = file.name
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '') // Quitar tildes
+      .replace(/[^a-zA-Z0-9._-]/g, '-') // Reemplazar caracteres especiales por guiones
+      .replace(/--+/g, '-') // Evitar guiones múltiples
+      .toLowerCase();
     const filename = `${timestamp}-${originalName}`;
+
+    console.log(`[UPLOAD] Nombre sanitizado: ${filename}`);
 
     // Convertir el archivo a ArrayBuffer
     const arrayBuffer = await file.arrayBuffer();
+    console.log(`[UPLOAD] ArrayBuffer creado: ${arrayBuffer.byteLength} bytes`);
 
     // Subir a Supabase Storage
     const { data, error } = await supabase.storage
@@ -124,17 +139,21 @@ export async function POST(request: NextRequest) {
       });
 
     if (error) {
-      console.error('Error subiendo a Supabase:', error);
+      console.error('[UPLOAD] Error de Supabase Storage:', error);
       return NextResponse.json(
         { error: `Error al subir la imagen: ${error.message}` },
         { status: 500 }
       );
     }
 
+    console.log('[UPLOAD] Subida exitosa a Supabase:', data);
+
     // Obtener URL pública
     const { data: publicUrlData } = supabase.storage
       .from(BUCKET_NAME)
       .getPublicUrl(filename);
+
+    console.log(`[UPLOAD] URL pública generada: ${publicUrlData.publicUrl}`);
 
     return NextResponse.json({
       success: true,
@@ -143,7 +162,8 @@ export async function POST(request: NextRequest) {
       message: 'Imagen subida correctamente',
     });
   } catch (error: any) {
-    console.error('Error al subir imagen:', error);
+    console.error('[UPLOAD] Error inesperado:', error);
+    console.error('[UPLOAD] Stack trace:', error.stack);
     return NextResponse.json(
       { error: `Error al subir la imagen: ${error.message || 'Error desconocido'}` },
       { status: 500 }

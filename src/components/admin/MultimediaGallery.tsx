@@ -52,24 +52,44 @@ export default function MultimediaGallery({
   const handleSubirImagenes = async (files: FileList) => {
     setSubiendo(true);
 
+    let exitosas = 0;
+    let fallidas = 0;
+    const errores: string[] = [];
+
     try {
       const promesas = Array.from(files).map(async (file) => {
-        const formData = new FormData();
-        formData.append('file', file);
+        try {
+          const formData = new FormData();
+          formData.append('file', file);
 
-        const res = await fetch('/api/blog/imagenes', {
-          method: 'POST',
-          body: formData,
-        });
+          const res = await fetch('/api/blog/imagenes', {
+            method: 'POST',
+            body: formData,
+          });
 
-        if (!res.ok) throw new Error(`Error al subir ${file.name}`);
-        return await res.json();
+          if (!res.ok) {
+            const errorData = await res.json();
+            throw new Error(errorData.error || `Error al subir ${file.name}`);
+          }
+          
+          exitosas++;
+          return await res.json();
+        } catch (err: any) {
+          fallidas++;
+          const mensaje = `${file.name}: ${err.message}`;
+          errores.push(mensaje);
+          console.error('Error subiendo archivo:', mensaje);
+          return null;
+        }
       });
 
       const resultados = await Promise.all(promesas);
       
+      // Filtrar resultados exitosos
+      const resultadosValidos = resultados.filter(r => r !== null);
+      
       // Añadir nuevas imágenes al estado
-      const nuevasImagenes: Imagen[] = resultados.map((r) => ({
+      const nuevasImagenes: Imagen[] = resultadosValidos.map((r) => ({
         name: r.filename,
         url: r.url,
         size: 0, // El tamaño se obtendrá en el próximo refresh
@@ -79,10 +99,22 @@ export default function MultimediaGallery({
       
       setImagenes([...nuevasImagenes, ...imagenes]);
       
-      toast.success(`${files.length} imágenes subidas correctamente`);
+      // Mostrar mensajes apropiados
+      if (exitosas > 0 && fallidas === 0) {
+        toast.success(`${exitosas} imagen(es) subida(s) correctamente`);
+      } else if (exitosas > 0 && fallidas > 0) {
+        toast.success(`${exitosas} subida(s), ${fallidas} fallida(s)`);
+        toast.error(`Errores: ${errores.slice(0, 3).join(', ')}${errores.length > 3 ? '...' : ''}`, {
+          duration: 8000,
+        });
+      } else if (fallidas > 0) {
+        toast.error(`Error al subir ${fallidas} imagen(es): ${errores[0]}`, {
+          duration: 8000,
+        });
+      }
     } catch (error) {
-      console.error('Error:', error);
-      toast.error('Error al subir algunas imágenes');
+      console.error('Error general:', error);
+      toast.error('Error inesperado al subir imágenes');
     } finally {
       setSubiendo(false);
     }
