@@ -74,12 +74,13 @@ export default function CookiePanel() {
 
   return (
     <>
-      {/* Botón flotante (cuando está contraído) */}
+      {/* Botón flotante vertical (cuando está contraído) */}
       {!isExpanded && (
         <button
           onClick={() => setIsExpanded(true)}
-          className="fixed left-0 top-1/2 -translate-y-1/2 bg-primary text-white px-3 py-4 rounded-r-lg shadow-lg hover:bg-primary-dark transition-all z-50 flex items-center gap-2"
+          className="fixed left-0 top-1/2 -translate-y-1/2 bg-primary text-white px-2 py-6 rounded-r-lg shadow-lg hover:bg-primary-dark transition-all z-50 flex flex-col items-center gap-2"
           aria-label="Configurar cookies"
+          style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -87,6 +88,7 @@ export default function CookiePanel() {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            style={{ writingMode: 'horizontal-tb' }}
           >
             <path
               strokeLinecap="round"
@@ -95,7 +97,7 @@ export default function CookiePanel() {
               d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
             />
           </svg>
-          <span className="text-sm font-medium">Cookies</span>
+          <span className="text-sm font-medium tracking-wider">COOKIES</span>
         </button>
       )}
 
