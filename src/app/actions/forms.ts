@@ -35,9 +35,11 @@ export async function submitContactForm(formData: FormData): Promise<FormRespons
 
     if (!rateLimit.allowed) {
       const timeRemaining = formatTimeRemaining(rateLimit.resetTime);
+      const errorMessage = `${RATE_LIMITS.CONTACTO.message} Tiempo restante: ${timeRemaining}.`;
       return {
         success: false,
-        error: `${RATE_LIMITS.CONTACTO.message} Tiempo restante: ${timeRemaining}.`,
+        message: errorMessage,
+        error: 'RATE_LIMIT_EXCEEDED',
       };
     }
     // ============================================
@@ -116,9 +118,11 @@ export async function submitPresupuestoForm(formData: FormData): Promise<FormRes
 
     if (!rateLimit.allowed) {
       const timeRemaining = formatTimeRemaining(rateLimit.resetTime);
+      const errorMessage = `${RATE_LIMITS.PRESUPUESTO.message} Tiempo restante: ${timeRemaining}.`;
       return {
         success: false,
-        error: `${RATE_LIMITS.PRESUPUESTO.message} Tiempo restante: ${timeRemaining}.`,
+        message: errorMessage,
+        error: 'RATE_LIMIT_EXCEEDED',
       };
     }
     // ============================================
