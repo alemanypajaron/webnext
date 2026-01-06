@@ -61,7 +61,7 @@ hzc5ul9u051j4hya4cc4dxrtf8gq7mzrmluchwsgptgkz15g
 Una vez desplegado, ve al panel de administración:
 
 ```
-https://webnext-one.vercel.app/administrator/blog/nuevo
+https://www.alemanypajaron.es/administrator/blog/nuevo
 ```
 
 Y verifica que el editor TinyMCE:

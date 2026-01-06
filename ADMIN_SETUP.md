@@ -118,7 +118,7 @@ VALUES (
 ### **URL de Acceso:**
 
 ```
-Producción: https://webnext-one.vercel.app/administrator/login
+Producción: https://www.alemanypajaron.es/administrator/login
 Local: http://localhost:3000/administrator/login
 ```
 
@@ -331,7 +331,7 @@ Si tienes problemas para configurar el panel de administración, verifica:
 Ahora puedes acceder al panel de administración y gestionar los contactos y presupuestos de tu web.
 
 **🔗 Acceso directo:**  
-https://webnext-one.vercel.app/administrator/login
+https://www.alemanypajaron.es/administrator/login
 
 ---
 

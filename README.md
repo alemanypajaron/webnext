@@ -2,7 +2,7 @@
 
 **Sitio web profesional de gestión de obras y proyectos construido con Next.js 15, React 19, TypeScript y Tailwind CSS**
 
-🌐 **En producción:** [webnext-one.vercel.app](https://webnext-one.vercel.app)  
+🌐 **En producción:** [www.alemanypajaron.es](https://www.alemanypajaron.es)  
 📦 **Repositorio:** [github.com/alemanypajaron/webnext](https://github.com/alemanypajaron/webnext)
 
 ---
@@ -45,7 +45,8 @@ Sitio web completo para **Alemán y Pajarón**, técnicos de edificación y gest
 
 **La aplicación está desplegada y funcionando en Vercel:**
 
-🌐 **URL Principal:** [https://webnext-one.vercel.app](https://webnext-one.vercel.app)
+🌐 **URL Principal:** [https://www.alemanypajaron.es](https://www.alemanypajaron.es)  
+🌐 **URL de Vercel:** [https://webnext-one.vercel.app](https://webnext-one.vercel.app)
 
 **No es necesario ejecutar nada en local.** La aplicación está completamente operativa en Vercel con:
 - ✅ Deploy automático al hacer push a GitHub
@@ -510,7 +511,8 @@ npm run lint         # ESLint check
 
 ### Deploy en Vercel (Configurado y Activo)
 
-**URL de Producción:** https://webnext-one.vercel.app
+**URL de Producción:** https://www.alemanypajaron.es  
+**URL de Vercel:** https://webnext-one.vercel.app
 
 #### Configuración Actual:
 
@@ -544,7 +546,9 @@ git push origin main
 
 #### URLs Disponibles:
 
-- **Producción:** `webnext-one.vercel.app`
+- **Producción (Dominio Canónico):** `www.alemanypajaron.es` ← **URL PRINCIPAL**
+- **Redirección automática:** `alemanypajaron.es` → `www.alemanypajaron.es`
+- **Producción (Vercel):** `webnext-one.vercel.app` → `www.alemanypajaron.es`
 - **Git Branch:** `webnext-git-main-ivan-alemans-projects.vercel.app`
 - **Preview (por commit):** `webnext-[hash].vercel.app`
 
@@ -745,7 +749,7 @@ import Script from 'next/script'
 - 📧 **Email:** ivan@alemanypajaron.es
 - 📍 **Ubicación:** Murcia, España
 - 🕐 **Horario:** Lunes a Viernes, 8:00 - 16:00
-- 🌐 **Web:** https://webnext-one.vercel.app
+- 🌐 **Web:** https://www.alemanypajaron.es
 
 ### Redes Sociales
 - **Instagram:** [@alemanypajaron](https://www.instagram.com/alemanypajaron/)

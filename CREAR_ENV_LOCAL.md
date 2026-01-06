@@ -101,7 +101,7 @@ npm run dev
 3. Ve a **"My Account"** → **"Dashboard"**
 4. En **"Approved Domains"** añade:
    - `localhost` (para desarrollo local)
-   - `webnext-one.vercel.app` (tu dominio de producción)
+   - `www.alemanypajaron.es` (tu dominio de producción)
 5. Copia tu **API Key** (empieza con letras y números)
 6. Es gratuito para hasta 1,000 cargas de editor por mes
 

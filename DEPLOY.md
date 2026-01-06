@@ -7,7 +7,8 @@
 ## 📊 Estado Actual
 
 ✅ **Proyecto en producción**  
-🌐 **URL:** https://webnext-one.vercel.app  
+🌐 **URL Principal (Canónica):** https://www.alemanypajaron.es  
+🌐 **URL Vercel:** https://webnext-one.vercel.app  
 📦 **Repo:** https://github.com/alemanypajaron/webnext  
 ⚡ **Deploy:** Automático en cada push  
 
@@ -120,11 +121,18 @@ Historial de todos los deploys:
 
 ## 🌐 URLs del Proyecto
 
-### Producción
+### Producción (Dominio Canónico)
 ```
-https://webnext-one.vercel.app
+https://www.alemanypajaron.es
 ```
-☝️ URL principal donde acceden los usuarios
+☝️ **URL PRINCIPAL CANÓNICA** donde acceden los usuarios y que indexa Google
+
+### Redirecciones Automáticas
+```
+https://alemanypajaron.es → https://www.alemanypajaron.es (308 permanente)
+https://webnext-one.vercel.app → https://www.alemanypajaron.es (307 temporal)
+```
+☝️ Todas las URLs redirigen automáticamente a la versión **www** (canónica)
 
 ### Alternativas (mismo sitio)
 ```
@@ -301,34 +309,48 @@ Deployments → Latest → ⋯ → Redeploy → "Redeploy without cache"
 
 ## 🎯 Configuración de Dominio Personalizado
 
-### Añadir alemanypajaron.es
+### ✅ Dominio Configurado: www.alemanypajaron.es
 
-**En Vercel:**
+**Estado:** ✅ **ACTIVO**  
+**Dominio Canónico:** ✅ **www.alemanypajaron.es** (indexado por Google)  
+**DNS:** Configurado correctamente en Hostinger  
+**SSL:** ✅ Certificado automático de Vercel  
+**Redirección:** alemanypajaron.es → www.alemanypajaron.es (308 permanente)
+
+**Configuración DNS en Hostinger:**
 ```
-1. Settings → Domains
-2. Add Domain: alemanypajaron.es
-3. Vercel te da los DNS records:
-   
-   Type: A
-   Name: @
-   Value: 76.76.21.21
-   
-   Type: CNAME
-   Name: www
-   Value: cname.vercel-dns.com
+Type: A
+Name: @
+Value: 76.76.21.21
+TTL: 3600
+
+Type: CNAME
+Name: www
+Value: cname.vercel-dns.com
+TTL: 3600
 ```
 
-**En tu proveedor de dominio:**
+**Configuración en Vercel:**
 ```
-1. Ir al panel DNS
-2. Añadir los records que Vercel te indicó
-3. Esperar propagación (1-48h, normalmente 5 min)
-4. ✅ Tu dominio apuntará a Vercel
+Dominio Principal: www.alemanypajaron.es
+Redirección: alemanypajaron.es → www.alemanypajaron.es (308)
 ```
+
+**Verificación:**
+- ✅ `www.alemanypajaron.es` → **Dominio principal canónico** (lo que ve Google)
+- ✅ `alemanypajaron.es` → Redirecciona a www.alemanypajaron.es (308 permanente)
+- ✅ `webnext-one.vercel.app` → Redirecciona a www.alemanypajaron.es (307 temporal)
+
+**SEO:**
+- ✅ URL Canónica: `www.alemanypajaron.es`
+- ✅ Todas las páginas apuntan a la versión **www**
+- ✅ Google indexa solo la versión **www**
+- ✅ No hay contenido duplicado
 
 **SSL:**
-- Vercel configura HTTPS automáticamente (gratis)
-- No necesitas hacer nada más
+- ✅ Vercel configura HTTPS automáticamente (gratis)
+- ✅ Certificado renovado automáticamente
+- ✅ Fuerza HTTPS en todas las URLs
 
 ---
 

@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://alemanypajaron.es';
+export const SITE_URL = 'https://www.alemanypajaron.es';
 
 export const BUSINESS = {
   name: 'Alemán y Pajarón',
