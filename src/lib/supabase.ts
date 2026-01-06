@@ -80,6 +80,7 @@ export interface BlogArticulo {
   categoria_id?: string;
   fecha_publicacion?: string;
   actualizado_at?: string;
+  created_at?: string;
   publicado?: boolean;
   destacado?: boolean;
   visitas?: number;
