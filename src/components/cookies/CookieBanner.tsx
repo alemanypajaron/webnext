@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import CookieSettings from './CookieSettings';
 
 type CookieConsent = 'accepted' | 'rejected' | null;
 
 export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+  const [hasConsent, setHasConsent] = useState(false);
 
   useEffect(() => {
     // Verificar si ya hay un consentimiento guardado
@@ -19,12 +21,20 @@ export default function CookieBanner() {
         setShowBanner(true);
       }, 1000);
       return () => clearTimeout(timer);
+    } else {
+      setHasConsent(true);
     }
   }, []);
+
+  const openBanner = () => {
+    setShowBanner(true);
+    setShowDetails(false);
+  };
 
   const handleAcceptAll = () => {
     localStorage.setItem('cookie-consent', 'accepted');
     setShowBanner(false);
+    setHasConsent(true);
     // Recargar para activar Google Analytics
     window.location.reload();
   };
@@ -32,19 +42,21 @@ export default function CookieBanner() {
   const handleRejectAll = () => {
     localStorage.setItem('cookie-consent', 'rejected');
     setShowBanner(false);
+    setHasConsent(true);
     // Opcional: Recargar para asegurar que no se carga Analytics
     window.location.reload();
   };
 
   const handleAcceptSelected = () => {
     // Por ahora, solo tenemos cookies técnicas (siempre) y Analytics (opcional)
-    // Si showDetails está activo, significa que el usuario revisó las opciones
-    localStorage.setItem('cookie-consent', 'accepted');
+    const analyticsCheckbox = document.getElementById('analytics-cookies') as HTMLInputElement;
+    const consent = analyticsCheckbox?.checked ? 'accepted' : 'rejected';
+    
+    localStorage.setItem('cookie-consent', consent);
     setShowBanner(false);
+    setHasConsent(true);
     window.location.reload();
   };
-
-  if (!showBanner) return null;
 
   return (
     <>
@@ -163,6 +175,9 @@ export default function CookieBanner() {
           </div>
         </div>
       </div>
+
+      {/* Botón flotante para reabrir configuración (solo si hay consentimiento) */}
+      {!showBanner && hasConsent && <CookieSettings onOpenBanner={openBanner} />}
     </>
   );
 }
