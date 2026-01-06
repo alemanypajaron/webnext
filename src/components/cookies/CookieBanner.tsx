@@ -32,52 +32,24 @@ export default function CookieBanner() {
   };
 
   const handleAcceptAll = () => {
-    try {
-      localStorage.setItem('cookie-consent', 'accepted');
-      setShowBanner(false);
-      setHasConsent(true);
-      
-      // Esperar un momento para asegurar que se guardó en localStorage
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
-    } catch (error) {
-      console.error('Error al guardar consentimiento:', error);
-    }
+    localStorage.setItem('cookie-consent', 'accepted');
+    setShowBanner(false);
+    setHasConsent(true);
   };
 
   const handleRejectAll = () => {
-    try {
-      localStorage.setItem('cookie-consent', 'rejected');
-      setShowBanner(false);
-      setHasConsent(true);
-      
-      // Esperar un momento para asegurar que se guardó en localStorage
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
-    } catch (error) {
-      console.error('Error al guardar consentimiento:', error);
-    }
+    localStorage.setItem('cookie-consent', 'rejected');
+    setShowBanner(false);
+    setHasConsent(true);
   };
 
   const handleAcceptSelected = () => {
-    try {
-      // Por ahora, solo tenemos cookies técnicas (siempre) y Analytics (opcional)
-      const analyticsCheckbox = document.getElementById('analytics-cookies') as HTMLInputElement;
-      const consent = analyticsCheckbox?.checked ? 'accepted' : 'rejected';
-      
-      localStorage.setItem('cookie-consent', consent);
-      setShowBanner(false);
-      setHasConsent(true);
-      
-      // Esperar un momento para asegurar que se guardó en localStorage
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
-    } catch (error) {
-      console.error('Error al guardar consentimiento:', error);
-    }
+    const analyticsCheckbox = document.getElementById('analytics-cookies') as HTMLInputElement;
+    const consent = analyticsCheckbox?.checked ? 'accepted' : 'rejected';
+    
+    localStorage.setItem('cookie-consent', consent);
+    setShowBanner(false);
+    setHasConsent(true);
   };
 
   return (

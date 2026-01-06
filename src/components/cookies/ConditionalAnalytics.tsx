@@ -11,9 +11,18 @@ export default function ConditionalAnalytics() {
     // Verificar si estamos en páginas de administración
     setIsAdmin(window.location.pathname.startsWith('/administrator'));
     
-    // Verificar consentimiento
-    const consent = localStorage.getItem('cookie-consent');
-    setHasConsent(consent === 'accepted');
+    // Verificar consentimiento inicial
+    const checkConsent = () => {
+      const consent = localStorage.getItem('cookie-consent');
+      setHasConsent(consent === 'accepted');
+    };
+    
+    checkConsent();
+    
+    // Escuchar cambios en localStorage (cuando el usuario acepta/rechaza)
+    const interval = setInterval(checkConsent, 500);
+    
+    return () => clearInterval(interval);
   }, []);
 
   // No cargar Analytics en páginas de administración
