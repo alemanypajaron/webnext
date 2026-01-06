@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Reformas Integrales en Murcia | Alemán y Pajarón',
   description: 'Reformas integrales en Murcia. Transformación completa de viviendas, locales y oficinas. Gestión integral del proyecto con técnicos de edificación.',
   alternates: {
-    canonical: '/servicios/reformas-integrales',
+    canonical: 'https://www.alemanypajaron.es/servicios/reformas-integrales',
   },
 };
 

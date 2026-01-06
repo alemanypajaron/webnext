@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Asesoramiento Técnico en Murcia | Técnicos de Edificación Alemán y Pajarón',
   description: 'Asesoramiento técnico especializado en Murcia: informes técnicos, estudios de viabilidad, análisis de inmuebles y consultoría para construcción y reformas.',
   keywords: 'asesoramiento técnico murcia, consultoría construcción murcia, informe técnico murcia, técnico edificación murcia, gestor obras murcia, estudio viabilidad murcia',
-  alternates: { canonical: '/servicios/asesoramiento-tecnico' },
+  alternates: { canonical: 'https://www.alemanypajaron.es/servicios/asesoramiento-tecnico' },
 };
 
 export default function AsesoramientoTecnicoPage() {

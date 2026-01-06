@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: 'Dirección de obra en Murcia por técnicos de edificación colegiados. Supervisión técnica profesional, control de calidad, cumplimiento de plazos y presupuesto. Presupuesto sin compromiso.',
   keywords: 'dirección de obra murcia, director de obra murcia, técnico edificación murcia dirección obra, dirección obra murcia precio, gestor obras murcia dirección obra, supervisión obra murcia, control calidad obra murcia',
   alternates: {
-    canonical: '/servicios/direccion-obra',
+    canonical: 'https://www.alemanypajaron.es/servicios/direccion-obra',
   },
   openGraph: {
     title: 'Dirección de Obra en Murcia | Técnico de Edificación Colegiado',

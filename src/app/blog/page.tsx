@@ -11,6 +11,9 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: 'Blog',
   description: 'Blog de arquitectura técnica en Murcia. Consejos, guías y novedades sobre construcción, reformas y licencias.',
+  alternates: {
+    canonical: 'https://www.alemanypajaron.es/blog',
+  },
 };
 
 export default async function BlogPage() {

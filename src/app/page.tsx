@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     'Gestores de obras y técnicos de edificación en Murcia. Especialistas en dirección de obra, gestión de proyectos, licencias y reformas integrales. Más de 15 años de experiencia. Presupuesto sin compromiso.',
   alternates: {
-    canonical: '/',
+    canonical: 'https://www.alemanypajaron.es/',
   },
 };
 

@@ -9,7 +9,7 @@ import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '
 export const metadata: Metadata = {
   title: 'Licencias y Permisos en Murcia | Alemán y Pajarón',
   description: 'Tramitación de licencias de obra en Murcia. Licencia de obra mayor, menor, apertura y actividad. Técnicos de edificación especializados en trámites municipales.',
-  alternates: { canonical: '/servicios/licencias-permisos' },
+  alternates: { canonical: 'https://www.alemanypajaron.es/servicios/licencias-permisos' },
 };
 
 export default function LicenciasPermisosPage() {

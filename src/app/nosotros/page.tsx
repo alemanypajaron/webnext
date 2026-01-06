@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Conoce a Alemán y Pajarón, técnicos de edificación especializados en gestión de obras y proyectos en Murcia con más de 15 años de experiencia en dirección de obra.',
   robots: 'index, follow',
   alternates: {
-    canonical: '/nosotros',
+    canonical: 'https://www.alemanypajaron.es/nosotros',
   },
 };
 

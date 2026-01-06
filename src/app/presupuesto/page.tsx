@@ -5,6 +5,9 @@ import PresupuestoForm from '@/components/forms/PresupuestoForm';
 export const metadata: Metadata = {
   title: 'Solicitar Presupuesto',
   description: 'Solicita un presupuesto sin compromiso para tu proyecto en Murcia. Arquitectos técnicos especializados.',
+  alternates: {
+    canonical: 'https://www.alemanypajaron.es/presupuesto',
+  },
 };
 
 export default function PresupuestoPage() {

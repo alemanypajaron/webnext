@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Servicios profesionales de gestión de obras en Murcia: dirección de obra, reformas, licencias, coordinación de proyectos, diseño y asesoramiento técnico. Más de 15 años de experiencia.',
   keywords: 'gestión obras murcia, dirección obra murcia, técnico edificación murcia, gestor obras murcia, reformas murcia, licencias obra murcia, coordinación proyectos',
   alternates: {
-    canonical: '/servicios',
+    canonical: 'https://www.alemanypajaron.es/servicios',
   },
 };
 

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Reforma de Cocina en Murcia | Precio desde 4.500€ | Alemán y Pajarón',
   description: 'Reforma integral de cocina en Murcia desde 4.500€. Muebles a medida, electrodomésticos, alicatado, fontanería. Presupuesto sin compromiso. +15 años experiencia.',
   keywords: 'reforma cocina murcia, reforma cocina murcia precio, reformar cocina murcia, reforma completa cocina murcia, cuanto cuesta reformar una cocina en murcia, reforma cocina pequeña murcia, empresa reforma cocina murcia, muebles cocina murcia',
-  alternates: { canonical: '/servicios/reforma-cocina' },
+  alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-cocina' },
 };
 
 export default function ReformaCocinaPage() {

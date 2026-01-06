@@ -10,6 +10,9 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: 'Proyectos',
   description: 'Portfolio de proyectos de arquitectura técnica en Murcia. Reformas integrales, dirección de obra y más.',
+  alternates: {
+    canonical: 'https://www.alemanypajaron.es/proyectos',
+  },
 };
 
 export default async function ProyectosPage() {

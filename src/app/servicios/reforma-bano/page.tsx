@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Reforma de Baño en Murcia | Precio y Presupuesto | Alemán y Pajarón',
   description: 'Reforma integral de baño en Murcia desde 3.500€. Diseño moderno, alicatado, fontanería, electricidad. Presupuesto sin compromiso. +15 años experiencia.',
   keywords: 'reforma baño murcia, reforma baño murcia precio, reformar baño murcia, reforma completa baño murcia, cuanto cuesta reformar un baño en murcia, reforma baño pequeño murcia, empresa reforma baño murcia',
-  alternates: { canonical: '/servicios/reforma-bano' },
+  alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-bano' },
 };
 
 export default function ReformaBanoPage() {

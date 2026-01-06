@@ -5,6 +5,9 @@ import ContactForm from '@/components/forms/ContactForm';
 export const metadata: Metadata = {
   title: 'Contacto',
   description: 'Contacta con Alemán y Pajarón. Estamos en Murcia. Teléfono: 650 075 842. Email: ivan@alemanypajaron.es',
+  alternates: {
+    canonical: 'https://www.alemanypajaron.es/contacto',
+  },
 };
 
 export default function ContactoPage() {

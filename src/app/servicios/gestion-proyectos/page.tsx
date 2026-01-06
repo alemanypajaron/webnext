@@ -9,7 +9,7 @@ import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '
 export const metadata: Metadata = {
   title: 'Gestión de Proyectos en Murcia | Alemán y Pajarón - Técnicos de Edificación',
   description: 'Gestión integral de proyectos de construcción en Murcia. Planificación, coordinación, control de costes y plazos. Gestores de obras especializados.',
-  alternates: { canonical: '/servicios/gestion-proyectos' },
+  alternates: { canonical: 'https://www.alemanypajaron.es/servicios/gestion-proyectos' },
 };
 
 export default function GestionProyectosPage() {
