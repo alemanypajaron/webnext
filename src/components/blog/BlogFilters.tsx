@@ -3,10 +3,10 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import type { BlogArticulo, CategoríaBlog } from '@/lib/supabase';
+import type { BlogArticuloConCategoria, CategoríaBlog } from '@/lib/supabase';
 
 interface BlogFiltersProps {
-  articulos: BlogArticulo[];
+  articulos: BlogArticuloConCategoria[];
   categorias: CategoríaBlog[];
 }
 
