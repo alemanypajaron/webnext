@@ -130,15 +130,21 @@ export default function RootLayout({
               localStorage.removeItem('cookieConsent');
             }
             
-            // Inicializar gtag sin enviar page_view automático
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            // Solo configurar Analytics, NO enviar page_view automático (lo hará PageViewTracker)
-            gtag('config', 'G-EH39D527MS', {
-              send_page_view: false,
-              anonymize_ip: true
-            });
+            // No ejecutar Analytics en páginas de administración
+            if (!window.location.pathname.startsWith('/administrator')) {
+              // Inicializar Google Analytics
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              
+              // Configurar Analytics CON page_view automático para la carga inicial
+              gtag('config', 'G-EH39D527MS', {
+                send_page_view: true,
+                anonymize_ip: true
+              });
+              
+              console.log('[Analytics] 🎯 Inicializado correctamente');
+            }
           `}
         </Script>
       </head>

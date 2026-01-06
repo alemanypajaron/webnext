@@ -7,6 +7,7 @@ export default function PageViewTracker() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const previousPath = useRef<string>('');
+  const isFirstRender = useRef<boolean>(true);
 
   useEffect(() => {
     // No rastrear páginas de administración
@@ -17,6 +18,14 @@ export default function PageViewTracker() {
     // Construir URL completa
     const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
     
+    // En el primer render, NO enviamos page_view (ya lo envió gtag config)
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      previousPath.current = url;
+      console.log('[Analytics] 📄 Primera carga (manejada por gtag):', url);
+      return;
+    }
+
     // Evitar enviar múltiples eventos para la misma página
     if (previousPath.current === url) {
       return;
@@ -25,7 +34,7 @@ export default function PageViewTracker() {
     // Actualizar la referencia
     previousPath.current = url;
     
-    // Enviar page_view a Google Analytics (solo una vez por ruta)
+    // Enviar page_view a Google Analytics SOLO para navegaciones internas
     if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
       window.gtag('event', 'page_view', {
         page_path: url,
@@ -33,7 +42,7 @@ export default function PageViewTracker() {
         page_location: window.location.href,
       });
       
-      console.log('[Analytics] 📄 Page view registrado:', url);
+      console.log('[Analytics] 📄 Navegación interna registrada:', url);
     }
   }, [pathname, searchParams]);
 
