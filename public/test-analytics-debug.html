@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔍 Diagnóstico Completo de Google Analytics</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 16px; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { 
+            color: #0A2230; 
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .test-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        .test-section h2 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .test-section h2::before {
+            content: '🔍';
+            margin-right: 10px;
+        }
+        .status { 
+            padding: 15px; 
+            margin: 15px 0; 
+            border-radius: 8px; 
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+        }
+        .status::before {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+        .success { 
+            background-color: #d4edda; 
+            color: #155724; 
+            border: 2px solid #28a745;
+        }
+        .success::before { content: '✅'; }
+        .error { 
+            background-color: #f8d7da; 
+            color: #721c24; 
+            border: 2px solid #dc3545;
+        }
+        .error::before { content: '❌'; }
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffc107;
+        }
+        .warning::before { content: '⚠️'; }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 2px solid #17a2b8;
+        }
+        .info::before { content: 'ℹ️'; }
+        button { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; 
+            padding: 14px 24px; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            margin: 8px 8px 8px 0; 
+            font-weight: 600;
+            font-size: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        pre { 
+            background-color: #282c34; 
+            color: #61dafb;
+            padding: 15px; 
+            border-radius: 8px; 
+            overflow-x: auto;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .code-block {
+            margin-top: 10px;
+        }
+        .detail-item {
+            background: white;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+        }
+        .detail-item strong {
+            color: #667eea;
+            display: inline-block;
+            min-width: 180px;
+        }
+        #realtime-counter {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            color: #667eea;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e9ecef;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EH39D527MS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EH39D527MS', {
+            send_page_view: true,
+            anonymize_ip: true
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Diagnóstico Completo de Google Analytics</h1>
+        <p class="subtitle">Herramienta de diagnóstico para Alemán y Pajarón</p>
+
+        <!-- Test 1: Carga del Script -->
+        <div class="test-section">
+            <h2>Test 1: Carga del Script de Analytics</h2>
+            <div id="script-status">Verificando...</div>
+            <div class="detail-item">
+                <strong>ID de Medición:</strong> G-EH39D527MS
+            </div>
+            <div class="detail-item">
+                <strong>URL del Script:</strong> https://www.googletagmanager.com/gtag/js
+            </div>
+        </div>
+
+        <!-- Test 2: DataLayer -->
+        <div class="test-section">
+            <h2>Test 2: Verificación de DataLayer</h2>
+            <div id="datalayer-status">Verificando...</div>
+            <div id="realtime-counter" class="pulse">0</div>
+            <div style="text-align: center; color: #666; margin-top: -10px;">eventos en dataLayer</div>
+            <div class="code-block">
+                <pre id="datalayer-content">Cargando...</pre>
+            </div>
+        </div>
+
+        <!-- Test 3: Conexión a Google -->
+        <div class="test-section">
+            <h2>Test 3: Conexión con Servidores de Google</h2>
+            <div id="network-status">Verificando...</div>
+            <div class="detail-item" id="network-details"></div>
+        </div>
+
+        <!-- Test 4: Bloqueadores -->
+        <div class="test-section">
+            <h2>Test 4: Detección de Bloqueadores</h2>
+            <div id="blocker-status">Verificando...</div>
+        </div>
+
+        <!-- Test 5: Información del Navegador -->
+        <div class="test-section">
+            <h2>Test 5: Información del Navegador</h2>
+            <div class="detail-item">
+                <strong>Navegador:</strong> <span id="browser-info"></span>
+            </div>
+            <div class="detail-item">
+                <strong>Sistema Operativo:</strong> <span id="os-info"></span>
+            </div>
+            <div class="detail-item">
+                <strong>Dispositivo:</strong> <span id="device-info"></span>
+            </div>
+            <div class="detail-item">
+                <strong>Resolución:</strong> <span id="screen-info"></span>
+            </div>
+            <div class="detail-item">
+                <strong>Cookies habilitadas:</strong> <span id="cookies-info"></span>
+            </div>
+            <div class="detail-item">
+                <strong>Do Not Track:</strong> <span id="dnt-info"></span>
+            </div>
+        </div>
+
+        <!-- Acciones de Test -->
+        <div class="test-section">
+            <h2>Enviar Eventos de Prueba</h2>
+            <button id="send-pageview">📄 Enviar Page View</button>
+            <button id="send-custom-event">🎯 Enviar Evento Personalizado</button>
+            <button id="reload-test">🔄 Recargar Página</button>
+            <div id="event-status"></div>
+        </div>
+
+        <!-- Instrucciones -->
+        <div class="test-section">
+            <h2>📋 Instrucciones</h2>
+            <ol style="line-height: 2; margin-left: 20px;">
+                <li><strong>Abre Google Analytics</strong> → Informes → Tiempo real → Información general</li>
+                <li><strong>Haz clic en "Enviar Evento Personalizado"</strong></li>
+                <li><strong>Espera 5-10 segundos</strong></li>
+                <li><strong>¿Aparece "1 usuario" en Analytics?</strong></li>
+                <li>Si NO aparece: <strong>Revisa los tests de arriba</strong> (especialmente el Test 3 y 4)</li>
+            </ol>
+        </div>
+
+        <div class="footer">
+            <p><strong>Alemán y Pajarón</strong> | Test de Diagnóstico de Analytics</p>
+            <p>Página generada: <span id="timestamp"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Timestamp
+        document.getElementById('timestamp').textContent = new Date().toLocaleString('es-ES');
+
+        // Test 1: Script de Analytics
+        function testAnalyticsScript() {
+            const statusDiv = document.getElementById('script-status');
+            const gtagExists = typeof gtag === 'function';
+            const dataLayerExists = Array.isArray(window.dataLayer);
+            
+            if (gtagExists && dataLayerExists) {
+                statusDiv.className = 'status success';
+                statusDiv.textContent = '✅ Google Analytics cargado correctamente';
+            } else {
+                statusDiv.className = 'status error';
+                statusDiv.textContent = '❌ ERROR: Google Analytics NO se cargó';
+                if (!gtagExists) statusDiv.textContent += ' (gtag no definido)';
+                if (!dataLayerExists) statusDiv.textContent += ' (dataLayer no existe)';
+            }
+        }
+
+        // Test 2: DataLayer
+        function testDataLayer() {
+            const statusDiv = document.getElementById('datalayer-status');
+            const contentPre = document.getElementById('datalayer-content');
+            const counter = document.getElementById('realtime-counter');
+            
+            if (window.dataLayer && window.dataLayer.length > 0) {
+                statusDiv.className = 'status success';
+                statusDiv.textContent = `✅ DataLayer activo con ${window.dataLayer.length} eventos`;
+                contentPre.textContent = JSON.stringify(window.dataLayer, null, 2);
+                counter.textContent = window.dataLayer.length;
+            } else {
+                statusDiv.className = 'status error';
+                statusDiv.textContent = '❌ DataLayer vacío o no inicializado';
+                contentPre.textContent = 'DataLayer no disponible';
+            }
+        }
+
+        // Test 3: Conexión de Red
+        async function testNetworkConnection() {
+            const statusDiv = document.getElementById('network-status');
+            const detailsDiv = document.getElementById('network-details');
+            
+            statusDiv.className = 'status info';
+            statusDiv.textContent = 'ℹ️ Probando conexión con Google...';
+            
+            try {
+                const response = await fetch('https://www.google-analytics.com/g/collect?v=2&tid=G-EH39D527MS', {
+                    method: 'HEAD',
+                    mode: 'no-cors'
+                });
+                
+                statusDiv.className = 'status success';
+                statusDiv.textContent = '✅ Conexión con servidores de Google OK';
+                detailsDiv.innerHTML = '<strong>Estado:</strong> Conexión exitosa';
+            } catch (error) {
+                statusDiv.className = 'status error';
+                statusDiv.textContent = '❌ No se puede conectar con Google Analytics';
+                detailsDiv.innerHTML = `<strong>Error:</strong> ${error.message}`;
+            }
+        }
+
+        // Test 4: Bloqueadores
+        function testBlockers() {
+            const statusDiv = document.getElementById('blocker-status');
+            
+            // Verificar si gtag está bloqueado
+            if (typeof gtag !== 'function') {
+                statusDiv.className = 'status error';
+                statusDiv.textContent = '❌ BLOQUEADOR DETECTADO: gtag() está bloqueado';
+                return;
+            }
+            
+            // Verificar si el script de Analytics se cargó
+            const scripts = document.querySelectorAll('script[src*="googletagmanager"]');
+            if (scripts.length === 0) {
+                statusDiv.className = 'status error';
+                statusDiv.textContent = '❌ BLOQUEADOR DETECTADO: Script de Analytics bloqueado';
+                return;
+            }
+            
+            statusDiv.className = 'status success';
+            statusDiv.textContent = '✅ No se detectaron bloqueadores activos';
+        }
+
+        // Test 5: Info del Navegador
+        function getBrowserInfo() {
+            const ua = navigator.userAgent;
+            let browser = 'Desconocido';
+            
+            if (ua.indexOf('Chrome') > -1 && ua.indexOf('Edg') === -1) browser = 'Google Chrome';
+            else if (ua.indexOf('Safari') > -1 && ua.indexOf('Chrome') === -1) browser = 'Safari';
+            else if (ua.indexOf('Firefox') > -1) browser = 'Firefox';
+            else if (ua.indexOf('Edg') > -1) browser = 'Microsoft Edge';
+            else if (ua.indexOf('Opera') > -1 || ua.indexOf('OPR') > -1) browser = 'Opera';
+            
+            return browser;
+        }
+
+        function getOSInfo() {
+            const ua = navigator.userAgent;
+            if (ua.indexOf('Win') > -1) return 'Windows';
+            if (ua.indexOf('Mac') > -1) return 'macOS';
+            if (ua.indexOf('Linux') > -1) return 'Linux';
+            if (ua.indexOf('Android') > -1) return 'Android';
+            if (ua.indexOf('iOS') > -1 || ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1) return 'iOS';
+            return 'Desconocido';
+        }
+
+        function getDeviceType() {
+            const ua = navigator.userAgent;
+            if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) return 'Tablet';
+            if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) return 'Móvil';
+            return 'Desktop/PC';
+        }
+
+        function populateBrowserInfo() {
+            document.getElementById('browser-info').textContent = getBrowserInfo();
+            document.getElementById('os-info').textContent = getOSInfo();
+            document.getElementById('device-info').textContent = getDeviceType();
+            document.getElementById('screen-info').textContent = `${screen.width} x ${screen.height}`;
+            document.getElementById('cookies-info').textContent = navigator.cookieEnabled ? '✅ Sí' : '❌ No';
+            document.getElementById('dnt-info').textContent = navigator.doNotTrack === '1' ? '⚠️ Activado' : '✅ Desactivado';
+        }
+
+        // Ejecutar tests al cargar
+        setTimeout(() => {
+            testAnalyticsScript();
+            testDataLayer();
+            testNetworkConnection();
+            testBlockers();
+            populateBrowserInfo();
+        }, 1000);
+
+        // Actualizar dataLayer cada 2 segundos
+        setInterval(testDataLayer, 2000);
+
+        // Botones de test
+        document.getElementById('send-pageview').addEventListener('click', () => {
+            if (typeof gtag === 'function') {
+                gtag('event', 'page_view', {
+                    page_title: 'Test Page View',
+                    page_location: window.location.href,
+                    page_path: '/test-analytics-debug.html'
+                });
+                const statusDiv = document.getElementById('event-status');
+                statusDiv.className = 'status success';
+                statusDiv.textContent = '✅ Page View enviado. Revisa Analytics en 5-10 segundos.';
+                setTimeout(() => testDataLayer(), 500);
+            } else {
+                alert('❌ gtag() no está disponible');
+            }
+        });
+
+        document.getElementById('send-custom-event').addEventListener('click', () => {
+            if (typeof gtag === 'function') {
+                gtag('event', 'diagnostico_test', {
+                    event_category: 'Diagnostico',
+                    event_label: 'Test manual desde diagnóstico',
+                    value: Math.floor(Date.now() / 1000)
+                });
+                const statusDiv = document.getElementById('event-status');
+                statusDiv.className = 'status success';
+                statusDiv.textContent = '✅ Evento "diagnostico_test" enviado. Revisa Analytics "Tiempo Real → Eventos".';
+                setTimeout(() => testDataLayer(), 500);
+            } else {
+                alert('❌ gtag() no está disponible');
+            }
+        });
+
+        document.getElementById('reload-test').addEventListener('click', () => {
+            window.location.reload();
+        });
+    </script>
+</body>
+</html>
+
