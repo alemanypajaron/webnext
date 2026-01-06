@@ -157,7 +157,7 @@ export async function DELETE(request: NextRequest) {
     const supabase = getSupabaseAdmin();
 
     const { searchParams } = new URL(request.url);
-    const filename = searchParams.get('filename');
+    const filename = searchParams.get('filename') || searchParams.get('nombre');
 
     if (!filename) {
       return NextResponse.json(
@@ -173,7 +173,7 @@ export async function DELETE(request: NextRequest) {
     if (error) {
       console.error('Error eliminando imagen:', error);
       return NextResponse.json(
-        { error: 'Error al eliminar la imagen' },
+        { error: `Error al eliminar la imagen: ${error.message}` },
         { status: 500 }
       );
     }
@@ -182,10 +182,10 @@ export async function DELETE(request: NextRequest) {
       success: true,
       message: 'Imagen eliminada correctamente',
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error al eliminar imagen:', error);
     return NextResponse.json(
-      { error: 'Error al eliminar la imagen' },
+      { error: `Error al eliminar la imagen: ${error.message || 'Error desconocido'}` },
       { status: 500 }
     );
   }
