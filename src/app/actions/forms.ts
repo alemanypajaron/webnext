@@ -1,6 +1,8 @@
 'use server';
 
+import { headers } from 'next/headers';
 import { supabase, type Contacto, type Presupuesto } from '@/lib/supabase';
+import { checkRateLimit, getClientIP, RATE_LIMITS, formatTimeRemaining } from '@/lib/rate-limit';
 
 // =====================================================
 // Tipos para respuestas
@@ -18,6 +20,28 @@ type FormResponse = {
 
 export async function submitContactForm(formData: FormData): Promise<FormResponse> {
   try {
+    // ============================================
+    // RATE LIMITING: Anti-spam para contacto
+    // ============================================
+    const headersList = await headers();
+    const clientIP = getClientIP(headersList);
+    const rateLimitKey = `contacto:${clientIP}`;
+    
+    const rateLimit = checkRateLimit(
+      rateLimitKey,
+      RATE_LIMITS.CONTACTO.maxAttempts,
+      RATE_LIMITS.CONTACTO.windowMs
+    );
+
+    if (!rateLimit.allowed) {
+      const timeRemaining = formatTimeRemaining(rateLimit.resetTime);
+      return {
+        success: false,
+        error: `${RATE_LIMITS.CONTACTO.message} Tiempo restante: ${timeRemaining}.`,
+      };
+    }
+    // ============================================
+    
     // Extraer datos del formulario
     const contacto: Contacto = {
       nombre: formData.get('nombre') as string,
@@ -77,6 +101,28 @@ export async function submitContactForm(formData: FormData): Promise<FormRespons
 
 export async function submitPresupuestoForm(formData: FormData): Promise<FormResponse> {
   try {
+    // ============================================
+    // RATE LIMITING: Anti-spam para presupuesto
+    // ============================================
+    const headersList = await headers();
+    const clientIP = getClientIP(headersList);
+    const rateLimitKey = `presupuesto:${clientIP}`;
+    
+    const rateLimit = checkRateLimit(
+      rateLimitKey,
+      RATE_LIMITS.PRESUPUESTO.maxAttempts,
+      RATE_LIMITS.PRESUPUESTO.windowMs
+    );
+
+    if (!rateLimit.allowed) {
+      const timeRemaining = formatTimeRemaining(rateLimit.resetTime);
+      return {
+        success: false,
+        error: `${RATE_LIMITS.PRESUPUESTO.message} Tiempo restante: ${timeRemaining}.`,
+      };
+    }
+    // ============================================
+    
     // Extraer datos del formulario
     const presupuesto: Presupuesto = {
       nombre: formData.get('nombre') as string,

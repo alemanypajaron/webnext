@@ -1,5 +1,13 @@
 import type { NextConfig } from "next";
 
+// ============================================
+// BUNDLE ANALYZER
+// Ejecutar: ANALYZE=true npm run build
+// ============================================
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 const nextConfig: NextConfig = {
   // Hide the Next.js dev indicator ("N" bubble) that can overlap UI in development.
   devIndicators: false,
@@ -84,10 +92,37 @@ const nextConfig: NextConfig = {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
           },
+          // Content Security Policy (CSP)
+          // Protección avanzada contra XSS, injection attacks, etc.
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.google-analytics.com *.tiny.cloud cdn.tiny.cloud",
+              "style-src 'self' 'unsafe-inline' fonts.googleapis.com *.tiny.cloud",
+              "img-src 'self' data: blob: https: *.unsplash.com *.supabase.co",
+              "font-src 'self' fonts.gstatic.com data:",
+              "connect-src 'self' *.supabase.co *.googleanalytics.com *.google-analytics.com *.tiny.cloud vercel.live",
+              "frame-src 'self' *.tiny.cloud",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "frame-ancestors 'self'",
+              "upgrade-insecure-requests",
+            ].join('; ')
+          },
         ],
       },
     ]
   },
+  
+  // ============================================
+  // OPTIMIZACIONES ADICIONALES
+  // ============================================
+  experimental: {
+    // Optimizar imports de paquetes grandes
+    optimizePackageImports: ['@headlessui/react', 'lucide-react'],
+  },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

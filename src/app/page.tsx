@@ -3,6 +3,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import JsonLd from '@/components/seo/JsonLd';
 import { localBusinessJsonLd, websiteJsonLd } from '@/lib/structuredData';
+import { getHeroBlurDataURL } from '@/lib/blur-placeholder';
 
 export const metadata: Metadata = {
   title: 'Gestión de Obras y Proyectos en Murcia | Dirección de Obra y Reformas',
@@ -108,6 +109,8 @@ export default function Home() {
             fill
             className="object-cover"
             priority
+            placeholder="blur"
+            blurDataURL={getHeroBlurDataURL()}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/98 to-primary/95" />
         </div>
