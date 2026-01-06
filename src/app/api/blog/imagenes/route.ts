@@ -101,12 +101,24 @@ export async function POST(request: NextRequest) {
 
     console.log(`[UPLOAD] Iniciando subida: ${file.name}, tipo: ${file.type}, tamaño: ${file.size} bytes`);
 
-    // Validar que sea una imagen
-    const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
-    if (!validTypes.includes(file.type)) {
-      console.error(`[UPLOAD] Tipo de archivo no válido: ${file.type}`);
+    // Validar nombre de archivo
+    if (!file.name || file.name.trim().length === 0) {
+      console.error('[UPLOAD] Nombre de archivo vacío');
       return NextResponse.json(
-        { error: `El archivo debe ser una imagen (JPG, PNG, GIF, WEBP). Recibido: ${file.type}` },
+        { error: 'El archivo debe tener un nombre válido' },
+        { status: 400 }
+      );
+    }
+
+    // Validar que sea una imagen (por tipo MIME y extensión)
+    const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+    const validExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+    const fileExtension = file.name.split('.').pop()?.toLowerCase();
+    
+    if (!validTypes.includes(file.type) || !fileExtension || !validExtensions.includes(fileExtension)) {
+      console.error(`[UPLOAD] Tipo de archivo no válido: ${file.type}, extensión: ${fileExtension}`);
+      return NextResponse.json(
+        { error: `El archivo debe ser una imagen válida (JPG, PNG, GIF, WEBP). Recibido: ${file.type}` },
         { status: 400 }
       );
     }
@@ -124,20 +136,55 @@ export async function POST(request: NextRequest) {
 
     // Crear un nombre de archivo único y sanitizado
     const timestamp = Date.now();
+    
+    // Obtener extensión del archivo
+    const extension = file.name.split('.').pop()?.toLowerCase() || 'jpg';
+    
+    // Obtener nombre base sin extensión
+    const baseName = file.name.substring(0, file.name.lastIndexOf('.')) || file.name;
+    
     // Remover caracteres especiales, tildes, espacios
-    const originalName = file.name
+    let sanitizedName = baseName
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '') // Quitar tildes
       .replace(/[^a-zA-Z0-9._-]/g, '-') // Reemplazar caracteres especiales por guiones
       .replace(/--+/g, '-') // Evitar guiones múltiples
+      .replace(/^-+|-+$/g, '') // Quitar guiones al inicio y final
       .toLowerCase();
-    const filename = `${timestamp}-${originalName}`;
+    
+    // Limitar longitud del nombre (máximo 50 caracteres sin timestamp ni extensión)
+    // Supabase Storage tiene un límite de ~100 caracteres para nombres de archivo
+    const maxLength = 50;
+    if (sanitizedName.length > maxLength) {
+      sanitizedName = sanitizedName.substring(0, maxLength);
+      console.log(`[UPLOAD] Nombre acortado de ${baseName.length} a ${maxLength} caracteres`);
+    }
+    
+    // Si el nombre quedó vacío después de la sanitización, usar un nombre genérico
+    if (!sanitizedName || sanitizedName.length === 0) {
+      sanitizedName = 'image';
+      console.log('[UPLOAD] Nombre vacío después de sanitización, usando "image"');
+    }
+    
+    const filename = `${timestamp}-${sanitizedName}.${extension}`;
 
-    console.log(`[UPLOAD] Nombre sanitizado: ${filename}`);
+    console.log(`[UPLOAD] Nombre original: "${file.name}" (${file.name.length} chars)`);
+    console.log(`[UPLOAD] Nombre final: "${filename}" (${filename.length} chars)`);
 
     // Convertir el archivo a ArrayBuffer
     const arrayBuffer = await file.arrayBuffer();
     console.log(`[UPLOAD] ArrayBuffer creado: ${arrayBuffer.byteLength} bytes`);
+
+    // Verificar si ya existe un archivo con ese nombre
+    const { data: existingFile } = await supabase.storage
+      .from(BUCKET_NAME)
+      .list('', {
+        search: filename,
+      });
+
+    if (existingFile && existingFile.length > 0) {
+      console.warn(`[UPLOAD] El archivo ${filename} ya existe, se sobrescribirá`);
+    }
 
     // Subir a Supabase Storage
     const { data, error } = await supabase.storage
@@ -145,13 +192,25 @@ export async function POST(request: NextRequest) {
       .upload(filename, arrayBuffer, {
         contentType: file.type,
         cacheControl: '3600',
-        upsert: false,
+        upsert: true, // Permitir sobrescribir si existe
       });
 
     if (error) {
       console.error('[UPLOAD] Error de Supabase Storage:', error);
+      console.error('[UPLOAD] Detalles del error:', JSON.stringify(error, null, 2));
+      
+      // Mensajes de error más específicos
+      let errorMessage = error.message;
+      if (error.message.includes('row-level security')) {
+        errorMessage = 'Error de permisos. Contacta con el administrador.';
+      } else if (error.message.includes('size')) {
+        errorMessage = 'El archivo es demasiado grande para Supabase Storage.';
+      } else if (error.message.includes('duplicate')) {
+        errorMessage = 'Ya existe un archivo con ese nombre.';
+      }
+      
       return NextResponse.json(
-        { error: `Error al subir la imagen: ${error.message}` },
+        { error: `Error al subir la imagen: ${errorMessage}` },
         { status: 500 }
       );
     }
