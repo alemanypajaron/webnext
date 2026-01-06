@@ -39,11 +39,11 @@ export default function BlogFilters({ articulos, categorias }: BlogFiltersProps)
     resultado.sort((a, b) => {
       switch (ordenamiento) {
         case 'recientes':
-          return new Date(b.fecha_publicacion || b.created_at!).getTime() - 
-                 new Date(a.fecha_publicacion || a.created_at!).getTime();
+          return new Date(b.fecha_publicacion || b.created_at || '').getTime() - 
+                 new Date(a.fecha_publicacion || a.created_at || '').getTime();
         case 'antiguos':
-          return new Date(a.fecha_publicacion || a.created_at!).getTime() - 
-                 new Date(b.fecha_publicacion || b.created_at!).getTime();
+          return new Date(a.fecha_publicacion || a.created_at || '').getTime() - 
+                 new Date(b.fecha_publicacion || b.created_at || '').getTime();
         case 'populares':
           return (b.visitas || 0) - (a.visitas || 0);
         default:
@@ -74,7 +74,7 @@ export default function BlogFilters({ articulos, categorias }: BlogFiltersProps)
             {categorias.map((categoria) => (
               <button
                 key={categoria.id}
-                onClick={() => setCategoriaActiva(categoria.id)}
+                onClick={() => setCategoriaActiva(categoria.id || null)}
                 className={`px-6 py-2 rounded-full text-sm font-semibold transition-all ${
                   categoriaActiva === categoria.id
                     ? 'shadow-lg scale-105'
@@ -83,13 +83,13 @@ export default function BlogFilters({ articulos, categorias }: BlogFiltersProps)
                 style={{
                   backgroundColor:
                     categoriaActiva === categoria.id
-                      ? categoria.color
-                      : `${categoria.color}20`,
+                      ? categoria.color || '#F9B513'
+                      : `${categoria.color || '#F9B513'}20`,
                   color:
                     categoriaActiva === categoria.id
                       ? '#ffffff'
                       : categoria.color || '#F9B513',
-                  border: `2px solid ${categoria.color}`,
+                  border: `2px solid ${categoria.color || '#F9B513'}`,
                 }}
               >
                 {categoria.nombre}
@@ -207,7 +207,7 @@ export default function BlogFilters({ articulos, categorias }: BlogFiltersProps)
                         <line x1="3" y1="10" x2="21" y2="10" />
                       </svg>
                       {formatearFecha(
-                        articulo.fecha_publicacion || articulo.created_at!
+                        articulo.fecha_publicacion || articulo.created_at || ''
                       )}
                     </div>
                     <div className="flex items-center gap-1">
@@ -338,7 +338,7 @@ export default function BlogFilters({ articulos, categorias }: BlogFiltersProps)
                 return (
                   <button
                     key={categoria.id}
-                    onClick={() => setCategoriaActiva(categoria.id)}
+                    onClick={() => setCategoriaActiva(categoria.id || null)}
                     className={`w-full text-left px-4 py-2 rounded-lg transition-all flex items-center justify-between ${
                       categoriaActiva === categoria.id
                         ? 'font-semibold shadow-md'
@@ -347,8 +347,8 @@ export default function BlogFilters({ articulos, categorias }: BlogFiltersProps)
                     style={{
                       backgroundColor:
                         categoriaActiva === categoria.id
-                          ? categoria.color
-                          : `${categoria.color}10`,
+                          ? categoria.color || '#F9B513'
+                          : `${categoria.color || '#F9B513'}10`,
                       color:
                         categoriaActiva === categoria.id
                           ? '#ffffff'
