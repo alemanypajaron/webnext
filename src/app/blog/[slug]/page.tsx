@@ -6,9 +6,9 @@ import { getBlogArticuloBySlug, getBlogArticulosSlugs, getBlogArticulosDestacado
 import VisitasTracker from '@/components/blog/VisitasTracker';
 
 // ============================================
-// ISR: Regenerar página cada hora
+// ISR: Regenerar página cada minuto (para cambios rápidos en el admin)
 // ============================================
-export const revalidate = 3600; // 1 hora en segundos
+export const revalidate = 60; // 1 minuto en segundos
 
 type Props = {
   params: Promise<{ slug: string }>;

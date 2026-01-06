@@ -5,8 +5,8 @@ import NewsletterForm from '@/components/forms/NewsletterForm';
 import BlogFilters from '@/components/blog/BlogFilters';
 import { getBlogArticulos, getCategoriasBlog } from '@/lib/data';
 
-// ISR: Regenerar cada hora
-export const revalidate = 3600;
+// ISR: Regenerar cada minuto (para cambios rápidos en el admin)
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Blog',
