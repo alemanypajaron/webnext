@@ -18,19 +18,27 @@ export default function CookiePanel() {
   useEffect(() => {
     // Verificar si ya existe consentimiento
     const stored = localStorage.getItem('cookie-consent');
+    console.log('[Cookies] 🔍 Verificando consentimiento al cargar:', stored);
+    
     if (stored) {
       try {
         const parsed: CookieConsent = JSON.parse(stored);
+        const ageInHours = (Date.now() - parsed.timestamp) / 1000 / 60 / 60;
+        console.log('[Cookies] ✅ Consentimiento encontrado:', parsed);
+        console.log('[Cookies] ⏰ Antigüedad del consentimiento:', ageInHours.toFixed(2), 'horas');
+        
         setConsent(parsed);
         setAnalyticsEnabled(parsed.analytics);
         setShowPanel(true);
         setIsExpanded(false); // Contraído si ya hay consentimiento
       } catch (e) {
+        console.error('[Cookies] ⚠️ Error al parsear consentimiento:', e);
         // Si hay error, mostrar panel expandido
         setShowPanel(true);
         setIsExpanded(true);
       }
     } else {
+      console.log('[Cookies] ℹ️ No hay consentimiento guardado, mostrando panel');
       // Sin consentimiento, mostrar expandido
       setShowPanel(true);
       setIsExpanded(true);
@@ -46,6 +54,12 @@ export default function CookiePanel() {
     };
     
     localStorage.setItem('cookie-consent', JSON.stringify(newConsent));
+    console.log('[Cookies] 💾 Guardando consentimiento:', newConsent);
+    
+    // Verificar que se guardó correctamente
+    const verification = localStorage.getItem('cookie-consent');
+    console.log('[Cookies] ✔️ Verificación inmediata:', verification);
+    
     setConsent(newConsent);
     setAnalyticsEnabled(analytics);
     setIsExpanded(false);
@@ -55,7 +69,7 @@ export default function CookiePanel() {
       detail: newConsent 
     }));
 
-    console.log('[Cookies] 🍪 Consentimiento guardado:', newConsent);
+    console.log('[Cookies] 🍪 Proceso completado. El panel ahora debería estar contraído.');
   };
 
   const handleAcceptAll = () => {

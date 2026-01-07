@@ -50,21 +50,14 @@ export default function ConditionalAnalytics() {
       const newConsent = customEvent.detail;
       
       console.log('[Analytics] 🔄 Consentimiento actualizado:', newConsent);
+      console.log('[Analytics] 📦 localStorage ahora contiene:', localStorage.getItem('cookie-consent'));
       
       if (newConsent.analytics === true && !hasConsent) {
         setHasConsent(true);
-        console.log('[Analytics] ✅ Analytics activado dinámicamente');
-        
-        // Recargar para inicializar Analytics correctamente
-        setTimeout(() => {
-          window.location.reload();
-        }, 500);
+        console.log('[Analytics] ✅ Analytics activado dinámicamente (sin recarga)');
       } else if (newConsent.analytics === false && hasConsent) {
-        console.log('[Analytics] ❌ Analytics desactivado, se requiere recarga');
-        // Informar que se requiere recarga para desactivar completamente
-        setTimeout(() => {
-          window.location.reload();
-        }, 500);
+        setHasConsent(false);
+        console.log('[Analytics] ❌ Analytics desactivado (sin recarga)');
       }
     };
 

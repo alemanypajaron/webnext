@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🍪 Debug Cookies - Alemán y Pajarón</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: #667eea;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 10px;
+    }
+    .info-box {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 15px 0;
+      border-left: 4px solid #667eea;
+    }
+    .success {
+      border-left-color: #28a745;
+      background: #d4edda;
+    }
+    .warning {
+      border-left-color: #ffc107;
+      background: #fff3cd;
+    }
+    .error {
+      border-left-color: #dc3545;
+      background: #f8d7da;
+    }
+    button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+      transition: all 0.3s;
+    }
+    button:hover {
+      background: #764ba2;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    button.danger {
+      background: #dc3545;
+    }
+    button.danger:hover {
+      background: #c82333;
+    }
+    pre {
+      background: #282c34;
+      color: #abb2bf;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .timestamp {
+      color: #6c757d;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🍪 Diagnóstico de Cookies - localStorage</h1>
+    <p><strong>URL:</strong> <span id="current-url"></span></p>
+    <p class="timestamp">Última actualización: <span id="last-update"></span></p>
+
+    <div id="status"></div>
+
+    <div style="margin: 20px 0;">
+      <button onclick="checkConsent()">🔍 Verificar Consentimiento</button>
+      <button onclick="simulateAccept()">✅ Simular Aceptar Todo</button>
+      <button onclick="simulateReject()">❌ Simular Rechazar Analytics</button>
+      <button class="danger" onclick="clearConsent()">🗑️ Borrar Consentimiento</button>
+      <button onclick="location.reload()">🔄 Recargar Página</button>
+    </div>
+
+    <div id="details"></div>
+
+    <div class="info-box">
+      <h3>ℹ️ Información</h3>
+      <p>Esta página te permite verificar si el consentimiento de cookies se está guardando correctamente en <code>localStorage</code>.</p>
+      <ul>
+        <li><strong>Persistencia:</strong> El consentimiento debe permanecer incluso después de cerrar el navegador.</li>
+        <li><strong>Dominio:</strong> El localStorage está vinculado al dominio actual.</li>
+        <li><strong>Capacidad:</strong> Los navegadores suelen permitir ~5-10MB por dominio.</li>
+      </ul>
+    </div>
+
+    <h2>📊 Todo el localStorage</h2>
+    <pre id="all-storage"></pre>
+  </div>
+
+  <script>
+    function updateTimestamp() {
+      document.getElementById('last-update').textContent = new Date().toLocaleString('es-ES');
+      document.getElementById('current-url').textContent = window.location.href;
+    }
+
+    function checkConsent() {
+      const stored = localStorage.getItem('cookie-consent');
+      const statusDiv = document.getElementById('status');
+      const detailsDiv = document.getElementById('details');
+
+      if (stored) {
+        try {
+          const consent = JSON.parse(stored);
+          const ageInHours = ((Date.now() - consent.timestamp) / 1000 / 60 / 60).toFixed(2);
+          const createdDate = new Date(consent.timestamp).toLocaleString('es-ES');
+
+          statusDiv.innerHTML = `
+            <div class="info-box success">
+              <h3>✅ Consentimiento Encontrado</h3>
+              <p><strong>Estado:</strong> El consentimiento está guardado correctamente</p>
+            </div>
+          `;
+
+          detailsDiv.innerHTML = `
+            <div class="info-box">
+              <h3>📄 Detalles del Consentimiento</h3>
+              <ul>
+                <li><strong>Cookies Técnicas:</strong> ${consent.technical ? '✅ Sí' : '❌ No'}</li>
+                <li><strong>Cookies de Analytics:</strong> ${consent.analytics ? '✅ Sí' : '❌ No'}</li>
+                <li><strong>Fecha de creación:</strong> ${createdDate}</li>
+                <li><strong>Antigüedad:</strong> ${ageInHours} horas</li>
+                <li><strong>Timestamp:</strong> ${consent.timestamp}</li>
+              </ul>
+              <h4>JSON Completo:</h4>
+              <pre>${JSON.stringify(consent, null, 2)}</pre>
+            </div>
+          `;
+        } catch (e) {
+          statusDiv.innerHTML = `
+            <div class="info-box error">
+              <h3>⚠️ Error al Leer Consentimiento</h3>
+              <p><strong>Error:</strong> ${e.message}</p>
+              <p><strong>Contenido:</strong> ${stored}</p>
+            </div>
+          `;
+          detailsDiv.innerHTML = '';
+        }
+      } else {
+        statusDiv.innerHTML = `
+          <div class="info-box warning">
+            <h3>⚠️ No Hay Consentimiento Guardado</h3>
+            <p>No se encontró ningún consentimiento en localStorage. Esto es normal si es tu primera visita.</p>
+          </div>
+        `;
+        detailsDiv.innerHTML = '';
+      }
+
+      showAllStorage();
+      updateTimestamp();
+    }
+
+    function simulateAccept() {
+      const consent = {
+        technical: true,
+        analytics: true,
+        timestamp: Date.now()
+      };
+      localStorage.setItem('cookie-consent', JSON.stringify(consent));
+      console.log('✅ Consentimiento simulado (Aceptar todo):', consent);
+      checkConsent();
+    }
+
+    function simulateReject() {
+      const consent = {
+        technical: true,
+        analytics: false,
+        timestamp: Date.now()
+      };
+      localStorage.setItem('cookie-consent', JSON.stringify(consent));
+      console.log('❌ Consentimiento simulado (Rechazar analytics):', consent);
+      checkConsent();
+    }
+
+    function clearConsent() {
+      if (confirm('¿Estás seguro de que quieres borrar el consentimiento de cookies?')) {
+        localStorage.removeItem('cookie-consent');
+        console.log('🗑️ Consentimiento borrado');
+        checkConsent();
+      }
+    }
+
+    function showAllStorage() {
+      const allStorage = {};
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        allStorage[key] = localStorage.getItem(key);
+      }
+      document.getElementById('all-storage').textContent = JSON.stringify(allStorage, null, 2);
+    }
+
+    // Ejecutar al cargar
+    checkConsent();
+
+    // Escuchar eventos de storage (cambios desde otras pestañas)
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'cookie-consent') {
+        console.log('🔄 Cambio detectado en otra pestaña:', e.newValue);
+        checkConsent();
+      }
+    });
+
+    // Actualizar timestamp cada 5 segundos
+    setInterval(updateTimestamp, 5000);
+  </script>
+</body>
+</html>
+
