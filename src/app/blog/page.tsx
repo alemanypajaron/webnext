@@ -9,10 +9,23 @@ import { getBlogArticulos, getCategoriasBlog } from '@/lib/data';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Blog',
-  description: 'Blog de arquitectura técnica en Murcia. Consejos, guías y novedades sobre construcción, reformas y licencias.',
+  title: 'Blog de Arquitectura y Construcción en Murcia | Guías y Consejos',
+  description: 'Blog especializado en arquitectura técnica, construcción y reformas en Murcia. Guías prácticas, consejos profesionales, normativa, licencias, tendencias y casos reales de proyectos de edificación.',
+  keywords: 'blog arquitectura murcia, blog construcción murcia, guía reformas murcia, consejos obra murcia, normativa construcción murcia, licencias obra murcia blog, tendencias arquitectura murcia',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/blog',
+  },
+  openGraph: {
+    title: 'Blog de Arquitectura Técnica | Alemán y Pajarón Murcia',
+    description: 'Guías, consejos y recursos sobre construcción, reformas y licencias en Murcia.',
+    url: 'https://www.alemanypajaron.es/blog',
+    type: 'website',
+    locale: 'es_ES',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog de Arquitectura | Alemán y Pajarón',
+    description: 'Guías y consejos sobre construcción y reformas en Murcia.',
   },
 };
 

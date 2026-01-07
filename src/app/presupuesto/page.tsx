@@ -3,10 +3,23 @@ import PageHeader from '@/components/ui/PageHeader';
 import PresupuestoForm from '@/components/forms/PresupuestoForm';
 
 export const metadata: Metadata = {
-  title: 'Solicitar Presupuesto',
-  description: 'Solicita un presupuesto sin compromiso para tu proyecto en Murcia. Arquitectos técnicos especializados.',
+  title: 'Presupuesto de Obras y Reformas en Murcia | Sin Compromiso 24h',
+  description: 'Solicita presupuesto sin compromiso para tu obra o reforma en Murcia. Técnicos de edificación especializados. Respuesta en menos de 24 horas. Dirección de obra, reformas integrales, licencias y más.',
+  keywords: 'presupuesto obras murcia, presupuesto reforma murcia, presupuesto dirección obra murcia, presupuesto arquitecto técnico murcia, coste reforma murcia, precio dirección obra murcia',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/presupuesto',
+  },
+  openGraph: {
+    title: 'Solicitar Presupuesto Sin Compromiso | Alemán y Pajarón Murcia',
+    description: 'Presupuesto gratuito para tu obra o reforma en Murcia. Respuesta en 24h.',
+    url: 'https://www.alemanypajaron.es/presupuesto',
+    type: 'website',
+    locale: 'es_ES',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Presupuesto Sin Compromiso | Alemán y Pajarón',
+    description: 'Solicita presupuesto para tu obra en Murcia. Respuesta en 24h.',
   },
 };
 

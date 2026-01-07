@@ -2,10 +2,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Aviso Legal | Alemán y Pajarón',
-  description: 'Aviso legal del sitio web de Alemán y Pajarón, gestores de obras y arquitectura técnica en Murcia.',
+  title: 'Aviso Legal | Alemán y Pajarón - Gestión de Obras Murcia',
+  description: 'Aviso legal del sitio web de Alemán y Pajarón, técnicos de edificación y gestores de obras en Murcia. Información legal y condiciones de uso. Contenido generado con IA.',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/legal/aviso-legal',
+  },
+  robots: {
+    index: false,
+    follow: true,
   },
 };
 

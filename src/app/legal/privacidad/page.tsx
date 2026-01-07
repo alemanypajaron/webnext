@@ -2,10 +2,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Política de Privacidad | Alemán y Pajarón',
-  description: 'Política de privacidad y protección de datos personales de Alemán y Pajarón, conforme al RGPD.',
+  title: 'Política de Privacidad y Protección de Datos | Alemán y Pajarón',
+  description: 'Política de privacidad y protección de datos personales de Alemán y Pajarón, técnicos de edificación en Murcia. Conforme al RGPD y LOPDGDD. Tus datos están seguros.',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/legal/privacidad',
+  },
+  robots: {
+    index: false,
+    follow: true,
   },
 };
 

@@ -3,10 +3,23 @@ import PageHeader from '@/components/ui/PageHeader';
 import ContactForm from '@/components/forms/ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Contacto',
-  description: 'Contacta con Alemán y Pajarón. Estamos en Murcia. Teléfono: 650 075 842. Email: ivan@alemanypajaron.es',
+  title: 'Contacto | Arquitectos Técnicos en Murcia - Alemán y Pajarón',
+  description: 'Contacta con Alemán y Pajarón, técnicos de edificación en Murcia. Teléfono: 650 075 842 | Email: ivan@alemanypajaron.es. Presupuesto sin compromiso en 24h para tu proyecto de obra o reforma.',
+  keywords: 'contacto arquitectos murcia, técnicos edificación murcia contacto, aparejador murcia contacto, gestor obras murcia teléfono, dirección obra murcia contacto',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/contacto',
+  },
+  openGraph: {
+    title: 'Contacto | Alemán y Pajarón - Técnicos de Edificación Murcia',
+    description: 'Contacta con Alemán y Pajarón para tu proyecto en Murcia. Presupuesto sin compromiso en 24h.',
+    url: 'https://www.alemanypajaron.es/contacto',
+    type: 'website',
+    locale: 'es_ES',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Contacto | Alemán y Pajarón Murcia',
+    description: 'Técnicos de edificación en Murcia. Presupuesto sin compromiso en 24h.',
   },
 };
 

@@ -8,10 +8,23 @@ import { getProyectos } from '@/lib/data';
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: 'Proyectos',
-  description: 'Portfolio de proyectos de arquitectura técnica en Murcia. Reformas integrales, dirección de obra y más.',
+  title: 'Proyectos de Arquitectura y Reformas en Murcia | Portfolio +250 Obras',
+  description: 'Portfolio de proyectos realizados en Murcia por Alemán y Pajarón. Más de 250 obras completadas: reformas integrales, dirección de obra, viviendas, locales comerciales y proyectos de rehabilitación.',
+  keywords: 'proyectos arquitectura murcia, portfolio obras murcia, reformas murcia ejemplos, proyectos reforma murcia, obras realizadas murcia, portfolio arquitecto técnico murcia',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/proyectos',
+  },
+  openGraph: {
+    title: 'Proyectos Realizados en Murcia | Alemán y Pajarón',
+    description: 'Más de 250 proyectos de reformas y obras completadas en Murcia. Ver portfolio.',
+    url: 'https://www.alemanypajaron.es/proyectos',
+    type: 'website',
+    locale: 'es_ES',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Portfolio de Proyectos | Alemán y Pajarón Murcia',
+    description: '+250 proyectos de arquitectura y reformas en Murcia.',
   },
 };
 
