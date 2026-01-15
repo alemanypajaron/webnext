@@ -272,22 +272,19 @@ export default function PresupuestosTable({ presupuestos }: { presupuestos: Pres
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-28">
                   Fecha
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-48">
                   Cliente
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-52">
                   Proyecto
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Descripción
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-32">
                   Estado
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-24">
                   Acciones
                 </th>
               </tr>
@@ -300,39 +297,50 @@ export default function PresupuestosTable({ presupuestos }: { presupuestos: Pres
                     key={presupuesto.id}
                     className="hover:bg-gray-50 transition-colors"
                   >
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {formatDate(presupuesto.created_at!)}
+                    <td className="px-3 py-3 whitespace-nowrap text-xs text-gray-500">
+                      {new Date(presupuesto.created_at!).toLocaleDateString('es-ES', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: '2-digit',
+                      })}
+                      <div className="text-[10px] text-gray-400">
+                        {new Date(presupuesto.created_at!).toLocaleTimeString('es-ES', {
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        })}
+                      </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">{presupuesto.nombre}</div>
-                      <div className="text-sm text-gray-500">{presupuesto.email}</div>
-                      <div className="text-sm text-gray-500">{presupuesto.telefono}</div>
+                    <td className="px-3 py-3">
+                      <div className="text-xs font-medium text-gray-900 truncate max-w-[180px]">
+                        {presupuesto.nombre}
+                      </div>
+                      <div className="text-[11px] text-gray-500 truncate max-w-[180px]">
+                        {presupuesto.email}
+                      </div>
+                      <div className="text-[11px] text-gray-500">
+                        {presupuesto.telefono}
+                      </div>
                     </td>
-                    <td className="px-6 py-4">
-                      <div className="text-sm text-gray-900 font-medium">{presupuesto.tipo_proyecto}</div>
+                    <td className="px-3 py-3">
+                      <div className="text-xs text-gray-900 font-medium truncate max-w-[200px]">
+                        {presupuesto.tipo_proyecto}
+                      </div>
                       {presupuesto.ubicacion && (
-                        <div className="text-sm text-gray-500">📍 {presupuesto.ubicacion}</div>
+                        <div className="text-[11px] text-gray-500 truncate max-w-[200px]">
+                          📍 {presupuesto.ubicacion}
+                        </div>
                       )}
                       {presupuesto.presupuesto_estimado && (
-                        <div className="text-sm text-gray-500">💰 {presupuesto.presupuesto_estimado}</div>
-                      )}
-                      {presupuesto.fecha_inicio_estimada && (
-                        <div className="text-sm text-gray-500">
-                          📅 {new Date(presupuesto.fecha_inicio_estimada).toLocaleDateString('es-ES')}
+                        <div className="text-[11px] text-gray-500">
+                          💰 {presupuesto.presupuesto_estimado}
                         </div>
                       )}
                     </td>
-                    <td className="px-6 py-4 max-w-md">
-                      <div className="text-sm text-gray-900 truncate">
-                        {presupuesto.descripcion.substring(0, 80)}
-                        {presupuesto.descripcion.length > 80 && '...'}
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-3 py-3 whitespace-nowrap">
                       <select
                         value={presupuesto.estado || 'pendiente'}
                         onChange={(e) => handleChangeEstado(presupuesto.id!, e.target.value)}
-                        className={`text-sm rounded-full px-3 py-1 font-medium border-0 focus:ring-2 focus:ring-accent ${estadoBadge.clase}`}
+                        className={`text-[11px] rounded-full px-2.5 py-1 font-medium border-0 focus:ring-2 focus:ring-accent cursor-pointer ${estadoBadge.clase} w-full`}
                       >
                         <option value="pendiente">Pendiente</option>
                         <option value="en_proceso">En Proceso</option>
@@ -341,24 +349,24 @@ export default function PresupuestosTable({ presupuestos }: { presupuestos: Pres
                         <option value="rechazado">Rechazado</option>
                       </select>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <div className="flex items-center justify-end gap-2">
+                    <td className="px-3 py-3 whitespace-nowrap text-center">
+                      <div className="flex items-center justify-center gap-1.5">
                         <button
                           onClick={() => setDetailsPresupuesto(presupuesto)}
-                          className="text-blue-600 hover:text-blue-900 transition-colors"
+                          className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                           title="Ver detalles"
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                             <circle cx="12" cy="12" r="3" />
                           </svg>
                         </button>
                         <button
                           onClick={() => handleDelete(presupuesto.id!)}
-                          className="text-red-600 hover:text-red-900 transition-colors"
+                          className="p-1.5 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                           title="Eliminar"
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <polyline points="3 6 5 6 21 6" />
                             <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
                           </svg>
