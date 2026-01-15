@@ -3,10 +3,13 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { submitContactForm } from '@/app/actions/forms';
+import SuccessModal from '@/components/ui/SuccessModal';
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [whatsappUrl, setWhatsappUrl] = useState<string>();
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -19,16 +22,11 @@ export default function ContactForm() {
       const result = await submitContactForm(formData);
 
       if (result.success) {
-        setMessage({ type: 'success', text: result.message });
+        // Guardar URL de WhatsApp y mostrar modal
+        setWhatsappUrl(result.whatsappUrl);
+        setShowSuccessModal(true);
         // Resetear formulario
         (event.target as HTMLFormElement).reset();
-        
-        // Abrir WhatsApp si está disponible la URL
-        if (result.whatsappUrl) {
-          setTimeout(() => {
-            window.open(result.whatsappUrl, '_blank');
-          }, 500);
-        }
       } else {
         setMessage({ type: 'error', text: result.message });
       }
@@ -45,6 +43,14 @@ export default function ContactForm() {
   return (
     <div className="bg-gray-50 p-8 rounded-2xl">
       <h2 className="text-2xl font-heading font-bold text-primary mb-6">Envíanos un mensaje</h2>
+
+      {/* Modal de éxito */}
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        whatsappUrl={whatsappUrl}
+        type="contacto"
+      />
 
       {message && (
         <div
