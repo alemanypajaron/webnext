@@ -3,10 +3,7 @@ import { Inter, Poppins } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Suspense } from 'react';
 import './globals.css';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
-import ScrollToTop from '@/components/ui/ScrollToTop';
+import ConditionalLayout from '@/components/layout/ConditionalLayout';
 import PageViewTracker from '@/components/analytics/PageViewTracker';
 import ConditionalAnalytics from '@/components/cookies/ConditionalAnalytics';
 import CookiePanel from '@/components/cookies/CookiePanel';
@@ -117,11 +114,7 @@ export default function RootLayout({
           <PageViewTracker />
         </Suspense>
         <CookiePanel />
-        <Header />
-        <main className="min-h-screen pt-20">{children}</main>
-        <Footer />
-        <WhatsAppButton />
-        <ScrollToTop />
+        <ConditionalLayout>{children}</ConditionalLayout>
         <SpeedInsights />
       </body>
     </html>
