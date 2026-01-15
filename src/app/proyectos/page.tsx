@@ -4,8 +4,8 @@ import Image from 'next/image';
 import PageHeader from '@/components/ui/PageHeader';
 import { getProyectos } from '@/lib/data';
 
-// ISR: Regenerar cada hora
-export const revalidate = 3600;
+// ISR: Regenerar cada minuto para contenido dinámico
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Proyectos de Arquitectura y Reformas en Murcia | Portfolio +250 Obras',
