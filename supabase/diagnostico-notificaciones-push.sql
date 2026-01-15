@@ -62,14 +62,21 @@ BEGIN
 END $$;
 */
 
--- 7. Ver logs recientes de la función pg_net (si está habilitada)
+-- 7. Verificar si pg_net está habilitado
 SELECT 
-  '📊 Últimas llamadas HTTP' as info,
-  created_at,
-  request->'url' as url,
-  status_code,
-  LEFT(response::text, 100) as response_preview
-FROM net.http_request_queue
-WHERE created_at > NOW() - INTERVAL '1 hour'
-ORDER BY created_at DESC
-LIMIT 10;
+  '📊 Extensión pg_net' as info,
+  CASE WHEN EXISTS (
+    SELECT FROM pg_extension WHERE extname = 'pg_net'
+  ) THEN '✅ Habilitada' ELSE '❌ No habilitada' END as estado;
+
+-- 8. Ver logs recientes de la función pg_net (si está habilitada y tiene datos)
+DO $$
+BEGIN
+  IF EXISTS (SELECT FROM pg_extension WHERE extname = 'pg_net') THEN
+    -- Si pg_net existe, intentar ver los logs
+    RAISE NOTICE '✅ pg_net está habilitado - puedes ver logs en el dashboard de Supabase';
+  ELSE
+    RAISE NOTICE '⚠️ pg_net NO está habilitado - las notificaciones push NO funcionarán';
+    RAISE NOTICE '   Para habilitarlo: Dashboard → Database → Extensions → Buscar "pg_net" → Enable';
+  END IF;
+END $$;
