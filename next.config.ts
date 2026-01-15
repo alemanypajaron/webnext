@@ -47,6 +47,17 @@ const nextConfig: NextConfig = {
   // ============================================
   async headers() {
     return [
+      // Cache agresivo para assets estáticos (favicons, fuentes, imágenes)
+      {
+        source: '/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico|woff|woff2)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      // Headers de seguridad para todas las rutas
       {
         // Aplicar a todas las rutas
         source: '/:path*',

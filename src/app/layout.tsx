@@ -54,16 +54,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  // Next.js 14+ maneja automáticamente icon.png y apple-icon.png desde src/app/
+  // Next.js 14+ detecta automáticamente icon.png y apple-icon.png desde src/app/
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: '32x32' },
-      { url: '/favicon.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon.png', type: 'image/png' },
+      { url: '/favicon.ico', sizes: '32x32' }, // Fallback para navegadores antiguos
     ],
-    apple: [
-      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-    shortcut: '/favicon.ico',
+    apple: '/apple-icon.png',
   },
   openGraph: {
     title: 'Alemán y Pajarón | Gestión de Obras y Proyectos en Murcia',

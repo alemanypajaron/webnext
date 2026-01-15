@@ -1,0 +1,61 @@
+{
+  "fecha": "2026-01-15T20:54:39.167Z",
+  "resultados": {
+    "exitosos": [
+      {
+        "slug": "bernales-2023",
+        "imagenesCount": 11
+      },
+      {
+        "slug": "clinica-estetica-la-flota-2024",
+        "imagenesCount": 12
+      },
+      {
+        "slug": "correos-2024",
+        "imagenesCount": 12
+      },
+      {
+        "slug": "el-palmar-2023",
+        "imagenesCount": 20
+      },
+      {
+        "slug": "floridablanca-2024",
+        "imagenesCount": 23
+      },
+      {
+        "slug": "la-fama-2021",
+        "imagenesCount": 21
+      },
+      {
+        "slug": "lousteau-2018",
+        "imagenesCount": 12
+      },
+      {
+        "slug": "same-wave-2019",
+        "imagenesCount": 12
+      },
+      {
+        "slug": "san-juan-2016",
+        "imagenesCount": 14
+      },
+      {
+        "slug": "santa-eulalia-2023",
+        "imagenesCount": 8
+      },
+      {
+        "slug": "santa-marta-2018",
+        "imagenesCount": 17
+      },
+      {
+        "slug": "soriano-2017",
+        "imagenesCount": 11
+      },
+      {
+        "slug": "vistabella-2025",
+        "imagenesCount": 24
+      }
+    ],
+    "omitidos": [],
+    "fallidos": []
+  }
+}
