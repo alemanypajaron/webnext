@@ -42,19 +42,19 @@ export default function ConfirmModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 animate-in fade-in duration-200"
+      className="fixed inset-0 z-[400] flex items-center justify-center p-3 bg-black bg-opacity-50 animate-in fade-in duration-200"
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 animate-in zoom-in-95 duration-200"
+        className="bg-white rounded-lg sm:rounded-xl shadow-2xl w-[calc(100%-1.5rem)] max-w-[340px] sm:max-w-md p-4 sm:p-5 animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Icono */}
-        <div className="flex items-center justify-center mb-4">
-          <div className={`w-16 h-16 rounded-full bg-opacity-10 flex items-center justify-center ${iconColor.replace('text-', 'bg-')}`}>
+        <div className="flex items-center justify-center mb-2.5 sm:mb-3">
+          <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-opacity-10 flex items-center justify-center ${iconColor.replace('text-', 'bg-')}`}>
             {type === 'danger' && (
               <svg
-                className={`w-8 h-8 ${iconColor}`}
+                className={`w-6 h-6 sm:w-7 sm:h-7 ${iconColor}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -69,7 +69,7 @@ export default function ConfirmModal({
             )}
             {type === 'warning' && (
               <svg
-                className={`w-8 h-8 ${iconColor}`}
+                className={`w-6 h-6 sm:w-7 sm:h-7 ${iconColor}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -84,7 +84,7 @@ export default function ConfirmModal({
             )}
             {type === 'info' && (
               <svg
-                className={`w-8 h-8 ${iconColor}`}
+                className={`w-6 h-6 sm:w-7 sm:h-7 ${iconColor}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -101,24 +101,24 @@ export default function ConfirmModal({
         </div>
 
         {/* Título */}
-        <h3 className="text-xl font-bold text-gray-900 text-center mb-2">
+        <h3 className="text-base sm:text-lg font-bold text-gray-900 text-center mb-1.5 sm:mb-2">
           {title}
         </h3>
 
         {/* Mensaje */}
-        <p className="text-gray-600 text-center mb-6">{message}</p>
+        <p className="text-xs sm:text-sm text-gray-600 text-center mb-3 sm:mb-5 leading-relaxed">{message}</p>
 
         {/* Botones */}
-        <div className="flex gap-3">
+        <div className="flex gap-2">
           <button
             onClick={onClose}
-            className="flex-1 px-4 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 font-medium transition-colors"
+            className="flex-1 px-3 py-2 text-xs sm:text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 font-medium transition-colors"
           >
             {cancelText}
           </button>
           <button
             onClick={handleConfirm}
-            className={`flex-1 px-4 py-2.5 text-white rounded-lg font-medium transition-colors ${buttonColor}`}
+            className={`flex-1 px-3 py-2 text-xs sm:text-sm text-white rounded-lg font-medium transition-colors ${buttonColor}`}
           >
             {confirmText}
           </button>

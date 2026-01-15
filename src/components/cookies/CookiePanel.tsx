@@ -92,12 +92,12 @@ export default function CookiePanel() {
       {!isExpanded && (
         <button
           onClick={() => setIsExpanded(true)}
-          className="fixed left-0 top-1/2 -translate-y-1/2 bg-primary text-white px-2 py-4 rounded-r-lg shadow-lg hover:bg-primary-dark transition-all z-50 flex flex-col items-center gap-1"
+          className="fixed left-0 top-1/2 -translate-y-1/2 bg-primary text-white px-2 py-3 rounded-r-lg shadow-lg hover:bg-primary-dark transition-all z-[350] flex flex-col items-center gap-1"
           aria-label="Configurar cookies"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+            className="h-4 w-4 sm:h-5 sm:w-5"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -109,7 +109,7 @@ export default function CookiePanel() {
               d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
             />
           </svg>
-          <span className="text-[10px] font-bold tracking-tight leading-tight flex flex-col">
+          <span className="text-[9px] sm:text-[10px] font-bold tracking-tight leading-tight flex flex-col">
             <span>C</span>
             <span>O</span>
             <span>O</span>
@@ -126,20 +126,20 @@ export default function CookiePanel() {
         <>
           {/* Overlay oscuro */}
           <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity"
+            className="fixed inset-0 bg-black bg-opacity-50 z-[390] transition-opacity"
             onClick={() => setIsExpanded(false)}
           />
 
           {/* Panel lateral */}
-          <div className="fixed left-0 top-0 h-full w-full sm:w-96 bg-white shadow-2xl z-50 overflow-y-auto animate-slide-in-left">
-            <div className="p-6">
+          <div className="fixed left-0 top-0 h-full w-full sm:w-96 bg-white shadow-2xl z-[400] overflow-y-auto animate-slide-in-left">
+            <div className="p-4 sm:p-5">
               {/* Header */}
-              <div className="flex items-start justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="bg-accent/10 p-2 rounded-lg">
+              <div className="flex items-start justify-between mb-4 sm:mb-5">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="bg-accent/10 p-1.5 sm:p-2 rounded-lg">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-accent"
+                      className="h-5 w-5 sm:h-6 sm:w-6 text-accent"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -153,22 +153,22 @@ export default function CookiePanel() {
                     </svg>
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold text-primary">
+                    <h2 className="text-base sm:text-lg font-bold text-primary">
                       Configuración de Cookies
                     </h2>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5">
                       Gestiona tus preferencias
                     </p>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsExpanded(false)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  className="text-gray-400 hover:text-gray-600 transition-colors p-1"
                   aria-label="Cerrar"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
+                    className="h-5 w-5 sm:h-6 sm:w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -184,18 +184,18 @@ export default function CookiePanel() {
               </div>
 
               {/* Descripción */}
-              <p className="text-sm text-gray-700 mb-6 leading-relaxed">
+              <p className="text-xs sm:text-sm text-gray-700 mb-4 sm:mb-5 leading-relaxed">
                 Utilizamos cookies para mejorar tu experiencia de navegación y analizar el uso de
                 nuestro sitio web. Puedes gestionar tus preferencias a continuación.
               </p>
 
               {/* Cookies Técnicas (siempre activas) */}
-              <div className="bg-gray-50 p-4 rounded-lg mb-4 border border-gray-200">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-semibold text-gray-900 text-sm flex items-center gap-2">
+              <div className="bg-gray-50 p-3 sm:p-4 rounded-lg mb-3 sm:mb-4 border border-gray-200">
+                <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+                  <h3 className="font-semibold text-gray-900 text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-green-600"
+                      className="h-4 w-4 sm:h-5 sm:w-5 text-green-600"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -207,23 +207,23 @@ export default function CookiePanel() {
                     </svg>
                     Cookies Técnicas
                   </h3>
-                  <span className="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded-full">
+                  <span className="text-[10px] sm:text-xs font-medium text-green-600 bg-green-100 px-2 py-0.5 sm:py-1 rounded-full">
                     Siempre activas
                   </span>
                 </div>
-                <p className="text-xs text-gray-600 leading-relaxed">
+                <p className="text-[10px] sm:text-xs text-gray-600 leading-relaxed">
                   Necesarias para el funcionamiento básico del sitio web. No se pueden
                   desactivar.
                 </p>
               </div>
 
               {/* Cookies de Análisis */}
-              <div className="bg-gray-50 p-4 rounded-lg mb-6 border border-gray-200">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-semibold text-gray-900 text-sm flex items-center gap-2">
+              <div className="bg-gray-50 p-3 sm:p-4 rounded-lg mb-4 sm:mb-5 border border-gray-200">
+                <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+                  <h3 className="font-semibold text-gray-900 text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-blue-600"
+                      className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -238,24 +238,24 @@ export default function CookiePanel() {
                       onChange={(e) => setAnalyticsEnabled(e.target.checked)}
                       className="sr-only peer"
                     />
-                    <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-accent/20 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent"></div>
+                    <div className="w-10 h-5 sm:w-11 sm:h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-accent/20 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 sm:after:h-5 sm:after:w-5 after:transition-all peer-checked:bg-accent"></div>
                   </label>
                 </div>
-                <p className="text-xs text-gray-600 leading-relaxed">
+                <p className="text-[10px] sm:text-xs text-gray-600 leading-relaxed">
                   Nos ayudan a entender cómo interactúas con nuestro sitio mediante Google
                   Analytics. Tu IP es anonimizada.
                 </p>
               </div>
 
               {/* Botones de acción */}
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <button
                   onClick={handleAcceptAll}
-                  className="w-full bg-accent text-white py-3 px-4 rounded-lg font-semibold hover:bg-accent/90 transition-colors shadow-md flex items-center justify-center gap-2"
+                  className="w-full bg-accent text-white py-2.5 sm:py-3 px-4 rounded-lg text-xs sm:text-sm font-semibold hover:bg-accent/90 transition-colors shadow-md flex items-center justify-center gap-2"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
+                    className="h-4 w-4 sm:h-5 sm:w-5"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
@@ -269,13 +269,13 @@ export default function CookiePanel() {
                 </button>
                 <button
                   onClick={handleSaveCustom}
-                  className="w-full bg-primary text-white py-3 px-4 rounded-lg font-semibold hover:bg-primary-dark transition-colors"
+                  className="w-full bg-primary text-white py-2.5 sm:py-3 px-4 rounded-lg text-xs sm:text-sm font-semibold hover:bg-primary-dark transition-colors"
                 >
                   Guardar preferencias
                 </button>
                 <button
                   onClick={handleRejectAll}
-                  className="w-full bg-gray-200 text-gray-700 py-3 px-4 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+                  className="w-full bg-gray-200 text-gray-700 py-2.5 sm:py-3 px-4 rounded-lg text-xs sm:text-sm font-semibold hover:bg-gray-300 transition-colors"
                 >
                   Rechazar todas
                 </button>
@@ -283,11 +283,11 @@ export default function CookiePanel() {
 
               {/* Estado actual */}
               {consent && (
-                <div className="mt-6 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                  <p className="text-xs text-blue-800 font-medium mb-1">
+                <div className="mt-4 sm:mt-5 p-2.5 sm:p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p className="text-[10px] sm:text-xs text-blue-800 font-medium mb-1">
                     ℹ️ Estado actual:
                   </p>
-                  <p className="text-xs text-blue-700">
+                  <p className="text-[10px] sm:text-xs text-blue-700">
                     Cookies de análisis:{' '}
                     <span className="font-bold">
                       {consent.analytics ? '✅ Activadas' : '❌ Desactivadas'}
@@ -297,7 +297,7 @@ export default function CookiePanel() {
               )}
 
               {/* Links legales */}
-              <div className="mt-6 pt-4 border-t border-gray-200 flex flex-wrap gap-4 justify-center text-xs">
+              <div className="mt-4 sm:mt-5 pt-3 sm:pt-4 border-t border-gray-200 flex flex-wrap gap-3 sm:gap-4 justify-center text-[10px] sm:text-xs">
                 <Link
                   href="/legal/cookies"
                   className="text-primary hover:text-accent underline transition-colors"

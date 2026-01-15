@@ -36,6 +36,9 @@ Sitio web completo para **Alemán y Pajarón**, técnicos de edificación y gest
 - ✅ Deploy automático con Vercel
 - ✅ Imágenes optimizadas
 - ✅ Analytics integrado
+- ✅ **PWA (Progressive Web App) instalable**
+- ✅ **Sistema de notificaciones push en tiempo real**
+- ✅ **Sesión persistente del administrador (nunca expira)**
 
 ---
 
@@ -96,6 +99,56 @@ NEXT_PUBLIC_TINYMCE_API_KEY=tu-tinymce-api-key
 **En Vercel estas variables ya están configuradas** en Settings → Environment Variables.
 
 📖 **Más info:** Ver [`CREAR_ENV_LOCAL.md`](CREAR_ENV_LOCAL.md) y [`CONFIGURAR_TINYMCE_VERCEL.md`](CONFIGURAR_TINYMCE_VERCEL.md)
+
+---
+
+## 📱 PWA & Notificaciones Push
+
+### Progressive Web App (PWA)
+
+La aplicación está configurada como PWA instalable:
+
+- ✅ **Manifest.json** configurado con iconos y branding
+- ✅ **Service Worker** para funcionamiento offline
+- ✅ **Instalable** en móviles y escritorio (funciona como app nativa)
+- ✅ **Tema personalizado** con colores de la marca
+- ✅ **Splash screens** configuradas
+- ✅ **Standalone mode** (sin barra del navegador)
+
+**Para instalar:**
+1. Visita la web en Chrome/Safari
+2. Click en "Añadir a pantalla de inicio"
+3. La app se instala como aplicación nativa
+
+### Sistema de Notificaciones Push
+
+El administrador puede recibir **notificaciones push en tiempo real** cuando lleguen:
+- 📧 Nuevos mensajes de contacto
+- 💼 Nuevas solicitudes de presupuesto
+- 📰 Nuevas suscripciones al newsletter
+
+**Características:**
+- ✅ **Funciona con la app cerrada** o móvil bloqueado
+- ✅ **Múltiples dispositivos** (móvil, tablet, PC)
+- ✅ **Sesión persistente** (nunca expira)
+- ✅ **Sin proveedores externos** (solo Supabase)
+- ✅ **Coste: 0€** (100% nativo)
+- ✅ **Panel de control** en el dashboard del admin
+
+**Configuración:**
+
+📖 **Guía completa:** [`PUSH_NOTIFICATIONS_SETUP.md`](PUSH_NOTIFICATIONS_SETUP.md)  
+📖 **Resumen rápido:** [`PUSH_NOTIFICATIONS_README.md`](PUSH_NOTIFICATIONS_README.md)  
+📖 **Implementación:** [`IMPLEMENTACION_COMPLETA.md`](IMPLEMENTACION_COMPLETA.md)
+
+**Requisitos:**
+1. Generar VAPID keys: `npx web-push generate-vapid-keys`
+2. Configurar variables en `.env.local` y Supabase
+3. Ejecutar scripts SQL en Supabase
+4. Desplegar Edge Function
+5. Activar notificaciones desde el panel de admin
+
+**Tiempo de configuración:** ~20 minutos
 
 ---
 
@@ -336,6 +389,10 @@ Cada una con:
 - ✅ **Bypass RLS** con Service Role Key para operaciones admin
 - ✅ **Notificaciones toast** para feedback inmediato
 - ✅ **Completamente oculto** de motores de búsqueda, robots, Analytics y cache público
+- ✅ **PWA instalable** en dispositivos móviles (funciona como app nativa)
+- ✅ **Sesión persistente** (nunca expira, como una app nativa)
+- ✅ **Notificaciones push** en tiempo real cuando lleguen nuevos contactos/presupuestos
+- ✅ **Service Worker** integrado para funcionamiento offline
 
 ### 📝 Editor de Contenido (TinyMCE)
 - ✅ **Menús completos**: File, Edit, View, Insert, Format, Tools, Table, Help
@@ -740,7 +797,9 @@ El panel de administración (`/administrator`) está **completamente oculto**:
 - [ ] Convertir imágenes a WebP/AVIF automáticamente
 - [ ] Implementar ISR en blog
 - [ ] A/B testing con Vercel
-- [ ] PWA (Progressive Web App)
+- [x] **PWA (Progressive Web App)** ✅ Implementada
+- [x] **Notificaciones Push** ✅ Implementadas
+- [x] **Sesión Persistente** ✅ Implementada
 - [ ] Lazy loading de imágenes en galerías
 
 ---

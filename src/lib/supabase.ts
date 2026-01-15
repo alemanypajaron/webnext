@@ -17,7 +17,9 @@ if (!supabaseUrl || !supabaseAnonKey) {
 // Cliente de Supabase
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
-    persistSession: false, // No necesitamos autenticación de usuarios
+    persistSession: true, // Mantener sesión del admin persistente (como app nativa)
+    autoRefreshToken: true, // Refrescar automáticamente el token
+    detectSessionInUrl: true, // Detectar sesión en URL (para magic links, etc.)
   },
 });
 

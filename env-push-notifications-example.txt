@@ -1,0 +1,85 @@
+# ================================================================
+# EJEMPLO DE CONFIGURACIÓN - NOTIFICACIONES PUSH
+# ================================================================
+# Copia este contenido a tu .env.local y rellena los valores
+
+# ================================================================
+# 1. VAPID Keys (Web Push)
+# ================================================================
+# Genera estas keys ejecutando: npx web-push generate-vapid-keys
+# La Public Key es segura compartirla (se usa en el navegador)
+# La Private Key NUNCA debe compartirse ni subirse a Git
+
+# Public Key (comienza con 'B' y tiene ~87 caracteres)
+NEXT_PUBLIC_VAPID_PUBLIC_KEY=BEl62iUYgUivxIkv69yViEuiBIa-Ib27SzV2e0m5K...
+
+# Private Key (solo se usa en Supabase Edge Functions, NO en Next.js)
+# Solo necesitas añadirla aquí para tenerla documentada
+# VAPID_PRIVATE_KEY=fwovCNWKNuVnPKZi_LjWBvqwQlwuiUPBhY5wGw...
+
+# Subject (email de contacto, formato mailto:)
+VAPID_SUBJECT=mailto:contacto@alemanypajaron.com
+
+# ================================================================
+# 2. Supabase (Ya deberías tener estas configuradas)
+# ================================================================
+# Estas variables ya están en tu .env.local actual
+# Las incluimos aquí solo como referencia
+
+# NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
+# NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+# SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... (para admin)
+
+# ================================================================
+# 3. NOTAS IMPORTANTES
+# ================================================================
+# 
+# ✅ Variables que VAN en .env.local (Next.js local):
+#    - NEXT_PUBLIC_VAPID_PUBLIC_KEY
+#    - VAPID_SUBJECT
+#    - NEXT_PUBLIC_SUPABASE_URL
+#    - NEXT_PUBLIC_SUPABASE_ANON_KEY
+#    - SUPABASE_SERVICE_ROLE_KEY
+#
+# ✅ Variables que VAN en Vercel (producción):
+#    - NEXT_PUBLIC_VAPID_PUBLIC_KEY
+#    - VAPID_SUBJECT
+#    - NEXT_PUBLIC_SUPABASE_URL
+#    - NEXT_PUBLIC_SUPABASE_ANON_KEY
+#    - SUPABASE_SERVICE_ROLE_KEY
+#
+# ✅ Variables que VAN en Supabase Edge Functions:
+#    - VAPID_PUBLIC_KEY (sin prefijo NEXT_PUBLIC_)
+#    - VAPID_PRIVATE_KEY
+#    - VAPID_SUBJECT
+#
+# ✅ Variables que VAN en Supabase Database (SQL):
+#    - app.supabase_url
+#    - app.supabase_service_role_key
+#
+# ================================================================
+# 4. CÓMO GENERAR LAS VAPID KEYS
+# ================================================================
+#
+# Opción 1: Usando npx (recomendado)
+# $ npx web-push generate-vapid-keys
+#
+# Opción 2: Usando el script de instalación
+# $ .\instalar-push-notifications.ps1
+#
+# Opción 3: Online (menos seguro)
+# https://vapidkeys.com/
+#
+# ================================================================
+# 5. DÓNDE CONSEGUIR LAS OTRAS VARIABLES
+# ================================================================
+#
+# SUPABASE_URL y SUPABASE_ANON_KEY:
+# → Supabase Dashboard → Project Settings → API → Project URL
+# → Supabase Dashboard → Project Settings → API → anon/public key
+#
+# SUPABASE_SERVICE_ROLE_KEY:
+# → Supabase Dashboard → Project Settings → API → service_role key
+# ⚠️  Esta key tiene permisos de administrador, manténla secreta
+#
+# ================================================================
