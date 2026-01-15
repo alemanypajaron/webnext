@@ -2,7 +2,6 @@ import { createClient } from '@/lib/supabase-server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { redirect } from 'next/navigation';
 import ContactosTable from '@/components/admin/ContactosTable';
-import PushNotificationSettings from '@/components/admin/PushNotificationSettings';
 
 export default async function AdminContactosPage() {
   // Verificar autenticación
@@ -37,11 +36,6 @@ export default async function AdminContactosPage() {
         <p className="text-gray-600">
           Consulta y gestiona los mensajes de contacto recibidos
         </p>
-      </div>
-
-      {/* Configuración de notificaciones push */}
-      <div className="mb-8">
-        <PushNotificationSettings />
       </div>
 
       {/* Estadísticas */}
