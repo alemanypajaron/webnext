@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import PageHeader from '@/components/ui/PageHeader';
-import { getProyectos } from '@/lib/data';
+import ProyectosDestacadosSlider from '@/components/ui/ProyectosDestacadosSlider';
+import { getProyectos, getProyectosDestacados } from '@/lib/data';
 
 // ISR: Regenerar cada minuto para contenido dinámico
 export const revalidate = 60;
@@ -30,6 +31,7 @@ export const metadata: Metadata = {
 
 export default async function ProyectosPage() {
   const proyectos = await getProyectos();
+  const proyectosDestacados = await getProyectosDestacados();
 
   return (
     <>
@@ -41,6 +43,15 @@ export default async function ProyectosPage() {
         imageAlt="Proyectos de arquitectura en Murcia"
         highlightedWord="Proyectos"
       />
+
+      {/* Sección de Proyectos Destacados */}
+      {proyectosDestacados.length > 0 && (
+        <section className="section bg-gradient-to-b from-gray-50 to-white">
+          <div className="max-w-[1280px] mx-auto px-6">
+            <ProyectosDestacadosSlider proyectos={proyectosDestacados} />
+          </div>
+        </section>
+      )}
 
       <section className="section">
         <div className="max-w-[1280px] mx-auto px-6">
@@ -56,10 +67,13 @@ export default async function ProyectosPage() {
           ) : (
             <>
               {/* Intro */}
-              <div className="text-center mb-16">
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
+                  Todos los Proyectos
+                </h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                   Cada proyecto es único y refleja nuestro compromiso con la excelencia en arquitectura técnica.
-                  Aquí mostramos algunos de nuestros trabajos más destacados en Murcia y alrededores.
+                  Explora nuestros trabajos en Murcia y alrededores.
                 </p>
               </div>
 
