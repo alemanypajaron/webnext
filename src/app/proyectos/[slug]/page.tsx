@@ -122,14 +122,15 @@ export default async function ProyectoPage({ params }: Props) {
             {/* Contenido principal */}
             <div className="lg:col-span-2">
               <div
-                className="prose prose-lg max-w-none 
-                  prose-headings:text-primary prose-headings:font-heading prose-headings:font-bold
-                  prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-12 prose-h2:border-b prose-h2:border-accent/20 prose-h2:pb-3
-                  prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-8
-                  prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4
-                  prose-ul:my-6 prose-li:text-gray-700 prose-li:mb-2
-                  prose-strong:text-primary prose-strong:font-semibold
-                  prose-a:text-accent prose-a:no-underline hover:prose-a:underline"
+                className="prose prose-lg max-w-none bg-white p-8 rounded-xl shadow-lg
+                  [&>h2]:text-3xl [&>h2]:text-primary [&>h2]:font-heading [&>h2]:font-bold [&>h2]:mb-6 [&>h2]:mt-8 [&>h2]:first:mt-0 [&>h2]:border-b [&>h2]:border-gray-200 [&>h2]:pb-3
+                  [&>h3]:text-2xl [&>h3]:text-primary [&>h3]:font-heading [&>h3]:font-semibold [&>h3]:mb-4 [&>h3]:mt-6
+                  [&>p]:text-gray-700 [&>p]:leading-relaxed [&>p]:mb-4 [&>p]:text-base
+                  [&>ul]:my-6 [&>ul]:space-y-2 
+                  [&>ul>li]:text-gray-700 [&>ul>li]:leading-relaxed [&>ul>li]:pl-2
+                  [&>ul>li]:before:content-['•'] [&>ul>li]:before:text-accent [&>ul>li]:before:font-bold [&>ul>li]:before:mr-2
+                  [&>strong]:text-primary [&>strong]:font-semibold
+                  [&>a]:text-accent [&>a]:no-underline hover:[&>a]:underline"
                 dangerouslySetInnerHTML={{ __html: proyecto.descripcion_completa }}
               />
             </div>
