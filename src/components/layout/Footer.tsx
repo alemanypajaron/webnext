@@ -300,15 +300,6 @@ const Footer = () => {
                 ESKALA Agencia de Marketing Digital
               </a>
             </span>
-            <span className="hidden sm:inline"> · </span>
-            <span className="block sm:inline mt-1 sm:mt-0">
-              <Link
-                href="/administrator/login"
-                className="text-gray-500 hover:text-gray-400 transition-colors text-[10px] opacity-30 hover:opacity-50"
-              >
-                ⚙️
-              </Link>
-            </span>
           </div>
         </div>
       </div>
