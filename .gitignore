@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Datos locales de proyectos (ya están en Supabase)
+imagenes_proyectos/
+datos_proyectos_generados/
+datos_proyectos_enriquecidos/
+log-subida-proyectos.json
