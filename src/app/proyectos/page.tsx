@@ -8,15 +8,15 @@ import { getProyectos } from '@/lib/data';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Proyectos de Arquitectura y Reformas en Murcia | Portfolio +250 Obras',
-  description: 'Portfolio de proyectos realizados en Murcia por Alemán y Pajarón. Más de 250 obras completadas: reformas integrales, dirección de obra, viviendas, locales comerciales y proyectos de rehabilitación.',
+  title: 'Proyectos de Arquitectura y Reformas en Murcia | Portfolio +50 Obras',
+  description: 'Portfolio de proyectos realizados en Murcia por Alemán y Pajarón. Más de 50 obras completadas: reformas integrales, dirección de obra, viviendas, locales comerciales y proyectos de rehabilitación. Ver algunos de nuestros trabajos más destacados.',
   keywords: 'proyectos arquitectura murcia, portfolio obras murcia, reformas murcia ejemplos, proyectos reforma murcia, obras realizadas murcia, portfolio arquitecto técnico murcia',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/proyectos',
   },
   openGraph: {
     title: 'Proyectos Realizados en Murcia | Alemán y Pajarón',
-    description: 'Más de 250 proyectos de reformas y obras completadas en Murcia. Ver portfolio.',
+    description: 'Más de 50 proyectos de reformas y obras completadas en Murcia. Ver portfolio con algunos de nuestros trabajos más destacados.',
     url: 'https://www.alemanypajaron.es/proyectos',
     type: 'website',
     locale: 'es_ES',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Portfolio de Proyectos | Alemán y Pajarón Murcia',
-    description: '+250 proyectos de arquitectura y reformas en Murcia.',
+    description: '+50 proyectos de arquitectura y reformas en Murcia.',
   },
 };
 
@@ -36,7 +36,7 @@ export default async function ProyectosPage() {
       <PageHeader
         badge="Portfolio"
         title="Nuestros Proyectos"
-        subtitle="Más de 250 proyectos completados en Murcia"
+        subtitle="Más de 50 proyectos completados en Murcia"
         image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Proyectos de arquitectura en Murcia"
         highlightedWord="Proyectos"
@@ -59,7 +59,7 @@ export default async function ProyectosPage() {
               <div className="text-center mb-16">
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                   Cada proyecto es único y refleja nuestro compromiso con la excelencia en arquitectura técnica.
-                  Descubre algunos de nuestros trabajos más destacados en Murcia y alrededores.
+                  Aquí mostramos algunos de nuestros trabajos más destacados en Murcia y alrededores.
                 </p>
               </div>
 
