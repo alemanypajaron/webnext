@@ -22,6 +22,13 @@ export default function ContactForm() {
         setMessage({ type: 'success', text: result.message });
         // Resetear formulario
         (event.target as HTMLFormElement).reset();
+        
+        // Abrir WhatsApp si está disponible la URL
+        if (result.whatsappUrl) {
+          setTimeout(() => {
+            window.open(result.whatsappUrl, '_blank');
+          }, 500);
+        }
       } else {
         setMessage({ type: 'error', text: result.message });
       }

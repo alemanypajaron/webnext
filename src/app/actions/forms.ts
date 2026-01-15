@@ -12,7 +12,65 @@ type FormResponse = {
   success: boolean;
   message: string;
   error?: string;
+  whatsappUrl?: string;
 };
+
+// =====================================================
+// Función auxiliar: Generar URL de WhatsApp
+// =====================================================
+
+const WHATSAPP_NUMBER = '34650075842'; // Tu número de WhatsApp con código de país
+
+function generarWhatsAppContacto(datos: {
+  nombre: string;
+  email: string;
+  telefono?: string;
+  mensaje: string;
+}): string {
+  const mensaje = `🏗️ *NUEVO CONTACTO WEB*
+
+👤 *Cliente:* ${datos.nombre}
+📧 *Email:* ${datos.email}
+${datos.telefono ? `📱 *Teléfono:* ${datos.telefono}` : ''}
+
+💬 *Mensaje:*
+${datos.mensaje}
+
+---
+_Enviado desde alemanypajaron.es_`;
+
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
+}
+
+function generarWhatsAppPresupuesto(datos: {
+  nombre: string;
+  email: string;
+  telefono: string;
+  tipo_proyecto: string;
+  ubicacion?: string;
+  presupuesto_estimado?: string;
+  fecha_inicio_estimada?: string;
+  descripcion: string;
+}): string {
+  const mensaje = `🏗️ *NUEVA SOLICITUD DE PRESUPUESTO*
+
+👤 *Cliente:* ${datos.nombre}
+📧 *Email:* ${datos.email}
+📱 *Teléfono:* ${datos.telefono}
+
+📋 *Tipo de Proyecto:* ${datos.tipo_proyecto}
+${datos.ubicacion ? `📍 *Ubicación:* ${datos.ubicacion}` : ''}
+${datos.presupuesto_estimado ? `💰 *Presupuesto Estimado:* ${datos.presupuesto_estimado}` : ''}
+${datos.fecha_inicio_estimada ? `📅 *Inicio Previsto:* ${new Date(datos.fecha_inicio_estimada).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}` : ''}
+
+📝 *Descripción:*
+${datos.descripcion}
+
+---
+_Enviado desde alemanypajaron.es_`;
+
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
+}
 
 // =====================================================
 // Acción: Enviar Formulario de Contacto
@@ -83,9 +141,13 @@ export async function submitContactForm(formData: FormData): Promise<FormRespons
       };
     }
 
+    // Generar URL de WhatsApp para notificación
+    const whatsappUrl = generarWhatsAppContacto(contacto);
+
     return {
       success: true,
       message: '¡Gracias por contactarnos! Te responderemos pronto.',
+      whatsappUrl,
     };
   } catch (error) {
     console.error('Error inesperado en submitContactForm:', error);
@@ -187,9 +249,13 @@ export async function submitPresupuestoForm(formData: FormData): Promise<FormRes
       };
     }
 
+    // Generar URL de WhatsApp para notificación
+    const whatsappUrl = generarWhatsAppPresupuesto(presupuesto);
+
     return {
       success: true,
       message: '¡Solicitud recibida! Te contactaremos pronto para discutir tu proyecto.',
+      whatsappUrl,
     };
   } catch (error) {
     console.error('Error inesperado en submitPresupuestoForm:', error);

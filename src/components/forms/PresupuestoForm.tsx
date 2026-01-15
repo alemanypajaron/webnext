@@ -30,6 +30,13 @@ export default function PresupuestoForm() {
         (event.target as HTMLFormElement).reset();
         // Scroll al mensaje
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // Abrir WhatsApp si está disponible la URL
+        if (result.whatsappUrl) {
+          setTimeout(() => {
+            window.open(result.whatsappUrl, '_blank');
+          }, 500);
+        }
       } else {
         setMessage({ type: 'error', text: result.message });
         // Scroll al mensaje
