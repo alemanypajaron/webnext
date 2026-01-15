@@ -27,16 +27,16 @@ function generarWhatsAppContacto(datos: {
   telefono?: string;
   mensaje: string;
 }): string {
-  const mensaje = `🏗️ *NUEVO CONTACTO WEB*
+  const mensaje = `*🏗 NUEVO CONTACTO WEB*
 
-👤 *Cliente:* ${datos.nombre}
-📧 *Email:* ${datos.email}
-${datos.telefono ? `📱 *Teléfono:* ${datos.telefono}` : ''}
+*Cliente:* ${datos.nombre}
+*Email:* ${datos.email}
+${datos.telefono ? `*Teléfono:* ${datos.telefono}` : ''}
 
-💬 *Mensaje:*
+*Mensaje:*
 ${datos.mensaje}
 
----
+━━━━━━━━━━━━━━━
 _Enviado desde alemanypajaron.es_`;
 
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
@@ -52,21 +52,21 @@ function generarWhatsAppPresupuesto(datos: {
   fecha_inicio_estimada?: string;
   descripcion: string;
 }): string {
-  const mensaje = `🏗️ *NUEVA SOLICITUD DE PRESUPUESTO*
+  const mensaje = `*🏗 NUEVA SOLICITUD DE PRESUPUESTO*
 
-👤 *Cliente:* ${datos.nombre}
-📧 *Email:* ${datos.email}
-📱 *Teléfono:* ${datos.telefono}
+*Cliente:* ${datos.nombre}
+*Email:* ${datos.email}
+*Teléfono:* ${datos.telefono}
 
-📋 *Tipo de Proyecto:* ${datos.tipo_proyecto}
-${datos.ubicacion ? `📍 *Ubicación:* ${datos.ubicacion}` : ''}
-${datos.presupuesto_estimado ? `💰 *Presupuesto Estimado:* ${datos.presupuesto_estimado}` : ''}
-${datos.fecha_inicio_estimada ? `📅 *Inicio Previsto:* ${new Date(datos.fecha_inicio_estimada).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}` : ''}
+*Tipo:* ${datos.tipo_proyecto}
+${datos.ubicacion ? `*Ubicación:* ${datos.ubicacion}` : ''}
+${datos.presupuesto_estimado ? `*Presupuesto:* ${datos.presupuesto_estimado}` : ''}
+${datos.fecha_inicio_estimada ? `*Inicio:* ${new Date(datos.fecha_inicio_estimada).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}` : ''}
 
-📝 *Descripción:*
+*Descripción:*
 ${datos.descripcion}
 
----
+━━━━━━━━━━━━━━━
 _Enviado desde alemanypajaron.es_`;
 
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;

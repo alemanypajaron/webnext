@@ -1,13 +1,36 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { loginAction } from '@/app/actions/auth';
 import toast, { Toaster } from 'react-hot-toast';
+import Link from 'next/link';
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPWABanner, setShowPWABanner] = useState(false);
+  const [isPWA, setIsPWA] = useState(false);
+
+  useEffect(() => {
+    // Detectar si está en modo PWA
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+    const isIOSStandalone = (window.navigator as any).standalone === true;
+    setIsPWA(isStandalone || isIOSStandalone);
+
+    // Mostrar banner si NO es PWA y no se ha cerrado antes
+    if (!isStandalone && !isIOSStandalone) {
+      const dismissed = localStorage.getItem('pwa-banner-dismissed');
+      if (!dismissed) {
+        setShowPWABanner(true);
+      }
+    }
+  }, []);
+
+  const dismissPWABanner = () => {
+    setShowPWABanner(false);
+    localStorage.setItem('pwa-banner-dismissed', 'true');
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,8 +60,66 @@ export default function AdminLoginPage() {
   return (
     <>
       <Toaster position="top-right" />
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-primary-light">
-        <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-primary-light p-4">
+        <div className="w-full max-w-md space-y-4">
+          {/* Banner PWA */}
+          {showPWABanner && !isPWA && (
+            <div className="bg-gradient-to-r from-accent to-yellow-400 rounded-xl p-4 shadow-lg animate-fade-in">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">📱</div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-primary mb-1">
+                    ¡Instala la App!
+                  </h3>
+                  <p className="text-sm text-primary-dark mb-3">
+                    Accede más rápido desde tu pantalla de inicio
+                  </p>
+                  <div className="flex gap-2">
+                    <Link
+                      href="/administrator/instalar-pwa"
+                      className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary-dark transition-colors"
+                    >
+                      Ver cómo instalar
+                    </Link>
+                    <button
+                      onClick={dismissPWABanner}
+                      className="px-4 py-2 bg-white/20 text-primary rounded-lg text-sm hover:bg-white/30 transition-colors"
+                    >
+                      Ahora no
+                    </button>
+                  </div>
+                </div>
+                <button
+                  onClick={dismissPWABanner}
+                  className="text-primary hover:text-primary-dark transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Indicador PWA */}
+          {isPWA && (
+            <div className="bg-green-500 text-white rounded-lg p-3 shadow-lg text-center">
+              <span className="text-sm font-medium">
+                ✓ Ejecutándose como App instalada
+              </span>
+            </div>
+          )}
+
+          <div className="bg-white p-8 rounded-2xl shadow-2xl">
           {/* Logo */}
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-accent rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -123,6 +204,7 @@ export default function AdminLoginPage() {
               </svg>
               Acceso restringido solo para administradores
             </p>
+          </div>
           </div>
         </div>
       </div>

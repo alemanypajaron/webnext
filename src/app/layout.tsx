@@ -10,6 +10,7 @@ import ScrollToTop from '@/components/ui/ScrollToTop';
 import PageViewTracker from '@/components/analytics/PageViewTracker';
 import ConditionalAnalytics from '@/components/cookies/ConditionalAnalytics';
 import CookiePanel from '@/components/cookies/CookiePanel';
+import PWAAdminRedirect from '@/components/pwa/PWAAdminRedirect';
 
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '0RDY_vpUpTMgVPTIlKlOknWHNu_iRjPnSprwINucMgg';
 
@@ -115,6 +116,7 @@ export default function RootLayout({
       <body className="font-sans antialiased bg-white text-gray-900">
         <Suspense fallback={null}>
           <PageViewTracker />
+          <PWAAdminRedirect />
         </Suspense>
         <CookiePanel />
         <Header />
