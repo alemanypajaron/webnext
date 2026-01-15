@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import ScrollToTop from '@/components/ui/ScrollToTop';
+import CookiePanel from '@/components/cookies/CookiePanel';
 
 export default function ConditionalLayout({
   children,
@@ -14,12 +15,12 @@ export default function ConditionalLayout({
   const pathname = usePathname();
   const isAdmin = pathname?.startsWith('/administrator');
 
-  // Si es admin, solo mostramos el children (sin header/footer)
+  // Si es admin, solo mostramos el children (sin header/footer/cookies)
   if (isAdmin) {
     return <>{children}</>;
   }
 
-  // Si es página pública, mostramos todo
+  // Si es página pública, mostramos todo (incluido el panel de cookies)
   return (
     <>
       <Header />
@@ -27,6 +28,7 @@ export default function ConditionalLayout({
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />
+      <CookiePanel />
     </>
   );
 }

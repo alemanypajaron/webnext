@@ -6,7 +6,6 @@ import './globals.css';
 import ConditionalLayout from '@/components/layout/ConditionalLayout';
 import PageViewTracker from '@/components/analytics/PageViewTracker';
 import ConditionalAnalytics from '@/components/cookies/ConditionalAnalytics';
-import CookiePanel from '@/components/cookies/CookiePanel';
 
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '0RDY_vpUpTMgVPTIlKlOknWHNu_iRjPnSprwINucMgg';
 
@@ -113,7 +112,6 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <PageViewTracker />
         </Suspense>
-        <CookiePanel />
         <ConditionalLayout>{children}</ConditionalLayout>
         <SpeedInsights />
       </body>
