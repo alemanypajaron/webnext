@@ -122,7 +122,14 @@ export default async function ProyectoPage({ params }: Props) {
             {/* Contenido principal */}
             <div className="lg:col-span-2">
               <div
-                className="prose prose-lg max-w-none"
+                className="prose prose-lg max-w-none 
+                  prose-headings:text-primary prose-headings:font-heading prose-headings:font-bold
+                  prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-12 prose-h2:border-b prose-h2:border-accent/20 prose-h2:pb-3
+                  prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-8
+                  prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4
+                  prose-ul:my-6 prose-li:text-gray-700 prose-li:mb-2
+                  prose-strong:text-primary prose-strong:font-semibold
+                  prose-a:text-accent prose-a:no-underline hover:prose-a:underline"
                 dangerouslySetInnerHTML={{ __html: proyecto.descripcion_completa }}
               />
             </div>
