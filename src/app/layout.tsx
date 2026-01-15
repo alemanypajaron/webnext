@@ -116,7 +116,6 @@ export default function RootLayout({
       <body className="font-sans antialiased bg-white text-gray-900">
         <Suspense fallback={null}>
           <PageViewTracker />
-          <PWAAdminRedirect />
         </Suspense>
         <CookiePanel />
         <Header />
