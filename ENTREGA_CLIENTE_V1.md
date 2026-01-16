@@ -17,6 +17,7 @@
 ### Panel de Administración
 - **URL Login:** https://www.alemanypajaron.es/administrator/login
 - **Dashboard:** https://www.alemanypajaron.es/administrator
+- **Instrucciones PWA:** https://www.alemanypajaron.es/instrucciones-pwa
 
 ---
 
@@ -78,9 +79,24 @@
 - ✅ **Splash screen** personalizada
 
 #### Cómo Instalar la PWA
+**Guía visual completa:** https://www.alemanypajaron.es/instrucciones-pwa
+
+**Resumen rápido:**
+
 1. Abrir https://www.alemanypajaron.es en Chrome/Safari
 2. Click en "Añadir a pantalla de inicio"
 3. La app se instala como aplicación nativa
+
+**iPhone (Safari):**
+1. Abrir web en Safari
+2. Tocar botón "Compartir" (cuadrado con flecha)
+3. "Añadir a pantalla de inicio"
+4. Confirmar con "Añadir"
+
+**Android (Chrome):**
+1. Abrir web en Chrome
+2. Menú (tres puntos) → "Añadir a pantalla de inicio"
+3. Confirmar instalación
 
 ### 🔔 Notificaciones PUSH en Tiempo Real
 
