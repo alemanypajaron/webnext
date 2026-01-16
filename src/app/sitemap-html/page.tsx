@@ -49,7 +49,7 @@ export default async function SitemapHTMLPage() {
             Total de páginas: {
               4 + // Páginas principales
               6 + // Servicios generales (menú)
-              2 + // Reformas vivienda
+              6 + // Reformas vivienda
               7 + // Reformas negocios
               7 + // Licencias específicas
               3 + // Legales
@@ -191,6 +191,38 @@ export default async function SitemapHTMLPage() {
                   className="text-gray-700 hover:text-primary hover:underline transition-colors"
                 >
                   Reforma de Cocina
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/reforma-tejados"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Reforma de Tejados
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/reforma-terraza"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Reforma de Terraza
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/cambio-ventanas-pvc"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Cambio Ventanas PVC
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/reforma-piscina"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Construcción y Reforma Piscina
                 </Link>
               </li>
             </ul>
