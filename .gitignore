@@ -45,3 +45,11 @@ imagenes_proyectos/
 datos_proyectos_generados/
 datos_proyectos_enriquecidos/
 log-subida-proyectos.json
+
+# Archivos archivados (históricos, no necesarios en repo)
+docs-old/
+scripts-old/
+supabase/sql-old/
+
+# Claves privadas y credenciales
+VAPID_KEYS_GENERADAS.md

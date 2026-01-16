@@ -1,44 +1,44 @@
-# Alemán y Pajarón - Web Corporativa Next.js
+# 🏗️ Alemán y Pajarón - Web Corporativa Next.js
 
 **Sitio web profesional de gestión de obras y proyectos construido con Next.js 15, React 19, TypeScript y Tailwind CSS**
 
 🌐 **En producción:** [www.alemanypajaron.es](https://www.alemanypajaron.es)  
-📦 **Repositorio:** [github.com/alemanypajaron/webnext](https://github.com/alemanypajaron/webnext)
+📦 **Repositorio:** [github.com/alemanypajaron/webnext](https://github.com/alemanypajaron/webnext)  
+📱 **Versión:** 1.0.0 - Producción Estable
 
 ---
 
 ## 🎯 Sobre el Proyecto
 
 Sitio web completo para **Alemán y Pajarón**, técnicos de edificación y gestores de obras especializados en gestión de proyectos en Murcia:
-- Dirección de obra
-- Reformas integrales
-- Gestión de proyectos
-- Licencias y permisos
-- Asesoramiento técnico
-- Diseño de espacios
+- ✅ Dirección de obra
+- ✅ Reformas integrales
+- ✅ Gestión de proyectos
+- ✅ Licencias y permisos
+- ✅ Asesoramiento técnico
+- ✅ Diseño de espacios
 
 ---
 
 ## ✅ Estado del Proyecto
 
-**✨ PROYECTO COMPLETO Y EN PRODUCCIÓN**
+**🎉 VERSIÓN 1.0 - PRODUCCIÓN ESTABLE**
 
-- ✅ 21 páginas completamente funcionales
-- ✅ 6 páginas de servicios con contenido SEO optimizado e íconos homogeneizados
-- ✅ Componentes reutilizables (Header, Footer, FAQ, PageHeader, Newsletter)
-- ✅ SEO completo (metadata, sitemap, robots.txt, JSON-LD)
-- ✅ Blog con editor TinyMCE profesional
-- ✅ Panel de administración completo (contactos, presupuestos, blog, proyectos, newsletter)
-- ✅ Sistema de gestión de imágenes con Supabase Storage
-- ✅ Formularios funcionales (contacto, presupuesto, newsletter)
-- ✅ Contador de visitas en artículos del blog
-- ✅ Diseño responsive y accesible
-- ✅ Deploy automático con Vercel
-- ✅ Imágenes optimizadas
-- ✅ Analytics integrado
-- ✅ **PWA (Progressive Web App) instalable**
-- ✅ **Sistema de notificaciones push en tiempo real**
-- ✅ **Sesión persistente del administrador (nunca expira)**
+### Funcionalidades Principales
+- ✅ **21 páginas** completamente funcionales
+- ✅ **6 servicios** con contenido SEO optimizado
+- ✅ **Blog dinámico** con editor TinyMCE profesional
+- ✅ **Portfolio de proyectos** con galería de imágenes
+- ✅ **Panel de administración** completo y seguro
+- ✅ **PWA instalable** (funciona como app nativa)
+- ✅ **Notificaciones PUSH** en tiempo real
+- ✅ **Sesión persistente** (nunca expira en móvil)
+- ✅ **SEO completo** (metadata, sitemap, JSON-LD)
+- ✅ **Analytics integrado** con Google Analytics
+- ✅ **Deploy automático** con Vercel
+- ✅ **Base de datos** Supabase PostgreSQL
+- ✅ **Storage** para imágenes y multimedia
+- ✅ **Responsive** perfecto en todos los dispositivos
 
 ---
 
@@ -106,49 +106,40 @@ NEXT_PUBLIC_TINYMCE_API_KEY=tu-tinymce-api-key
 
 ### Progressive Web App (PWA)
 
-La aplicación está configurada como PWA instalable:
+La aplicación está configurada como **PWA instalable** en dispositivos móviles y escritorio:
 
-- ✅ **Manifest.json** configurado con iconos y branding
-- ✅ **Service Worker** para funcionamiento offline
-- ✅ **Instalable** en móviles y escritorio (funciona como app nativa)
-- ✅ **Tema personalizado** con colores de la marca
-- ✅ **Splash screens** configuradas
-- ✅ **Standalone mode** (sin barra del navegador)
+- ✅ **Instalable** como app nativa (sin tiendas de aplicaciones)
+- ✅ **Funciona offline** con Service Worker
+- ✅ **Icono en pantalla de inicio**
+- ✅ **Sin barra del navegador** (modo standalone)
+- ✅ **Splash screen** personalizada
+- ✅ **Tema corporativo** con colores de marca
 
-**Para instalar:**
-1. Visita la web en Chrome/Safari
+**Cómo instalar:**
+1. Visita [www.alemanypajaron.es](https://www.alemanypajaron.es) en Chrome/Safari
 2. Click en "Añadir a pantalla de inicio"
 3. La app se instala como aplicación nativa
 
-### Sistema de Notificaciones Push
+### Notificaciones Push en Tiempo Real
 
-El administrador puede recibir **notificaciones push en tiempo real** cuando lleguen:
-- 📧 Nuevos mensajes de contacto
-- 💼 Nuevas solicitudes de presupuesto
-- 📰 Nuevas suscripciones al newsletter
+El administrador recibe **notificaciones push automáticas** cuando lleguen:
+- 📧 **Nuevos contactos** desde el formulario web
+- 💼 **Nuevos presupuestos** solicitados
+- 📰 **Nuevas suscripciones** al newsletter
 
 **Características:**
-- ✅ **Funciona con la app cerrada** o móvil bloqueado
-- ✅ **Múltiples dispositivos** (móvil, tablet, PC)
-- ✅ **Sesión persistente** (nunca expira)
-- ✅ **Sin proveedores externos** (solo Supabase)
-- ✅ **Coste: 0€** (100% nativo)
-- ✅ **Panel de control** en el dashboard del admin
+- ✅ Funcionan con **app cerrada** o móvil bloqueado
+- ✅ Soporta **múltiples dispositivos** simultáneamente
+- ✅ **Sesión persistente** (nunca cierra sesión)
+- ✅ **100% gratuito** (sin servicios externos)
+- ✅ **Contador visual** en desktop (badge rojo)
+- ✅ **Detección automática** móvil/desktop
+- ✅ **Configuración sencilla** desde el panel
 
-**Configuración:**
-
-📖 **Guía completa:** [`PUSH_NOTIFICATIONS_SETUP.md`](PUSH_NOTIFICATIONS_SETUP.md)  
-📖 **Resumen rápido:** [`PUSH_NOTIFICATIONS_README.md`](PUSH_NOTIFICATIONS_README.md)  
-📖 **Implementación:** [`IMPLEMENTACION_COMPLETA.md`](IMPLEMENTACION_COMPLETA.md)
-
-**Requisitos:**
-1. Generar VAPID keys: `npx web-push generate-vapid-keys`
-2. Configurar variables en `.env.local` y Supabase
-3. Ejecutar scripts SQL en Supabase
-4. Desplegar Edge Function
-5. Activar notificaciones desde el panel de admin
-
-**Tiempo de configuración:** ~20 minutos
+**Documentación:**
+- 📖 [`PUSH_NOTIFICATIONS_SETUP.md`](PUSH_NOTIFICATIONS_SETUP.md) - Guía de configuración completa
+- 📖 [`PUSH_NOTIFICATIONS_README.md`](PUSH_NOTIFICATIONS_README.md) - Resumen ejecutivo
+- 📖 [`SOLUCION_LOGIN_MOVIL.md`](SOLUCION_LOGIN_MOVIL.md) - Solución técnica login móvil
 
 ---
 
