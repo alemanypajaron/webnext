@@ -214,7 +214,7 @@ function AdminNavContent() {
                 key={tab.name}
                 href={tab.href}
                 className={`
-                  flex flex-col items-center space-y-1 px-3 py-3 flex-1 min-w-[60px] transition-all
+                  relative flex flex-col items-center space-y-1 px-3 py-3 flex-1 min-w-[60px] transition-all
                   ${
                     isActive
                       ? 'text-accent border-b-2 border-accent bg-yellow-50'
@@ -224,6 +224,12 @@ function AdminNavContent() {
               >
                 {tab.icon}
                 <span className="text-xs font-medium whitespace-nowrap">{tab.name}</span>
+                {/* Badge de notificaciones en tab de Contactos */}
+                {tab.name === 'Contactos' && unreadCount > 0 && (
+                  <span className="absolute top-1 right-2 bg-red-500 text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center animate-pulse">
+                    {unreadCount > 9 ? '9+' : unreadCount}
+                  </span>
+                )}
               </Link>
             );
           })}
