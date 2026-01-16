@@ -180,8 +180,8 @@ export default function ReformaCentroMedicoPage() {
             </div>
             <div className="relative">
               <Image
-                src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=800&q=80"
-                alt="Reforma baño moderno Murcia"
+                src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=800&q=80"
+                alt="Reforma centro médico consulta Murcia"
                 width={600}
                 height={700}
                 className="rounded-2xl shadow-2xl"

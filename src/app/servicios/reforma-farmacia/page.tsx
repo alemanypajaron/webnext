@@ -180,8 +180,8 @@ export default function ReformaFarmaciaPage() {
             </div>
             <div className="relative">
               <Image
-                src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=800&q=80"
-                alt="Reforma baño moderno Murcia"
+                src="https://images.unsplash.com/photo-1576602976047-174e57a47881?auto=format&fit=crop&w=800&q=80"
+                alt="Reforma farmacia oficina Murcia"
                 width={600}
                 height={700}
                 className="rounded-2xl shadow-2xl"
