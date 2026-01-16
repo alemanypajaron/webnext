@@ -7,29 +7,29 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Reforma Bar y Restaurante Murcia | Desde 20.000€ | Alemán y Pajarón',
-  description: 'Reforma integral bar y restaurante en Murcia desde 20.000€. Diseño, cocina industrial, barra, extracción humos. +15 años experiencia.',
-  keywords: 'reforma bar murcia, reforma restaurante murcia, reformar bar murcia precio, reforma local hosteleria murcia',
-  alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-bar' },
+  title: 'Reforma Centro Médico Murcia | Desde 35.000€ | Alemán y Pajarón',
+  description: 'Reforma integral centro médico y clínica en Murcia desde 35.000€. Consultas, sala exploraciones, quirófano menor. +15 años experiencia.',
+  keywords: 'reforma centro medico murcia, reforma clinica medica murcia, reformar centro medico precio murcia',
+  alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-centro-medico' },
   openGraph: {
-    title: 'Reforma Bar y Restaurante Murcia | Alemán y Pajarón',
-    description: 'Reforma integral bar y restaurante. Diseño completo y ejecución.',
-    url: 'https://www.alemanypajaron.es/servicios/reforma-bar',
+    title: 'Reforma Centro Médico Murcia | Alemán y Pajarón',
+    description: 'Reforma integral centro médico. Diseño completo y ejecución.',
+    url: 'https://www.alemanypajaron.es/servicios/reforma-centro-medico',
     type: 'website',
     locale: 'es_ES',
   },
   twitter: {
     card: 'summary',
-    title: 'Reforma Bar Murcia | Alemán y Pajarón',
-    description: 'Reforma integral desde 20.000€.',
+    title: 'Reforma Centro Médico Murcia | Alemán y Pajarón',
+    description: 'Reforma integral desde 35.000€.',
   },
 };
 
 export default function ReformaCentroMedicoPage() {
   const serviciosIncluidos = [
     {
-      title: 'Diseño y Distribución',
-      desc: 'Planos, distribución óptima: barra, mesas, cocina, baños, almacén. Aprovechamiento máximo del espacio.',
+      title: 'Diseño Centro Médico',
+      desc: 'Distribución consultas por especialidad, sala espera, enfermería, archivo historias, aseos pacientes/personal.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
@@ -38,29 +38,30 @@ export default function ReformaCentroMedicoPage() {
       ),
     },
     {
-      title: 'Cocina Industrial',
-      desc: 'Instalación completa cocina profesional: campana extractora, fogones, horno, frigoríficos, fregaderos.',
+      title: 'Consultas Médicas',
+      desc: 'Consultas individuales con lavabo, escritorio, iluminación específica, mobiliario clínico. Separación por especialidad.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M2 12h20M2 12v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-8" />
-          <path d="M2 12V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6" />
-          <path d="M6 8v4M10 8v4M14 8v4M18 8v4" />
+          <rect x="3" y="3" width="7" height="7" />
+          <rect x="14" y="3" width="7" height="7" />
+          <rect x="14" y="14" width="7" height="7" />
+          <rect x="3" y="14" width="7" height="7" />
         </svg>
       ),
     },
     {
-      title: 'Barra y Mobiliario',
-      desc: 'Construcción barra a medida, taburetes, mesas, sillas, mobiliario completo. Diseño moderno y funcional.',
+      title: 'Sala Exploraciones',
+      desc: 'Sala exploraciones con camilla, iluminación quirúrgica, lavabo, almacenaje material. Quirófano menor si procede.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-          <path d="M9 3v18M15 3v18" />
+          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+          <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
         </svg>
       ),
     },
     {
-      title: 'Extracción de Humos',
-      desc: 'Sistema completo extracción humos cocina: campana, conductos, filtros. Cumplimiento normativa.',
+      title: 'Instalaciones Sanitarias',
+      desc: 'Agua caliente/fría en consultas, desagües clínicos, oxígeno si procede, esterilización, almacén medicamentos.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M12 2v20M2 12h20" />
@@ -68,8 +69,17 @@ export default function ReformaCentroMedicoPage() {
       ),
     },
     {
-      title: 'Baños y Climatización',
-      desc: 'Baños adaptados clientes, vestuarios empleados, aire acondicionado, ventilación.',
+      title: 'Climatización y Ventilación',
+      desc: 'Climatización independiente por zonas. Ventilación forzada. Extracción en quirófano menor si procede.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2v20M17 7l-5 5-5-5M7 17l5-5 5 5" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Acabados Sanitarios',
+      desc: 'Suelo porcelánico antideslizante, paredes lisas lavables, colores neutros profesionales, fácil limpieza.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z" />
@@ -77,32 +87,23 @@ export default function ReformaCentroMedicoPage() {
         </svg>
       ),
     },
-    {
-      title: 'Electricidad e Iluminación',
-      desc: 'Instalación eléctrica completa, iluminación LED decorativa, cuadro eléctrico potenciado.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-        </svg>
-      ),
-    },
   ];
 
   const precios = [
     {
-      tipo: 'Bar Cafetería',
-      desde: '20.000€',
-      incluye: ['Hasta 60m²', 'Barra básica', 'Sin cocina', 'Baño clientes', 'Mobiliario sencillo'],
+      tipo: 'Consulta Individual',
+      desde: '35.000€',
+      incluye: ['Hasta 60m²', '1-2 consultas', 'Sala espera', 'Sin exploraciones', 'Acabados estándar'],
     },
     {
-      tipo: 'Bar con Cocina',
-      desde: '45.000€',
-      incluye: ['80-120m²', 'Cocina equipada', 'Extracción humos', 'Barra completa', 'Climatización'],
+      tipo: 'Centro Médico',
+      desde: '65.000€',
+      incluye: ['100-150m²', '3-5 especialidades', 'Sala exploraciones', 'Enfermería', 'Acabados premium'],
     },
     {
-      tipo: 'Restaurante',
-      desde: '80.000€',
-      incluye: ['Más de 120m²', 'Cocina industrial', 'Barra + comedor', 'Baños + vestuarios', 'Diseño integral'],
+      tipo: 'Policlínica',
+      desde: '100.000€',
+      incluye: ['Más de 150m²', 'Múltiples especialidades', 'Quirófano menor', 'Rayos X/ecografía', 'Todo equipado'],
     },
   ];
 
@@ -111,10 +112,10 @@ export default function ReformaCentroMedicoPage() {
       <JsonLd data={localBusinessJsonLd()} />
       <JsonLd
         data={serviceJsonLd({
-          slug: 'reforma-bar',
-          serviceType: 'Reforma de bar y restaurante',
-          name: 'Reforma Bar y Restaurante Murcia',
-          description: 'Reforma integral bar y restaurante en Murcia: diseño, cocina industrial, barra, extracción humos.',
+          slug: 'reforma-centro-medico',
+          serviceType: 'Reforma de centro médico y clínica',
+          name: 'Reforma Centro Médico Murcia',
+          description: 'Reforma integral de centro médico en Murcia. Diseño completo, consultas, sala exploraciones.',
         })}
       />
       <JsonLd
@@ -122,18 +123,18 @@ export default function ReformaCentroMedicoPage() {
           items: [
             { name: 'Inicio', url: `${SITE_URL}/` },
             { name: 'Servicios', url: `${SITE_URL}/servicios` },
-            { name: 'Reforma Bar', url: `${SITE_URL}/servicios/reforma-bar` },
+            { name: 'Reforma Centro Médico', url: `${SITE_URL}/servicios/reforma-centro-medico` },
           ],
         })}
       />
 
       <PageHeader
-        badge="Reforma Bar"
-        title="Reforma Bar y Restaurante en Murcia desde 20.000€"
-        subtitle="Diseño completo, cocina industrial, barra, extracción humos y mobiliario"
-        image="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2000&q=80"
-        imageAlt="Reforma bar restaurante Murcia"
-        highlightedWord="Bar"
+        badge="Reformas Negocios"
+        title="Reforma Integral Centro Médico y Clínica en Murcia desde 35.000€"
+        subtitle="Diseño completo, consultas médicas y sala de exploraciones"
+        image="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=2000&q=80"
+        imageAlt="Reforma centro médico Murcia"
+        highlightedWord="Médico"
       />
 
       {/* Introducción */}
@@ -145,20 +146,20 @@ export default function ReformaCentroMedicoPage() {
                 +15 años de experiencia
               </span>
               <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-                ¿Por qué reformar tu bar o restaurante con nosotros?
+                Reforma integral de centro médico en Murcia
               </h2>
               <p className="text-xl text-gray-700 mb-4">
-                Reformamos tu local de hostelería de principio a fin: diseño, obra, cocina, barra y equipamiento.
+                Diseñamos y ejecutamos la reforma completa de tu centro médico. Desde consultas y sala de exploraciones hasta quirófano menor e instalaciones sanitarias.
               </p>
               <p className="text-gray-600 mb-4">
-                Más de 15 años reformando bares y restaurantes en Murcia. Conocemos la normativa, los tiempos y cómo optimizar cada metro de tu local.
+                Experiencia en consultas médicas, clínicas multiespecialidad, policlínicas y centros de diagnóstico. Cumplimos normativa Real Decreto centros sanitarios.
               </p>
               <ul className="space-y-3">
                 {[
-                  'Diseño funcional y rentable',
-                  'Cocina industrial completa',
-                  'Extracción de humos certificada',
-                  'Obra terminada en 2-4 meses',
+                  'Diseño 3D previo incluido',
+                  'Consultas por especialidad',
+                  'Sala exploraciones completa',
+                  'Llave en mano: listo para abrir',
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <svg
@@ -180,8 +181,8 @@ export default function ReformaCentroMedicoPage() {
             </div>
             <div className="relative">
               <Image
-                src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=800&q=80"
-                alt="Reforma centro médico consulta Murcia"
+                src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=800&q=80"
+                alt="Reforma interior centro médico moderno en Murcia"
                 width={600}
                 height={700}
                 className="rounded-2xl shadow-2xl"
@@ -197,10 +198,10 @@ export default function ReformaCentroMedicoPage() {
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-4">
-              Todo incluido
+              Reforma completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la reforma de tu bar?
+              ¿Qué incluye la reforma de centro médico?
             </h2>
           </div>
 
@@ -226,10 +227,10 @@ export default function ReformaCentroMedicoPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta reformar un bar o restaurante?
+              ¿Cuánto cuesta reformar un centro médico?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Presupuestos según superficie y nivel de acabados
+              Presupuestos según especialidades y superficie del centro
             </p>
           </div>
 
@@ -243,7 +244,7 @@ export default function ReformaCentroMedicoPage() {
               >
                 {index === 1 && (
                   <span className="inline-block px-3 py-1 bg-accent text-primary text-xs font-bold rounded-full mb-4">
-                    MÁS POPULAR
+                    MÁS COMÚN
                   </span>
                 )}
                 <h3 className="text-2xl font-heading font-bold text-primary mb-2">{paquete.tipo}</h3>
@@ -284,39 +285,39 @@ export default function ReformaCentroMedicoPage() {
           </div>
 
           <p className="text-center text-gray-500 mt-8">
-            * Precios orientativos. El presupuesto final depende de las medidas, materiales y acabados elegidos.
+            * Precios orientativos reforma completa llave en mano. Con rayos X se añade blindaje (+8.000€).
           </p>
         </div>
       </section>
 
       {/* FAQ */}
       <FAQ
-        title="Preguntas frecuentes sobre reforma de bar en Murcia"
+        title="Preguntas frecuentes sobre reforma de centro médico en Murcia"
         items={[
           {
-            question: '¿Cuánto tarda una reforma de bar completa?',
+            question: '¿Cuánto tarda la reforma de un centro médico?',
             answer:
-              'Una reforma completa tarda entre 2 y 4 meses según tamaño. Bar pequeño: 2 meses. Restaurante grande con cocina: 4-6 meses.',
+              'Entre 4 y 6 meses según tamaño. Consulta individual (60m²): 4 meses. Centro médico completo (150m²): 5-6 meses.',
           },
           {
-            question: '¿Puedo abrir mientras se reforma?',
+            question: '¿Las camillas y equipos están incluidos?',
             answer:
-              'No. La reforma implica obra completa: electricidad, fontanería, cocina. Debes cerrar durante el proceso. Te damos fechas exactas al principio.',
+              'No. La reforma incluye obra civil, instalaciones y acabados. Las camillas, equipos médicos, mobiliario clínico los compras tú o te asesoramos proveedores.',
           },
           {
-            question: '¿Incluye la cocina industrial?',
+            question: '¿Puedo tener quirófano menor?',
             answer:
-              'Sí, en el paquete completo incluimos instalación de cocina: campana extractora, fogones, hornos, frigoríficos, fregaderos industriales.',
+              'Sí. Si ofreces cirugías menores puedes tener quirófano menor con gases medicinales, iluminación quirúrgica y extracción. Requiere autorización sanitaria específica.',
           },
           {
-            question: '¿Necesito licencia de obra?',
+            question: '¿Qué diferencia hay con una clínica estética?',
             answer:
-              'Depende del alcance. Reformas integrales requieren licencia mayor. Te asesoramos y gestionamos toda la tramitación si es necesario.',
+              'Centro médico: consultas médicas, exploraciones, posible quirófano menor. Clínica estética: cabinas tratamiento, ambiente relajante. Normativa diferente.',
           },
           {
-            question: '¿Qué garantía tiene la reforma?',
+            question: '¿Necesito licencia de obras?',
             answer:
-              'Garantía de 2 años en instalaciones eléctricas, fontanería, climatización y carpintería. Garantía fabricante en equipamiento de cocina.',
+              'Sí, casi siempre. Los centros médicos requieren licencia mayor por instalaciones especiales (oxígeno, quirófano). Te asesoramos y gestionamos.',
           },
         ]}
       />
@@ -325,10 +326,10 @@ export default function ReformaCentroMedicoPage() {
       <section className="section bg-gradient-to-br from-primary to-primary-light text-white">
         <div className="max-w-[1280px] mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-            ¿Listo para reformar tu bar o restaurante?
+            ¿Listo para reformar tu centro médico?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Solicita presupuesto y transforma tu local en el negocio que siempre has querido
+            Te hacemos un diseño 3D gratis y presupuesto sin compromiso
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -345,7 +346,7 @@ export default function ReformaCentroMedicoPage() {
             </a>
           </div>
           <p className="text-white/80 mt-6 text-sm">
-            Respuesta en menos de 24h • Visita gratuita • Presupuesto detallado
+            Respuesta en menos de 24h • Diseño 3D previo • Presupuesto cerrado
           </p>
         </div>
       </section>
@@ -354,41 +355,53 @@ export default function ReformaCentroMedicoPage() {
       <section className="section bg-gray-50">
         <div className="max-w-[1280px] mx-auto px-6">
           <h2 className="text-3xl font-heading font-bold text-primary mb-8 text-center">
-            También te puede interesar
+            También puedes necesitar
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                title: 'Licencia Bar/Restaurante',
-                desc: '¿También necesitas la licencia? Te tramitamos todo',
-                link: '/servicios/licencia-bar',
-              },
-              {
-                title: 'Diseño de Espacios',
-                desc: 'Diseño 3D de tu nuevo local',
-                link: '/servicios/diseno-espacios',
-              },
-              {
-                title: 'Gestión de Proyectos',
-                desc: 'Gestionamos toda tu reforma',
-                link: '/servicios/gestion-proyectos',
-              },
-            ].map((servicio) => (
-              <Link
-                key={servicio.title}
-                href={servicio.link}
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all group"
-              >
-                <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
-                  {servicio.title}
-                </h3>
-                <p className="text-gray-600">{servicio.desc}</p>
-              </Link>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Link
+              href="/servicios/licencia-centro-medico"
+              className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group border-2 border-accent/20"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+                    <path d="M14 3v5h5M16 13H8M16 17H8M10 9H8" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
+                    Licencia Centro Médico
+                  </h3>
+                  <p className="text-gray-600 mb-3">¿También necesitas tramitar la licencia? Te gestionamos todo. Desde 4.200€</p>
+                  <span className="text-accent font-semibold text-sm">Ver servicio →</span>
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              href="/blog/como-abrir-centro-medico-clinica-murcia-guia-completa-2026"
+              className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group border-2 border-accent/20"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 16v-4M12 8h.01" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
+                    Guía Completa: Abrir Centro Médico
+                  </h3>
+                  <p className="text-gray-600 mb-3">Todo lo que necesitas: reforma + licencia + asesoramiento</p>
+                  <span className="text-accent font-semibold text-sm">Ver guía completa →</span>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
     </>
   );
 }
-
