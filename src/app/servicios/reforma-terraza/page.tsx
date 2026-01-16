@@ -185,7 +185,7 @@ export default function ReformaTerrazaPage() {
             </div>
             <div className="relative">
               <Image
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80"
                 alt="Reforma terraza moderna en Murcia"
                 width={600}
                 height={700}

@@ -181,7 +181,7 @@ export default function CambioVentanasPVCPage() {
             </div>
             <div className="relative">
               <Image
-                src="https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-1565183997392-2f5e8c2b9eea?auto=format&fit=crop&w=800&q=80"
                 alt="Ventanas PVC doble vidrio en Murcia"
                 width={600}
                 height={700}
