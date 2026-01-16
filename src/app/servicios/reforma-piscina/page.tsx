@@ -135,7 +135,7 @@ export default function ReformaPiscinaPage() {
         badge="Reformas Vivienda"
         title="Construcción y Reforma de Piscinas en Murcia desde 8.000€"
         subtitle="Construcción obra, prefabricada, cambio gresite y rehabilitación"
-        image="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Construcción piscina Murcia"
         highlightedWord="Piscinas"
       />

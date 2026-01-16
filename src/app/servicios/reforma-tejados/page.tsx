@@ -130,7 +130,7 @@ export default function ReformaTejadosPage() {
         badge="Reformas Vivienda"
         title="Reforma y Reparación de Tejados en Murcia desde 2.500€"
         subtitle="Impermeabilización, cambio de tejas y reparación de cubiertas"
-        image="https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Reforma tejado Murcia"
         highlightedWord="Tejados"
       />
