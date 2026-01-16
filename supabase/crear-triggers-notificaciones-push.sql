@@ -11,7 +11,7 @@
 CREATE OR REPLACE FUNCTION send_push_notification(
   notification_title TEXT,
   notification_body TEXT,
-  notification_url TEXT DEFAULT '/admin',
+  notification_url TEXT DEFAULT '/administrator',
   notification_tag TEXT DEFAULT 'default',
   extra_data JSONB DEFAULT '{}'::JSONB
 )
@@ -65,7 +65,7 @@ BEGIN
       WHEN NEW.telefono IS NOT NULL THEN ' (' || NEW.telefono || ')'
       ELSE ''
     END,
-    '/admin#contactos',
+    '/administrator',
     'contacto-' || NEW.id::TEXT,
     jsonb_build_object(
       'contacto_id', NEW.id,
@@ -101,7 +101,7 @@ BEGIN
       WHEN NEW.telefono IS NOT NULL THEN ' (' || NEW.telefono || ')'
       ELSE ''
     END,
-    '/admin/presupuestos',
+    '/administrator/presupuestos',
     'presupuesto-' || NEW.id::TEXT,
     jsonb_build_object(
       'presupuesto_id', NEW.id,
@@ -138,7 +138,7 @@ BEGIN
       WHEN NEW.nombre IS NOT NULL THEN ' (' || NEW.nombre || ')'
       ELSE ''
     END,
-    '/admin#newsletter',
+    '/administrator',
     'newsletter-' || NEW.id::TEXT,
     jsonb_build_object(
       'newsletter_id', NEW.id,

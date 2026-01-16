@@ -1,4 +1,4 @@
-// Service Worker para Alemán y Pajarón PWA
+// Service Worker para Alem?n y Pajar?n PWA
 // Maneja notificaciones push y funcionamiento offline
 
 const CACHE_NAME = 'alemanypajaron-v1';
@@ -10,7 +10,7 @@ const urlsToCache = [
 ];
 
 // ===================================================
-// INSTALACIÓN DEL SERVICE WORKER
+// INSTALACI?N DEL SERVICE WORKER
 // ===================================================
 self.addEventListener('install', (event) => {
   console.log('[Service Worker] Instalando...');
@@ -26,12 +26,12 @@ self.addEventListener('install', (event) => {
       })
   );
   
-  // Forzar activación inmediata
+  // Forzar activaci?n inmediata
   self.skipWaiting();
 });
 
 // ===================================================
-// ACTIVACIÓN DEL SERVICE WORKER
+// ACTIVACI?N DEL SERVICE WORKER
 // ===================================================
 self.addEventListener('activate', (event) => {
   console.log('[Service Worker] Activando...');
@@ -60,12 +60,12 @@ self.addEventListener('push', (event) => {
   console.log('[Service Worker] Push recibido:', event);
   
   let data = {
-    title: 'Alemán y Pajarón',
-    body: 'Nueva notificación',
+    title: 'Alem?n y Pajar?n',
+    body: 'Nueva notificaci?n',
     icon: '/icon-192x192.png',
     badge: '/icon-72x72.png',
     tag: 'default',
-    data: { url: '/admin' }
+    data: { url: '/administrator' }
   };
   
   // Parsear datos si vienen en el push
@@ -95,11 +95,11 @@ self.addEventListener('push', (event) => {
     data: data.data,
     requireInteraction: data.requireInteraction,
     silent: data.silent,
-    vibrate: [200, 100, 200], // Patrón de vibración
+    vibrate: [200, 100, 200, 100, 200], // Patr?n de vibraci?n
     actions: [
       {
         action: 'open',
-        title: 'Abrir',
+        title: 'Ver ahora',
         icon: '/icon-72x72.png'
       },
       {
@@ -107,7 +107,10 @@ self.addEventListener('push', (event) => {
         title: 'Cerrar',
         icon: '/icon-72x72.png'
       }
-    ]
+    ],
+    // Configuraci?n adicional para hacer la notificaci?n m?s llamativa
+    renotify: true,
+    timestamp: Date.now(),
   };
   
   event.waitUntil(
@@ -116,31 +119,34 @@ self.addEventListener('push', (event) => {
 });
 
 // ===================================================
-// CLIC EN NOTIFICACIÓN
+// CLIC EN NOTIFICACI?N
 // ===================================================
 self.addEventListener('notificationclick', (event) => {
-  console.log('[Service Worker] Notificación clickeada:', event);
+  console.log('[Service Worker] Notificaci?n clickeada:', event);
   
   event.notification.close();
   
-  // Si el usuario hizo clic en "Cerrar", no hacer nada más
+  // Si el usuario hizo clic en "Cerrar", no hacer nada m?s
   if (event.action === 'close') {
     return;
   }
   
   // Obtener la URL de destino
-  const urlToOpen = event.notification.data?.url || '/admin';
+  const urlToOpen = event.notification.data?.url || '/administrator';
   
   // Abrir la PWA en la URL especificada
   event.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true })
       .then((clientList) => {
-        // Si ya hay una ventana abierta, enfocarla
+        // Buscar si ya hay una ventana abierta del administrador
         for (let i = 0; i < clientList.length; i++) {
           const client = clientList[i];
-          if (client.url.includes(self.location.origin) && 'focus' in client) {
+          const clientUrl = new URL(client.url);
+          
+          // Si encuentra una ventana del administrador, enfocarla y navegar
+          if (clientUrl.pathname.startsWith('/administrator') && 'focus' in client) {
             return client.focus().then(() => {
-              // Navegar a la URL si es posible
+              // Navegar a la URL espec?fica
               if ('navigate' in client) {
                 return client.navigate(urlToOpen);
               }
@@ -148,7 +154,7 @@ self.addEventListener('notificationclick', (event) => {
           }
         }
         
-        // Si no hay ventana abierta, abrir una nueva
+        // Si no hay ventana abierta del administrador, abrir una nueva
         if (clients.openWindow) {
           return clients.openWindow(urlToOpen);
         }
@@ -188,7 +194,7 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(event.request)
       .then((response) => {
-        // Si la respuesta es válida, clonarla y guardarla en cache
+        // Si la respuesta es v?lida, clonarla y guardarla en cache
         if (response && response.status === 200 && response.type === 'basic') {
           const responseToCache = response.clone();
           
@@ -208,7 +214,7 @@ self.addEventListener('fetch', (event) => {
               return response;
             }
             
-            // Si no está en cache y es una navegación, devolver página offline
+            // Si no est? en cache y es una navegaci?n, devolver p?gina offline
             if (event.request.mode === 'navigate') {
               return caches.match('/');
             }
