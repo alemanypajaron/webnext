@@ -34,26 +34,42 @@ export default function AdminLoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    console.log('[Login] 🔐 Iniciando proceso de login...');
+    console.log('[Login] 📧 Email:', email);
+    
     setLoading(true);
 
     try {
+      console.log('[Login] 📤 Llamando a loginAction...');
       const result = await loginAction(email, password);
+      
+      console.log('[Login] 📥 Resultado recibido:', result);
       
       // Si llegamos aquí, hubo un error (redirect() no retorna)
       if (result && !result.success) {
+        console.error('[Login] ❌ Error de autenticación:', result.error);
         toast.error(`Error: ${result.error}`);
+        setLoading(false);
+      } else {
+        console.log('[Login] ⚠️ Resultado inesperado (no success ni redirect)');
+        toast.error('Respuesta inesperada del servidor');
         setLoading(false);
       }
       // Si es exitoso, loginAction redirige automáticamente y nunca llega aquí
     } catch (error: any) {
+      console.log('[Login] 🔄 Excepción capturada:', error);
+      
       // redirect() lanza un error NEXT_REDIRECT, lo cual es normal
       // Solo mostramos error si NO es un NEXT_REDIRECT
       if (error?.message && !error.message.includes('NEXT_REDIRECT')) {
-        toast.error('Error al iniciar sesión');
-        console.error(error);
+        console.error('[Login] ❌ Error no esperado:', error);
+        toast.error('Error al iniciar sesión: ' + error.message);
         setLoading(false);
+      } else {
+        console.log('[Login] ✅ Redirección detectada (comportamiento normal)');
+        // Si es NEXT_REDIRECT, dejamos que la redirección ocurra sin mostrar error
       }
-      // Si es NEXT_REDIRECT, dejamos que la redirección ocurra sin mostrar error
     }
   };
 
