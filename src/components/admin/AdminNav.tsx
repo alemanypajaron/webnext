@@ -83,18 +83,18 @@ export default function AdminNav() {
   ];
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="bg-white shadow-md border-b border-gray-200 sticky top-0 z-50">
+      <div className="max-w-full px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo y título */}
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <Link href="/administrator" className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
+              <Link href="/administrator" className="flex items-center space-x-3 group">
+                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-accent to-yellow-400 rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-all">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
+                    width="24"
+                    height="24"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -106,8 +106,8 @@ export default function AdminNav() {
                     <path d="M2 12l10 5 10-5" />
                   </svg>
                 </div>
-                <div>
-                  <h1 className="text-lg font-heading font-bold text-primary">
+                <div className="hidden sm:block">
+                  <h1 className="text-lg lg:text-xl font-heading font-bold text-primary">
                     Panel Admin
                   </h1>
                   <p className="text-xs text-gray-500">Alemán y Pajarón</p>
@@ -115,8 +115,8 @@ export default function AdminNav() {
               </Link>
             </div>
 
-            {/* Tabs */}
-            <div className="hidden md:ml-10 md:flex md:space-x-2">
+            {/* Tabs - Desktop */}
+            <div className="hidden lg:ml-10 lg:flex lg:space-x-2 xl:space-x-3">
               {tabs.map((tab) => {
                 const isActive =
                   pathname === tab.href ||
@@ -127,16 +127,16 @@ export default function AdminNav() {
                     key={tab.name}
                     href={tab.href}
                     className={`
-                      flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all
+                      flex items-center space-x-2 px-4 xl:px-5 py-2.5 rounded-xl font-medium transition-all
                       ${
                         isActive
-                          ? 'bg-accent text-primary shadow-sm'
-                          : 'text-gray-600 hover:bg-gray-100 hover:text-primary'
+                          ? 'bg-gradient-to-r from-accent to-yellow-400 text-primary shadow-md scale-105'
+                          : 'text-gray-600 hover:bg-gray-100 hover:text-primary hover:scale-105'
                       }
                     `}
                   >
                     {tab.icon}
-                    <span>{tab.name}</span>
+                    <span className="text-sm xl:text-base">{tab.name}</span>
                   </Link>
                 );
               })}
@@ -144,11 +144,11 @@ export default function AdminNav() {
           </div>
 
           {/* Botones de acción */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-3">
             {/* Botón de Notificaciones */}
             <Link
               href="/administrator/notificaciones"
-              className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-accent hover:bg-yellow-50 rounded-lg transition-all"
+              className="flex items-center space-x-2 px-3 sm:px-4 py-2 text-gray-600 hover:text-accent hover:bg-yellow-50 rounded-xl transition-all hover:scale-105"
               title="Configurar notificaciones push"
             >
               <svg
@@ -163,12 +163,12 @@ export default function AdminNav() {
                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
                 <path d="M13.73 21a2 2 0 0 1-3.46 0" />
               </svg>
-              <span className="hidden sm:inline">Notificaciones</span>
+              <span className="hidden lg:inline text-sm">Notificaciones</span>
             </Link>
 
             <button
               onClick={handleLogout}
-              className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all"
+              className="flex items-center space-x-2 px-3 sm:px-4 py-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all hover:scale-105"
               title="Cerrar sesión"
             >
               <svg
@@ -184,15 +184,15 @@ export default function AdminNav() {
                 <polyline points="16 17 21 12 16 7" />
                 <line x1="21" y1="12" x2="9" y2="12" />
               </svg>
-              <span className="hidden sm:inline">Cerrar sesión</span>
+              <span className="hidden lg:inline text-sm">Cerrar sesión</span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile tabs */}
-      <div className="md:hidden border-t border-gray-200">
-        <div className="flex justify-around">
+      {/* Mobile/Tablet tabs */}
+      <div className="lg:hidden border-t border-gray-200 bg-white">
+        <div className="flex justify-around overflow-x-auto">
           {tabs.map((tab) => {
             const isActive =
               pathname === tab.href ||
@@ -203,16 +203,16 @@ export default function AdminNav() {
                 key={tab.name}
                 href={tab.href}
                 className={`
-                  flex flex-col items-center space-y-1 px-4 py-3 flex-1 transition-all
+                  flex flex-col items-center space-y-1 px-3 py-3 flex-1 min-w-[60px] transition-all
                   ${
                     isActive
-                      ? 'text-accent border-b-2 border-accent'
-                      : 'text-gray-500 hover:text-primary'
+                      ? 'text-accent border-b-2 border-accent bg-yellow-50'
+                      : 'text-gray-500 hover:text-primary hover:bg-gray-50'
                   }
                 `}
               >
                 {tab.icon}
-                <span className="text-xs font-medium">{tab.name}</span>
+                <span className="text-xs font-medium whitespace-nowrap">{tab.name}</span>
               </Link>
             );
           })}
