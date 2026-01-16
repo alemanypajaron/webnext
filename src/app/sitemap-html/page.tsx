@@ -47,7 +47,10 @@ export default async function SitemapHTMLPage() {
           </p>
           <p className="text-sm text-gray-500 mt-2">
             Total de páginas: {
-              12 + // Páginas estáticas y servicios
+              4 + // Páginas principales
+              6 + // Servicios generales (menú)
+              2 + // Reformas vivienda
+              7 + // Licencias específicas
               3 + // Legales
               2 + // Blog y proyectos index
               (articulos?.length || 0) +
@@ -99,12 +102,13 @@ export default async function SitemapHTMLPage() {
             </ul>
           </div>
 
-          {/* Servicios */}
+          {/* Servicios Generales (menú) */}
           <div className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-xl font-heading font-bold text-primary mb-4 flex items-center gap-2">
               <span>🔧</span>
-              Servicios
+              Servicios Generales
             </h2>
+            <p className="text-sm text-gray-500 mb-3">Servicios accesibles desde el menú</p>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -162,6 +166,16 @@ export default async function SitemapHTMLPage() {
                   Diseño de Espacios
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Reformas Vivienda */}
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-heading font-bold text-primary mb-4 flex items-center gap-2">
+              <span>🏠</span>
+              Reformas Vivienda
+            </h2>
+            <ul className="space-y-2">
               <li>
                 <Link
                   href="/servicios/reforma-bano"
@@ -176,6 +190,72 @@ export default async function SitemapHTMLPage() {
                   className="text-gray-700 hover:text-primary hover:underline transition-colors"
                 >
                   Reforma de Cocina
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Licencias Específicas */}
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-heading font-bold text-primary mb-4 flex items-center gap-2">
+              <span>📋</span>
+              Licencias Específicas
+            </h2>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/servicios/licencia-bar"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Licencia Bar/Restaurante
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/licencia-peluqueria"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Licencia Peluquería
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/licencia-gimnasio"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Licencia Gimnasio
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/licencia-clinica-estetica"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Licencia Clínica Estética
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/licencia-veterinaria"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Licencia Clínica Veterinaria
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/licencia-centro-medico"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Licencia Centro Médico
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/licencia-farmacia"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Licencia Farmacia
                 </Link>
               </li>
             </ul>

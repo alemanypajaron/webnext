@@ -83,7 +83,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.9,
     },
-    // Landing pages SEO ocultas
+    // Reformas Vivienda
     {
       url: `${SITE_URL}/servicios/reforma-bano`,
       lastModified,
@@ -92,6 +92,49 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${SITE_URL}/servicios/reforma-cocina`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    // Licencias Específicas
+    {
+      url: `${SITE_URL}/servicios/licencia-bar`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/servicios/licencia-peluqueria`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/servicios/licencia-gimnasio`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/servicios/licencia-clinica-estetica`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/servicios/licencia-veterinaria`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/servicios/licencia-centro-medico`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/servicios/licencia-farmacia`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
