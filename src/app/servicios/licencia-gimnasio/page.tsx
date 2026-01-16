@@ -379,7 +379,7 @@ export default function LicenciaGimnasioPage() {
             </Link>
 
             <Link
-              href="/blog/como-abrir-gimnasio-box-murcia"
+              href="/blog/como-abrir-gimnasio-box-murcia-guia-completa-2026"
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group border-2 border-accent/20"
             >
               <div className="flex items-start gap-4">

@@ -379,7 +379,7 @@ export default function LicenciaFarmaciaPage() {
             </Link>
 
             <Link
-              href="/blog/requisitos-abrir-farmacia-murcia"
+              href="/blog/requisitos-abrir-farmacia-murcia-guia-completa-2026"
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group border-2 border-accent/20"
             >
               <div className="flex items-start gap-4">
