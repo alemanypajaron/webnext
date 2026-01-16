@@ -132,7 +132,7 @@ export default function LicenciaClinicaEsteticaPage() {
         badge="Licencias Sanitarias"
         title="Licencia Apertura Clínica Estética en Murcia desde 2.800€"
         subtitle="Tramitación completa: proyecto técnico, gestión ayuntamiento y certificados"
-        image="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Licencia bar restaurante Murcia"
         highlightedWord="Bar"
       />

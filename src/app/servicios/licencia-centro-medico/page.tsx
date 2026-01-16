@@ -132,7 +132,7 @@ export default function LicenciaCentroMedicoPage() {
         badge="Licencias Hostelería"
         title="Licencia Apertura Bar y Restaurante en Murcia desde 2.500€"
         subtitle="Tramitación completa: proyecto técnico, gestión ayuntamiento y certificados"
-        image="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1666214280577-909dd58a3b50?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Licencia bar restaurante Murcia"
         highlightedWord="Bar"
       />
