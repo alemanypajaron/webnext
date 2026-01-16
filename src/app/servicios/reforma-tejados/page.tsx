@@ -199,7 +199,7 @@ export default function ReformaTejadosPage() {
               Servicio completo
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la reforma de tejado?
+              ¿Qué Incluye la Reforma de Tejado en Murcia?
             </h2>
           </div>
 
@@ -225,7 +225,7 @@ export default function ReformaTejadosPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta reparar un tejado?
+              Precio Reparación Tejado Murcia: ¿Cuánto Cuesta?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Presupuesto según tipo de trabajo y superficie

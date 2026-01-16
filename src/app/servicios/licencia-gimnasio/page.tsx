@@ -200,7 +200,7 @@ export default function LicenciaGimnasioPage() {
               Gestión completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la tramitación de licencia de gimnasio?
+              ¿Qué Incluye la Licencia de Gimnasio y Box en Murcia?
             </h2>
           </div>
 
@@ -226,7 +226,7 @@ export default function LicenciaGimnasioPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta la licencia de gimnasio?
+              Precio Licencia Gimnasio Murcia: ¿Cuánto Cuesta?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Presupuestos según superficie y tipo de actividad deportiva

@@ -201,7 +201,7 @@ export default function ReformaCentroMedicoPage() {
               Reforma completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la reforma de centro médico?
+              ¿Qué Incluye la Reforma de Centro Médico en Murcia?
             </h2>
           </div>
 
@@ -227,7 +227,7 @@ export default function ReformaCentroMedicoPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta reformar un centro médico?
+              Precio Reforma Centro Médico Murcia: ¿Cuánto Cuesta?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Presupuestos según especialidades y superficie del centro

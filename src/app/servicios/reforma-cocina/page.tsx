@@ -186,7 +186,7 @@ export default function ReformaCocinaPage() {
                 Especialistas en cocinas
               </span>
               <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-                La cocina que siempre has soñado
+                Reforma de Cocina en Murcia: Diseño Personalizado y Muebles a Medida
               </h2>
               <p className="text-xl text-gray-700 mb-4">
                 Diseñamos y reformamos tu cocina adaptándonos a tu espacio, estilo y presupuesto.
@@ -243,7 +243,7 @@ export default function ReformaCocinaPage() {
               Todo incluido
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la reforma de tu cocina?
+              ¿Qué Incluye una Reforma Completa de Cocina en Murcia?
             </h2>
           </div>
 

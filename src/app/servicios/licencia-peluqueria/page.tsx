@@ -198,7 +198,7 @@ export default function LicenciaPeluqueriaPage() {
               Gestión completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la tramitación de licencia?
+              ¿Qué Incluye la Licencia de Peluquería en Murcia?
             </h2>
           </div>
 
@@ -224,7 +224,7 @@ export default function LicenciaPeluqueriaPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta la licencia de peluquería?
+              Precio Licencia Peluquería Murcia: ¿Cuánto Cuesta?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Presupuestos según tipo de actividad y superficie del local

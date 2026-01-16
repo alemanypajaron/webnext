@@ -205,7 +205,7 @@ export default function ReformaTerrazaPage() {
               Reforma completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la reforma de terraza?
+              ¿Qué Incluye la Reforma de Terraza en Murcia?
             </h2>
           </div>
 
@@ -231,7 +231,7 @@ export default function ReformaTerrazaPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta reformar una terraza?
+              Precio Reforma Terraza Murcia: ¿Cuánto Cuesta?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Presupuesto según superficie y elementos incluidos

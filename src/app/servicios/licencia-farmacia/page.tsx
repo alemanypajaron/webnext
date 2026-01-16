@@ -200,7 +200,7 @@ export default function LicenciaFarmaciaPage() {
               Gestión completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la licencia de farmacia?
+              ¿Qué Incluye la Licencia de Apertura de Farmacia en Murcia?
             </h2>
           </div>
 
@@ -226,7 +226,7 @@ export default function LicenciaFarmaciaPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta la licencia de farmacia?
+              Precio Licencia Farmacia Murcia: ¿Cuánto Cuesta?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Presupuestos según ubicación y servicios ofrecidos

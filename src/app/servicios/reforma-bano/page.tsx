@@ -205,7 +205,7 @@ export default function ReformaBanoPage() {
               Todo incluido
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la reforma de tu baño?
+              ¿Qué Incluye una Reforma Completa de Baño en Murcia?
             </h2>
           </div>
 
@@ -231,7 +231,7 @@ export default function ReformaBanoPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta reformar un baño en Murcia?
+              Precio Reforma Baño Murcia: ¿Cuánto Cuesta?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Presupuestos adaptados al tamaño de tu baño y calidad de acabados

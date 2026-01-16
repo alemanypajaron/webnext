@@ -201,7 +201,7 @@ export default function LicenciaCentroMedicoPage() {
               Gestión completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la licencia de centro médico?
+              ¿Qué Incluye la Licencia de Centro Médico en Murcia?
             </h2>
           </div>
 
@@ -227,7 +227,7 @@ export default function LicenciaCentroMedicoPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta la licencia de centro médico?
+              Precio Licencia Centro Médico Murcia: ¿Cuánto Cuesta?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Presupuestos según especialidades y superficie del centro

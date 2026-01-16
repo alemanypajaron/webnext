@@ -200,7 +200,7 @@ export default function ReformaBarPage() {
               Todo incluido
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la reforma de tu bar?
+              ¿Qué Incluye la Reforma de Bar en Murcia?
             </h2>
           </div>
 
@@ -226,7 +226,7 @@ export default function ReformaBarPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta reformar un bar o restaurante?
+              Precio Reforma Bar Murcia: ¿Cuánto Cuesta?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Presupuestos según superficie y nivel de acabados

@@ -200,7 +200,7 @@ export default function LicenciaVeterinariaPage() {
               Gestión completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la licencia de clínica veterinaria?
+              ¿Qué Incluye la Licencia de Clínica Veterinaria en Murcia?
             </h2>
           </div>
 
@@ -226,7 +226,7 @@ export default function LicenciaVeterinariaPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta la licencia de clínica veterinaria?
+              Precio Licencia Veterinaria Murcia: ¿Cuánto Cuesta?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Presupuestos según servicios ofrecidos y superficie del centro

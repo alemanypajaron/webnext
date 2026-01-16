@@ -202,7 +202,7 @@ export default function CertificadoEnergeticoPage() {
               Servicio completo
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye el certificado energético?
+              ¿Qué Incluye el Certificado Energético en Murcia?
             </h2>
           </div>
 
@@ -228,7 +228,7 @@ export default function CertificadoEnergeticoPage() {
               Precios cerrados
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta el certificado energético?
+              Precio Certificado Energético Murcia: ¿Cuánto Cuesta?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Precio según superficie de la vivienda

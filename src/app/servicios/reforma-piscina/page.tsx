@@ -204,7 +204,7 @@ export default function ReformaPiscinaPage() {
               Construcción completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la construcción de piscina?
+              ¿Qué Incluye la Construcción de Piscina en Murcia?
             </h2>
           </div>
 
@@ -230,7 +230,7 @@ export default function ReformaPiscinaPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta construir una piscina?
+              Precio Construcción Piscina Murcia: ¿Cuánto Cuesta?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Presupuesto según tamaño y características

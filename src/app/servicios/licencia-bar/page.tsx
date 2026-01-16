@@ -201,7 +201,7 @@ export default function LicenciaBarPage() {
               Gestión completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la tramitación de licencia?
+              ¿Qué Incluye la Licencia de Apertura de Bar en Murcia?
             </h2>
           </div>
 

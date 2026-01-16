@@ -201,7 +201,7 @@ export default function LicenciaClinicaEsteticaPage() {
               Gestión completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la licencia de clínica estética?
+              ¿Qué Incluye la Licencia de Clínica Estética en Murcia?
             </h2>
           </div>
 
@@ -227,7 +227,7 @@ export default function LicenciaClinicaEsteticaPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta la licencia de clínica estética?
+              Precio Licencia Clínica Estética Murcia: ¿Cuánto Cuesta?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Presupuestos según tipo de tratamientos y superficie del centro
