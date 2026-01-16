@@ -135,6 +135,7 @@ El administrador recibe **notificaciones push automáticas** cuando lleguen:
 - ✅ **Contador visual** en desktop (badge rojo)
 - ✅ **Detección automática** móvil/desktop
 - ✅ **Configuración sencilla** desde el panel
+- ✅ **Click en notificación** abre el panel de notificaciones pendientes
 
 **Documentación:**
 - 📖 [`PUSH_NOTIFICATIONS_SETUP.md`](PUSH_NOTIFICATIONS_SETUP.md) - Guía de configuración completa

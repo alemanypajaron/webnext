@@ -192,7 +192,7 @@ git push origin main
    ↓
 8. Sistema operativo → Muestra notificación
    ↓
-9. Admin hace clic → PWA se abre en /admin#contactos
+9. Admin hace clic → PWA se abre en /administrator/notificaciones-panel
 ```
 
 ---
@@ -207,7 +207,8 @@ El administrador podrá:
   - 📧 Nuevos contactos
   - 💼 Nuevas solicitudes de presupuesto
   - 📰 Nuevas suscripciones al newsletter
-- ✅ **Abrir la app desde la notificación** directamente en el contenido relevante
+- ✅ **Abrir el panel de notificaciones** directamente al hacer clic en la notificación
+- ✅ **Ver todas las pendientes** en una sola pantalla (contactos + presupuestos)
 - ✅ **Funciona con la app cerrada** o el móvil bloqueado
 - ✅ **Sin límites de dispositivos** (puede activarlo en móvil, tablet, PC, etc.)
 - ✅ **100% nativo** (sin Firebase, OneSignal ni servicios externos)

@@ -92,6 +92,7 @@
 - ✅ **Múltiples dispositivos** simultáneamente
 - ✅ **100% gratuito** (sin servicios externos)
 - ✅ **Contador visual** en desktop (badge rojo)
+- ✅ **Click en notificación** lleva al panel de notificaciones pendientes
 
 #### Activar Notificaciones
 1. Instalar la PWA en el móvil
@@ -100,6 +101,11 @@
 4. Click en "Activar Notificaciones Push"
 5. Permitir notificaciones en el navegador
 6. ¡Listo! Recibirás notificaciones automáticamente
+
+**Comportamiento al hacer clic:**
+- La notificación abre directamente el panel de notificaciones pendientes
+- Verás todos los contactos y presupuestos no leídos en una sola pantalla
+- Si la PWA ya está abierta, navega automáticamente al panel
 
 ### 🎨 Editor de Blog (TinyMCE)
 
