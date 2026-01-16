@@ -8,28 +8,28 @@ import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '
 
 export const metadata: Metadata = {
   title: 'Licencia Apertura Clínica Estética Murcia | Desde 2.800€ | Alemán y Pajarón',
-  description: 'Tramitación licencia apertura clínica estética en Murcia desde 2.800€. Proyecto técnico completo, gestión ayuntamiento. +15 años experiencia.',
-  keywords: 'licencia apertura clinica estetica murcia, licencia centro estetico murcia, abrir clinica estetica murcia',
+  description: 'Tramitación licencia apertura clínica estética en Murcia desde 2.800€. Proyecto técnico sanitario, gestión ayuntamiento. +15 años experiencia.',
+  keywords: 'licencia apertura clinica estetica murcia, licencia centro estetico murcia, abrir clinica estetica murcia, licencia actividad estetica',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/licencia-clinica-estetica' },
   openGraph: {
-    title: 'Licencia Apertura Bar y Restaurante Murcia | Alemán y Pajarón',
-    description: 'Tramitación completa licencia apertura bar y restaurante. Proyecto técnico y gestión.',
-    url: 'https://www.alemanypajaron.es/servicios/licencia-bar',
+    title: 'Licencia Apertura Clínica Estética Murcia | Alemán y Pajarón',
+    description: 'Tramitación completa licencia apertura clínica estética. Proyecto técnico sanitario.',
+    url: 'https://www.alemanypajaron.es/servicios/licencia-clinica-estetica',
     type: 'website',
     locale: 'es_ES',
   },
   twitter: {
     card: 'summary',
-    title: 'Licencia Bar Murcia | Alemán y Pajarón',
-    description: 'Tramitación desde 2.500€. Gestión completa.',
+    title: 'Licencia Clínica Estética Murcia | Alemán y Pajarón',
+    description: 'Tramitación desde 2.800€. Gestión completa.',
   },
 };
 
 export default function LicenciaClinicaEsteticaPage() {
   const serviciosIncluidos = [
     {
-      title: 'Proyecto Técnico',
-      desc: 'Levantamiento de planos, memoria técnica, instalaciones eléctricas, fontanería, ventilación.',
+      title: 'Proyecto Técnico Sanitario',
+      desc: 'Planos cabinas tratamiento, zona espera, aseos, almacén productos. Cumplimiento normativa centros sanitarios.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
@@ -38,18 +38,38 @@ export default function LicenciaClinicaEsteticaPage() {
       ),
     },
     {
-      title: 'Tramitación Ayuntamiento',
-      desc: 'Presentación documentación, seguimiento expediente, resolución de requerimientos.',
+      title: 'Cabinas de Tratamiento',
+      desc: 'Diseño cabinas con lavabo, almacenaje, iluminación específica. Separación según tipo de tratamientos.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-          <path d="M9 12h6M9 16h6M9 8h6" />
+          <rect x="3" y="3" width="7" height="7" />
+          <rect x="14" y="3" width="7" height="7" />
+          <rect x="14" y="14" width="7" height="7" />
+          <rect x="3" y="14" width="7" height="7" />
         </svg>
       ),
     },
     {
-      title: 'Certificados Instalaciones',
-      desc: 'Certificado eléctrico, gas, extracción humos, climatización según actividad.',
+      title: 'Instalaciones Sanitarias',
+      desc: 'Agua fría y caliente, desagües, esterilización si procede. Almacenamiento seguro de productos.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2v20M2 12h20" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Ventilación y Climatización',
+      desc: 'Sistema de climatización independiente por cabinas. Ventilación adecuada para productos químicos.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2v20M17 7l-5 5-5-5M7 17l5-5 5 5" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Documentación Sanitaria',
+      desc: 'Comunicación Consejería Sanidad, memoria sanitaria, responsable sanitario si tratamientos médico-estéticos.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -58,32 +78,12 @@ export default function LicenciaClinicaEsteticaPage() {
       ),
     },
     {
-      title: 'Insonorización',
-      desc: 'Estudio acústico, medidas correctoras, certificado insonorización si requiere música.',
+      title: 'Tramitación Completa',
+      desc: 'Ayuntamiento + Consejería Sanidad. Seguimiento expedientes en paralelo hasta concesión de ambos.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M9 18V5l12-2v13" />
-          <circle cx="6" cy="18" r="3" />
-          <circle cx="18" cy="16" r="3" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Seguridad Alimentaria',
-      desc: 'Plan APPCC, documentación sanitaria, registro sanitario si procede.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Asesoramiento Integral',
-      desc: 'Te guiamos en todo el proceso, resolvemos dudas, coordinación con todas las partes.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M12 16v-4M12 8h.01" />
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <path d="M9 12h6M9 16h6M9 8h6" />
         </svg>
       ),
     },
@@ -91,19 +91,19 @@ export default function LicenciaClinicaEsteticaPage() {
 
   const precios = [
     {
-      tipo: 'Bar Cafetería',
-      desde: '2.500€',
-      incluye: ['Hasta 80m²', 'Sin cocina', 'Proyecto básico', 'Tramitación completa', 'Plazo: 2-3 meses'],
+      tipo: 'Centro Estético Básico',
+      desde: '2.800€',
+      incluye: ['Hasta 60m²', '2-3 cabinas', 'Sin tratamientos médicos', 'Tramitación básica', 'Plazo: 2-3 meses'],
     },
     {
-      tipo: 'Bar con Cocina',
+      tipo: 'Clínica Estética Completa',
       desde: '3.500€',
-      incluye: ['Hasta 120m²', 'Con cocina', 'Extracción humos', 'Certificados instalaciones', 'Plazo: 3-4 meses'],
+      incluye: ['Hasta 120m²', '4-5 cabinas', 'Tratamientos avanzados', 'Comunicación sanitaria', 'Plazo: 3-4 meses'],
     },
     {
-      tipo: 'Restaurante',
+      tipo: 'Clínica Médico-Estética',
       desde: '4.500€',
-      incluye: ['Más de 120m²', 'Cocina industrial', 'Insonorización', 'Terraza exterior', 'Plazo: 4-5 meses'],
+      incluye: ['Más de 120m²', 'Tratamientos médicos', 'Responsable sanitario', 'Autorización sanitaria', 'Plazo: 4-5 meses'],
     },
   ];
 
@@ -112,10 +112,10 @@ export default function LicenciaClinicaEsteticaPage() {
       <JsonLd data={localBusinessJsonLd()} />
       <JsonLd
         data={serviceJsonLd({
-          slug: 'licencia-bar',
-          serviceType: 'Licencia de apertura bar y restaurante',
-          name: 'Licencia Apertura Bar y Restaurante Murcia',
-          description: 'Tramitación completa licencia apertura bar y restaurante en Murcia. Proyecto técnico y gestión ayuntamiento.',
+          slug: 'licencia-clinica-estetica',
+          serviceType: 'Licencia de apertura clínica estética',
+          name: 'Licencia Apertura Clínica Estética Murcia',
+          description: 'Tramitación completa licencia apertura clínica estética en Murcia. Proyecto técnico sanitario y gestión.',
         })}
       />
       <JsonLd
@@ -123,7 +123,7 @@ export default function LicenciaClinicaEsteticaPage() {
           items: [
             { name: 'Inicio', url: `${SITE_URL}/` },
             { name: 'Servicios', url: `${SITE_URL}/servicios` },
-            { name: 'Licencia Bar', url: `${SITE_URL}/servicios/licencia-bar` },
+            { name: 'Licencia Clínica Estética', url: `${SITE_URL}/servicios/licencia-clinica-estetica` },
           ],
         })}
       />
@@ -131,10 +131,10 @@ export default function LicenciaClinicaEsteticaPage() {
       <PageHeader
         badge="Licencias Sanitarias"
         title="Licencia Apertura Clínica Estética en Murcia desde 2.800€"
-        subtitle="Tramitación completa: proyecto técnico, gestión ayuntamiento y certificados"
-        image="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=2000&q=80"
-        imageAlt="Licencia bar restaurante Murcia"
-        highlightedWord="Bar"
+        subtitle="Tramitación completa: proyecto técnico sanitario, gestión ayuntamiento y Consejería"
+        image="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=2000&q=80"
+        imageAlt="Licencia clínica estética Murcia"
+        highlightedWord="Estética"
       />
 
       {/* Introducción */}
@@ -149,17 +149,17 @@ export default function LicenciaClinicaEsteticaPage() {
                 ¿Quieres abrir una clínica estética en Murcia?
               </h2>
               <p className="text-xl text-gray-700 mb-4">
-                Te gestionamos toda la tramitación de la licencia de apertura para que puedas abrir tu negocio sin complicaciones.
+                Te tramitamos la licencia de apertura y documentación sanitaria para que puedas abrir tu centro cumpliendo toda la normativa.
               </p>
               <p className="text-gray-600 mb-4">
-                Nos encargamos del proyecto técnico completo, certificados, tramitación ante el Ayuntamiento y seguimiento hasta la concesión.
+                Experiencia en centros estéticos, clínicas médico-estéticas, centros de depilación láser y medicina estética. Conocemos los requisitos específicos sanitarios de la Región de Murcia.
               </p>
               <ul className="space-y-3">
                 {[
-                  'Proyecto técnico firmado por arquitecto',
-                  'Tramitación completa ante Ayuntamiento',
-                  'Certificados de instalaciones incluidos',
-                  'Seguimiento expediente hasta concesión',
+                  'Proyecto técnico + sanitario',
+                  'Tramitación Ayuntamiento + Sanidad',
+                  'Asesoramiento responsable sanitario',
+                  'Comunicación Consejería incluida',
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <svg
@@ -181,8 +181,8 @@ export default function LicenciaClinicaEsteticaPage() {
             </div>
             <div className="relative">
               <Image
-                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
-                alt="Abrir bar restaurante Murcia"
+                src="https://images.unsplash.com/photo-1519494140681-8b17d830a3ec?auto=format&fit=crop&w=800&q=80"
+                alt="Interior de clínica estética moderna en Murcia"
                 width={600}
                 height={700}
                 className="rounded-2xl shadow-2xl"
@@ -201,7 +201,7 @@ export default function LicenciaClinicaEsteticaPage() {
               Gestión completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la tramitación de licencia?
+              ¿Qué incluye la licencia de clínica estética?
             </h2>
           </div>
 
@@ -227,10 +227,10 @@ export default function LicenciaClinicaEsteticaPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta la licencia de bar o restaurante?
+              ¿Cuánto cuesta la licencia de clínica estética?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Presupuestos según tipo de actividad y superficie del local
+              Presupuestos según tipo de tratamientos y superficie del centro
             </p>
           </div>
 
@@ -285,34 +285,39 @@ export default function LicenciaClinicaEsteticaPage() {
           </div>
 
           <p className="text-center text-gray-500 mt-8">
-            * Precios orientativos sin tasas municipales. Presupuesto final según características del local.
+            * Precios orientativos sin tasas. Presupuesto final según tipo de tratamientos ofrecidos.
           </p>
         </div>
       </section>
 
       {/* FAQ */}
       <FAQ
-        title="Preguntas frecuentes sobre licencia de bar en Murcia"
+        title="Preguntas frecuentes sobre licencia de clínica estética en Murcia"
         items={[
           {
-            question: '¿Cuánto tarda la tramitación de la licencia?',
-            answer: 'El plazo medio es de 2-4 meses desde la presentación hasta la concesión, dependiendo del tipo de actividad y si hay requerimientos del Ayuntamiento.',
+            question: '¿Cuánto tarda la licencia de clínica estética?',
+            answer:
+              'Entre 3 y 5 meses. Hay que tramitar ante Ayuntamiento Y Consejería de Sanidad en paralelo, lo que alarga el proceso.',
           },
           {
-            question: '¿Qué documentos necesito aportar?',
-            answer: 'Necesitas: contrato de arrendamiento o escritura, DNI/CIF, alta censal, y nosotros nos encargamos del resto: proyecto técnico, certificados y tramitación.',
+            question: '¿Necesito responsable sanitario?',
+            answer:
+              'Depende. Si ofreces solo tratamientos estéticos (masajes, faciales básicos), no. Si hay láser, medicina estética o inyectables, SÍ necesitas responsable sanitario (médico/enfermero).',
           },
           {
-            question: '¿Puedo abrir mientras tramito la licencia?',
-            answer: 'No. Necesitas la licencia concedida antes de abrir al público. Abrir sin licencia conlleva sanciones graves y cierre del local.',
+            question: '¿Puedo hacer depilación láser sin médico?',
+            answer:
+              'No. La depilación láser es acto sanitario y requiere responsable sanitario (médico o enfermero). El centro debe comunicarse a la Consejería de Sanidad.',
           },
           {
-            question: '¿La licencia tiene caducidad?',
-            answer: 'La licencia de actividad no caduca mientras mantengas la actividad. Si cambias de titular o actividad, necesitarás nueva tramitación.',
+            question: '¿Qué diferencia hay con una peluquería con estética?',
+            answer:
+              'Las peluquerías pueden ofrecer servicios estéticos básicos sin licencia sanitaria. Pero si ofreces tratamientos avanzados, necesitas centro estético con su propia licencia.',
           },
           {
-            question: '¿Incluye la reforma del local?',
-            answer: 'No, este servicio es solo tramitación. Si necesitas reforma del local, tenemos servicio específico de reforma de bar/restaurante.',
+            question: '¿Incluye la reforma de la clínica?',
+            answer:
+              'No, este servicio es solo tramitación. Si necesitas reforma completa, tenemos servicio específico de reforma de clínica estética.',
           },
         ]}
       />
@@ -321,10 +326,10 @@ export default function LicenciaClinicaEsteticaPage() {
       <section className="section bg-gradient-to-br from-primary to-primary-light text-white">
         <div className="max-w-[1280px] mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-            ¿Listo para abrir tu bar o restaurante?
+            ¿Lista para abrir tu clínica estética?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Te gestionamos toda la tramitación para que puedas centrarte en tu negocio
+            Te tramitamos licencia + documentación sanitaria completa
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -354,7 +359,7 @@ export default function LicenciaClinicaEsteticaPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Link
-              href="/servicios/reforma-bar"
+              href="/servicios/reforma-clinica-estetica"
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group border-2 border-accent/20"
             >
               <div className="flex items-start gap-4">
@@ -366,16 +371,16 @@ export default function LicenciaClinicaEsteticaPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
-                    Reforma de Bar/Restaurante
+                    Reforma de Clínica Estética
                   </h3>
-                  <p className="text-gray-600 mb-3">Diseño y ejecución completa de tu local. Desde 15.000€</p>
+                  <p className="text-gray-600 mb-3">Diseño y ejecución completa con cabinas. Desde 20.000€</p>
                   <span className="text-accent font-semibold text-sm">Ver servicio →</span>
                 </div>
               </div>
             </Link>
 
             <Link
-              href="/servicios/abrir-bar-murcia"
+              href="/blog/como-abrir-clinica-estetica-murcia"
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group border-2 border-accent/20"
             >
               <div className="flex items-start gap-4">
@@ -387,7 +392,7 @@ export default function LicenciaClinicaEsteticaPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
-                    Guía Completa: Abrir un Bar
+                    Guía Completa: Abrir Clínica Estética
                   </h3>
                   <p className="text-gray-600 mb-3">Todo lo que necesitas: reforma + licencia + asesoramiento</p>
                   <span className="text-accent font-semibold text-sm">Ver guía completa →</span>

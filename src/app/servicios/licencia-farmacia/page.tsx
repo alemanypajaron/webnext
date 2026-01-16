@@ -7,29 +7,29 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Licencia Apertura Farmacia Murcia | Desde 4.500€ | Alemán y Pajarón',
-  description: 'Tramitación licencia apertura bar y restaurante en Murcia desde 2.500€. Proyecto técnico completo, gestión ayuntamiento. +15 años experiencia.',
-  keywords: 'licencia apertura bar murcia, licencia restaurante murcia, abrir bar murcia, licencia actividad bar, tramitar licencia bar murcia',
-  alternates: { canonical: 'https://www.alemanypajaron.es/servicios/licencia-bar' },
+  title: 'Licencia Apertura Farmacia Murcia | Desde 5.500€ | Alemán y Pajarón',
+  description: 'Tramitación licencia apertura farmacia en Murcia desde 5.500€. Proyecto técnico completo, gestión ayuntamiento y Colegio. +15 años experiencia.',
+  keywords: 'licencia apertura farmacia murcia, licencia farmacia murcia, abrir farmacia murcia, licencia actividad farmacia',
+  alternates: { canonical: 'https://www.alemanypajaron.es/servicios/licencia-farmacia' },
   openGraph: {
-    title: 'Licencia Apertura Bar y Restaurante Murcia | Alemán y Pajarón',
-    description: 'Tramitación completa licencia apertura bar y restaurante. Proyecto técnico y gestión.',
-    url: 'https://www.alemanypajaron.es/servicios/licencia-bar',
+    title: 'Licencia Apertura Farmacia Murcia | Alemán y Pajarón',
+    description: 'Tramitación completa licencia apertura farmacia. Proyecto técnico y gestión.',
+    url: 'https://www.alemanypajaron.es/servicios/licencia-farmacia',
     type: 'website',
     locale: 'es_ES',
   },
   twitter: {
     card: 'summary',
-    title: 'Licencia Bar Murcia | Alemán y Pajarón',
-    description: 'Tramitación desde 2.500€. Gestión completa.',
+    title: 'Licencia Farmacia Murcia | Alemán y Pajarón',
+    description: 'Tramitación desde 5.500€. Gestión completa.',
   },
 };
 
 export default function LicenciaFarmaciaPage() {
   const serviciosIncluidos = [
     {
-      title: 'Proyecto Técnico',
-      desc: 'Levantamiento de planos, memoria técnica, instalaciones eléctricas, fontanería, ventilación.',
+      title: 'Proyecto Técnico Farmacia',
+      desc: 'Planos mostrador, zona venta, almacén, laboratorio, cámara frigorífica, zona consultas. Normativa específica farmacias.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
@@ -38,8 +38,47 @@ export default function LicenciaFarmaciaPage() {
       ),
     },
     {
-      title: 'Tramitación Ayuntamiento',
-      desc: 'Presentación documentación, seguimiento expediente, resolución de requerimientos.',
+      title: 'Almacén y Cámara Frigorífica',
+      desc: 'Diseño almacén medicamentos con control temperatura/humedad. Cámara frigorífica para conservación. Estanterías especiales.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <line x1="3" y1="9" x2="21" y2="9" />
+          <line x1="9" y1="21" x2="9" y2="9" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Laboratorio y Zona Fórmulas',
+      desc: 'Laboratorio para preparados magistrales. Mobiliario específico, balanza, extractor, lavabo. Zona consultas ortopedia.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M9 2v4M15 2v4M9 14l3 3 3-3M8 8h8M10 2h4a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Sistema Seguridad y Antiincendios',
+      desc: 'Alarma antiintrusión obligatoria. Extinción automática. Sistema detección humos. Puerta acceso controlado.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="5" y="11" width="14" height="10" rx="2" />
+          <path d="M12 11V7a4 4 0 0 1 8 0v4M8 11V7a4 4 0 0 0-8 0v4" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Climatización y Ventilación',
+      desc: 'Control temperatura constante 15-25°C. Humedad controlada. Ventilación forzada en laboratorio.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2v20M17 7l-5 5-5-5M7 17l5-5 5 5" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Tramitación Farmacéutica',
+      desc: 'Ayuntamiento + Colegio Farmacéuticos + Consejería Sanidad. Registro farmacia. Visado proyecto. Coordinación completa.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -47,63 +86,23 @@ export default function LicenciaFarmaciaPage() {
         </svg>
       ),
     },
-    {
-      title: 'Certificados Instalaciones',
-      desc: 'Certificado eléctrico, gas, extracción humos, climatización según actividad.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-          <path d="M14 3v5h5M16 13H8M16 17H8M10 9H8" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Insonorización',
-      desc: 'Estudio acústico, medidas correctoras, certificado insonorización si requiere música.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M9 18V5l12-2v13" />
-          <circle cx="6" cy="18" r="3" />
-          <circle cx="18" cy="16" r="3" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Seguridad Alimentaria',
-      desc: 'Plan APPCC, documentación sanitaria, registro sanitario si procede.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Asesoramiento Integral',
-      desc: 'Te guiamos en todo el proceso, resolvemos dudas, coordinación con todas las partes.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M12 16v-4M12 8h.01" />
-        </svg>
-      ),
-    },
   ];
 
   const precios = [
     {
-      tipo: 'Bar Cafetería',
-      desde: '2.500€',
-      incluye: ['Hasta 80m²', 'Sin cocina', 'Proyecto básico', 'Tramitación completa', 'Plazo: 2-3 meses'],
+      tipo: 'Farmacia Rural',
+      desde: '5.500€',
+      incluye: ['Hasta 80m²', 'Sin laboratorio', 'Cámara frigorífica', 'Tramitación básica', 'Plazo: 5-6 meses'],
     },
     {
-      tipo: 'Bar con Cocina',
-      desde: '3.500€',
-      incluye: ['Hasta 120m²', 'Con cocina', 'Extracción humos', 'Certificados instalaciones', 'Plazo: 3-4 meses'],
+      tipo: 'Farmacia Urbana',
+      desde: '6.500€',
+      incluye: ['Hasta 150m²', 'Con laboratorio', 'Sistema seguridad completo', 'Zona consultas', 'Plazo: 6-7 meses'],
     },
     {
-      tipo: 'Restaurante',
-      desde: '4.500€',
-      incluye: ['Más de 120m²', 'Cocina industrial', 'Insonorización', 'Terraza exterior', 'Plazo: 4-5 meses'],
+      tipo: 'Gran Farmacia',
+      desde: '8.500€',
+      incluye: ['Más de 150m²', 'Laboratorio completo', 'Parafarmacia integrada', 'Ortopedia', 'Plazo: 7-8 meses'],
     },
   ];
 
@@ -112,10 +111,10 @@ export default function LicenciaFarmaciaPage() {
       <JsonLd data={localBusinessJsonLd()} />
       <JsonLd
         data={serviceJsonLd({
-          slug: 'licencia-bar',
-          serviceType: 'Licencia de apertura bar y restaurante',
-          name: 'Licencia Apertura Bar y Restaurante Murcia',
-          description: 'Tramitación completa licencia apertura bar y restaurante en Murcia. Proyecto técnico y gestión ayuntamiento.',
+          slug: 'licencia-farmacia',
+          serviceType: 'Licencia de apertura farmacia',
+          name: 'Licencia Apertura Farmacia Murcia',
+          description: 'Tramitación completa licencia apertura farmacia en Murcia. Proyecto técnico farmacéutico y gestión.',
         })}
       />
       <JsonLd
@@ -123,18 +122,18 @@ export default function LicenciaFarmaciaPage() {
           items: [
             { name: 'Inicio', url: `${SITE_URL}/` },
             { name: 'Servicios', url: `${SITE_URL}/servicios` },
-            { name: 'Licencia Bar', url: `${SITE_URL}/servicios/licencia-bar` },
+            { name: 'Licencia Farmacia', url: `${SITE_URL}/servicios/licencia-farmacia` },
           ],
         })}
       />
 
       <PageHeader
-        badge="Licencias Hostelería"
-        title="Licencia Apertura Bar y Restaurante en Murcia desde 2.500€"
-        subtitle="Tramitación completa: proyecto técnico, gestión ayuntamiento y certificados"
-        image="https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=2000&q=80"
-        imageAlt="Licencia bar restaurante Murcia"
-        highlightedWord="Bar"
+        badge="Licencias Sanitarias"
+        title="Licencia Apertura Farmacia en Murcia desde 5.500€"
+        subtitle="Tramitación completa: proyecto técnico farmacéutico, gestión Colegio y Consejería"
+        image="https://images.unsplash.com/photo-1576602976047-174e57a47881?auto=format&fit=crop&w=2000&q=80"
+        imageAlt="Licencia farmacia Murcia"
+        highlightedWord="Farmacia"
       />
 
       {/* Introducción */}
@@ -146,20 +145,20 @@ export default function LicenciaFarmaciaPage() {
                 +15 años de experiencia
               </span>
               <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-                ¿Quieres abrir un bar o restaurante en Murcia?
+                ¿Quieres abrir una farmacia en Murcia?
               </h2>
               <p className="text-xl text-gray-700 mb-4">
-                Te gestionamos toda la tramitación de la licencia de apertura para que puedas abrir tu negocio sin complicaciones.
+                Te tramitamos la licencia completa de farmacia, incluyendo visado del Colegio de Farmacéuticos, autorización Consejería y Ayuntamiento.
               </p>
               <p className="text-gray-600 mb-4">
-                Nos encargamos del proyecto técnico completo, certificados, tramitación ante el Ayuntamiento y seguimiento hasta la concesión.
+                Experiencia en farmacias urbanas, rurales y gran formato con parafarmacia. Conocemos la normativa específica farmacéutica: cámara frigorífica, laboratorio, seguridad y control de temperatura.
               </p>
               <ul className="space-y-3">
                 {[
-                  'Proyecto técnico firmado por arquitecto',
-                  'Tramitación completa ante Ayuntamiento',
-                  'Certificados de instalaciones incluidos',
-                  'Seguimiento expediente hasta concesión',
+                  'Proyecto técnico farmacéutico',
+                  'Visado Colegio Farmacéuticos',
+                  'Tramitación Consejería + Ayuntamiento',
+                  'Cámara frigorífica y laboratorio',
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <svg
@@ -181,8 +180,8 @@ export default function LicenciaFarmaciaPage() {
             </div>
             <div className="relative">
               <Image
-                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
-                alt="Abrir bar restaurante Murcia"
+                src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=800&q=80"
+                alt="Interior de farmacia moderna en Murcia"
                 width={600}
                 height={700}
                 className="rounded-2xl shadow-2xl"
@@ -201,7 +200,7 @@ export default function LicenciaFarmaciaPage() {
               Gestión completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la tramitación de licencia?
+              ¿Qué incluye la licencia de farmacia?
             </h2>
           </div>
 
@@ -227,10 +226,10 @@ export default function LicenciaFarmaciaPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta la licencia de bar o restaurante?
+              ¿Cuánto cuesta la licencia de farmacia?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Presupuestos según tipo de actividad y superficie del local
+              Presupuestos según ubicación y servicios ofrecidos
             </p>
           </div>
 
@@ -285,34 +284,39 @@ export default function LicenciaFarmaciaPage() {
           </div>
 
           <p className="text-center text-gray-500 mt-8">
-            * Precios orientativos sin tasas municipales. Presupuesto final según características del local.
+            * Precios orientativos sin tasas. Requiere concesión/adjudicación previa de la farmacia.
           </p>
         </div>
       </section>
 
       {/* FAQ */}
       <FAQ
-        title="Preguntas frecuentes sobre licencia de bar en Murcia"
+        title="Preguntas frecuentes sobre licencia de farmacia en Murcia"
         items={[
           {
-            question: '¿Cuánto tarda la tramitación de la licencia?',
-            answer: 'El plazo medio es de 2-4 meses desde la presentación hasta la concesión, dependiendo del tipo de actividad y si hay requerimientos del Ayuntamiento.',
+            question: '¿Cuánto tarda la licencia de farmacia?',
+            answer:
+              'Entre 6 y 8 meses. Es el más largo porque intervienen: Ayuntamiento, Colegio de Farmacéuticos (visado proyecto) y Consejería Sanidad (autorización funcionamiento).',
           },
           {
-            question: '¿Qué documentos necesito aportar?',
-            answer: 'Necesitas: contrato de arrendamiento o escritura, DNI/CIF, alta censal, y nosotros nos encargamos del resto: proyecto técnico, certificados y tramitación.',
+            question: '¿Es obligatorio el laboratorio en todas las farmacias?',
+            answer:
+              'Depende del Colegio de Farmacéuticos de tu zona. En muchos casos sí se exige laboratorio para fórmulas magistrales, aunque sea mínimo.',
           },
           {
-            question: '¿Puedo abrir mientras tramito la licencia?',
-            answer: 'No. Necesitas la licencia concedida antes de abrir al público. Abrir sin licencia conlleva sanciones graves y cierre del local.',
+            question: '¿Necesito cámara frigorífica?',
+            answer:
+              'Sí, SIEMPRE. Es obligatorio tener cámara frigorífica para conservación de medicamentos termolábiles (insulinas, vacunas, etc.). Debe mantener 2-8°C.',
           },
           {
-            question: '¿La licencia tiene caducidad?',
-            answer: 'La licencia de actividad no caduca mientras mantengas la actividad. Si cambias de titular o actividad, necesitarás nueva tramitación.',
+            question: '¿Puedo tener parafarmacia sin ser farmacéutico?',
+            answer:
+              'No confundir: FARMACIA necesita licencia farmacéutico + tramitación completa. PARAFARMACIA (solo productos no medicamentos) no necesita ser farmacéutico pero tiene normativa diferente.',
           },
           {
-            question: '¿Incluye la reforma del local?',
-            answer: 'No, este servicio es solo tramitación. Si necesitas reforma del local, tenemos servicio específico de reforma de bar/restaurante.',
+            question: '¿Incluye la reforma de la farmacia?',
+            answer:
+              'No, este servicio es solo tramitación. Si necesitas reforma completa de la farmacia, tenemos servicio específico de reforma de farmacia.',
           },
         ]}
       />
@@ -321,10 +325,10 @@ export default function LicenciaFarmaciaPage() {
       <section className="section bg-gradient-to-br from-primary to-primary-light text-white">
         <div className="max-w-[1280px] mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-            ¿Listo para abrir tu bar o restaurante?
+            ¿Listo para abrir tu farmacia?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Te gestionamos toda la tramitación para que puedas centrarte en tu negocio
+            Te tramitamos toda la documentación farmacéutica
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -354,7 +358,7 @@ export default function LicenciaFarmaciaPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Link
-              href="/servicios/reforma-bar"
+              href="/servicios/reforma-farmacia"
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group border-2 border-accent/20"
             >
               <div className="flex items-start gap-4">
@@ -366,16 +370,16 @@ export default function LicenciaFarmaciaPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
-                    Reforma de Bar/Restaurante
+                    Reforma de Farmacia
                   </h3>
-                  <p className="text-gray-600 mb-3">Diseño y ejecución completa de tu local. Desde 15.000€</p>
+                  <p className="text-gray-600 mb-3">Diseño y ejecución completa con laboratorio. Desde 40.000€</p>
                   <span className="text-accent font-semibold text-sm">Ver servicio →</span>
                 </div>
               </div>
             </Link>
 
             <Link
-              href="/servicios/abrir-bar-murcia"
+              href="/blog/requisitos-abrir-farmacia-murcia"
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group border-2 border-accent/20"
             >
               <div className="flex items-start gap-4">
@@ -387,7 +391,7 @@ export default function LicenciaFarmaciaPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
-                    Guía Completa: Abrir un Bar
+                    Guía Completa: Abrir una Farmacia
                   </h3>
                   <p className="text-gray-600 mb-3">Todo lo que necesitas: reforma + licencia + asesoramiento</p>
                   <span className="text-accent font-semibold text-sm">Ver guía completa →</span>

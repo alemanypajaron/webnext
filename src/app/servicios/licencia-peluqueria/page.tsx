@@ -28,8 +28,8 @@ export const metadata: Metadata = {
 export default function LicenciaPeluqueriaPage() {
   const serviciosIncluidos = [
     {
-      title: 'Proyecto Técnico',
-      desc: 'Levantamiento de planos, memoria técnica, instalaciones eléctricas, fontanería, ventilación.',
+      title: 'Proyecto Técnico Peluquería',
+      desc: 'Planos del salón, distribución puestos de trabajo, zona lavado, recepción, almacén. Instalaciones eléctricas y fontanería.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
@@ -38,8 +38,35 @@ export default function LicenciaPeluqueriaPage() {
       ),
     },
     {
+      title: 'Instalaciones Agua y Desagüe',
+      desc: 'Diseño y certificación de instalaciones de fontanería para lavacabezas. Agua caliente y fría, desagües.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2v20M2 12h20" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Ventilación y Climatización',
+      desc: 'Sistema de ventilación adecuado para productos químicos. Aire acondicionado si procede.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2v20M17 7l-5 5-5-5M7 17l5-5 5 5" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Instalación Eléctrica',
+      desc: 'Certificado eléctrico. Puntos de luz, enchufes, iluminación específica para cada zona.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        </svg>
+      ),
+    },
+    {
       title: 'Tramitación Ayuntamiento',
-      desc: 'Presentación documentación, seguimiento expediente, resolución de requerimientos.',
+      desc: 'Presentación documentación completa, seguimiento expediente, resolución requerimientos hasta concesión.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -48,38 +75,8 @@ export default function LicenciaPeluqueriaPage() {
       ),
     },
     {
-      title: 'Certificados Instalaciones',
-      desc: 'Certificado eléctrico, gas, extracción humos, climatización según actividad.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-          <path d="M14 3v5h5M16 13H8M16 17H8M10 9H8" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Insonorización',
-      desc: 'Estudio acústico, medidas correctoras, certificado insonorización si requiere música.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M9 18V5l12-2v13" />
-          <circle cx="6" cy="18" r="3" />
-          <circle cx="18" cy="16" r="3" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Seguridad Alimentaria',
-      desc: 'Plan APPCC, documentación sanitaria, registro sanitario si procede.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Asesoramiento Integral',
-      desc: 'Te guiamos en todo el proceso, resolvemos dudas, coordinación con todas las partes.',
+      title: 'Asesoramiento Normativa',
+      desc: 'Te informamos de toda la normativa higiénico-sanitaria aplicable a peluquerías y salones de belleza.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <circle cx="12" cy="12" r="10" />
@@ -152,14 +149,14 @@ export default function LicenciaPeluqueriaPage() {
                 Te gestionamos toda la tramitación de la licencia de apertura para que puedas abrir tu negocio sin complicaciones.
               </p>
               <p className="text-gray-600 mb-4">
-                Nos encargamos del proyecto técnico completo, certificados, tramitación ante el Ayuntamiento y seguimiento hasta la concesión.
+                Más de 15 años tramitando licencias de peluquerías y salones de belleza en Murcia. Conocemos todos los requisitos y te evitamos sorpresas.
               </p>
               <ul className="space-y-3">
                 {[
-                  'Proyecto técnico firmado por arquitecto',
-                  'Tramitación completa ante Ayuntamiento',
-                  'Certificados de instalaciones incluidos',
-                  'Seguimiento expediente hasta concesión',
+                  'Proyecto adaptado a tu salón',
+                  'Tramitación rápida 1-2 meses',
+                  'Certificado instalaciones incluido',
+                  'Seguimiento hasta la concesión',
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <svg
@@ -181,8 +178,8 @@ export default function LicenciaPeluqueriaPage() {
             </div>
             <div className="relative">
               <Image
-                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
-                alt="Abrir bar restaurante Murcia"
+                src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80"
+                alt="Interior salón de peluquería en Murcia"
                 width={600}
                 height={700}
                 className="rounded-2xl shadow-2xl"
@@ -296,23 +293,23 @@ export default function LicenciaPeluqueriaPage() {
         items={[
           {
             question: '¿Cuánto tarda la tramitación de la licencia?',
-            answer: 'El plazo medio es de 2-4 meses desde la presentación hasta la concesión, dependiendo del tipo de actividad y si hay requerimientos del Ayuntamiento.',
+            answer: 'Entre 1 y 3 meses desde la presentación. Es más rápida que hostelería porque no requiere cocina ni instalaciones complejas.',
           },
           {
-            question: '¿Qué documentos necesito aportar?',
-            answer: 'Necesitas: contrato de arrendamiento o escritura, DNI/CIF, alta censal, y nosotros nos encargamos del resto: proyecto técnico, certificados y tramitación.',
+            question: '¿Necesito licencia sanitaria para una peluquería?',
+            answer: 'No. Las peluquerías no requieren licencia sanitaria específica, pero sí deben cumplir normativa higiénico-sanitaria básica.',
           },
           {
-            question: '¿Puedo abrir mientras tramito la licencia?',
-            answer: 'No. Necesitas la licencia concedida antes de abrir al público. Abrir sin licencia conlleva sanciones graves y cierre del local.',
+            question: '¿Qué instalaciones son obligatorias?',
+            answer: 'Lavacabezas con agua caliente/fría, ventilación adecuada, aseo para clientes, instalación eléctrica certificada.',
           },
           {
-            question: '¿La licencia tiene caducidad?',
-            answer: 'La licencia de actividad no caduca mientras mantengas la actividad. Si cambias de titular o actividad, necesitarás nueva tramitación.',
+            question: '¿Puedo ampliar a centro de estética después?',
+            answer: 'Sí, pero necesitarás modificar la licencia. Si desde el principio piensas ofrecer servicios de estética, mejor solicitarlo directamente.',
           },
           {
             question: '¿Incluye la reforma del local?',
-            answer: 'No, este servicio es solo tramitación. Si necesitas reforma del local, tenemos servicio específico de reforma de bar/restaurante.',
+            answer: 'No, este servicio es solo tramitación. Si necesitas reforma del local, tenemos servicio específico de reforma de peluquería.',
           },
         ]}
       />

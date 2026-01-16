@@ -8,8 +8,8 @@ import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '
 
 export const metadata: Metadata = {
   title: 'Reforma Peluquería Murcia | Desde 12.000€ | Alemán y Pajarón',
-  description: 'Reforma integral peluquería y salón belleza en Murcia desde 12.000€. Diseño, mobiliario, iluminación. +15 años experiencia.',
-  keywords: 'reforma peluqueria murcia, reformar salon belleza murcia, reforma barberia murcia precio',
+  description: 'Reforma integral peluquería y salón de belleza en Murcia desde 12.000€. Lavacabezas, espejos, iluminación profesional. +15 años experiencia.',
+  keywords: 'reforma peluqueria murcia, reforma salon belleza murcia, reformar peluqueria precio murcia, reforma local peluqueria',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-peluqueria' },
   openGraph: {
     title: 'Reforma Peluquería Murcia | Alemán y Pajarón',
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
 export default function ReformaPeluqueriaPage() {
   const serviciosIncluidos = [
     {
-      title: 'Diseño y Distribución',
-      desc: 'Planos, distribución óptima: barra, mesas, cocina, baños, almacén. Aprovechamiento máximo del espacio.',
+      title: 'Diseño del Salón',
+      desc: 'Distribución óptima: zona tocadores, lavacabezas, recepción, almacén productos. Máximo aprovechamiento espacio.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
@@ -38,29 +38,8 @@ export default function ReformaPeluqueriaPage() {
       ),
     },
     {
-      title: 'Cocina Industrial',
-      desc: 'Instalación completa cocina profesional: campana extractora, fogones, horno, frigoríficos, fregaderos.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M2 12h20M2 12v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-8" />
-          <path d="M2 12V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6" />
-          <path d="M6 8v4M10 8v4M14 8v4M18 8v4" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Barra y Mobiliario',
-      desc: 'Construcción barra a medida, taburetes, mesas, sillas, mobiliario completo. Diseño moderno y funcional.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-          <path d="M9 3v18M15 3v18" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Extracción de Humos',
-      desc: 'Sistema completo extracción humos cocina: campana, conductos, filtros. Cumplimiento normativa.',
+      title: 'Lavacabezas Profesionales',
+      desc: 'Instalación lavacabezas ergonómicos con agua caliente/fría, grifería monomando, ceramica de calidad.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M12 2v20M2 12h20" />
@@ -68,21 +47,46 @@ export default function ReformaPeluqueriaPage() {
       ),
     },
     {
-      title: 'Baños y Climatización',
-      desc: 'Baños adaptados clientes, vestuarios empleados, aire acondicionado, ventilación.',
+      title: 'Tocadores y Espejos',
+      desc: 'Tocadores individuales a medida, espejos con iluminación LED profesional, muebles almacenaje herramientas.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z" />
-          <path d="M3 9V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4" />
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <circle cx="12" cy="12" r="4" />
         </svg>
       ),
     },
     {
-      title: 'Electricidad e Iluminación',
-      desc: 'Instalación eléctrica completa, iluminación LED decorativa, cuadro eléctrico potenciado.',
+      title: 'Iluminación Profesional',
+      desc: 'Iluminación LED luz natural para tocadores, regulable, espejos retroiluminados, ambiente general.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Suelo y Revestimientos',
+      desc: 'Pavimento porcelánico resistente agua, revestimientos modernos, zócalos protección, pintura lavable.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="3" y="3" width="7" height="7" />
+          <rect x="14" y="3" width="7" height="7" />
+          <rect x="14" y="14" width="7" height="7" />
+          <rect x="3" y="14" width="7" height="7" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Ventilación y Climatización',
+      desc: 'Extracción ventilación para productos químicos, climatización confort cliente, aire acondicionado.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2v20M17 7l-5 5-5-5M7 17l5-5 5 5" />
         </svg>
       ),
     },
@@ -92,17 +96,17 @@ export default function ReformaPeluqueriaPage() {
     {
       tipo: 'Peluquería Básica',
       desde: '12.000€',
-      incluye: ['Hasta 40m²', '3-4 puestos', 'Lavacabezas', 'Mobiliario básico', 'Iluminación LED'],
+      incluye: ['Hasta 40m²', '3-4 tocadores', '1 lavacabezas', 'Iluminación LED', 'Recepción sencilla'],
     },
     {
       tipo: 'Salón Completo',
-      desde: '25.000€',
-      incluye: ['60-80m²', '6-8 puestos', 'Zona lavado', 'Mobiliario premium', 'Climatización'],
+      desde: '22.000€',
+      incluye: ['60-80m²', '6-8 tocadores', '2-3 lavacabezas', 'Mobiliario a medida', 'Zona espera'],
     },
     {
-      tipo: 'Centro Belleza',
-      desde: '40.000€',
-      incluye: ['Más de 80m²', 'Peluquería + estética', 'Cabinas privadas', 'Diseño integral', 'Equipamiento completo'],
+      tipo: 'Centro de Belleza',
+      desde: '35.000€',
+      incluye: ['Más de 80m²', '10+ tocadores', 'Zona estética', 'Cabinas tratamiento', 'Diseño personalizado'],
     },
   ];
 
@@ -111,10 +115,10 @@ export default function ReformaPeluqueriaPage() {
       <JsonLd data={localBusinessJsonLd()} />
       <JsonLd
         data={serviceJsonLd({
-          slug: 'reforma-bar',
-          serviceType: 'Reforma de bar y restaurante',
-          name: 'Reforma Bar y Restaurante Murcia',
-          description: 'Reforma integral bar y restaurante en Murcia: diseño, cocina industrial, barra, extracción humos.',
+          slug: 'reforma-peluqueria',
+          serviceType: 'Reforma de peluquería y salón de belleza',
+          name: 'Reforma Peluquería Murcia',
+          description: 'Reforma integral de peluquería en Murcia. Diseño completo, lavacabezas, tocadores, iluminación profesional.',
         })}
       />
       <JsonLd
@@ -122,15 +126,15 @@ export default function ReformaPeluqueriaPage() {
           items: [
             { name: 'Inicio', url: `${SITE_URL}/` },
             { name: 'Servicios', url: `${SITE_URL}/servicios` },
-            { name: 'Reforma Bar', url: `${SITE_URL}/servicios/reforma-bar` },
+            { name: 'Reforma Peluquería', url: `${SITE_URL}/servicios/reforma-peluqueria` },
           ],
         })}
       />
 
       <PageHeader
-        badge="Reforma Peluquería"
-        title="Reforma Peluquería y Salón Belleza en Murcia desde 12.000€"
-        subtitle="Diseño completo, mobiliario, iluminación y acabados profesionales"
+        badge="Reformas Negocios"
+        title="Reforma Integral Peluquería y Salón de Belleza en Murcia desde 12.000€"
+        subtitle="Diseño completo, lavacabezas, tocadores e iluminación profesional"
         image="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Reforma peluquería Murcia"
         highlightedWord="Peluquería"
@@ -145,20 +149,20 @@ export default function ReformaPeluqueriaPage() {
                 +15 años de experiencia
               </span>
               <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-                ¿Por qué reformar tu peluquería con nosotros?
+                Reforma integral de peluquería en Murcia
               </h2>
               <p className="text-xl text-gray-700 mb-4">
-                Reformamos salones de peluquería y belleza con diseño funcional y estética moderna.
+                Diseñamos y ejecutamos la reforma completa de tu peluquería. Desde distribución y fontanería hasta mobiliario e iluminación profesional.
               </p>
               <p className="text-gray-600 mb-4">
-                Más de 15 años reformando bares y restaurantes en Murcia. Conocemos la normativa, los tiempos y cómo optimizar cada metro de tu local.
+                Experiencia en salones de peluquería, barberías, centros de belleza y franquicias. Instalamos lavacabezas profesionales, tocadores a medida e iluminación específica.
               </p>
               <ul className="space-y-3">
                 {[
-                  'Diseño funcional y rentable',
-                  'Cocina industrial completa',
-                  'Extracción de humos certificada',
-                  'Obra terminada en 2-4 meses',
+                  'Diseño 3D previo incluido',
+                  'Lavacabezas e instalaciones',
+                  'Tocadores e iluminación LED',
+                  'Llave en mano: listo para abrir',
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <svg
@@ -180,8 +184,8 @@ export default function ReformaPeluqueriaPage() {
             </div>
             <div className="relative">
               <Image
-                src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80"
-                alt="Reforma peluquería salón Murcia"
+                src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80"
+                alt="Reforma interior salón peluquería moderno en Murcia"
                 width={600}
                 height={700}
                 className="rounded-2xl shadow-2xl"
@@ -197,10 +201,10 @@ export default function ReformaPeluqueriaPage() {
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-4">
-              Todo incluido
+              Reforma completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la reforma de tu bar?
+              ¿Qué incluye la reforma de peluquería?
             </h2>
           </div>
 
@@ -226,10 +230,10 @@ export default function ReformaPeluqueriaPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta reformar un bar o restaurante?
+              ¿Cuánto cuesta reformar una peluquería?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Presupuestos según superficie y nivel de acabados
+              Presupuestos según superficie y nivel de equipamiento
             </p>
           </div>
 
@@ -243,7 +247,7 @@ export default function ReformaPeluqueriaPage() {
               >
                 {index === 1 && (
                   <span className="inline-block px-3 py-1 bg-accent text-primary text-xs font-bold rounded-full mb-4">
-                    MÁS POPULAR
+                    MÁS COMÚN
                   </span>
                 )}
                 <h3 className="text-2xl font-heading font-bold text-primary mb-2">{paquete.tipo}</h3>
@@ -284,39 +288,39 @@ export default function ReformaPeluqueriaPage() {
           </div>
 
           <p className="text-center text-gray-500 mt-8">
-            * Precios orientativos. El presupuesto final depende de las medidas, materiales y acabados elegidos.
+            * Precios orientativos reforma completa llave en mano. Presupuesto final según calidades y extras.
           </p>
         </div>
       </section>
 
       {/* FAQ */}
       <FAQ
-        title="Preguntas frecuentes sobre reforma de bar en Murcia"
+        title="Preguntas frecuentes sobre reforma de peluquería en Murcia"
         items={[
           {
-            question: '¿Cuánto tarda una reforma de bar completa?',
+            question: '¿Cuánto tarda la reforma de una peluquería?',
             answer:
-              'Una reforma completa tarda entre 2 y 4 meses según tamaño. Bar pequeño: 2 meses. Restaurante grande con cocina: 4-6 meses.',
+              'Entre 3 y 6 semanas según tamaño. Reforma básica (40m²): 3 semanas. Reforma completa (80m²): 5-6 semanas.',
           },
           {
-            question: '¿Puedo abrir mientras se reforma?',
+            question: '¿Incluye los lavacabezas?',
             answer:
-              'No. La reforma implica obra completa: electricidad, fontanería, cocina. Debes cerrar durante el proceso. Te damos fechas exactas al principio.',
+              'Sí, incluye instalación completa de lavacabezas: fontanería, desagües, lavacabezas ergonómicos con grifería. Puedes elegir modelo y marca.',
           },
           {
-            question: '¿Incluye la cocina industrial?',
+            question: '¿Puedo elegir los espejos y tocadores?',
             answer:
-              'Sí, en el paquete completo incluimos instalación de cocina: campana extractora, fogones, hornos, frigoríficos, fregaderos industriales.',
+              'Sí. Te enseñamos catálogos y hacemos diseño 3D para que veas cómo quedan. Tocadores podemos hacerlos a medida o instalar prefabricados de calidad.',
           },
           {
-            question: '¿Necesito licencia de obra?',
+            question: '¿El mobiliario (sillas, secadores) está incluido?',
             answer:
-              'Depende del alcance. Reformas integrales requieren licencia mayor. Te asesoramos y gestionamos toda la tramitación si es necesario.',
+              'La estructura y tocadores sí. Los sillones, secadores de pie, carritos los puedes comprar tú (te asesoramos proveedores) o los incluimos en presupuesto.',
           },
           {
-            question: '¿Qué garantía tiene la reforma?',
+            question: '¿Necesito licencia de obras?',
             answer:
-              'Garantía de 2 años en instalaciones eléctricas, fontanería, climatización y carpintería. Garantía fabricante en equipamiento de cocina.',
+              'Depende. Obras menores (sin tocar estructura) normalmente solo comunicación. Te asesoramos y gestionamos si necesitas.',
           },
         ]}
       />
@@ -328,7 +332,7 @@ export default function ReformaPeluqueriaPage() {
             ¿Listo para reformar tu peluquería?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Solicita presupuesto y transforma tu local en el negocio que siempre has querido
+            Te hacemos un diseño 3D gratis y presupuesto sin compromiso
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -345,7 +349,7 @@ export default function ReformaPeluqueriaPage() {
             </a>
           </div>
           <p className="text-white/80 mt-6 text-sm">
-            Respuesta en menos de 24h • Visita gratuita • Presupuesto detallado
+            Respuesta en menos de 24h • Diseño 3D previo • Presupuesto cerrado
           </p>
         </div>
       </section>
@@ -354,41 +358,55 @@ export default function ReformaPeluqueriaPage() {
       <section className="section bg-gray-50">
         <div className="max-w-[1280px] mx-auto px-6">
           <h2 className="text-3xl font-heading font-bold text-primary mb-8 text-center">
-            También te puede interesar
+            También puedes necesitar
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                title: 'Licencia Peluquería',
-                desc: '¿También necesitas la licencia? Te tramitamos todo',
-                link: '/servicios/licencia-peluqueria',
-              },
-              {
-                title: 'Diseño de Espacios',
-                desc: 'Diseño 3D de tu nuevo local',
-                link: '/servicios/diseno-espacios',
-              },
-              {
-                title: 'Gestión de Proyectos',
-                desc: 'Gestionamos toda tu reforma',
-                link: '/servicios/gestion-proyectos',
-              },
-            ].map((servicio) => (
-              <Link
-                key={servicio.title}
-                href={servicio.link}
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all group"
-              >
-                <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
-                  {servicio.title}
-                </h3>
-                <p className="text-gray-600">{servicio.desc}</p>
-              </Link>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Link
+              href="/servicios/licencia-peluqueria"
+              className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group border-2 border-accent/20"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+                    <path d="M14 3v5h5M16 13H8M16 17H8M10 9H8" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
+                    Licencia Peluquería
+                  </h3>
+                  <p className="text-gray-600 mb-3">¿También necesitas tramitar la licencia? Te gestionamos todo. Desde 1.800€</p>
+                  <span className="text-accent font-semibold text-sm">Ver servicio →</span>
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              href="/servicios/diseno-espacios"
+              className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group border-2 border-accent/20"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary">
+                    <rect x="3" y="3" width="7" height="7" />
+                    <rect x="14" y="3" width="7" height="7" />
+                    <rect x="14" y="14" width="7" height="7" />
+                    <rect x="3" y="14" width="7" height="7" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
+                    Diseño de Espacios 3D
+                  </h3>
+                  <p className="text-gray-600 mb-3">Visualiza tu peluquería antes de reformarla con diseño 3D fotorrealista</p>
+                  <span className="text-accent font-semibold text-sm">Ver servicio →</span>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
     </>
   );
 }
-

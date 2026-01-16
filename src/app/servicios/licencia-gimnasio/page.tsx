@@ -28,8 +28,8 @@ export const metadata: Metadata = {
 export default function LicenciaGimnasioPage() {
   const serviciosIncluidos = [
     {
-      title: 'Proyecto Técnico',
-      desc: 'Levantamiento de planos, memoria técnica, instalaciones eléctricas, fontanería, ventilación.',
+      title: 'Proyecto Técnico Gimnasio',
+      desc: 'Planos sala musculación, zona cardio, vestuarios, duchas, recepción. Distribución máquinas y espacios funcionales.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
@@ -38,28 +38,36 @@ export default function LicenciaGimnasioPage() {
       ),
     },
     {
-      title: 'Tramitación Ayuntamiento',
-      desc: 'Presentación documentación, seguimiento expediente, resolución de requerimientos.',
+      title: 'Vestuarios y Duchas',
+      desc: 'Diseño vestuarios con taquillas, duchas con agua caliente, aseos. Instalaciones de fontanería completas.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-          <path d="M9 12h6M9 16h6M9 8h6" />
+          <path d="M7 7h10v10H7z" />
+          <path d="M5 5h14v14H5z" />
         </svg>
       ),
     },
     {
-      title: 'Certificados Instalaciones',
-      desc: 'Certificado eléctrico, gas, extracción humos, climatización según actividad.',
+      title: 'Ventilación y Climatización',
+      desc: 'Sistema de ventilación forzada obligatorio. Climatización adecuada para actividad deportiva intensa.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-          <path d="M14 3v5h5M16 13H8M16 17H8M10 9H8" />
+          <path d="M12 2v20M17 7l-5 5-5-5M7 17l5-5 5 5" />
         </svg>
       ),
     },
     {
-      title: 'Insonorización',
-      desc: 'Estudio acústico, medidas correctoras, certificado insonorización si requiere música.',
+      title: 'Instalación Eléctrica Reforzada',
+      desc: 'Certificado eléctrico. Potencia suficiente para máquinas, iluminación, climatización, música.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Insonorización Acústica',
+      desc: 'Estudio acústico obligatorio. Aislamiento para evitar molestias por música y caída de pesos.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M9 18V5l12-2v13" />
@@ -69,21 +77,12 @@ export default function LicenciaGimnasioPage() {
       ),
     },
     {
-      title: 'Seguridad Alimentaria',
-      desc: 'Plan APPCC, documentación sanitaria, registro sanitario si procede.',
+      title: 'Tramitación Completa',
+      desc: 'Presentación Ayuntamiento, seguimiento expediente, comunicación ambiental si procede, resolución hasta concesión.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Asesoramiento Integral',
-      desc: 'Te guiamos en todo el proceso, resolvemos dudas, coordinación con todas las partes.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M12 16v-4M12 8h.01" />
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <path d="M9 12h6M9 16h6M9 8h6" />
         </svg>
       ),
     },
@@ -93,17 +92,17 @@ export default function LicenciaGimnasioPage() {
     {
       tipo: 'Box/Sala Pequeña',
       desde: '3.200€',
-      incluye: ['Hasta 100m²', 'Vestuarios básicos', 'Proyecto básico', 'Tramitación completa', 'Plazo: 2-3 meses'],
+      incluye: ['Hasta 100m²', 'Vestuarios básicos', 'Proyecto técnico', 'Insonorización', 'Plazo: 2-3 meses'],
     },
     {
       tipo: 'Gimnasio Medio',
       desde: '4.200€',
-      incluye: ['Hasta 250m²', 'Vestuarios completos', 'Climatización', 'Certificados instalaciones', 'Plazo: 3-4 meses'],
+      incluye: ['Hasta 250m²', 'Vestuarios completos', 'Zona cardio + musculación', 'Certificados completos', 'Plazo: 3-4 meses'],
     },
     {
       tipo: 'Gimnasio Grande',
       desde: '5.500€',
-      incluye: ['Más de 250m²', 'Zona musculación', 'Zona cardio', 'Actividades dirigidas', 'Plazo: 4-5 meses'],
+      incluye: ['Más de 250m²', 'Actividades dirigidas', 'Zona funcional', 'Climatización potente', 'Plazo: 4-5 meses'],
     },
   ];
 
@@ -112,10 +111,10 @@ export default function LicenciaGimnasioPage() {
       <JsonLd data={localBusinessJsonLd()} />
       <JsonLd
         data={serviceJsonLd({
-          slug: 'licencia-bar',
-          serviceType: 'Licencia de apertura bar y restaurante',
-          name: 'Licencia Apertura Bar y Restaurante Murcia',
-          description: 'Tramitación completa licencia apertura bar y restaurante en Murcia. Proyecto técnico y gestión ayuntamiento.',
+          slug: 'licencia-gimnasio',
+          serviceType: 'Licencia de apertura gimnasio y box',
+          name: 'Licencia Apertura Gimnasio Murcia',
+          description: 'Tramitación completa licencia apertura gimnasio en Murcia. Proyecto técnico y gestión ayuntamiento.',
         })}
       />
       <JsonLd
@@ -123,7 +122,7 @@ export default function LicenciaGimnasioPage() {
           items: [
             { name: 'Inicio', url: `${SITE_URL}/` },
             { name: 'Servicios', url: `${SITE_URL}/servicios` },
-            { name: 'Licencia Bar', url: `${SITE_URL}/servicios/licencia-bar` },
+            { name: 'Licencia Gimnasio', url: `${SITE_URL}/servicios/licencia-gimnasio` },
           ],
         })}
       />
@@ -149,17 +148,17 @@ export default function LicenciaGimnasioPage() {
                 ¿Quieres abrir un gimnasio o box en Murcia?
               </h2>
               <p className="text-xl text-gray-700 mb-4">
-                Te gestionamos toda la tramitación de la licencia de apertura para que puedas abrir tu negocio sin complicaciones.
+                Te tramitamos la licencia de apertura completa para que puedas abrir tu centro deportivo cumpliendo toda la normativa.
               </p>
               <p className="text-gray-600 mb-4">
-                Nos encargamos del proyecto técnico completo, certificados, tramitación ante el Ayuntamiento y seguimiento hasta la concesión.
+                Experiencia en gimnasios convencionales, boxes de CrossFit, centros de entrenamiento funcional y estudios boutique. Conocemos los requisitos específicos de insonorización y ventilación.
               </p>
               <ul className="space-y-3">
                 {[
-                  'Proyecto técnico firmado por arquitecto',
-                  'Tramitación completa ante Ayuntamiento',
-                  'Certificados de instalaciones incluidos',
-                  'Seguimiento expediente hasta concesión',
+                  'Proyecto adaptado a tu gimnasio',
+                  'Estudio acústico incluido',
+                  'Vestuarios y duchas certificados',
+                  'Tramitación 2-4 meses',
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <svg
@@ -181,8 +180,8 @@ export default function LicenciaGimnasioPage() {
             </div>
             <div className="relative">
               <Image
-                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
-                alt="Abrir bar restaurante Murcia"
+                src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=800&q=80"
+                alt="Interior de gimnasio con equipamiento en Murcia"
                 width={600}
                 height={700}
                 className="rounded-2xl shadow-2xl"
@@ -201,7 +200,7 @@ export default function LicenciaGimnasioPage() {
               Gestión completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la tramitación de licencia?
+              ¿Qué incluye la tramitación de licencia de gimnasio?
             </h2>
           </div>
 
@@ -227,10 +226,10 @@ export default function LicenciaGimnasioPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta la licencia de bar o restaurante?
+              ¿Cuánto cuesta la licencia de gimnasio?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Presupuestos según tipo de actividad y superficie del local
+              Presupuestos según superficie y tipo de actividad deportiva
             </p>
           </div>
 
@@ -292,27 +291,32 @@ export default function LicenciaGimnasioPage() {
 
       {/* FAQ */}
       <FAQ
-        title="Preguntas frecuentes sobre licencia de bar en Murcia"
+        title="Preguntas frecuentes sobre licencia de gimnasio en Murcia"
         items={[
           {
-            question: '¿Cuánto tarda la tramitación de la licencia?',
-            answer: 'El plazo medio es de 2-4 meses desde la presentación hasta la concesión, dependiendo del tipo de actividad y si hay requerimientos del Ayuntamiento.',
+            question: '¿Cuánto tarda la tramitación de la licencia de gimnasio?',
+            answer:
+              'Entre 2 y 4 meses. Los gimnasios requieren estudio acústico y ventilación, lo que alarga algo el proceso respecto a otras licencias.',
           },
           {
-            question: '¿Qué documentos necesito aportar?',
-            answer: 'Necesitas: contrato de arrendamiento o escritura, DNI/CIF, alta censal, y nosotros nos encargamos del resto: proyecto técnico, certificados y tramitación.',
+            question: '¿Es obligatorio el estudio acústico?',
+            answer:
+              'Sí, siempre. Los gimnasios generan ruido por música, caída de pesos y actividades dirigidas. El estudio acústico es obligatorio y debe incluir medidas de aislamiento.',
           },
           {
-            question: '¿Puedo abrir mientras tramito la licencia?',
-            answer: 'No. Necesitas la licencia concedida antes de abrir al público. Abrir sin licencia conlleva sanciones graves y cierre del local.',
+            question: '¿Qué ventilación se necesita en un gimnasio?',
+            answer:
+              'Ventilación forzada con renovación de aire adecuada para actividad deportiva intensa. El proyecto técnico debe calcular la ventilación según m² y aforo.',
           },
           {
-            question: '¿La licencia tiene caducidad?',
-            answer: 'La licencia de actividad no caduca mientras mantengas la actividad. Si cambias de titular o actividad, necesitarás nueva tramitación.',
+            question: '¿Puedo abrir un box de CrossFit sin licencia?',
+            answer:
+              'No. Un box necesita licencia igual que cualquier gimnasio, además con mayor exigencia acústica por la caída de pesos desde altura.',
           },
           {
-            question: '¿Incluye la reforma del local?',
-            answer: 'No, este servicio es solo tramitación. Si necesitas reforma del local, tenemos servicio específico de reforma de bar/restaurante.',
+            question: '¿Incluye la reforma del gimnasio?',
+            answer:
+              'No, este servicio es solo tramitación de licencia. Si necesitas reforma completa, tenemos servicio específico de reforma de gimnasio.',
           },
         ]}
       />
@@ -321,10 +325,10 @@ export default function LicenciaGimnasioPage() {
       <section className="section bg-gradient-to-br from-primary to-primary-light text-white">
         <div className="max-w-[1280px] mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-            ¿Listo para abrir tu bar o restaurante?
+            ¿Listo para abrir tu gimnasio?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Te gestionamos toda la tramitación para que puedas centrarte en tu negocio
+            Te tramitamos la licencia completa para que puedas abrir cuanto antes
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -354,7 +358,7 @@ export default function LicenciaGimnasioPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Link
-              href="/servicios/reforma-bar"
+              href="/servicios/reforma-gimnasio"
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group border-2 border-accent/20"
             >
               <div className="flex items-start gap-4">
@@ -366,16 +370,16 @@ export default function LicenciaGimnasioPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
-                    Reforma de Bar/Restaurante
+                    Reforma de Gimnasio
                   </h3>
-                  <p className="text-gray-600 mb-3">Diseño y ejecución completa de tu local. Desde 15.000€</p>
+                  <p className="text-gray-600 mb-3">Diseño y ejecución completa de tu gimnasio o box. Desde 25.000€</p>
                   <span className="text-accent font-semibold text-sm">Ver servicio →</span>
                 </div>
               </div>
             </Link>
 
             <Link
-              href="/servicios/abrir-bar-murcia"
+              href="/blog/como-abrir-gimnasio-box-murcia"
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group border-2 border-accent/20"
             >
               <div className="flex items-start gap-4">
@@ -387,7 +391,7 @@ export default function LicenciaGimnasioPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
-                    Guía Completa: Abrir un Bar
+                    Guía Completa: Abrir un Gimnasio
                   </h3>
                   <p className="text-gray-600 mb-3">Todo lo que necesitas: reforma + licencia + asesoramiento</p>
                   <span className="text-accent font-semibold text-sm">Ver guía completa →</span>
