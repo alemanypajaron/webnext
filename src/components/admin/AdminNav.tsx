@@ -12,11 +12,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { logoutAction } from '@/app/actions/auth';
 import toast from 'react-hot-toast';
-import { useUnreadNotifications } from '@/hooks/useUnreadNotifications';
+// TEMPORALMENTE DESACTIVADO - Causaba error en móvil
+// import { useUnreadNotifications } from '@/hooks/useUnreadNotifications';
 
 function AdminNavContent() {
   const pathname = usePathname();
-  const { unreadCount } = useUnreadNotifications();
+  // TEMPORALMENTE DESACTIVADO - Causaba error en móvil
+  // const { unreadCount } = useUnreadNotifications();
+  const unreadCount = 0; // Hardcoded temporalmente
 
   const handleLogout = async () => {
     try {
