@@ -111,6 +111,7 @@ export async function createBlogArticulo(data: {
   categoria_id: string;
   publicado: boolean;
   destacado: boolean;
+  seo_noindex?: boolean;
   tags: string[];
   meta_descripcion?: string;
   meta_keywords?: string[];
@@ -146,6 +147,7 @@ export async function updateBlogArticulo(
     categoria_id?: string;
     publicado?: boolean;
     destacado?: boolean;
+    seo_noindex?: boolean;
     tags?: string[];
     meta_descripcion?: string;
     meta_keywords?: string[];

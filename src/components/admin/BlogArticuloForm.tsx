@@ -28,6 +28,7 @@ interface BlogArticuloFormProps {
     categoria_id: string;
     publicado: boolean;
     destacado: boolean;
+    seo_noindex?: boolean;
     tags: string[];
     meta_descripcion?: string;
     meta_keywords?: string[];
@@ -67,6 +68,7 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
     categoria_id: articulo?.categoria_id || '',
     publicado: articulo?.publicado ?? false,
     destacado: articulo?.destacado ?? false,
+    seo_noindex: articulo?.seo_noindex ?? false,
     tags: articulo?.tags?.join(', ') || '',
     meta_descripcion: articulo?.meta_descripcion || '',
     meta_keywords: articulo?.meta_keywords?.join(', ') || '',
@@ -429,6 +431,28 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
             <label htmlFor="destacado" className="ml-3 text-sm font-medium text-gray-700">
               Marcar como destacado (aparecerá en la home)
             </label>
+          </div>
+          
+          {/* SEO noindex */}
+          <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
+            <div className="flex items-start">
+              <input
+                type="checkbox"
+                id="seo_noindex"
+                name="seo_noindex"
+                checked={formData.seo_noindex}
+                onChange={handleChange}
+                className="w-5 h-5 mt-0.5 text-yellow-600 focus:ring-yellow-500 border-gray-300 rounded"
+              />
+              <div className="ml-3">
+                <label htmlFor="seo_noindex" className="text-sm font-semibold text-gray-900">
+                  🚫 No indexar en Google (noindex, follow)
+                </label>
+                <p className="text-xs text-gray-600 mt-1">
+                  Marcar si es contenido no estratégico, thin content, o de baja calidad. El artículo NO aparecerá en resultados de búsqueda, pero los enlaces internos seguirán siendo válidos.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
