@@ -50,6 +50,7 @@ export default async function SitemapHTMLPage() {
               4 + // Páginas principales
               6 + // Servicios generales (menú)
               2 + // Reformas vivienda
+              7 + // Reformas negocios
               7 + // Licencias específicas
               3 + // Legales
               2 + // Blog y proyectos index
@@ -256,6 +257,72 @@ export default async function SitemapHTMLPage() {
                   className="text-gray-700 hover:text-primary hover:underline transition-colors"
                 >
                   Licencia Farmacia
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Reformas Negocios */}
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-heading font-bold text-primary mb-4 flex items-center gap-2">
+              <span>🏢</span>
+              Reformas Negocios
+            </h2>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/servicios/reforma-bar"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Reforma Bar/Restaurante
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/reforma-peluqueria"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Reforma Peluquería
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/reforma-gimnasio"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Reforma Gimnasio
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/reforma-clinica-estetica"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Reforma Clínica Estética
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/reforma-veterinaria"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Reforma Clínica Veterinaria
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/reforma-centro-medico"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Reforma Centro Médico
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/reforma-farmacia"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Reforma Farmacia
                 </Link>
               </li>
             </ul>
