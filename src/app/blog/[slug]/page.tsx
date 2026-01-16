@@ -30,6 +30,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${articulo.titulo} | Blog`,
     description: articulo.meta_descripcion || articulo.resumen,
     keywords: articulo.meta_keywords,
+    robots: articulo.seo_noindex
+      ? {
+          index: false,
+          follow: true,
+        }
+      : undefined, // Si no hay noindex, Next.js usará valores por defecto (index: true, follow: true)
     openGraph: {
       title: articulo.titulo,
       description: articulo.resumen,

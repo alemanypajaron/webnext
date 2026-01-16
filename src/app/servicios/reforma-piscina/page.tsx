@@ -184,7 +184,7 @@ export default function ReformaPiscinaPage() {
             </div>
             <div className="relative">
               <Image
-                src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-1617859047452-8510bcf207fd?auto=format&fit=crop&w=800&q=80"
                 alt="Construcción piscina moderna en Murcia"
                 width={600}
                 height={700}
