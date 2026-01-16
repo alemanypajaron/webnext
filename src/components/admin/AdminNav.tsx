@@ -2,24 +2,29 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import { logoutAction } from '@/app/actions/auth';
 import toast from 'react-hot-toast';
 import { useUnreadNotifications } from '@/hooks/useUnreadNotifications';
 
-'use client';
-
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { logoutAction } from '@/app/actions/auth';
-import toast from 'react-hot-toast';
-// TEMPORALMENTE DESACTIVADO - Causaba error en móvil
-// import { useUnreadNotifications } from '@/hooks/useUnreadNotifications';
-
 function AdminNavContent() {
   const pathname = usePathname();
-  // TEMPORALMENTE DESACTIVADO - Causaba error en móvil
-  // const { unreadCount } = useUnreadNotifications();
-  const unreadCount = 0; // Hardcoded temporalmente
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Detectar si es móvil (solo en cliente)
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // < 1024px = móvil/tablet
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+  
+  // Solo usar el hook de notificaciones en desktop (NO en móvil)
+  const { unreadCount } = isMobile ? { unreadCount: 0 } : useUnreadNotifications();
 
   const handleLogout = async () => {
     try {
@@ -153,7 +158,7 @@ function AdminNavContent() {
 
           {/* Botones de acción */}
           <div className="flex items-center space-x-2 sm:space-x-3">
-            {/* Botón de Notificaciones con Badge */}
+            {/* Botón de Notificaciones con Badge - SOLO EN DESKTOP */}
             <Link
               href="/administrator/notificaciones-panel"
               className="relative flex items-center space-x-2 px-3 sm:px-4 py-2 text-gray-600 hover:text-accent hover:bg-yellow-50 rounded-xl transition-all hover:scale-105"
@@ -172,8 +177,8 @@ function AdminNavContent() {
                 <path d="M13.73 21a2 2 0 0 1-3.46 0" />
               </svg>
               <span className="hidden lg:inline text-sm">Notificaciones</span>
-              {/* Badge de notificaciones no leídas */}
-              {unreadCount > 0 && (
+              {/* Badge solo visible en desktop (cuando isMobile = false) */}
+              {!isMobile && unreadCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center animate-pulse">
                   {unreadCount > 9 ? '9+' : unreadCount}
                 </span>
@@ -204,7 +209,7 @@ function AdminNavContent() {
         </div>
       </div>
 
-      {/* Mobile/Tablet tabs */}
+      {/* Mobile/Tablet tabs - SIN badge porque no carga el hook */}
       <div className="lg:hidden border-t border-gray-200 bg-white">
         <div className="flex justify-around overflow-x-auto">
           {tabs.map((tab) => {
@@ -227,12 +232,7 @@ function AdminNavContent() {
               >
                 {tab.icon}
                 <span className="text-xs font-medium whitespace-nowrap">{tab.name}</span>
-                {/* Badge de notificaciones en tab de Contactos */}
-                {tab.name === 'Contactos' && unreadCount > 0 && (
-                  <span className="absolute top-1 right-2 bg-red-500 text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center animate-pulse">
-                    {unreadCount > 9 ? '9+' : unreadCount}
-                  </span>
-                )}
+                {/* En móvil no mostramos badge - tienes notificaciones PUSH */}
               </Link>
             );
           })}
@@ -257,4 +257,3 @@ export default function AdminNav() {
   // Renderizar el contenido solo si es una página admin normal
   return <AdminNavContent />;
 }
-
