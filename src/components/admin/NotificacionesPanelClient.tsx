@@ -82,91 +82,41 @@ export default function NotificacionesPanelClient({
 
   if (totalPendientes === 0) {
     return (
-      <div className="space-y-6">
-        {/* Banner de gestión de notificaciones */}
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-4 sm:p-6">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div className="flex items-start gap-3">
-              <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="white"
-                  strokeWidth="2"
-                >
-                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                  <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="font-bold text-gray-900 mb-1">
-                  Gestionar Notificaciones Push
-                </h3>
-                <p className="text-sm text-gray-600">
-                  Activa o desactiva las notificaciones para recibir alertas en tiempo real
-                </p>
-              </div>
-            </div>
-            <button
-              onClick={() => router.push('/administrator/notificaciones')}
-              className="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <circle cx="12" cy="12" r="3" />
-                <path d="M12 1v6m0 6v6m-9-9h6m6 0h6" />
-              </svg>
-              Configurar
-            </button>
-          </div>
+      <div className="text-center py-16">
+        <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-green-600"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />
+          </svg>
         </div>
-
-        <div className="text-center py-16">
-          <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="48"
-              height="48"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="text-green-600"
-            >
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-              <polyline points="22 4 12 14.01 9 11.01" />
-            </svg>
-          </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            ¡Todo al día!
-          </h2>
-          <p className="text-gray-600 mb-8">
-            No tienes notificaciones pendientes
-          </p>
-          <div className="flex gap-4 justify-center">
-            <button
-              onClick={() => router.push('/administrator')}
-              className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition"
-            >
-              Ver Contactos
-            </button>
-            <button
-              onClick={() => router.push('/administrator/presupuestos')}
-              className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
-            >
-              Ver Presupuestos
-            </button>
-          </div>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          ¡Todo al día!
+        </h2>
+        <p className="text-gray-600 mb-8">
+          No tienes notificaciones pendientes
+        </p>
+        <div className="flex gap-4 justify-center">
+          <button
+            onClick={() => router.push('/administrator')}
+            className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition"
+          >
+            Ver Contactos
+          </button>
+          <button
+            onClick={() => router.push('/administrator/presupuestos')}
+            className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
+          >
+            Ver Presupuestos
+          </button>
         </div>
       </div>
     );
@@ -174,54 +124,6 @@ export default function NotificacionesPanelClient({
 
   return (
     <div className="space-y-6">
-      {/* Banner de gestión de notificaciones */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-4 sm:p-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-start gap-3">
-            <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-              >
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="font-bold text-gray-900 mb-1">
-                Gestionar Notificaciones Push
-              </h3>
-              <p className="text-sm text-gray-600">
-                Activa o desactiva las notificaciones para recibir alertas en tiempo real
-              </p>
-            </div>
-          </div>
-          <button
-            onClick={() => router.push('/administrator/notificaciones')}
-            className="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <circle cx="12" cy="12" r="3" />
-              <path d="M12 1v6m0 6v6m-9-9h6m6 0h6" />
-            </svg>
-            Configurar
-          </button>
-        </div>
-      </div>
-
       {/* Estadísticas */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-gradient-to-br from-red-500 to-red-600 text-white p-6 rounded-xl shadow-lg">
