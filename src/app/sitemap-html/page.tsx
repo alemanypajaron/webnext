@@ -49,7 +49,7 @@ export default async function SitemapHTMLPage() {
             Total de páginas: {
               4 + // Páginas principales
               6 + // Servicios generales (menú)
-              6 + // Reformas vivienda
+              7 + // Reformas vivienda
               7 + // Reformas negocios
               7 + // Licencias específicas
               3 + // Legales
@@ -223,6 +223,14 @@ export default async function SitemapHTMLPage() {
                   className="text-gray-700 hover:text-primary hover:underline transition-colors"
                 >
                   Construcción y Reforma Piscina
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/certificado-energetico"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Certificado Energético
                 </Link>
               </li>
             </ul>

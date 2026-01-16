@@ -120,6 +120,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}/servicios/certificado-energetico`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
     // Licencias Específicas
     {
       url: `${SITE_URL}/servicios/licencia-bar`,
