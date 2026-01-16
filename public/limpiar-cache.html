@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limpiar Service Worker - Alemán y Pajarón</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: #0A2230;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+    p {
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    .status {
+      background: #f0f0f0;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-family: monospace;
+      font-size: 14px;
+      color: #333;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .status div {
+      margin: 5px 0;
+    }
+    button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 10px;
+      transition: all 0.3s;
+    }
+    button:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+    button:active {
+      transform: translateY(0);
+    }
+    button.secondary {
+      background: #28a745;
+    }
+    button.secondary:hover {
+      background: #218838;
+    }
+    button.danger {
+      background: #dc3545;
+    }
+    button.danger:hover {
+      background: #c82333;
+    }
+    .success {
+      color: #28a745;
+      font-weight: bold;
+    }
+    .error {
+      color: #dc3545;
+      font-weight: bold;
+    }
+    .info {
+      color: #17a2b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔧 Limpiar Cache PWA</h1>
+    <p>Si tienes problemas para iniciar sesión, usa esta herramienta para limpiar el Service Worker y caché antiguo.</p>
+    
+    <div class="status" id="status">
+      <div>Esperando acción...</div>
+    </div>
+
+    <button onclick="unregisterServiceWorker()">
+      1️⃣ Desregistrar Service Worker
+    </button>
+    
+    <button onclick="clearCache()" class="secondary">
+      2️⃣ Limpiar Caché Completo
+    </button>
+    
+    <button onclick="clearStorage()" class="danger">
+      3️⃣ Limpiar TODO (Storage + Cookies)
+    </button>
+
+    <button onclick="goToLogin()" style="background: #0A2230; margin-top: 20px;">
+      ✅ Ir a Login
+    </button>
+  </div>
+
+  <script>
+    const log = (message, type = 'info') => {
+      const status = document.getElementById('status');
+      const div = document.createElement('div');
+      div.className = type;
+      div.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+      status.appendChild(div);
+      status.scrollTop = status.scrollHeight;
+    };
+
+    async function unregisterServiceWorker() {
+      log('🔍 Buscando Service Workers...', 'info');
+      
+      if (!('serviceWorker' in navigator)) {
+        log('❌ Service Worker no soportado', 'error');
+        return;
+      }
+
+      try {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        
+        if (registrations.length === 0) {
+          log('ℹ️ No hay Service Workers registrados', 'info');
+          return;
+        }
+
+        log(`📋 Encontrados ${registrations.length} Service Worker(s)`, 'info');
+
+        for (const registration of registrations) {
+          await registration.unregister();
+          log(`✅ Service Worker desregistrado: ${registration.scope}`, 'success');
+        }
+
+        log('🎉 Todos los Service Workers eliminados', 'success');
+        log('💡 Ahora haz clic en "Limpiar Caché"', 'info');
+      } catch (error) {
+        log(`❌ Error: ${error.message}`, 'error');
+      }
+    }
+
+    async function clearCache() {
+      log('🗑️ Limpiando caché...', 'info');
+
+      if (!('caches' in window)) {
+        log('❌ Cache API no soportada', 'error');
+        return;
+      }
+
+      try {
+        const cacheNames = await caches.keys();
+        
+        if (cacheNames.length === 0) {
+          log('ℹ️ No hay cachés para eliminar', 'info');
+          return;
+        }
+
+        log(`📋 Encontradas ${cacheNames.length} caché(s)`, 'info');
+
+        for (const cacheName of cacheNames) {
+          await caches.delete(cacheName);
+          log(`✅ Caché eliminado: ${cacheName}`, 'success');
+        }
+
+        log('🎉 Todos los cachés eliminados', 'success');
+        log('💡 Ahora haz clic en "Limpiar TODO"', 'info');
+      } catch (error) {
+        log(`❌ Error: ${error.message}`, 'error');
+      }
+    }
+
+    function clearStorage() {
+      log('🗑️ Limpiando Storage y Cookies...', 'info');
+
+      try {
+        // Limpiar localStorage
+        localStorage.clear();
+        log('✅ localStorage limpiado', 'success');
+
+        // Limpiar sessionStorage
+        sessionStorage.clear();
+        log('✅ sessionStorage limpiado', 'success');
+
+        // Limpiar cookies
+        document.cookie.split(";").forEach((c) => {
+          document.cookie = c
+            .replace(/^ +/, "")
+            .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+        });
+        log('✅ Cookies limpiadas', 'success');
+
+        log('🎉 TODO limpiado correctamente', 'success');
+        log('💡 Ahora puedes ir a Login', 'info');
+      } catch (error) {
+        log(`❌ Error: ${error.message}`, 'error');
+      }
+    }
+
+    function goToLogin() {
+      log('🔄 Redirigiendo a login...', 'info');
+      setTimeout(() => {
+        window.location.href = '/administrator/login';
+      }, 500);
+    }
+
+    // Mostrar estado inicial
+    window.addEventListener('load', async () => {
+      log('🚀 Herramienta de limpieza cargada', 'success');
+      
+      if ('serviceWorker' in navigator) {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        log(`📊 Service Workers activos: ${registrations.length}`, 'info');
+      }
+
+      if ('caches' in window) {
+        const cacheNames = await caches.keys();
+        log(`📊 Cachés activos: ${cacheNames.length}`, 'info');
+      }
+
+      log('', 'info');
+      log('👉 Sigue los pasos en orden (1, 2, 3)', 'info');
+    });
+  </script>
+</body>
+</html>

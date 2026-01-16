@@ -1,10 +1,10 @@
 // Service Worker para Alem?n y Pajar?n PWA
 // Maneja notificaciones push y funcionamiento offline
 
-const CACHE_NAME = 'alemanypajaron-v1';
+const CACHE_NAME = 'alemanypajaron-v2';
 const urlsToCache = [
   '/',
-  '/admin',
+  '/administrator',
   '/images/logo.svg',
   '/images/logo-dark.svg',
 ];
