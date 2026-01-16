@@ -6,14 +6,17 @@ import { logoutAction } from '@/app/actions/auth';
 import toast from 'react-hot-toast';
 import { useUnreadNotifications } from '@/hooks/useUnreadNotifications';
 
-export default function AdminNav() {
+'use client';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { logoutAction } from '@/app/actions/auth';
+import toast from 'react-hot-toast';
+import { useUnreadNotifications } from '@/hooks/useUnreadNotifications';
+
+function AdminNavContent() {
   const pathname = usePathname();
   const { unreadCount } = useUnreadNotifications();
-
-  // No mostrar navegación en la página de login
-  if (pathname === '/administrator/login') {
-    return null;
-  }
 
   const handleLogout = async () => {
     try {
@@ -228,5 +231,17 @@ export default function AdminNav() {
       </div>
     </nav>
   );
+}
+
+export default function AdminNav() {
+  const pathname = usePathname();
+
+  // No renderizar nada en la página de login
+  if (pathname === '/administrator/login') {
+    return null;
+  }
+
+  // Renderizar el contenido solo si no es login
+  return <AdminNavContent />;
 }
 
