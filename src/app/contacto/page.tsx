@@ -4,7 +4,7 @@ import ContactForm from '@/components/forms/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Contacto | Arquitectos Técnicos en Murcia - Alemán y Pajarón',
-  description: 'Contacta con Alemán y Pajarón, técnicos de edificación en Murcia. Teléfono: 650 075 842 | Email: ivan@alemanypajaron.es. Presupuesto sin compromiso en 24h para tu proyecto de obra o reforma.',
+  description: 'Contacta con Alemán y Pajarón en Murcia. ☎ 650 075 842. Presupuesto sin compromiso en 24h para tu obra o reforma. ¡Te ayudamos!',
   keywords: 'contacto arquitectos murcia, técnicos edificación murcia contacto, aparejador murcia contacto, gestor obras murcia teléfono, dirección obra murcia contacto',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/contacto',
@@ -28,10 +28,11 @@ export default function ContactoPage() {
     <>
       <PageHeader
         badge="Hablemos de tu proyecto"
-        title="Contacto"
+        title="Contacto - Arquitectos Técnicos en Murcia"
         subtitle="Estamos aquí para ayudarte con tu proyecto en Murcia"
         image="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Contacta con Alemán y Pajarón"
+        highlightedWord="Arquitectos Técnicos"
       />
 
       <section className="section">

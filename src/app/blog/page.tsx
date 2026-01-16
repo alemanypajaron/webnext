@@ -10,7 +10,7 @@ export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Blog de Arquitectura y Construcción en Murcia | Guías y Consejos',
-  description: 'Blog especializado en arquitectura técnica, construcción y reformas en Murcia. Guías prácticas, consejos profesionales, normativa, licencias, tendencias y casos reales de proyectos de edificación.',
+  description: 'Blog de arquitectura y construcción en Murcia: guías prácticas, consejos, normativa y licencias. ¡Aprende con casos reales de edificación!',
   keywords: 'blog arquitectura murcia, blog construcción murcia, guía reformas murcia, consejos obra murcia, normativa construcción murcia, licencias obra murcia blog, tendencias arquitectura murcia',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/blog',

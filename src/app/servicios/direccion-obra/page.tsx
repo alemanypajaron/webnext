@@ -126,7 +126,7 @@ export default function DireccionObraPage() {
                 ¿Qué hacemos?
               </span>
               <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-                Dirección de Obra en Murcia: Supervisión Técnica Profesional
+                ¿Qué incluye nuestro servicio de dirección de obra?
               </h2>
               <p className="text-xl text-gray-700 mb-4 leading-relaxed">
                 La dirección de obra es fundamental para garantizar que tu proyecto se ejecute correctamente,

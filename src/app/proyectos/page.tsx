@@ -10,7 +10,7 @@ export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Proyectos de Arquitectura y Reformas en Murcia | Portfolio +50 Obras',
-  description: 'Portfolio de proyectos realizados en Murcia por Alemán y Pajarón. Más de 50 obras completadas: reformas integrales, dirección de obra, viviendas, locales comerciales y proyectos de rehabilitación. Ver algunos de nuestros trabajos más destacados.',
+  description: 'Portfolio de +50 proyectos en Murcia: reformas integrales, dirección de obra, locales y viviendas. ¡Mira nuestros trabajos destacados!',
   keywords: 'proyectos arquitectura murcia, portfolio obras murcia, reformas murcia ejemplos, proyectos reforma murcia, obras realizadas murcia, portfolio arquitecto técnico murcia',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/proyectos',
@@ -37,11 +37,11 @@ export default async function ProyectosPage() {
     <>
       <PageHeader
         badge="Portfolio"
-        title="Nuestros Proyectos"
+        title="Proyectos de Arquitectura y Reformas en Murcia"
         subtitle="Más de 50 proyectos completados en Murcia"
         image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Proyectos de arquitectura en Murcia"
-        highlightedWord="Proyectos"
+        highlightedWord="Arquitectura y Reformas"
       />
 
       {/* Sección de Proyectos Destacados */}

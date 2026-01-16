@@ -8,7 +8,7 @@ import { getHeroBlurDataURL } from '@/lib/blur-placeholder';
 export const metadata: Metadata = {
   title: 'Gestión de Obras y Proyectos en Murcia | Dirección de Obra y Reformas',
   description:
-    'Gestores de obras y técnicos de edificación en Murcia. Especialistas en dirección de obra, gestión de proyectos, licencias y reformas integrales. Más de 15 años de experiencia. Presupuesto sin compromiso.',
+    'Gestores de obras y técnicos de edificación en Murcia. Dirección de obra, reformas integrales y licencias. +15 años experiencia. ¡Presupuesto gratis!',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/',
   },
@@ -224,7 +224,7 @@ export default function Home() {
                 Sobre Nosotros
               </span>
               <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-6">
-                Especialistas en Gestión de Obras y Proyectos en Murcia con más de 15 años de experiencia
+                Más de 15 años de experiencia en construcción en Murcia
               </h2>
               <p className="text-xl text-gray-700 mb-4 leading-relaxed">
                 Somos técnicos de edificación especializados con más de 15 años de experiencia en dirección de obra y coordinación de

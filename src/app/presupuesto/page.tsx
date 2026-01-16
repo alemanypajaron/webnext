@@ -4,7 +4,7 @@ import PresupuestoForm from '@/components/forms/PresupuestoForm';
 
 export const metadata: Metadata = {
   title: 'Presupuesto de Obras y Reformas en Murcia | Sin Compromiso 24h',
-  description: 'Solicita presupuesto sin compromiso para tu obra o reforma en Murcia. Técnicos de edificación especializados. Respuesta en menos de 24 horas. Dirección de obra, reformas integrales, licencias y más.',
+  description: 'Presupuesto sin compromiso para tu obra en Murcia. Técnicos de edificación especializados. ¡Respuesta en 24h! Reformas, licencias y más.',
   keywords: 'presupuesto obras murcia, presupuesto reforma murcia, presupuesto dirección obra murcia, presupuesto arquitecto técnico murcia, coste reforma murcia, precio dirección obra murcia',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/presupuesto',

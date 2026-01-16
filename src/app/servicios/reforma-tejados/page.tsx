@@ -179,7 +179,7 @@ export default function ReformaTejadosPage() {
             </div>
             <div className="relative">
               <Image
-                src="https://images.unsplash.com/photo-1632498501431-bf57d6c8d277?auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-1590736969955-71cc94901144?auto=format&fit=crop&w=800&q=80"
                 alt="Reparación tejado profesional en Murcia"
                 width={600}
                 height={700}
