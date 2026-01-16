@@ -136,7 +136,7 @@ export default function ReformaTerrazaPage() {
         badge="Reformas Vivienda"
         title="Reforma de Terraza en Murcia desde 3.500€"
         subtitle="Impermeabilización, suelo exterior, pérgola y cerramiento"
-        image="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1600585152915-d208bec867a1?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Reforma terraza Murcia"
         highlightedWord="Terraza"
       />

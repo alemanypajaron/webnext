@@ -90,6 +90,7 @@ export interface BlogArticulo {
   tags?: string[];
   meta_descripcion?: string;
   meta_keywords?: string[];
+  seo_noindex?: boolean; // Control SEO: true = noindex,follow
 }
 
 // Tipo extendido para incluir la categoría

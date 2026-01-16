@@ -132,7 +132,7 @@ export default function CambioVentanasPVCPage() {
         badge="Reformas Vivienda"
         title="Cambio de Ventanas PVC en Murcia desde 3.000€"
         subtitle="Ahorra hasta 40% en climatización con ventanas de doble vidrio"
-        image="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1565008576549-57569a49371d?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Cambio ventanas PVC Murcia"
         highlightedWord="Ventanas"
       />
