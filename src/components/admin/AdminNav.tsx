@@ -2,29 +2,15 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
 import { logoutAction } from '@/app/actions/auth';
 import toast from 'react-hot-toast';
 import { useUnreadNotifications } from '@/hooks/useUnreadNotifications';
 
 function AdminNavContent() {
   const pathname = usePathname();
-  const [isMobile, setIsMobile] = useState(false);
   
-  // Detectar si es móvil (solo en cliente)
-  useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 1024); // < 1024px = móvil/tablet
-    };
-    
-    checkIfMobile();
-    window.addEventListener('resize', checkIfMobile);
-    
-    return () => window.removeEventListener('resize', checkIfMobile);
-  }, []);
-  
-  // Solo usar el hook de notificaciones en desktop (NO en móvil)
-  const { unreadCount } = isMobile ? { unreadCount: 0 } : useUnreadNotifications();
+  // El hook ahora detecta móvil internamente y retorna 0 en móvil
+  const { unreadCount } = useUnreadNotifications();
 
   const handleLogout = async () => {
     try {
@@ -177,8 +163,8 @@ function AdminNavContent() {
                 <path d="M13.73 21a2 2 0 0 1-3.46 0" />
               </svg>
               <span className="hidden lg:inline text-sm">Notificaciones</span>
-              {/* Badge solo visible en desktop (cuando isMobile = false) */}
-              {!isMobile && unreadCount > 0 && (
+              {/* Badge solo visible en desktop (el hook retorna 0 en móvil) */}
+              {unreadCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center animate-pulse">
                   {unreadCount > 9 ? '9+' : unreadCount}
                 </span>

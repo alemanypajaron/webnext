@@ -6,9 +6,30 @@ import { supabase } from '@/lib/supabase';
 export function useUnreadNotifications() {
   const [unreadCount, setUnreadCount] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detectar si es móvil DENTRO del hook
+  useEffect(() => {
+    const checkIfMobile = () => {
+      if (typeof window !== 'undefined') {
+        setIsMobile(window.innerWidth < 1024);
+      }
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
 
   // Función para contar elementos no leídos (useCallback para evitar recrearla)
   const fetchUnreadCount = useCallback(async () => {
+    // Si es móvil, NO hacer nada
+    if (isMobile) {
+      setLoading(false);
+      return;
+    }
+
     try {
       // Verificar sesión primero
       const { data: { session } } = await supabase.auth.getSession();
@@ -42,9 +63,15 @@ export function useUnreadNotifications() {
       console.error('[useUnreadNotifications] Error:', error);
       setLoading(false);
     }
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
+    // Si es móvil, salir inmediatamente
+    if (isMobile) {
+      setLoading(false);
+      return;
+    }
+
     // Verificar primero si hay sesión antes de hacer nada
     const initializeNotifications = async () => {
       try {
@@ -117,7 +144,7 @@ export function useUnreadNotifications() {
         presupuestosSubscription.unsubscribe().catch(console.error);
       }
     };
-  }, [fetchUnreadCount]);
+  }, [fetchUnreadCount, isMobile]);
 
   return { unreadCount, loading };
 }
