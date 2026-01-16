@@ -1,8 +1,9 @@
 // Supabase Edge Function para enviar notificaciones push
-// Implementación completa con Web Push Protocol
+// Usa web-push para implementación completa del protocolo Web Push
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import webPush from 'npm:web-push@3.6.6'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -19,29 +20,6 @@ interface PushPayload {
   data?: any
   requireInteraction?: boolean
   silent?: boolean
-}
-
-// Función para generar JWT VAPID
-async function generateVAPIDAuthHeader(
-  endpoint: string,
-  vapidPublicKey: string,
-  vapidPrivateKey: string,
-  subject: string
-): Promise<string> {
-  const urlParts = new URL(endpoint);
-  const audience = `${urlParts.protocol}//${urlParts.host}`;
-  
-  const jwtHeader = { typ: 'JWT', alg: 'ES256' };
-  const jwtPayload = {
-    aud: audience,
-    exp: Math.floor(Date.now() / 1000) + (12 * 60 * 60), // 12 horas
-    sub: subject
-  };
-
-  // Para una implementación completa, necesitaríamos firmar con ES256
-  // Por ahora, usaremos una implementación simplificada
-  
-  return `vapid t=${btoa(JSON.stringify(jwtHeader))}.${btoa(JSON.stringify(jwtPayload))}, k=${vapidPublicKey}`;
 }
 
 serve(async (req) => {
@@ -87,6 +65,13 @@ serve(async (req) => {
       throw new Error('VAPID keys no configuradas')
     }
 
+    // Configurar VAPID
+    webPush.setVapidDetails(
+      vapidSubject,
+      vapidPublicKey,
+      vapidPrivateKey
+    )
+
     // Mensaje a enviar
     const message = JSON.stringify({
       title: payload.title,
@@ -102,10 +87,10 @@ serve(async (req) => {
     const results = await Promise.allSettled(
       subscriptions.map(async (subscription) => {
         try {
-          console.log(`📤 Notificación enviada a: ${subscription.endpoint.substring(0, 50)}...`)
+          console.log(`📤 Enviando a: ${subscription.endpoint.substring(0, 50)}...`)
           
-          // Construir payload encriptado
-          const pushPayload = {
+          // Crear objeto de subscription para web-push
+          const pushSubscription = {
             endpoint: subscription.endpoint,
             keys: {
               p256dh: subscription.p256dh,
@@ -113,19 +98,28 @@ serve(async (req) => {
             }
           }
 
-          // Enviar la notificación push
-          const response = await fetch(subscription.endpoint, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'TTL': '86400', // 24 horas
-              'Urgency': 'high',
-            },
-            body: message
-          })
+          // Enviar notificación usando web-push
+          const response = await webPush.sendNotification(
+            pushSubscription,
+            message,
+            {
+              TTL: 86400, // 24 horas
+              urgency: 'high'
+            }
+          )
 
-          if (response.status === 410 || response.status === 404) {
-            // Endpoint caducado, eliminar
+          console.log(`✅ Notificación enviada exitosamente`, response)
+
+          return { 
+            endpoint: subscription.endpoint.substring(0, 50), 
+            success: true, 
+            status: response.statusCode || 201
+          }
+        } catch (error: any) {
+          console.error(`❌ Error al enviar a ${subscription.endpoint.substring(0, 50)}:`, error)
+
+          // Si el endpoint está caducado (410 Gone), eliminarlo
+          if (error.statusCode === 410 || error.statusCode === 404) {
             console.log(`🗑️ Endpoint caducado, eliminando...`)
             await supabaseClient
               .from('admin_push_subscriptions')
@@ -133,12 +127,12 @@ serve(async (req) => {
               .eq('endpoint', subscription.endpoint)
           }
 
-          console.log(`✅ Respuesta: ${response.status} - ${response.statusText}`)
-
-          return { endpoint: subscription.endpoint, success: response.ok, status: response.status }
-        } catch (error) {
-          console.error(`❌ Error al enviar:`, error)
-          return { endpoint: subscription.endpoint, success: false, error: String(error) }
+          return { 
+            endpoint: subscription.endpoint.substring(0, 50), 
+            success: false, 
+            status: error.statusCode || 500,
+            error: error.message || String(error)
+          }
         }
       })
     )
@@ -147,6 +141,19 @@ serve(async (req) => {
     const failed = results.length - successful
 
     console.log(`✅ Notificaciones enviadas: ${successful}/${results.length}`)
+    
+    // Logging detallado de resultados
+    results.forEach((result, index) => {
+      if (result.status === 'fulfilled') {
+        const value = result.value
+        console.log(`   [${index}] ${value.success ? '✅' : '❌'} Status: ${value.status} - ${value.endpoint}`)
+        if (!value.success && value.error) {
+          console.error(`        Error: ${value.error}`)
+        }
+      } else {
+        console.log(`   [${index}] ❌ Error fatal: ${result.reason}`)
+      }
+    })
 
     return new Response(
       JSON.stringify({ 
@@ -155,7 +162,7 @@ serve(async (req) => {
         sent: successful,
         failed: failed,
         total: results.length,
-        results: results.map(r => r.status === 'fulfilled' ? r.value : { error: r.reason })
+        details: results.map(r => r.status === 'fulfilled' ? r.value : { error: String(r.reason) })
       }),
       { 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
