@@ -25,8 +25,8 @@ Sitio web completo para **Alemán y Pajarón**, técnicos de edificación y gest
 **🎉 VERSIÓN 1.0 - PRODUCCIÓN ESTABLE**
 
 ### Funcionalidades Principales
-- ✅ **21 páginas** completamente funcionales
-- ✅ **6 servicios** con contenido SEO optimizado
+- ✅ **46 páginas** completamente funcionales
+- ✅ **25 servicios especializados** con contenido SEO optimizado
 - ✅ **Blog dinámico** con editor TinyMCE profesional
 - ✅ **Portfolio de proyectos** con galería de imágenes
 - ✅ **Panel de administración** completo y seguro
@@ -335,15 +335,8 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=tu-anon-key
   - Artículos relacionados
   - Contador de visitas
 
-### Servicios (6 páginas completas)
-Cada una con:
-- Descripción detallada del servicio
-- Proceso paso a paso
-- Beneficios y ventajas
-- Casos de uso
-- FAQ con preguntas frecuentes
-- CTA (call to action)
-- SEO optimizado (metadata + JSON-LD)
+### Servicios Generales (6 páginas)
+Cada una con descripción detallada, proceso, beneficios, casos de uso, FAQ y SEO optimizado:
 
 1. ✅ **/servicios/asesoramiento-tecnico**
 2. ✅ **/servicios/direccion-obra**
@@ -352,12 +345,51 @@ Cada una con:
 5. ✅ **/servicios/licencias-permisos**
 6. ✅ **/servicios/reformas-integrales**
 
+### Reformas Vivienda (7 páginas especializadas)
+Landings específicas optimizadas para SEO local en Murcia:
+
+1. ✅ **/servicios/reforma-bano** - Reforma integral de baños
+2. ✅ **/servicios/reforma-cocina** - Reforma de cocinas modernas
+3. ✅ **/servicios/reforma-tejados** - Reparación e impermeabilización de tejados
+4. ✅ **/servicios/reforma-terraza** - Reformas de terrazas y pérgolas
+5. ✅ **/servicios/cambio-ventanas-pvc** - Sustitución ventanas PVC eficientes
+6. ✅ **/servicios/reforma-piscina** - Construcción y rehabilitación piscinas
+7. ✅ **/servicios/certificado-energetico** - Certificados energéticos viviendas
+
+### Licencias de Apertura (7 páginas por sector)
+Páginas específicas para licencias de actividad de negocios en Murcia:
+
+1. ✅ **/servicios/licencia-bar** - Bar, restaurante, cafetería
+2. ✅ **/servicios/licencia-peluqueria** - Peluquería, barbería, estética
+3. ✅ **/servicios/licencia-gimnasio** - Gimnasio, box, centro deportivo
+4. ✅ **/servicios/licencia-clinica-estetica** - Clínica estética, medicina estética
+5. ✅ **/servicios/licencia-veterinaria** - Clínica veterinaria
+6. ✅ **/servicios/licencia-centro-medico** - Centro médico, clínica
+7. ✅ **/servicios/licencia-farmacia** - Farmacia, parafarmacia
+
+### Reformas de Negocios (7 páginas por sector)
+Reformas específicas para cada tipo de negocio:
+
+1. ✅ **/servicios/reforma-bar** - Reforma bar/restaurante
+2. ✅ **/servicios/reforma-peluqueria** - Reforma peluquería/salón
+3. ✅ **/servicios/reforma-gimnasio** - Reforma gimnasio/box
+4. ✅ **/servicios/reforma-clinica-estetica** - Reforma clínica estética
+5. ✅ **/servicios/reforma-veterinaria** - Reforma clínica veterinaria
+6. ✅ **/servicios/reforma-centro-medico** - Reforma centro médico
+7. ✅ **/servicios/reforma-farmacia** - Reforma farmacia
+
+**Total: 27 páginas de servicios especializados**
+
 ### Páginas Legales (3)
 - ✅ **/legal/aviso-legal**
 - ✅ **/legal/privacidad**
 - ✅ **/legal/cookies**
 
-**Total: 21 páginas estáticas + Páginas dinámicas ilimitadas (proyectos y blog)**
+### Páginas Informativas (2)
+- ✅ **/sitemap-html** - Sitemap HTML para usuarios
+- ✅ **/sitemap.xml** - Sitemap XML para buscadores
+
+**Total: 46 páginas estáticas + Páginas dinámicas ilimitadas (proyectos y blog)**
 
 ---
 

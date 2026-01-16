@@ -6,11 +6,11 @@
 
 ## 📊 Resumen del Contenido
 
-**Total de páginas:** 21 estáticas + dinámicas (blog y proyectos)  
-**Páginas de servicios:** 6 (todas con contenido SEO completo e íconos homogeneizados)  
-**Palabras totales:** ~15,000+  
+**Total de páginas:** 46 estáticas + dinámicas (blog y proyectos)  
+**Páginas de servicios:** 27 especializadas (6 generales + 7 vivienda + 7 licencias + 7 reformas)  
+**Palabras totales:** ~50,000+  
 **Optimizado para:** SEO local Murcia  
-**Blog:** Sistema CMS completo con editor TinyMCE  
+**Blog:** Sistema CMS completo con editor TinyMCE + 7 artículos guía "Cómo abrir X en Murcia"  
 **Newsletter:** Formulario de suscripción funcional  
 **Admin:** Panel completo de gestión  
 
@@ -188,9 +188,52 @@ RemoveFormat | Image Link | Code | Help
 
 ## 🎯 Páginas de Servicios (SEO Optimizado)
 
+### Estructura de Servicios
+
+**Total: 27 páginas de servicios especializados:**
+
+#### 1. Servicios Generales (6 páginas)
+Páginas corporativas con enfoque amplio:
+- ✅ `/servicios/asesoramiento-tecnico`
+- ✅ `/servicios/direccion-obra`
+- ✅ `/servicios/diseno-espacios`
+- ✅ `/servicios/gestion-proyectos`
+- ✅ `/servicios/licencias-permisos`
+- ✅ `/servicios/reformas-integrales`
+
+#### 2. Reformas Vivienda (7 páginas)
+Landings específicas para particulares:
+- ✅ `/servicios/reforma-bano` - Reforma integral de baños
+- ✅ `/servicios/reforma-cocina` - Reforma de cocinas modernas
+- ✅ `/servicios/reforma-tejados` - Reparación e impermeabilización
+- ✅ `/servicios/reforma-terraza` - Reformas de terrazas y pérgolas
+- ✅ `/servicios/cambio-ventanas-pvc` - Ventanas eficiencia energética
+- ✅ `/servicios/reforma-piscina` - Construcción y rehabilitación
+- ✅ `/servicios/certificado-energetico` - Certificados energéticos
+
+#### 3. Licencias de Apertura (7 páginas)
+Páginas especializadas por sector de negocio:
+- ✅ `/servicios/licencia-bar` - Bar, restaurante, cafetería
+- ✅ `/servicios/licencia-peluqueria` - Peluquería, barbería, estética
+- ✅ `/servicios/licencia-gimnasio` - Gimnasio, box, centro deportivo
+- ✅ `/servicios/licencia-clinica-estetica` - Clínica medicina estética
+- ✅ `/servicios/licencia-veterinaria` - Clínica veterinaria
+- ✅ `/servicios/licencia-centro-medico` - Centro médico, clínica
+- ✅ `/servicios/licencia-farmacia` - Farmacia, parafarmacia
+
+#### 4. Reformas de Negocios (7 páginas)
+Reformas específicas por tipo de negocio:
+- ✅ `/servicios/reforma-bar` - Reforma bar/restaurante
+- ✅ `/servicios/reforma-peluqueria` - Reforma peluquería/salón
+- ✅ `/servicios/reforma-gimnasio` - Reforma gimnasio/box
+- ✅ `/servicios/reforma-clinica-estetica` - Reforma clínica estética
+- ✅ `/servicios/reforma-veterinaria` - Reforma clínica veterinaria
+- ✅ `/servicios/reforma-centro-medico` - Reforma centro médico
+- ✅ `/servicios/reforma-farmacia` - Reforma farmacia
+
 ### Características de Cada Página de Servicio
 
-Todas las 6 páginas de servicios incluyen:
+Todas las páginas de servicios incluyen:
 
 ✅ **Estructura completa:**
 - Header con imagen de fondo profesional
@@ -218,6 +261,66 @@ Todas las 6 páginas de servicios incluyen:
 - Secciones alternadas (blanco/gris/azul oscuro)
 - Imágenes de Unsplash optimizadas
 - FAQ con acordeones amarillos/blancos
+
+---
+
+## 📝 Blog - Artículos Guía "Cómo Abrir X en Murcia"
+
+### Estrategia de Contenido (Nivel 1)
+
+**Total: 7 artículos completos en Supabase**
+
+Para evitar canibalización SEO, los términos de búsqueda amplios como "abrir bar murcia" se atacan desde el blog, no desde landings de servicios.
+
+#### Artículos Publicados:
+
+1. ✅ **Cómo Abrir un Bar o Restaurante en Murcia** (`/blog/como-abrir-bar-restaurante-murcia-guia-completa-2026`)
+   - Proceso completo: licencias + reforma + costes
+   - 2,500+ palabras
+   - Cross-sell a: Licencia Bar + Reforma Bar
+
+2. ✅ **Cómo Abrir una Peluquería o Barbería en Murcia** (`/blog/como-abrir-peluqueria-barberia-murcia-guia-completa-2026`)
+   - Requisitos legales + diseño + equipamiento
+   - 2,000+ palabras
+   - Cross-sell a: Licencia Peluquería + Reforma Peluquería
+
+3. ✅ **Cómo Abrir un Gimnasio o Box en Murcia** (`/blog/como-abrir-gimnasio-box-murcia-guia-completa-2026`)
+   - Normativa deportiva + acústica + ventilación
+   - 2,200+ palabras
+   - Cross-sell a: Licencia Gimnasio + Reforma Gimnasio
+
+4. ✅ **Cómo Abrir una Clínica Estética en Murcia** (`/blog/como-abrir-clinica-estetica-murcia-guia-completa-2026`)
+   - Autorización sanitaria + diseño cabinas + equipos
+   - 2,100+ palabras
+   - Cross-sell a: Licencia Clínica Estética + Reforma Clínica Estética
+
+5. ✅ **Cómo Abrir una Clínica Veterinaria en Murcia** (`/blog/como-abrir-clinica-veterinaria-murcia-guia-completa-2026`)
+   - CSN + quirófano + hospitalización + rayos X
+   - 2,300+ palabras
+   - Cross-sell a: Licencia Veterinaria + Reforma Veterinaria
+
+6. ✅ **Cómo Abrir un Centro Médico o Clínica en Murcia** (`/blog/como-abrir-centro-medico-clinica-murcia-guia-completa-2026`)
+   - Autorización sanitaria SMS + consultas + especialidades
+   - 2,200+ palabras
+   - Cross-sell a: Licencia Centro Médico + Reforma Centro Médico
+
+7. ✅ **Requisitos para Abrir una Farmacia en Murcia** (`/blog/requisitos-abrir-farmacia-murcia-guia-completa-2026`)
+   - Colegio Farmacéutico + cámara fría + fórmulas magistrales
+   - 2,000+ palabras
+   - Cross-sell a: Licencia Farmacia + Reforma Farmacia
+
+### Estrategia SEO de 3 Niveles:
+
+**Nivel 1 (Blog):** "Cómo abrir X en Murcia" → Artículo completo del proceso
+**Nivel 2a (Landing):** "Licencia X" → Servicio específico de tramitación
+**Nivel 2b (Landing):** "Reforma X" → Servicio específico de obra
+**Nivel 3 (Cross-sell):** Enlaces internos entre blog ↔ landings
+
+### Ubicación de los Archivos:
+
+- **Script SQL:** `/supabase/insert-blog-abrir-negocios-murcia.sql`
+- **Ejecución:** Panel Supabase → SQL Editor → Run
+- **Tabla:** `blog_articulos` (con categoría "Guías")
 
 ---
 
@@ -561,16 +664,15 @@ image="/images/mi-imagen.jpg"
 
 ### Por Página de Servicio
 
-| Servicio | Palabras | FAQs | Secciones |
-|----------|----------|------|-----------|
-| Asesoramiento | ~2,000 | 5 | 6 |
-| Dirección Obra | ~2,200 | 6 | 6 |
-| Diseño Espacios | ~1,900 | 5 | 6 |
-| Gestión Proyectos | ~1,600 | 4 | 4 |
-| Licencias | ~2,100 | 5 | 5 |
-| Reformas | ~1,800 | 5 | 5 |
+| Categoría | Páginas | Palabras/página | Total palabras |
+|-----------|---------|-----------------|----------------|
+| Servicios Generales | 6 | ~2,000 | ~12,000 |
+| Reformas Vivienda | 7 | ~1,800 | ~12,600 |
+| Licencias Apertura | 7 | ~1,500 | ~10,500 |
+| Reformas Negocios | 7 | ~1,500 | ~10,500 |
+| Blog Guías | 7 | ~2,200 | ~15,400 |
 
-**Total:** ~12,000 palabras solo en servicios
+**Total: 34 páginas de servicios + blog = ~61,000 palabras**
 
 ---
 
