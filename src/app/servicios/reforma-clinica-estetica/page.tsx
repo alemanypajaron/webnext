@@ -7,20 +7,20 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Reforma Clínica Estética Murcia | Desde 25.000€ | Alemán y Pajarón',
-  description: 'Reforma integral clínica estética en Murcia desde 25.000€. Diseño, cabinas, equipamiento. +15 años experiencia.',
-  keywords: 'reforma clinica estetica murcia, reformar centro estetica murcia, reforma centro belleza',
-  alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-bar' },
+  title: 'Reforma Clínica Estética Murcia | Desde 20.000€ | Alemán y Pajarón',
+  description: 'Reforma integral clínica estética en Murcia desde 20.000€. Cabinas tratamiento, iluminación, climatización. +15 años experiencia.',
+  keywords: 'reforma clinica estetica murcia, reforma centro estetico murcia, reformar clinica estetica precio murcia',
+  alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-clinica-estetica' },
   openGraph: {
-    title: 'Reforma Bar y Restaurante Murcia | Alemán y Pajarón',
-    description: 'Reforma integral bar y restaurante. Diseño completo y ejecución.',
-    url: 'https://www.alemanypajaron.es/servicios/reforma-bar',
+    title: 'Reforma Clínica Estética Murcia | Alemán y Pajarón',
+    description: 'Reforma integral clínica estética. Diseño completo y ejecución.',
+    url: 'https://www.alemanypajaron.es/servicios/reforma-clinica-estetica',
     type: 'website',
     locale: 'es_ES',
   },
   twitter: {
     card: 'summary',
-    title: 'Reforma Bar Murcia | Alemán y Pajarón',
+    title: 'Reforma Clínica Estética Murcia | Alemán y Pajarón',
     description: 'Reforma integral desde 20.000€.',
   },
 };
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
 export default function ReformaClinicaEsteticaPage() {
   const serviciosIncluidos = [
     {
-      title: 'Diseño y Distribución',
-      desc: 'Planos, distribución óptima: barra, mesas, cocina, baños, almacén. Aprovechamiento máximo del espacio.',
+      title: 'Diseño de Cabinas',
+      desc: 'Distribución cabinas tratamiento, zona espera, recepción, almacén. Privacidad y flujo clientes optimizado.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
@@ -38,29 +38,32 @@ export default function ReformaClinicaEsteticaPage() {
       ),
     },
     {
-      title: 'Cocina Industrial',
-      desc: 'Instalación completa cocina profesional: campana extractora, fogones, horno, frigoríficos, fregaderos.',
+      title: 'Cabinas de Tratamiento',
+      desc: 'Cabinas individuales con camilla, lavabo, almacenaje productos, control temperatura independiente.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M2 12h20M2 12v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-8" />
-          <path d="M2 12V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6" />
-          <path d="M6 8v4M10 8v4M14 8v4M18 8v4" />
+          <rect x="3" y="3" width="7" height="7" />
+          <rect x="14" y="3" width="7" height="7" />
+          <rect x="14" y="14" width="7" height="7" />
+          <rect x="3" y="14" width="7" height="7" />
         </svg>
       ),
     },
     {
-      title: 'Barra y Mobiliario',
-      desc: 'Construcción barra a medida, taburetes, mesas, sillas, mobiliario completo. Diseño moderno y funcional.',
+      title: 'Iluminación Específica',
+      desc: 'Luz LED regulable en cabinas, iluminación cálida zona espera, puntos específicos para tratamientos.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-          <path d="M9 3v18M15 3v18" />
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
         </svg>
       ),
     },
     {
-      title: 'Extracción de Humos',
-      desc: 'Sistema completo extracción humos cocina: campana, conductos, filtros. Cumplimiento normativa.',
+      title: 'Fontanería Instalaciones',
+      desc: 'Agua caliente/fría en cabinas, desagües, instalación esterilizador si procede.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M12 2v20M2 12h20" />
@@ -68,8 +71,17 @@ export default function ReformaClinicaEsteticaPage() {
       ),
     },
     {
-      title: 'Baños y Climatización',
-      desc: 'Baños adaptados clientes, vestuarios empleados, aire acondicionado, ventilación.',
+      title: 'Climatización Individual',
+      desc: 'Aire acondicionado con control independiente por cabinas. Ventilación para productos químicos.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2v20M17 7l-5 5-5-5M7 17l5-5 5 5" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Acabados Premium',
+      desc: 'Suelo porcelánico, paredes lisas lavables, colores neutros y elegantes. Ambiente relajante.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z" />
@@ -77,32 +89,23 @@ export default function ReformaClinicaEsteticaPage() {
         </svg>
       ),
     },
-    {
-      title: 'Electricidad e Iluminación',
-      desc: 'Instalación eléctrica completa, iluminación LED decorativa, cuadro eléctrico potenciado.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-        </svg>
-      ),
-    },
   ];
 
   const precios = [
     {
-      tipo: 'Bar Cafetería',
+      tipo: 'Centro Estético Básico',
       desde: '20.000€',
-      incluye: ['Hasta 60m²', 'Barra básica', 'Sin cocina', 'Baño clientes', 'Mobiliario sencillo'],
+      incluye: ['Hasta 60m²', '2-3 cabinas', 'Recepción sencilla', 'Zona espera', 'Acabados estándar'],
     },
     {
-      tipo: 'Bar con Cocina',
-      desde: '45.000€',
-      incluye: ['80-120m²', 'Cocina equipada', 'Extracción humos', 'Barra completa', 'Climatización'],
+      tipo: 'Clínica Estética Completa',
+      desde: '35.000€',
+      incluye: ['80-120m²', '4-5 cabinas', 'Zona láser', 'Mobiliario a medida', 'Acabados premium'],
     },
     {
-      tipo: 'Restaurante',
-      desde: '80.000€',
-      incluye: ['Más de 120m²', 'Cocina industrial', 'Barra + comedor', 'Baños + vestuarios', 'Diseño integral'],
+      tipo: 'Centro Médico-Estético',
+      desde: '55.000€',
+      incluye: ['Más de 120m²', 'Consultas médicas', 'Zona tratamientos avanzados', 'Diseño lujo', 'Todo equipado'],
     },
   ];
 
@@ -111,10 +114,10 @@ export default function ReformaClinicaEsteticaPage() {
       <JsonLd data={localBusinessJsonLd()} />
       <JsonLd
         data={serviceJsonLd({
-          slug: 'reforma-bar',
-          serviceType: 'Reforma de bar y restaurante',
-          name: 'Reforma Bar y Restaurante Murcia',
-          description: 'Reforma integral bar y restaurante en Murcia: diseño, cocina industrial, barra, extracción humos.',
+          slug: 'reforma-clinica-estetica',
+          serviceType: 'Reforma de clínica estética',
+          name: 'Reforma Clínica Estética Murcia',
+          description: 'Reforma integral de clínica estética en Murcia. Diseño completo, cabinas tratamiento, iluminación.',
         })}
       />
       <JsonLd
@@ -122,18 +125,18 @@ export default function ReformaClinicaEsteticaPage() {
           items: [
             { name: 'Inicio', url: `${SITE_URL}/` },
             { name: 'Servicios', url: `${SITE_URL}/servicios` },
-            { name: 'Reforma Bar', url: `${SITE_URL}/servicios/reforma-bar` },
+            { name: 'Reforma Clínica Estética', url: `${SITE_URL}/servicios/reforma-clinica-estetica` },
           ],
         })}
       />
 
       <PageHeader
-        badge="Reforma Bar"
-        title="Reforma Bar y Restaurante en Murcia desde 20.000€"
-        subtitle="Diseño completo, cocina industrial, barra, extracción humos y mobiliario"
-        image="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2000&q=80"
-        imageAlt="Reforma bar restaurante Murcia"
-        highlightedWord="Bar"
+        badge="Reformas Negocios"
+        title="Reforma Integral Clínica Estética en Murcia desde 20.000€"
+        subtitle="Diseño completo, cabinas de tratamiento e iluminación específica"
+        image="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=2000&q=80"
+        imageAlt="Reforma clínica estética Murcia"
+        highlightedWord="Estética"
       />
 
       {/* Introducción */}
@@ -145,20 +148,20 @@ export default function ReformaClinicaEsteticaPage() {
                 +15 años de experiencia
               </span>
               <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-                ¿Por qué reformar tu bar o restaurante con nosotros?
+                Reforma integral de clínica estética en Murcia
               </h2>
               <p className="text-xl text-gray-700 mb-4">
-                Reformamos tu local de hostelería de principio a fin: diseño, obra, cocina, barra y equipamiento.
+                Diseñamos y ejecutamos la reforma completa de tu clínica estética. Desde cabinas de tratamiento hasta iluminación y climatización específica.
               </p>
               <p className="text-gray-600 mb-4">
-                Más de 15 años reformando bares y restaurantes en Murcia. Conocemos la normativa, los tiempos y cómo optimizar cada metro de tu local.
+                Experiencia en centros estéticos, medicina estética, depilación láser y centros de belleza avanzados. Creamos ambientes relajantes y funcionales.
               </p>
               <ul className="space-y-3">
                 {[
-                  'Diseño funcional y rentable',
-                  'Cocina industrial completa',
-                  'Extracción de humos certificada',
-                  'Obra terminada en 2-4 meses',
+                  'Diseño 3D previo incluido',
+                  'Cabinas con control climático',
+                  'Iluminación LED regulable',
+                  'Llave en mano: listo para abrir',
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <svg
@@ -180,8 +183,8 @@ export default function ReformaClinicaEsteticaPage() {
             </div>
             <div className="relative">
               <Image
-                src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
-                alt="Reforma clínica estética Murcia"
+                src="https://images.unsplash.com/photo-1519494140681-8b17d830a3ec?auto=format&fit=crop&w=800&q=80"
+                alt="Reforma interior clínica estética moderna en Murcia"
                 width={600}
                 height={700}
                 className="rounded-2xl shadow-2xl"
@@ -197,10 +200,10 @@ export default function ReformaClinicaEsteticaPage() {
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-4">
-              Todo incluido
+              Reforma completa
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary">
-              ¿Qué incluye la reforma de tu bar?
+              ¿Qué incluye la reforma de clínica estética?
             </h2>
           </div>
 
@@ -226,10 +229,10 @@ export default function ReformaClinicaEsteticaPage() {
               Precios orientativos
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta reformar un bar o restaurante?
+              ¿Cuánto cuesta reformar una clínica estética?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Presupuestos según superficie y nivel de acabados
+              Presupuestos según superficie y nivel de equipamiento
             </p>
           </div>
 
@@ -243,7 +246,7 @@ export default function ReformaClinicaEsteticaPage() {
               >
                 {index === 1 && (
                   <span className="inline-block px-3 py-1 bg-accent text-primary text-xs font-bold rounded-full mb-4">
-                    MÁS POPULAR
+                    MÁS COMÚN
                   </span>
                 )}
                 <h3 className="text-2xl font-heading font-bold text-primary mb-2">{paquete.tipo}</h3>
@@ -284,39 +287,39 @@ export default function ReformaClinicaEsteticaPage() {
           </div>
 
           <p className="text-center text-gray-500 mt-8">
-            * Precios orientativos. El presupuesto final depende de las medidas, materiales y acabados elegidos.
+            * Precios orientativos reforma completa llave en mano. Presupuesto final según calidades y extras.
           </p>
         </div>
       </section>
 
       {/* FAQ */}
       <FAQ
-        title="Preguntas frecuentes sobre reforma de bar en Murcia"
+        title="Preguntas frecuentes sobre reforma de clínica estética en Murcia"
         items={[
           {
-            question: '¿Cuánto tarda una reforma de bar completa?',
+            question: '¿Cuánto tarda la reforma de una clínica estética?',
             answer:
-              'Una reforma completa tarda entre 2 y 4 meses según tamaño. Bar pequeño: 2 meses. Restaurante grande con cocina: 4-6 meses.',
+              'Entre 6 y 10 semanas según tamaño. Centro 60m²: 6 semanas. Clínica 120m²: 8-10 semanas. Incluye obra, instalaciones y acabados.',
           },
           {
-            question: '¿Puedo abrir mientras se reforma?',
+            question: '¿Las camillas están incluidas?',
             answer:
-              'No. La reforma implica obra completa: electricidad, fontanería, cocina. Debes cerrar durante el proceso. Te damos fechas exactas al principio.',
+              'No. La reforma incluye obra civil, instalaciones, cabinas y acabados. Las camillas, aparatología (láser, etc.) las compras tú o te asesoramos proveedores.',
           },
           {
-            question: '¿Incluye la cocina industrial?',
+            question: '¿Qué tipo de iluminación es mejor?',
             answer:
-              'Sí, en el paquete completo incluimos instalación de cocina: campana extractora, fogones, hornos, frigoríficos, fregaderos industriales.',
+              'LED regulable con temperatura color ajustable. En cabinas luz cálida relajante (3000K), en zona trabajo luz más neutra (4000K). Fundamental para tratamientos faciales.',
           },
           {
-            question: '¿Necesito licencia de obra?',
+            question: '¿Necesito climatización en cada cabina?',
             answer:
-              'Depende del alcance. Reformas integrales requieren licencia mayor. Te asesoramos y gestionamos toda la tramitación si es necesario.',
+              'Muy recomendable. Permite control temperatura independiente: unos tratamientos requieren calor, otros ambiente fresco. Mejora mucho confort del cliente.',
           },
           {
-            question: '¿Qué garantía tiene la reforma?',
+            question: '¿Necesito licencia de obras?',
             answer:
-              'Garantía de 2 años en instalaciones eléctricas, fontanería, climatización y carpintería. Garantía fabricante en equipamiento de cocina.',
+              'Depende. Obras menores (sin tocar estructura) solo comunicación. Te asesoramos y gestionamos si necesitas.',
           },
         ]}
       />
@@ -325,10 +328,10 @@ export default function ReformaClinicaEsteticaPage() {
       <section className="section bg-gradient-to-br from-primary to-primary-light text-white">
         <div className="max-w-[1280px] mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-            ¿Listo para reformar tu bar o restaurante?
+            ¿Lista para reformar tu clínica estética?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Solicita presupuesto y transforma tu local en el negocio que siempre has querido
+            Te hacemos un diseño 3D gratis y presupuesto sin compromiso
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -345,7 +348,7 @@ export default function ReformaClinicaEsteticaPage() {
             </a>
           </div>
           <p className="text-white/80 mt-6 text-sm">
-            Respuesta en menos de 24h • Visita gratuita • Presupuesto detallado
+            Respuesta en menos de 24h • Diseño 3D previo • Presupuesto cerrado
           </p>
         </div>
       </section>
@@ -354,41 +357,53 @@ export default function ReformaClinicaEsteticaPage() {
       <section className="section bg-gray-50">
         <div className="max-w-[1280px] mx-auto px-6">
           <h2 className="text-3xl font-heading font-bold text-primary mb-8 text-center">
-            También te puede interesar
+            También puedes necesitar
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                title: 'Licencia Bar/Restaurante',
-                desc: '¿También necesitas la licencia? Te tramitamos todo',
-                link: '/servicios/licencia-bar',
-              },
-              {
-                title: 'Diseño de Espacios',
-                desc: 'Diseño 3D de tu nuevo local',
-                link: '/servicios/diseno-espacios',
-              },
-              {
-                title: 'Gestión de Proyectos',
-                desc: 'Gestionamos toda tu reforma',
-                link: '/servicios/gestion-proyectos',
-              },
-            ].map((servicio) => (
-              <Link
-                key={servicio.title}
-                href={servicio.link}
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all group"
-              >
-                <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
-                  {servicio.title}
-                </h3>
-                <p className="text-gray-600">{servicio.desc}</p>
-              </Link>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Link
+              href="/servicios/licencia-clinica-estetica"
+              className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group border-2 border-accent/20"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+                    <path d="M14 3v5h5M16 13H8M16 17H8M10 9H8" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
+                    Licencia Clínica Estética
+                  </h3>
+                  <p className="text-gray-600 mb-3">¿También necesitas tramitar la licencia? Te gestionamos todo. Desde 2.800€</p>
+                  <span className="text-accent font-semibold text-sm">Ver servicio →</span>
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              href="/blog/como-abrir-clinica-estetica-murcia-guia-completa-2026"
+              className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group border-2 border-accent/20"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 16v-4M12 8h.01" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors">
+                    Guía Completa: Abrir Clínica Estética
+                  </h3>
+                  <p className="text-gray-600 mb-3">Todo lo que necesitas: reforma + licencia + asesoramiento</p>
+                  <span className="text-accent font-semibold text-sm">Ver guía completa →</span>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
     </>
   );
 }
-
