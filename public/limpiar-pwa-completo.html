@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limpieza Completa PWA - Alemán y Pajarón</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    
+    h1 {
+      color: #667eea;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+    
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    
+    .step {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-left: 4px solid #667eea;
+    }
+    
+    .step-number {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    
+    .step-title {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    
+    .step-desc {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    button {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: transform 0.2s;
+    }
+    
+    button:hover {
+      transform: scale(1.02);
+    }
+    
+    button:active {
+      transform: scale(0.98);
+    }
+    
+    .success {
+      background: #10b981;
+      color: white;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      display: none;
+    }
+    
+    .error {
+      background: #ef4444;
+      color: white;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      display: none;
+    }
+    
+    .info {
+      background: #fef3c7;
+      border: 2px solid #fbbf24;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #92400e;
+    }
+    
+    .status {
+      background: #e0e7ff;
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #4338ca;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧹 Limpieza Completa PWA</h1>
+    <p class="subtitle">Alemán y Pajarón - Panel de Administración</p>
+    
+    <div class="info">
+      ⚠️ <strong>Usar solo si tienes problemas de login o errores</strong><br>
+      Esta herramienta limpiará completamente la PWA de tu móvil.
+    </div>
+    
+    <div class="step">
+      <div class="step-title">
+        <span class="step-number">1</span>
+        Service Workers
+      </div>
+      <div class="step-desc">
+        Desregistrar todos los Service Workers activos
+      </div>
+      <button onclick="cleanServiceWorkers()">🔧 Limpiar Service Workers</button>
+      <div id="sw-status" class="status" style="display:none;"></div>
+    </div>
+    
+    <div class="step">
+      <div class="step-title">
+        <span class="step-number">2</span>
+        Cache del Navegador
+      </div>
+      <div class="step-desc">
+        Eliminar todos los archivos en caché de la PWA
+      </div>
+      <button onclick="cleanCaches()">🗑️ Limpiar Cache</button>
+      <div id="cache-status" class="status" style="display:none;"></div>
+    </div>
+    
+    <div class="step">
+      <div class="step-title">
+        <span class="step-number">3</span>
+        Datos Locales
+      </div>
+      <div class="step-desc">
+        Borrar localStorage, sessionStorage y cookies
+      </div>
+      <button onclick="cleanStorage()">💾 Limpiar Storage</button>
+      <div id="storage-status" class="status" style="display:none;"></div>
+    </div>
+    
+    <div class="step">
+      <div class="step-title">
+        <span class="step-number">4</span>
+        Limpieza Completa
+      </div>
+      <div class="step-desc">
+        Hacer TODO de una vez y recargar la página
+      </div>
+      <button onclick="cleanAll()" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+        🔥 LIMPIAR TODO Y RECARGAR
+      </button>
+    </div>
+    
+    <div id="success-msg" class="success"></div>
+    <div id="error-msg" class="error"></div>
+  </div>
+
+  <script>
+    // Limpiar Service Workers
+    async function cleanServiceWorkers() {
+      const statusEl = document.getElementById('sw-status');
+      statusEl.style.display = 'block';
+      statusEl.textContent = '⏳ Limpiando Service Workers...';
+      
+      try {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        
+        if (registrations.length === 0) {
+          statusEl.textContent = '✅ No hay Service Workers registrados';
+          return;
+        }
+        
+        for (let registration of registrations) {
+          await registration.unregister();
+        }
+        
+        statusEl.textContent = `✅ ${registrations.length} Service Worker(s) eliminados`;
+        showSuccess('Service Workers limpiados correctamente');
+      } catch (error) {
+        statusEl.textContent = '❌ Error al limpiar Service Workers';
+        showError('Error: ' + error.message);
+        console.error(error);
+      }
+    }
+    
+    // Limpiar Caches
+    async function cleanCaches() {
+      const statusEl = document.getElementById('cache-status');
+      statusEl.style.display = 'block';
+      statusEl.textContent = '⏳ Limpiando caches...';
+      
+      try {
+        const cacheNames = await caches.keys();
+        
+        if (cacheNames.length === 0) {
+          statusEl.textContent = '✅ No hay caches almacenados';
+          return;
+        }
+        
+        await Promise.all(
+          cacheNames.map(cacheName => caches.delete(cacheName))
+        );
+        
+        statusEl.textContent = `✅ ${cacheNames.length} cache(s) eliminados`;
+        showSuccess('Caches limpiados correctamente');
+      } catch (error) {
+        statusEl.textContent = '❌ Error al limpiar caches';
+        showError('Error: ' + error.message);
+        console.error(error);
+      }
+    }
+    
+    // Limpiar Storage
+    function cleanStorage() {
+      const statusEl = document.getElementById('storage-status');
+      statusEl.style.display = 'block';
+      statusEl.textContent = '⏳ Limpiando storage...';
+      
+      try {
+        // Limpiar localStorage
+        localStorage.clear();
+        
+        // Limpiar sessionStorage
+        sessionStorage.clear();
+        
+        // Limpiar cookies
+        document.cookie.split(";").forEach(function(c) { 
+          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+        });
+        
+        statusEl.textContent = '✅ Storage y cookies limpiados';
+        showSuccess('Datos locales limpiados correctamente');
+      } catch (error) {
+        statusEl.textContent = '❌ Error al limpiar storage';
+        showError('Error: ' + error.message);
+        console.error(error);
+      }
+    }
+    
+    // Limpiar TODO
+    async function cleanAll() {
+      if (!confirm('¿Estás seguro? Esto borrará TODOS los datos de la PWA y recargará la página.')) {
+        return;
+      }
+      
+      try {
+        // Ejecutar todas las limpiezas
+        await cleanServiceWorkers();
+        await cleanCaches();
+        cleanStorage();
+        
+        // Mostrar mensaje final
+        showSuccess('✅ Limpieza completa. Recargando en 2 segundos...');
+        
+        // Recargar después de 2 segundos
+        setTimeout(() => {
+          window.location.href = '/administrator/login';
+        }, 2000);
+      } catch (error) {
+        showError('Error en limpieza completa: ' + error.message);
+        console.error(error);
+      }
+    }
+    
+    function showSuccess(message) {
+      const successEl = document.getElementById('success-msg');
+      successEl.textContent = message;
+      successEl.style.display = 'block';
+      
+      setTimeout(() => {
+        successEl.style.display = 'none';
+      }, 5000);
+    }
+    
+    function showError(message) {
+      const errorEl = document.getElementById('error-msg');
+      errorEl.textContent = message;
+      errorEl.style.display = 'block';
+      
+      setTimeout(() => {
+        errorEl.style.display = 'none';
+      }, 5000);
+    }
+    
+    // Mensaje de bienvenida
+    console.log('🧹 Herramienta de Limpieza PWA Cargada');
+    console.log('Alemán y Pajarón - Panel de Administración');
+  </script>
+</body>
+</html>
