@@ -236,12 +236,16 @@ function AdminNavContent() {
 export default function AdminNav() {
   const pathname = usePathname();
 
-  // No renderizar nada en la página de login
-  if (pathname === '/administrator/login') {
+  // No renderizar nada en páginas que no necesitan navegación
+  if (
+    pathname === '/administrator/login' ||
+    pathname === '/administrator/diagnostico-auth' ||
+    pathname === '/administrator/instalar-pwa'
+  ) {
     return null;
   }
 
-  // Renderizar el contenido solo si no es login
+  // Renderizar el contenido solo si es una página admin normal
   return <AdminNavContent />;
 }
 
