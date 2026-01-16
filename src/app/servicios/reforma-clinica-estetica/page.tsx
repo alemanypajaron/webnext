@@ -134,7 +134,7 @@ export default function ReformaClinicaEsteticaPage() {
         badge="Reformas Negocios"
         title="Reforma Integral Clínica Estética en Murcia desde 20.000€"
         subtitle="Diseño completo, cabinas de tratamiento e iluminación específica"
-        image="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=2000&q=80"
+        image="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Reforma clínica estética Murcia"
         highlightedWord="Estética"
       />
