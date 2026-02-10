@@ -7,14 +7,14 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Reforma Integral Piso y Vivienda en Murcia | Precio desde 400€/m² | Alemán y Pajarón',
-  description: 'Reforma integral de piso y vivienda en Murcia desde 400€/m². Presupuesto cerrado, diseño 3D, gestión completa. +15 años reformando casas en Murcia.',
+  title: 'Reforma Integral Piso y Vivienda en Murcia | Alemán y Pajarón',
+  description: 'Reforma integral de piso y vivienda en Murcia. Presupuesto cerrado, diseño 3D, gestión completa. +15 años reformando casas en Murcia.',
   keywords: 'reforma integral piso murcia, reforma integral vivienda murcia, reforma piso completo murcia, cuanto cuesta reforma integral murcia, precio reforma integral murcia, reformar piso murcia',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/servicios/reformas-integrales',
   },
   openGraph: {
-    title: 'Reforma Integral de Piso en Murcia desde 400€/m²',
+    title: 'Reforma Integral de Piso en Murcia',
     description: 'Transforma tu vivienda completamente. Presupuesto cerrado, diseño 3D incluido.',
     url: 'https://www.alemanypajaron.es/servicios/reformas-integrales',
     type: 'website',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary',
     title: 'Reforma Integral Murcia | Alemán y Pajarón',
-    description: 'Desde 400€/m². Presupuesto cerrado.',
+    description: 'Presupuesto cerrado y personalizado.',
   },
 };
 
@@ -52,7 +52,7 @@ export default function ReformasIntegralesPage() {
 
       <PageHeader
         badge="Reformas Integrales"
-        title="Reforma Integral de Piso en Murcia desde 400€/m²"
+        title="Reforma Integral de Piso en Murcia"
         subtitle="Transformación completa de tu vivienda con diseño 3D, gestión integral y presupuesto cerrado"
         image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Reforma integral piso Murcia"
@@ -193,18 +193,18 @@ export default function ReformasIntegralesPage() {
         </div>
       </section>
 
-      {/* Precios */}
+      {/* Tipos de acabados */}
       <section className="section bg-gray-50">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-4">
-              Precios orientativos
+              Niveles de reforma
             </span>
             <h2 className="text-4xl font-heading font-bold text-primary mb-6">
-              ¿Cuánto cuesta una reforma integral en Murcia?
+              Tipos de reforma según acabados y necesidades
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Presupuestos adaptados al alcance de tu reforma y acabados elegidos
+              Presupuestos personalizados adaptados al alcance de tu reforma y acabados elegidos
             </p>
           </div>
 
@@ -212,22 +212,16 @@ export default function ReformasIntegralesPage() {
             {[
               {
                 tipo: 'Reforma Básica',
-                desde: '400-500€/m²',
                 incluye: ['Suelos vinílicos o laminados', 'Alicatado básico', 'Sanitarios estándar', 'Instalaciones renovadas', 'Pintura lisa', 'Puertas estándar'],
-                ejemplo: 'Piso 80m²: 32.000€ - 40.000€',
               },
               {
                 tipo: 'Reforma Media',
-                desde: '600-800€/m²',
                 incluye: ['Porcelánico de calidad', 'Cocina equipada', 'Baños completos', 'Carpintería lacada', 'Iluminación LED', 'Diseño 3D personalizado'],
-                ejemplo: 'Piso 80m²: 48.000€ - 64.000€',
                 popular: true,
               },
               {
                 tipo: 'Reforma Premium',
-                desde: '900-1.200€/m²',
                 incluye: ['Materiales alta gama', 'Cocina diseño a medida', 'Domótica y climatización', 'Acabados exclusivos', 'Mobiliario integrado', 'Proyecto decoración completo'],
-                ejemplo: 'Piso 80m²: 72.000€ - 96.000€',
               },
             ].map((paquete, index) => (
               <div
@@ -241,9 +235,7 @@ export default function ReformasIntegralesPage() {
                     MÁS DEMANDADO
                   </span>
                 )}
-                <h3 className="text-2xl font-heading font-bold text-primary mb-2">{paquete.tipo}</h3>
-                <div className="text-3xl font-bold text-accent mb-2">{paquete.desde}</div>
-                <p className="text-sm text-gray-500 mb-6">{paquete.ejemplo}</p>
+                <h3 className="text-2xl font-heading font-bold text-primary mb-6">{paquete.tipo}</h3>
                 <ul className="space-y-3 mb-8">
                   {paquete.incluye.map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
@@ -277,8 +269,8 @@ export default function ReformasIntegralesPage() {
             ))}
           </div>
 
-          <p className="text-center text-gray-500 mt-8">
-            * Precios orientativos sin incluir IVA. El presupuesto final depende del tamaño, distribución y calidad de acabados elegidos.
+          <p className="text-center text-gray-600 mt-8 text-lg">
+            Solicita tu presupuesto personalizado sin compromiso
           </p>
         </div>
       </section>
@@ -341,7 +333,7 @@ export default function ReformasIntegralesPage() {
           {
             question: '¿Cuánto cuesta una reforma integral en Murcia?',
             answer:
-              'Depende del tamaño y alcance. Como orientación: reformas básicas desde 400€/m², reformas medias 600-800€/m², reformas premium 900-1.200€/m². Te damos presupuesto detallado sin compromiso.',
+              'Depende del tamaño, alcance y acabados elegidos. Cada reforma es única y adaptamos el presupuesto a tus necesidades. Te damos presupuesto detallado sin compromiso tras visita y análisis de tu proyecto.',
           },
           {
             question: '¿Cuánto dura una reforma integral de una vivienda?',
