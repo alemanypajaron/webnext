@@ -1,9 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { createProyecto, updateProyecto } from '@/app/actions/admin';
 import toast, { Toaster } from 'react-hot-toast';
+import RichTextEditor from './RichTextEditor';
+import ImagenSelectorModal from './ImagenSelectorModal';
 
 interface ProyectoFormProps {
   proyecto?: {
@@ -31,6 +33,8 @@ interface ProyectoFormProps {
 export default function ProyectoForm({ proyecto }: ProyectoFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const imagePickerCallbackRef = useRef<((url: string) => void) | null>(null);
 
   // Estados del formulario
   const [titulo, setTitulo] = useState(proyecto?.titulo || '');
@@ -50,6 +54,20 @@ export default function ProyectoForm({ proyecto }: ProyectoFormProps) {
   const [destacado, setDestacado] = useState(proyecto?.destacado || false);
   const [metaDescripcion, setMetaDescripcion] = useState(proyecto?.meta_descripcion || '');
   const [metaKeywords, setMetaKeywords] = useState(proyecto?.meta_keywords?.join(', ') || '');
+
+  // Escuchar evento del image picker de TinyMCE
+  useEffect(() => {
+    const handleImagePicker = (event: Event) => {
+      const customEvent = event as CustomEvent<{ callback: (url: string) => void }>;
+      imagePickerCallbackRef.current = customEvent.detail.callback;
+      setModalOpen(true);
+    };
+
+    window.addEventListener('openImagePicker', handleImagePicker);
+    return () => {
+      window.removeEventListener('openImagePicker', handleImagePicker);
+    };
+  }, []);
 
   // Auto-generar slug desde título
   const generarSlug = (texto: string) => {
@@ -191,19 +209,13 @@ export default function ProyectoForm({ proyecto }: ProyectoFormProps) {
 
             <div className="md:col-span-2">
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Descripción Completa (HTML) *
+                Descripción Completa *
               </label>
-              <textarea
-                value={descripcionCompleta}
-                onChange={(e) => setDescripcionCompleta(e.target.value)}
-                required
-                rows={8}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent font-mono text-sm"
-                placeholder="<h2>Descripción del Proyecto</h2><p>Contenido detallado...</p>"
+              <RichTextEditor
+                content={descripcionCompleta}
+                onChange={setDescripcionCompleta}
+                placeholder="Escribe la descripción completa del proyecto aquí..."
               />
-              <p className="text-xs text-gray-500 mt-1">
-                Puedes usar HTML para dar formato al contenido
-              </p>
             </div>
           </div>
         </div>
@@ -314,18 +326,73 @@ export default function ProyectoForm({ proyecto }: ProyectoFormProps) {
               </select>
             </div>
 
-            <div>
+            <div className="md:col-span-2">
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Imagen Principal (URL) *
+                Imagen Principal *
               </label>
-              <input
-                type="url"
-                value={imagenPrincipal}
-                onChange={(e) => setImagenPrincipal(e.target.value)}
-                required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
-                placeholder="https://images.unsplash.com/..."
-              />
+              
+              {imagenPrincipal ? (
+                <div className="space-y-3">
+                  {/* Preview de la imagen */}
+                  <div className="relative w-full h-64 rounded-lg overflow-hidden border-2 border-gray-200 group">
+                    <img
+                      src={imagenPrincipal}
+                      alt="Preview"
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Overlay con botones */}
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                      <button
+                        type="button"
+                        onClick={() => setModalOpen(true)}
+                        className="px-4 py-2 bg-white text-primary rounded-lg font-semibold hover:bg-accent transition-colors"
+                      >
+                        Cambiar Imagen
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setImagenPrincipal('')}
+                        className="px-4 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-colors"
+                      >
+                        Quitar
+                      </button>
+                    </div>
+                  </div>
+                  {/* URL de la imagen */}
+                  <p className="text-xs text-gray-500 font-mono bg-gray-50 px-3 py-2 rounded border border-gray-200">
+                    {imagenPrincipal}
+                  </p>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setModalOpen(true)}
+                  className="w-full px-6 py-8 border-2 border-dashed border-gray-300 rounded-lg hover:border-accent hover:bg-accent/5 transition-all group"
+                >
+                  <div className="flex flex-col items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="48"
+                      height="48"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      className="text-gray-400 group-hover:text-accent transition-colors mb-3"
+                    >
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                      <circle cx="8.5" cy="8.5" r="1.5" />
+                      <polyline points="21 15 16 10 5 21" />
+                    </svg>
+                    <p className="text-gray-700 font-semibold mb-1">
+                      Seleccionar o Subir Imagen
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      Haz clic para abrir el gestor de imágenes
+                    </p>
+                  </div>
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -443,6 +510,27 @@ export default function ProyectoForm({ proyecto }: ProyectoFormProps) {
           </button>
         </div>
       </form>
+
+      {/* Modal de gestión de imágenes */}
+      <ImagenSelectorModal
+        isOpen={modalOpen}
+        onClose={() => {
+          setModalOpen(false);
+          imagePickerCallbackRef.current = null;
+        }}
+        onSelect={(url) => {
+          // Si hay un callback de TinyMCE, usarlo (es para insertar en el contenido)
+          if (imagePickerCallbackRef.current) {
+            imagePickerCallbackRef.current(url);
+            imagePickerCallbackRef.current = null;
+          } else {
+            // Si no, es para la imagen principal
+            setImagenPrincipal(url);
+          }
+          setModalOpen(false);
+        }}
+        currentImage={imagenPrincipal}
+      />
     </>
   );
 }
