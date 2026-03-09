@@ -57,63 +57,55 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Headers de seguridad para todas las rutas
+      // Headers de seguridad comunes
       {
-        // Aplicar a todas las rutas
         source: '/:path*',
         headers: [
-          // DNS Prefetch Control
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on'
-          },
-          // Strict Transport Security (HSTS)
-          // Fuerza HTTPS por 2 años, incluye subdominios
-          {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload'
-          },
-          // X-Frame-Options
-          // Previene clickjacking (solo permite frames del mismo origen)
-          {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN'
-          },
-          // X-Content-Type-Options
-          // Previene MIME sniffing
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff'
-          },
-          // X-XSS-Protection
-          // Activa protección XSS del navegador
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block'
-          },
-          // Referrer Policy
-          // Control de información del referrer
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin'
-          },
-          // Permissions Policy
-          // Deshabilita APIs innecesarias
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
-          },
-          // Content Security Policy (CSP)
-          // Protección avanzada contra XSS, injection attacks, etc.
+          { key: 'X-DNS-Prefetch-Control', value: 'on' },
+          { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-XSS-Protection', value: '1; mode=block' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()' },
+        ],
+      },
+      // CSP estricta para páginas públicas (sin unsafe-eval)
+      {
+        source: '/((?!administrator).*)',
+        headers: [
           {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.google-analytics.com *.tiny.cloud cdn.tiny.cloud",
+              "script-src 'self' 'unsafe-inline' *.googletagmanager.com *.google-analytics.com",
+              "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
+              "img-src 'self' data: blob: https: *.unsplash.com *.supabase.co",
+              "font-src 'self' fonts.gstatic.com data:",
+              "connect-src 'self' *.supabase.co *.googleanalytics.com *.google-analytics.com vercel.live",
+              "frame-src 'none'",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "frame-ancestors 'none'",
+              "upgrade-insecure-requests",
+            ].join('; ')
+          },
+        ],
+      },
+      // CSP para panel de administración (TinyMCE requiere unsafe-eval)
+      {
+        source: '/administrator/:path*',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' *.tiny.cloud cdn.tiny.cloud",
               "style-src 'self' 'unsafe-inline' fonts.googleapis.com *.tiny.cloud",
               "img-src 'self' data: blob: https: *.unsplash.com *.supabase.co",
               "font-src 'self' fonts.gstatic.com data:",
-              "connect-src 'self' *.supabase.co *.googleanalytics.com *.google-analytics.com *.tiny.cloud vercel.live",
+              "connect-src 'self' *.supabase.co *.tiny.cloud vercel.live",
               "frame-src 'self' *.tiny.cloud",
               "object-src 'none'",
               "base-uri 'self'",

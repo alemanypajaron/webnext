@@ -4,7 +4,8 @@ import { NextResponse, type NextRequest } from 'next/server';
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   
-  console.log('[Middleware] 🛣️ Ruta:', pathname);
+  // Solo loguear en desarrollo
+  const isDev = process.env.NODE_ENV === 'development';
 
   let response = NextResponse.next({
     request: {
@@ -62,7 +63,7 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  console.log('[Middleware] 👤 Usuario:', user ? user.email : 'No autenticado');
+  if (isDev) console.log('[Middleware] Usuario:', user ? 'autenticado' : 'no autenticado');
 
   // Si la ruta es /administrator y no hay usuario, redirigir a login
   if (pathname.startsWith('/administrator') && !user) {
@@ -73,21 +74,21 @@ export async function middleware(request: NextRequest) {
       pathname === '/administrator/diagnostico-push' ||
       pathname === '/administrator/instalar-pwa'
     ) {
-      console.log('[Middleware] ✅ Permitiendo acceso a:', pathname);
+      if (isDev) console.log('[Middleware] Acceso permitido:', pathname);
       return response;
     }
     
-    console.log('[Middleware] 🔒 Redirigiendo a login desde:', pathname);
+    if (isDev) console.log('[Middleware] Redirigiendo a login desde:', pathname);
     return NextResponse.redirect(new URL('/administrator/login', request.url));
   }
 
   // Si hay usuario y está en /administrator/login, redirigir al dashboard
   if (pathname === '/administrator/login' && user) {
-    console.log('[Middleware] ↩️ Usuario ya autenticado, redirigiendo a dashboard');
+    if (isDev) console.log('[Middleware] Usuario ya autenticado, redirigiendo a dashboard');
     return NextResponse.redirect(new URL('/administrator', request.url));
   }
 
-  console.log('[Middleware] ✅ Permitiendo acceso');
+  if (isDev) console.log('[Middleware] Acceso permitido');
   return response;
 }
 

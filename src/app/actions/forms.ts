@@ -104,10 +104,10 @@ export async function submitContactForm(formData: FormData): Promise<FormRespons
     
     // Extraer datos del formulario
     const contacto: Contacto = {
-      nombre: formData.get('nombre') as string,
-      email: formData.get('email') as string,
-      telefono: (formData.get('telefono') as string) || undefined,
-      mensaje: formData.get('mensaje') as string,
+      nombre: (formData.get('nombre') as string)?.trim(),
+      email: (formData.get('email') as string)?.trim(),
+      telefono: (formData.get('telefono') as string)?.trim() || undefined,
+      mensaje: (formData.get('mensaje') as string)?.trim(),
     };
 
     // Validación básica
@@ -117,6 +117,20 @@ export async function submitContactForm(formData: FormData): Promise<FormRespons
         message: 'Por favor, rellena todos los campos obligatorios.',
         error: 'VALIDATION_ERROR',
       };
+    }
+
+    // Validación de longitud (previene abuso / DoS)
+    if (contacto.nombre.length > 100) {
+      return { success: false, message: 'El nombre es demasiado largo (máx. 100 caracteres).', error: 'VALIDATION_ERROR' };
+    }
+    if (contacto.email.length > 254) {
+      return { success: false, message: 'El email es demasiado largo.', error: 'VALIDATION_ERROR' };
+    }
+    if (contacto.telefono && contacto.telefono.length > 20) {
+      return { success: false, message: 'El teléfono es demasiado largo.', error: 'VALIDATION_ERROR' };
+    }
+    if (contacto.mensaje.length > 5000) {
+      return { success: false, message: 'El mensaje es demasiado largo (máx. 5000 caracteres).', error: 'VALIDATION_ERROR' };
     }
 
     // Validar email
@@ -191,14 +205,14 @@ export async function submitPresupuestoForm(formData: FormData): Promise<FormRes
     
     // Extraer datos del formulario
     const presupuesto: Presupuesto = {
-      nombre: formData.get('nombre') as string,
-      email: formData.get('email') as string,
-      telefono: formData.get('telefono') as string,
-      tipo_proyecto: formData.get('tipo_proyecto') as string,
-      presupuesto_estimado: (formData.get('presupuesto_estimado') as string) || undefined,
-      ubicacion: (formData.get('ubicacion') as string) || undefined,
-      fecha_inicio_estimada: (formData.get('fecha_inicio_estimada') as string) || undefined,
-      descripcion: formData.get('descripcion') as string,
+      nombre: (formData.get('nombre') as string)?.trim(),
+      email: (formData.get('email') as string)?.trim(),
+      telefono: (formData.get('telefono') as string)?.trim(),
+      tipo_proyecto: (formData.get('tipo_proyecto') as string)?.trim(),
+      presupuesto_estimado: (formData.get('presupuesto_estimado') as string)?.trim() || undefined,
+      ubicacion: (formData.get('ubicacion') as string)?.trim() || undefined,
+      fecha_inicio_estimada: (formData.get('fecha_inicio_estimada') as string)?.trim() || undefined,
+      descripcion: (formData.get('descripcion') as string)?.trim(),
       acepta_privacidad: formData.get('acepta_privacidad') === 'true',
       estado: 'pendiente',
     };
@@ -216,6 +230,34 @@ export async function submitPresupuestoForm(formData: FormData): Promise<FormRes
         message: 'Por favor, rellena todos los campos obligatorios.',
         error: 'VALIDATION_ERROR',
       };
+    }
+
+    // Validación de longitud (previene abuso / DoS)
+    if (presupuesto.nombre.length > 100) {
+      return { success: false, message: 'El nombre es demasiado largo (máx. 100 caracteres).', error: 'VALIDATION_ERROR' };
+    }
+    if (presupuesto.email.length > 254) {
+      return { success: false, message: 'El email es demasiado largo.', error: 'VALIDATION_ERROR' };
+    }
+    if (presupuesto.telefono.length > 20) {
+      return { success: false, message: 'El teléfono es demasiado largo.', error: 'VALIDATION_ERROR' };
+    }
+    if (presupuesto.tipo_proyecto.length > 100) {
+      return { success: false, message: 'El tipo de proyecto es demasiado largo.', error: 'VALIDATION_ERROR' };
+    }
+    if (presupuesto.descripcion.length > 10000) {
+      return { success: false, message: 'La descripción es demasiado larga (máx. 10.000 caracteres).', error: 'VALIDATION_ERROR' };
+    }
+    if (presupuesto.ubicacion && presupuesto.ubicacion.length > 200) {
+      return { success: false, message: 'La ubicación es demasiado larga.', error: 'VALIDATION_ERROR' };
+    }
+
+    // Validar formato de fecha si se proporciona
+    if (presupuesto.fecha_inicio_estimada) {
+      const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+      if (!dateRegex.test(presupuesto.fecha_inicio_estimada) || isNaN(Date.parse(presupuesto.fecha_inicio_estimada))) {
+        return { success: false, message: 'La fecha no tiene un formato válido.', error: 'VALIDATION_ERROR' };
+      }
     }
 
     // Validar email
@@ -273,6 +315,38 @@ export async function submitPresupuestoForm(formData: FormData): Promise<FormRes
 
 export async function subscribeNewsletter(email: string, nombre?: string): Promise<FormResponse> {
   try {
+    // Rate limiting
+    const headersList = await headers();
+    const clientIP = getClientIP(headersList);
+    const rateLimitKey = `newsletter:${clientIP}`;
+
+    const rateLimit = checkRateLimit(
+      rateLimitKey,
+      RATE_LIMITS.NEWSLETTER.maxAttempts,
+      RATE_LIMITS.NEWSLETTER.windowMs
+    );
+
+    if (!rateLimit.allowed) {
+      const timeRemaining = formatTimeRemaining(rateLimit.resetTime);
+      return {
+        success: false,
+        message: `${RATE_LIMITS.NEWSLETTER.message} Tiempo restante: ${timeRemaining}.`,
+        error: 'RATE_LIMIT_EXCEEDED',
+      };
+    }
+
+    // Sanitizar inputs
+    email = email?.trim();
+    nombre = nombre?.trim();
+
+    // Validar longitud
+    if (email.length > 254) {
+      return { success: false, message: 'El email es demasiado largo.', error: 'VALIDATION_ERROR' };
+    }
+    if (nombre && nombre.length > 100) {
+      return { success: false, message: 'El nombre es demasiado largo.', error: 'VALIDATION_ERROR' };
+    }
+
     // Validar email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {

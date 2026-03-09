@@ -1,22 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { getAuthenticatedUser } from '@/lib/auth-api';
 
 const BUCKET_NAME = 'blog-images';
 
-// Cliente de Supabase para Storage
-// Usamos la service role key para bypasear RLS en Storage
-// La seguridad está garantizada por el middleware del admin panel
+// Respuesta 401 reutilizable
+const unauthorizedResponse = () =>
+  NextResponse.json({ error: 'No autorizado' }, { status: 401 });
+
+// Cliente de Supabase para Storage (service role para bypasear RLS)
 const getSupabaseAdmin = () => {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  
+
   // Si no hay service key, usar la anon key (para desarrollo)
   const key = serviceKey || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  
+
   if (!url || !key) {
     throw new Error('Faltan variables de entorno de Supabase');
   }
-  
+
   return createClient(url, key, {
     auth: {
       autoRefreshToken: false,
@@ -27,6 +30,9 @@ const getSupabaseAdmin = () => {
 
 // GET: Listar todas las imágenes del bucket de Supabase
 export async function GET() {
+  // Verificar autenticación
+  const user = await getAuthenticatedUser();
+  if (!user) return unauthorizedResponse();
   try {
     console.log('[GET] Listando imágenes del bucket:', BUCKET_NAME);
     const supabase = getSupabaseAdmin();
@@ -85,6 +91,10 @@ export async function GET() {
 
 // POST: Subir una nueva imagen a Supabase Storage
 export async function POST(request: NextRequest) {
+  // Verificar autenticación
+  const user = await getAuthenticatedUser();
+  if (!user) return unauthorizedResponse();
+
   try {
     const supabase = getSupabaseAdmin();
 
@@ -242,6 +252,10 @@ export async function POST(request: NextRequest) {
 
 // DELETE: Eliminar una imagen de Supabase Storage
 export async function DELETE(request: NextRequest) {
+  // Verificar autenticación
+  const user = await getAuthenticatedUser();
+  if (!user) return unauthorizedResponse();
+
   try {
     const supabase = getSupabaseAdmin();
 
@@ -251,6 +265,15 @@ export async function DELETE(request: NextRequest) {
     if (!filename) {
       return NextResponse.json(
         { error: 'No se proporcionó el nombre del archivo' },
+        { status: 400 }
+      );
+    }
+
+    // Protección contra path traversal
+    if (filename.includes('..') || filename.includes('/') || filename.includes('\\')) {
+      console.warn(`[DELETE] Intento de path traversal bloqueado: "${filename}" por usuario ${user.email}`);
+      return NextResponse.json(
+        { error: 'Nombre de archivo no válido' },
         { status: 400 }
       );
     }

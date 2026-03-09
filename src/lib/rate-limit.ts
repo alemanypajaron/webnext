@@ -132,6 +132,11 @@ export const RATE_LIMITS = {
     windowMs: 60 * 60 * 1000, // 1 hora
     message: 'Has intentado suscribirte demasiadas veces. Por favor, espera 1 hora.',
   },
+  LOGIN: {
+    maxAttempts: 5,
+    windowMs: 15 * 60 * 1000, // 15 minutos
+    message: 'Demasiados intentos de inicio de sesión. Por favor, espera 15 minutos.',
+  },
 } as const;
 
 /**

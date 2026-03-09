@@ -2,51 +2,68 @@
 
 import { createClient } from '@/lib/supabase-server';
 import { redirect } from 'next/navigation';
+import { headers } from 'next/headers';
+import { checkRateLimit, getClientIP, RATE_LIMITS, formatTimeRemaining } from '@/lib/rate-limit';
 
 export async function loginAction(email: string, password: string) {
-  console.log('[Server Login] 🔐 Iniciando login para:', email);
-  
   try {
-    const supabase = await createClient();
+    // Rate limiting: prevenir fuerza bruta
+    const headersList = await headers();
+    const clientIP = getClientIP(headersList);
+    const rateLimitKey = `login:${clientIP}`;
 
-    console.log('[Server Login] 📡 Cliente Supabase creado');
+    const rateLimit = checkRateLimit(
+      rateLimitKey,
+      RATE_LIMITS.LOGIN.maxAttempts,
+      RATE_LIMITS.LOGIN.windowMs
+    );
+
+    if (!rateLimit.allowed) {
+      const timeRemaining = formatTimeRemaining(rateLimit.resetTime);
+      console.warn(`[Server Login] Rate limit excedido para IP: ${clientIP}`);
+      return {
+        success: false,
+        error: `${RATE_LIMITS.LOGIN.message} Tiempo restante: ${timeRemaining}.`
+      };
+    }
+
+    // Validación básica de inputs
+    if (!email || !password || typeof email !== 'string' || typeof password !== 'string') {
+      return { success: false, error: 'Email y contraseña son obligatorios.' };
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return { success: false, error: 'Formato de email no válido.' };
+    }
+
+    const supabase = await createClient();
 
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
-    console.log('[Server Login] 📥 Respuesta de Supabase:', { 
-      hasData: !!data, 
-      hasUser: !!data?.user,
-      hasSession: !!data?.session,
-      error: error?.message 
-    });
-
     if (error) {
-      console.error('[Server Login] ❌ Error de Supabase:', error);
-      return { success: false, error: error.message };
+      console.warn(`[Server Login] Intento fallido para: ${email} desde IP: ${clientIP} (${rateLimit.remaining} intentos restantes)`);
+      // Mensaje genérico para no revelar si el email existe
+      return { success: false, error: 'Credenciales incorrectas.' };
     }
 
     if (data.user) {
-      console.log('[Server Login] ✅ Usuario autenticado, redirigiendo...');
-      // redirect() lanza un error NEXT_REDIRECT para funcionar
-      // No necesita return porque nunca llega a ejecutarse
+      console.log(`[Server Login] Login exitoso: ${email}`);
       redirect('/administrator');
     }
 
-    console.error('[Server Login] ⚠️ No hay usuario después de login exitoso');
-    return { success: false, error: 'Error al iniciar sesión' };
+    return { success: false, error: 'Error al iniciar sesión.' };
   } catch (error: any) {
-    console.error('[Server Login] 💥 Excepción:', error);
-    
     // Si es un redirect, re-lanzar el error para que Next.js lo maneje
     if (error?.message?.includes('NEXT_REDIRECT')) {
-      console.log('[Server Login] 🔄 Re-lanzando NEXT_REDIRECT');
       throw error;
     }
-    
-    return { success: false, error: error.message || 'Error desconocido' };
+
+    console.error('[Server Login] Error inesperado:', error);
+    return { success: false, error: 'Error del servidor. Inténtalo de nuevo.' };
   }
 }
 

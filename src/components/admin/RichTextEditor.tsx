@@ -97,9 +97,29 @@ export default function RichTextEditor({
           'bold italic forecolor backcolor | alignleft aligncenter ' +
           'alignright alignjustify | bullist numlist outdent indent | ' +
           'readmore pagebreak | removeformat | image link | code | help',
-        // Permitir todos los elementos HTML
-        extended_valid_elements: '*[*]',
-        valid_children: '+body[style]',
+        // Whitelist de elementos HTML permitidos (previene XSS)
+        extended_valid_elements: [
+          'img[class|src|alt|title|width|height|loading|style]',
+          'a[href|target|rel|class|title]',
+          'iframe[src|width|height|frameborder|allowfullscreen|class|title|loading]',
+          'table[class|border|cellpadding|cellspacing|style|width]',
+          'tr[class|style]',
+          'td[class|style|colspan|rowspan|width|height|valign]',
+          'th[class|style|colspan|rowspan|width|height|valign|scope]',
+          'thead[class]',
+          'tbody[class]',
+          'tfoot[class]',
+          'hr[class|title]',
+          'span[class|style]',
+          'div[class|style|id]',
+          'figure[class|style]',
+          'figcaption[class]',
+          'video[src|controls|width|height|class|poster|preload]',
+          'source[src|type]',
+        ].join(','),
+        // Elementos no permitidos (previene inyección de scripts)
+        invalid_elements: 'script,object,embed,applet,form,input,textarea,select,button',
+        valid_children: '+body[style],+div[h1|h2|h3|h4|h5|h6|p|blockquote|pre|ul|ol|li|table|figure|img|a|span|div|hr]',
         // Configuración de idioma español
         language_url: 'https://cdn.jsdelivr.net/npm/tinymce-lang/langs7/es.js',
       }}
