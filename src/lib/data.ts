@@ -113,6 +113,7 @@ export async function getProyectosSlugs() {
  * @param limit - Número máximo de artículos a devolver
  */
 export async function getBlogArticulos(limit?: number) {
+  const ahora = new Date().toISOString();
   let query = supabase
     .from('blog_articulos')
     .select(`
@@ -125,6 +126,7 @@ export async function getBlogArticulos(limit?: number) {
       )
     `)
     .eq('publicado', true)
+    .lte('fecha_publicacion', ahora)
     .order('fecha_publicacion', { ascending: false });
 
   if (limit) {
@@ -145,6 +147,7 @@ export async function getBlogArticulos(limit?: number) {
  * Obtener artículos destacados
  */
 export async function getBlogArticulosDestacados(limit = 3) {
+  const ahora = new Date().toISOString();
   const { data, error } = await supabase
     .from('blog_articulos')
     .select(`
@@ -158,6 +161,7 @@ export async function getBlogArticulosDestacados(limit = 3) {
     `)
     .eq('publicado', true)
     .eq('destacado', true)
+    .lte('fecha_publicacion', ahora)
     .order('fecha_publicacion', { ascending: false })
     .limit(limit);
 
@@ -173,6 +177,7 @@ export async function getBlogArticulosDestacados(limit = 3) {
  * Obtener un artículo por su slug
  */
 export async function getBlogArticuloBySlug(slug: string) {
+  const ahora = new Date().toISOString();
   const { data, error } = await supabase
     .from('blog_articulos')
     .select(`
@@ -186,6 +191,7 @@ export async function getBlogArticuloBySlug(slug: string) {
     `)
     .eq('slug', slug)
     .eq('publicado', true)
+    .lte('fecha_publicacion', ahora)
     .single();
 
   if (error) {
@@ -208,10 +214,12 @@ export async function getBlogArticuloBySlug(slug: string) {
  * Obtener todos los slugs de artículos (para generar páginas estáticas)
  */
 export async function getBlogArticulosSlugs() {
+  const ahora = new Date().toISOString();
   const { data, error } = await supabase
     .from('blog_articulos')
     .select('slug')
-    .eq('publicado', true);
+    .eq('publicado', true)
+    .lte('fecha_publicacion', ahora);
 
   if (error) {
     console.error('Error al obtener slugs de artículos:', error);
@@ -253,6 +261,7 @@ export async function getBlogArticulosByCategoria(categoriaSlug: string, limit?:
     return [];
   }
 
+  const ahora = new Date().toISOString();
   let query = supabase
     .from('blog_articulos')
     .select(`
@@ -266,6 +275,7 @@ export async function getBlogArticulosByCategoria(categoriaSlug: string, limit?:
     `)
     .eq('publicado', true)
     .eq('categoria_id', categoria.id)
+    .lte('fecha_publicacion', ahora)
     .order('fecha_publicacion', { ascending: false });
 
   if (limit) {
@@ -286,6 +296,7 @@ export async function getBlogArticulosByCategoria(categoriaSlug: string, limit?:
  * Buscar artículos por tags
  */
 export async function searchBlogArticulosByTag(tag: string, limit = 10) {
+  const ahora = new Date().toISOString();
   const { data, error } = await supabase
     .from('blog_articulos')
     .select(`
@@ -299,6 +310,7 @@ export async function searchBlogArticulosByTag(tag: string, limit = 10) {
     `)
     .eq('publicado', true)
     .contains('tags', [tag])
+    .lte('fecha_publicacion', ahora)
     .order('fecha_publicacion', { ascending: false })
     .limit(limit);
 

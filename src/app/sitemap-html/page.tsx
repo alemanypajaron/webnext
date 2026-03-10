@@ -21,11 +21,13 @@ export default async function SitemapHTMLPage() {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
 
-  // Obtener artículos de blog dinámicos
+  // Obtener artículos de blog dinámicos (solo los ya publicados por fecha)
+  const ahora = new Date().toISOString();
   const { data: articulos } = await supabase
     .from('blog_articulos')
     .select('slug, titulo, fecha_publicacion')
     .eq('publicado', true)
+    .lte('fecha_publicacion', ahora)
     .order('fecha_publicacion', { ascending: false });
 
   // Obtener proyectos dinámicos

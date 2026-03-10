@@ -246,11 +246,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Artículos de blog dinámicos (excluir artículos con seo_noindex = true)
+  // Artículos de blog dinámicos (excluir noindex y fechas futuras - publicación programada)
+  const ahora = new Date().toISOString();
   const { data: articulos } = await supabase
     .from('blog_articulos')
     .select('slug, actualizado_at, seo_noindex')
     .eq('publicado', true)
+    .lte('fecha_publicacion', ahora)
     .neq('seo_noindex', true) // Excluir artículos marcados como noindex
     .order('fecha_publicacion', { ascending: false });
 

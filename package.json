@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "blog:fechas": "node scripts/check-blog-fechas.mjs",
+    "blog:escalonar": "node scripts/escalonar-fechas-7-articulos.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
