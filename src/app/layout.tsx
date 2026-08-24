@@ -6,6 +6,7 @@ import './globals.css';
 import ConditionalLayout from '@/components/layout/ConditionalLayout';
 import PageViewTracker from '@/components/analytics/PageViewTracker';
 import ConditionalAnalytics from '@/components/cookies/ConditionalAnalytics';
+import Script from 'next/script';
 
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '0RDY_vpUpTMgVPTIlKlOknWHNu_iRjPnSprwINucMgg';
 
@@ -105,7 +106,32 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} ${poppins.variable}`}>
       <head>
-        {/* Google Analytics cargado condicionalmente según consentimiento */}
+        <Script
+          id="gtag-consent-default"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){window.dataLayer.push(arguments);}
+              window.gtag = gtag;
+              var analyticsStorage = 'denied';
+              try {
+                var stored = localStorage.getItem('cookie-consent');
+                if (stored) {
+                  var prefs = JSON.parse(stored);
+                  if (prefs.analytics) analyticsStorage = 'granted';
+                }
+              } catch (e) {}
+              gtag('consent', 'default', {
+                analytics_storage: analyticsStorage,
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                wait_for_update: 500
+              });
+            `,
+          }}
+        />
         <ConditionalAnalytics />
       </head>
       <body className="font-sans antialiased bg-white text-gray-900">
