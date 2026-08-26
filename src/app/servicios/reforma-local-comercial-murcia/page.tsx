@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Reforma Local Comercial Murcia | Desde 8.000€ | Alemán y Pajarón',
+  title: 'Reforma Local Comercial Murcia | Desde 8.000€',
   description: 'Reforma integral local comercial en Murcia desde 8.000€. Tiendas, oficinas, consultas, clínicas. Diseño funcional, distribución óptima y acabados premium.',
   keywords: 'reforma local comercial murcia, reformar local comercial murcia precio, reforma tienda murcia, reforma oficina murcia, reforma local murcia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-local-comercial-murcia' },
   openGraph: {
-    title: 'Reforma Local Comercial Murcia | Alemán y Pajarón',
+    title: 'Reforma Local Comercial Murcia',
     description: 'Reforma integral local comercial. Diseño, ejecución y tramitación.',
     url: 'https://www.alemanypajaron.es/servicios/reforma-local-comercial-murcia',
     type: 'website',

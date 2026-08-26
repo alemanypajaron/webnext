@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Construcción y Reforma Piscina Murcia | Desde 8.000€ | Alemán y Pajarón',
+  title: 'Construcción y Reforma Piscina Murcia | Desde 8.000€',
   description: 'Construcción y reforma de piscinas en Murcia desde 8.000€. Piscina obra, prefabricada, gresite, rehabilitación. +15 años experiencia.',
   keywords: 'construir piscina murcia precio, reformar piscina murcia, cambio gresite piscina murcia, piscina obra murcia, piscina prefabricada murcia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-piscina' },
   openGraph: {
-    title: 'Construcción Piscina Murcia desde 8.000€ | Alemán y Pajarón',
+    title: 'Construcción Piscina Murcia desde 8.000€',
     description: 'Construcción y reforma de piscinas. Presupuesto sin compromiso.',
     url: 'https://www.alemanypajaron.es/servicios/reforma-piscina',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Construcción Piscina Murcia | Alemán y Pajarón',
+    title: 'Construcción Piscina Murcia',
     description: 'Desde 8.000€. Presupuesto gratis.',
   },
 };

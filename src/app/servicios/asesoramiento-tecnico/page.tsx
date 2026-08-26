@@ -4,15 +4,16 @@ import type { Metadata } from 'next';
 import PageHeader from '@/components/ui/PageHeader';
 import FAQ from '@/components/ui/FAQ';
 import JsonLd from '@/components/seo/JsonLd';
+import AreaServicio from '@/components/seo/AreaServicio';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Asesoramiento Técnico en Murcia | Técnicos de Edificación Alemán y Pajarón',
+  title: 'Asesoramiento Técnico en Murcia | Técnicos de Edificación',
   description: 'Asesoramiento técnico especializado en Murcia: informes técnicos, estudios de viabilidad, análisis de inmuebles y consultoría para construcción y reformas.',
   keywords: 'asesoramiento técnico murcia, consultoría construcción murcia, informe técnico murcia, técnico edificación murcia, gestor obras murcia, estudio viabilidad murcia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/asesoramiento-tecnico' },
   openGraph: {
-    title: 'Asesoramiento Técnico en Murcia | Alemán y Pajarón',
+    title: 'Asesoramiento Técnico en Murcia',
     description: 'Asesoramiento técnico especializado: informes, consultoría y estudios para tu proyecto.',
     url: 'https://www.alemanypajaron.es/servicios/asesoramiento-tecnico',
     type: 'website',
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Asesoramiento Técnico Murcia | Alemán y Pajarón',
+    title: 'Asesoramiento Técnico Murcia',
     description: 'Consultoría especializada en construcción y reformas.',
   },
 };
@@ -348,7 +349,8 @@ export default function AsesoramientoTecnicoPage() {
       <section className="section bg-gray-100">
         <div className="max-w-[1280px] mx-auto px-6 text-center">
           <h2 className="text-4xl font-heading font-bold mb-4 text-primary">¿Necesitas asesoramiento técnico en Murcia?</h2>
-          <p className="text-xl text-gray-700 mb-8">Consulta con nuestros gestores de obras colegiados</p>
+          <p className="text-xl text-gray-700 mb-4">Consulta con nuestros gestores de obras colegiados</p>
+          <AreaServicio className="mb-8 max-w-3xl mx-auto" />
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/presupuesto" className="px-8 py-4 bg-accent text-primary font-semibold rounded-lg hover:bg-accent-dark transition-all text-center text-lg shadow-lg">Solicitar Presupuesto</Link>
             <a href="tel:+34650075842" className="px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary-light transition-all text-center text-lg border-2 border-primary">650 075 842</a>

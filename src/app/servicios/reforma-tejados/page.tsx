@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Reforma y Reparación de Tejados Murcia | Desde 2.500€ | Alemán y Pajarón',
+  title: 'Reforma y Reparación de Tejados Murcia | Desde 2.500€',
   description: 'Reforma y reparación de tejados en Murcia desde 2.500€. Impermeabilización, cambio tejas, cubiertas planas. +15 años experiencia.',
   keywords: 'reforma tejado murcia, reparar tejado murcia, impermeabilizar tejado murcia precio, cambio tejas murcia, cubierta plana murcia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-tejados' },
   openGraph: {
-    title: 'Reforma Tejados Murcia desde 2.500€ | Alemán y Pajarón',
+    title: 'Reforma Tejados Murcia desde 2.500€',
     description: 'Reparación e impermeabilización de tejados. Presupuesto sin compromiso.',
     url: 'https://www.alemanypajaron.es/servicios/reforma-tejados',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Reforma Tejados Murcia | Alemán y Pajarón',
+    title: 'Reforma Tejados Murcia',
     description: 'Reparación desde 2.500€. Presupuesto gratis.',
   },
 };

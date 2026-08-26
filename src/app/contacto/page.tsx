@@ -2,16 +2,17 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageHeader from '@/components/ui/PageHeader';
 import MurciaMap from '@/components/ui/MurciaMap';
+import AreaServicio from '@/components/seo/AreaServicio';
 
 export const metadata: Metadata = {
-  title: 'Contacto | Arquitectos Técnicos en Murcia - Alemán y Pajarón',
+  title: 'Contacto | Arquitectos Técnicos en Murcia',
   description: 'Contacta con Alemán y Pajarón en Murcia. ☎ 650 075 842. Presupuesto sin compromiso en 24h para tu obra o reforma. ¡Te ayudamos!',
   keywords: 'contacto arquitectos murcia, técnicos edificación murcia contacto, aparejador murcia contacto, gestor obras murcia teléfono, dirección obra murcia contacto',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/contacto',
   },
   openGraph: {
-    title: 'Contacto | Alemán y Pajarón - Técnicos de Edificación Murcia',
+    title: 'Contacto | Técnicos de Edificación Murcia',
     description: 'Contacta con Alemán y Pajarón para tu proyecto en Murcia. Presupuesto sin compromiso en 24h.',
     url: 'https://www.alemanypajaron.es/contacto',
     type: 'website',
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Contacto | Alemán y Pajarón Murcia',
+    title: 'Contacto',
     description: 'Técnicos de edificación en Murcia. Presupuesto sin compromiso en 24h.',
   },
 };
@@ -98,7 +99,7 @@ export default function ContactoPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-primary mb-1">Ubicación</h3>
-                    <p className="text-gray-600">Murcia y alrededores</p>
+                    <p className="text-gray-600">Murcia capital y radio 50 km (área metropolitana y pedanías)</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -123,8 +124,9 @@ export default function ContactoPage() {
               </p>
             </div>
 
-            <div>
-              <h2 className="text-3xl font-heading font-bold text-primary mb-8">Dónde trabajamos</h2>
+            <div id="donde-trabajamos">
+              <h2 className="text-3xl font-heading font-bold text-primary mb-4">Dónde trabajamos</h2>
+              <AreaServicio variant="completa" className="mb-8" />
               <div className="rounded-2xl overflow-hidden border border-gray-200 bg-gray-50">
                 <MurciaMap />
               </div>

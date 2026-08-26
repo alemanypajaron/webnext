@@ -1,5 +1,17 @@
 export const SITE_URL = 'https://www.alemanypajaron.es';
 
+export const AREA_SERVED_CITIES = [
+  'Murcia',
+  'Alcantarilla',
+  'Molina de Segura',
+  'Las Torres de Cotillas',
+  'Santomera',
+  'Beniel',
+] as const;
+
+export const COBERTURA_CORTA =
+  'Dirección de obra, licencias y reformas en Murcia capital, pedanías (El Palmar, La Alberca, Beniaján, Torreagüera…) y un radio de 50 km: Alcantarilla, Molina de Segura, Las Torres de Cotillas, Santomera y Beniel.';
+
 export const BUSINESS = {
   name: 'Alemán y Pajarón',
   url: `${SITE_URL}/`,
@@ -14,6 +26,17 @@ export const BUSINESS = {
   },
 };
 
+function areaServedJsonLd() {
+  return [
+    { '@type': 'City', name: 'Murcia' },
+    ...AREA_SERVED_CITIES.filter((name) => name !== 'Murcia').map((name) => ({
+      '@type': 'City',
+      name,
+    })),
+    { '@type': 'AdministrativeArea', name: 'Región de Murcia' },
+  ];
+}
+
 export function localBusinessJsonLd() {
   return {
     '@context': 'https://schema.org',
@@ -24,10 +47,7 @@ export function localBusinessJsonLd() {
     telephone: BUSINESS.telephone,
     email: BUSINESS.email,
     address: BUSINESS.address,
-    areaServed: [
-      { '@type': 'City', name: 'Murcia' },
-      { '@type': 'AdministrativeArea', name: 'Región de Murcia' },
-    ],
+    areaServed: areaServedJsonLd(),
     inLanguage: 'es-ES',
     image: `${SITE_URL}/opengraph-image`,
     knowsAbout: [
@@ -68,7 +88,7 @@ export function serviceJsonLd(args: {
     description: args.description,
     serviceType: args.serviceType,
     url,
-    areaServed: { '@type': 'City', name: 'Murcia' },
+    areaServed: areaServedJsonLd(),
     provider: {
       '@type': 'ProfessionalService',
       '@id': `${SITE_URL}/#business`,
@@ -77,7 +97,7 @@ export function serviceJsonLd(args: {
       telephone: BUSINESS.telephone,
       email: BUSINESS.email,
       address: BUSINESS.address,
-      areaServed: [{ '@type': 'City', name: 'Murcia' }],
+      areaServed: areaServedJsonLd(),
     },
     inLanguage: 'es-ES',
   };

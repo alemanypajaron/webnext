@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Reforma Terraza Murcia | Desde 3.500€ | Alemán y Pajarón',
+  title: 'Reforma Terraza Murcia | Desde 3.500€',
   description: 'Reforma terraza en Murcia desde 3.500€. Impermeabilización, suelo exterior, pérgola, cerramiento. +15 años experiencia.',
   keywords: 'reforma terraza murcia, cerrar terraza murcia precio, impermeabilizar terraza murcia, suelo terraza exterior murcia, pergola terraza murcia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-terraza' },
   openGraph: {
-    title: 'Reforma Terraza Murcia desde 3.500€ | Alemán y Pajarón',
+    title: 'Reforma Terraza Murcia desde 3.500€',
     description: 'Impermeabilización, suelo, pérgola y cerramiento. Presupuesto sin compromiso.',
     url: 'https://www.alemanypajaron.es/servicios/reforma-terraza',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Reforma Terraza Murcia | Alemán y Pajarón',
+    title: 'Reforma Terraza Murcia',
     description: 'Reforma desde 3.500€. Presupuesto gratis.',
   },
 };

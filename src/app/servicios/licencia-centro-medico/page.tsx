@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Licencia Apertura Centro Médico Murcia | Desde 4.200€ | Alemán y Pajarón',
+  title: 'Licencia Apertura Centro Médico Murcia | Desde 4.200€',
   description: 'Tramitación licencia apertura centro médico y clínica en Murcia desde 4.200€. Proyecto técnico sanitario completo. +15 años experiencia.',
   keywords: 'licencia apertura centro medico murcia, licencia clinica medica murcia, abrir centro medico murcia, licencia actividad sanitaria',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/licencia-centro-medico' },
   openGraph: {
-    title: 'Licencia Apertura Centro Médico Murcia | Alemán y Pajarón',
+    title: 'Licencia Apertura Centro Médico Murcia',
     description: 'Tramitación completa licencia apertura centro médico. Proyecto técnico sanitario.',
     url: 'https://www.alemanypajaron.es/servicios/licencia-centro-medico',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Licencia Centro Médico Murcia | Alemán y Pajarón',
+    title: 'Licencia Centro Médico Murcia',
     description: 'Tramitación desde 4.200€. Gestión completa.',
   },
 };

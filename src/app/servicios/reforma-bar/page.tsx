@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Reforma Bar y Restaurante Murcia | Desde 20.000€ | Alemán y Pajarón',
+  title: 'Reforma Bar y Restaurante Murcia | Desde 20.000€',
   description: 'Reforma integral bar y restaurante en Murcia desde 20.000€. Diseño, cocina industrial, barra, extracción humos. +15 años experiencia.',
   keywords: 'reforma bar murcia, reforma restaurante murcia, reformar bar murcia precio, reforma local hosteleria murcia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-bar' },
   openGraph: {
-    title: 'Reforma Bar y Restaurante Murcia | Alemán y Pajarón',
+    title: 'Reforma Bar y Restaurante Murcia',
     description: 'Reforma integral bar y restaurante. Diseño completo y ejecución.',
     url: 'https://www.alemanypajaron.es/servicios/reforma-bar',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Reforma Bar Murcia | Alemán y Pajarón',
+    title: 'Reforma Bar Murcia',
     description: 'Reforma integral desde 20.000€.',
   },
 };

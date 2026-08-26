@@ -126,6 +126,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}/servicios/cambio-banera-ducha`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/servicios/reforma-local-comercial-murcia`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
     // Licencias Específicas
     {
       url: `${SITE_URL}/servicios/licencia-bar`,

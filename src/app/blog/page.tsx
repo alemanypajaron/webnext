@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.alemanypajaron.es/blog',
   },
   openGraph: {
-    title: 'Blog de Arquitectura Técnica | Alemán y Pajarón Murcia',
+    title: 'Blog de Arquitectura Técnica',
     description: 'Guías, consejos y recursos sobre construcción, reformas y licencias en Murcia.',
     url: 'https://www.alemanypajaron.es/blog',
     type: 'website',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog de Arquitectura | Alemán y Pajarón',
+    title: 'Blog de Arquitectura',
     description: 'Guías y consejos sobre construcción y reformas en Murcia.',
   },
 };

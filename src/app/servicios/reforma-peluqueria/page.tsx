@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Reforma Peluquería Murcia | Desde 12.000€ | Alemán y Pajarón',
+  title: 'Reforma Peluquería Murcia | Desde 12.000€',
   description: 'Reforma integral peluquería y salón de belleza en Murcia desde 12.000€. Lavacabezas, espejos, iluminación profesional. +15 años experiencia.',
   keywords: 'reforma peluqueria murcia, reforma salon belleza murcia, reformar peluqueria precio murcia, reforma local peluqueria',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-peluqueria' },
   openGraph: {
-    title: 'Reforma Peluquería Murcia | Alemán y Pajarón',
+    title: 'Reforma Peluquería Murcia',
     description: 'Reforma integral peluquería. Diseño completo y ejecución.',
     url: 'https://www.alemanypajaron.es/servicios/reforma-peluqueria',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Reforma Peluquería Murcia | Alemán y Pajarón',
+    title: 'Reforma Peluquería Murcia',
     description: 'Reforma integral desde 12.000€.',
   },
 };

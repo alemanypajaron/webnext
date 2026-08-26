@@ -4,10 +4,11 @@ import type { Metadata } from 'next';
 import PageHeader from '@/components/ui/PageHeader';
 import FAQ from '@/components/ui/FAQ';
 import JsonLd from '@/components/seo/JsonLd';
+import AreaServicio from '@/components/seo/AreaServicio';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Licencias y Permisos en Murcia | Alemán y Pajarón',
+  title: 'Licencias y Permisos en Murcia',
   description: 'Tramitación de licencias de obra en Murcia. Licencia de obra mayor, menor, apertura y actividad. Técnicos de edificación especializados en trámites municipales.',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/licencias-permisos' },
 };
@@ -60,7 +61,8 @@ export default function LicenciasPermisosPage() {
               <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-4">Trámites municipales</span>
               <h2 className="text-4xl font-heading font-bold text-primary mb-6">Gestión de Licencias de Obra en Murcia sin Complicaciones</h2>
               <p className="text-xl text-gray-700 mb-4">Nos encargamos de toda la tramitación de licencias y permisos necesarios para tu proyecto en Murcia.</p>
-              <p className="text-gray-600 mb-4">Conocemos los procedimientos del Ayuntamiento de Murcia y las normativas urbanísticas locales. Preparamos toda la documentación técnica necesaria y gestionamos el proceso de principio a fin.</p>
+              <p className="text-gray-600 mb-4">Conocemos los procedimientos del Ayuntamiento de Murcia —capital y pedanías: El Palmar, La Alberca, Beniaján, Torreagüera…— y las normativas urbanísticas locales. Preparamos toda la documentación técnica necesaria y gestionamos el proceso de principio a fin.</p>
+              <p className="text-gray-600 mb-4">Si tu obra está en Molina de Segura, Alcantarilla, Las Torres de Cotillas, Santomera o Beniel, el trámite es de ese ayuntamiento. Lo gestionamos igual: cada consistorio tiene su PGOU y sus tasas.</p>
               <p className="text-gray-600">Te mantenemos informado en cada fase del trámite, resolviendo cualquier requerimiento que pueda surgir.</p>
             </div>
             <div className="relative">
@@ -205,6 +207,11 @@ export default function LicenciasPermisosPage() {
             answer:
               'Sí. Las licencias suelen tener validez de 1-3 años para iniciar obra. Si no empiezas en ese plazo, caduca y hay que solicitar prórroga o nueva licencia.',
           },
+          {
+            question: '¿También tramitáis licencias fuera de Murcia capital?',
+            answer:
+              'Sí. En pedanías del municipio (El Palmar, La Alberca, Beniaján, Torreagüera…) se presenta en el Ayuntamiento de Murcia. En Molina de Segura, Alcantarilla y el resto del área metropolitana, en el ayuntamiento correspondiente.',
+          },
         ]}
       />
 
@@ -212,7 +219,8 @@ export default function LicenciasPermisosPage() {
       <section className="section bg-gray-100">
         <div className="max-w-[1280px] mx-auto px-6 text-center">
           <h2 className="text-4xl font-heading font-bold mb-4 text-primary">¿Necesitas tramitar una licencia en Murcia?</h2>
-          <p className="text-xl text-gray-700 mb-8">Te asesoramos y gestionamos todo el proceso sin complicaciones</p>
+          <p className="text-xl text-gray-700 mb-4">Te asesoramos y gestionamos todo el proceso sin complicaciones</p>
+          <AreaServicio className="mb-8 max-w-3xl mx-auto" />
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/presupuesto" className="px-8 py-4 bg-accent text-primary font-semibold rounded-lg hover:bg-accent-dark transition-all text-center text-lg shadow-lg">Solicitar Presupuesto</Link>
             <a href="tel:+34650075842" className="px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary-light transition-all text-center text-lg border-2 border-primary">650 075 842</a>

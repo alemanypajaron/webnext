@@ -23,7 +23,7 @@ export default function MurciaMap() {
         scrollWheelZoom: false,
         zoomControl: true,
         attributionControl: true,
-      }).setView(MURCIA, 13);
+      }).setView(MURCIA, 9);
 
       L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -39,6 +39,14 @@ export default function MurciaMap() {
       });
 
       L.marker(MURCIA, { icon: pin, title: 'Murcia' }).addTo(map);
+
+      L.circle(MURCIA, {
+        radius: 50000,
+        color: '#0A2230',
+        weight: 2,
+        fillColor: '#F9B513',
+        fillOpacity: 0.12,
+      }).addTo(map);
     };
 
     void init();
@@ -54,7 +62,7 @@ export default function MurciaMap() {
       ref={containerRef}
       className="murcia-map w-full h-[360px] lg:h-[480px]"
       role="img"
-      aria-label="Mapa de Murcia, zona de trabajo de Alemán y Pajarón"
+      aria-label="Mapa del radio de 50 km desde Murcia capital en el que trabaja Alemán y Pajarón"
     />
   );
 }

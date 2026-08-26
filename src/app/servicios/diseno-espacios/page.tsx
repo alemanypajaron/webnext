@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Diseño de Espacios en Murcia | Técnicos de Edificación Alemán y Pajarón',
+  title: 'Diseño de Espacios en Murcia | Técnicos de Edificación',
   description: 'Diseño de espacios funcionales en Murcia. Interiorismo técnico, optimización de distribuciones para viviendas, locales comerciales y oficinas. Expertos en Murcia.',
   keywords: 'diseño espacios murcia, diseño interiores murcia, interiorismo técnico murcia, distribución vivienda murcia, diseño local comercial murcia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/diseno-espacios' },
   openGraph: {
-    title: 'Diseño de Espacios en Murcia | Alemán y Pajarón',
+    title: 'Diseño de Espacios en Murcia',
     description: 'Diseño funcional de espacios, interiorismo técnico y optimización de distribuciones.',
     url: 'https://www.alemanypajaron.es/servicios/diseno-espacios',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Diseño de Espacios Murcia | Alemán y Pajarón',
+    title: 'Diseño de Espacios Murcia',
     description: 'Interiorismo técnico y diseño funcional en Murcia.',
   },
 };

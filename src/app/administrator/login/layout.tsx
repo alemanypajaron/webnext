@@ -2,7 +2,7 @@ import { Toaster } from 'react-hot-toast';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Login - Panel de Administración | Alemán y Pajarón',
+  title: 'Login - Panel de Administración',
   robots: {
     index: false,
     follow: false,

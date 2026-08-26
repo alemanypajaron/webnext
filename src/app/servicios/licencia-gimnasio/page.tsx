@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Licencia Apertura Gimnasio Murcia | Desde 3.200€ | Alemán y Pajarón',
+  title: 'Licencia Apertura Gimnasio Murcia | Desde 3.200€',
   description: 'Tramitación licencia apertura gimnasio y box en Murcia desde 3.200€. Proyecto técnico completo, gestión ayuntamiento. +15 años experiencia.',
   keywords: 'licencia apertura gimnasio murcia, licencia box crossfit murcia, abrir gimnasio murcia, licencia actividad gimnasio',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/licencia-gimnasio' },
   openGraph: {
-    title: 'Licencia Apertura Gimnasio Murcia | Alemán y Pajarón',
+    title: 'Licencia Apertura Gimnasio Murcia',
     description: 'Tramitación completa licencia apertura gimnasio. Proyecto técnico y gestión.',
     url: 'https://www.alemanypajaron.es/servicios/licencia-gimnasio',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Licencia Gimnasio Murcia | Alemán y Pajarón',
+    title: 'Licencia Gimnasio Murcia',
     description: 'Tramitación desde 3.200€. Gestión completa.',
   },
 };

@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Reforma Clínica Estética Murcia | Desde 20.000€ | Alemán y Pajarón',
+  title: 'Reforma Clínica Estética Murcia | Desde 20.000€',
   description: 'Reforma integral clínica estética en Murcia desde 20.000€. Cabinas tratamiento, iluminación, climatización. +15 años experiencia.',
   keywords: 'reforma clinica estetica murcia, reforma centro estetico murcia, reformar clinica estetica precio murcia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-clinica-estetica' },
   openGraph: {
-    title: 'Reforma Clínica Estética Murcia | Alemán y Pajarón',
+    title: 'Reforma Clínica Estética Murcia',
     description: 'Reforma integral clínica estética. Diseño completo y ejecución.',
     url: 'https://www.alemanypajaron.es/servicios/reforma-clinica-estetica',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Reforma Clínica Estética Murcia | Alemán y Pajarón',
+    title: 'Reforma Clínica Estética Murcia',
     description: 'Reforma integral desde 20.000€.',
   },
 };

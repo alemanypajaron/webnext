@@ -2,11 +2,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import JsonLd from '@/components/seo/JsonLd';
+import AreaServicio from '@/components/seo/AreaServicio';
 import { localBusinessJsonLd, websiteJsonLd } from '@/lib/structuredData';
 import { getHeroBlurDataURL } from '@/lib/blur-placeholder';
 
 export const metadata: Metadata = {
-  title: 'Gestión de Obras y Proyectos en Murcia | Dirección de Obra y Reformas',
+  title: {
+    absolute: 'Gestión de Obras y Proyectos en Murcia | Alemán y Pajarón',
+  },
   description:
     'Gestores de obras y técnicos de edificación en Murcia. Dirección de obra, reformas integrales y licencias. +15 años experiencia. ¡Presupuesto gratis!',
   alternates: {
@@ -126,8 +129,8 @@ export default function Home() {
               Proyectos en Murcia
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed">
-              Más de 15 años coordinando y ejecutando proyectos de construcción en Murcia. Dirección de obra, gestión integral,
-              licencias y reformas.
+              Más de 15 años coordinando y ejecutando proyectos de construcción en Murcia y un radio de 50 km.
+              Dirección de obra, gestión integral, licencias y reformas.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-16">
               <Link
@@ -265,6 +268,13 @@ export default function Home() {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section bg-white">
+        <div className="max-w-[1280px] mx-auto px-6 text-center">
+          <h2 className="text-3xl font-heading font-bold text-primary mb-4">Dónde trabajamos</h2>
+          <AreaServicio className="max-w-3xl mx-auto" />
         </div>
       </section>
 

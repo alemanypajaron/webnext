@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Certificado Energético Vivienda Murcia | Desde 80€ | Alemán y Pajarón',
+  title: 'Certificado Energético Vivienda Murcia | Desde 80€',
   description: 'Certificado energético vivienda en Murcia desde 80€. Obligatorio venta/alquiler. Cita en 24h, entrega en 48h. Técnico homologado.',
   keywords: 'certificado energetico murcia, certificado energetico vivienda murcia precio, certificado eficiencia energetica murcia, certificado energetico piso murcia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/certificado-energetico' },
   openGraph: {
-    title: 'Certificado Energético Murcia desde 80€ | Alemán y Pajarón',
+    title: 'Certificado Energético Murcia desde 80€',
     description: 'Obligatorio para vender/alquilar. Cita en 24h, entrega en 48h.',
     url: 'https://www.alemanypajaron.es/servicios/certificado-energetico',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Certificado Energético Murcia | Alemán y Pajarón',
+    title: 'Certificado Energético Murcia',
     description: 'Desde 80€. Entrega en 48h.',
   },
 };

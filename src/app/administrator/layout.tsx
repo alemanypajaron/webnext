@@ -3,7 +3,7 @@ import AdminNav from '@/components/admin/AdminNav';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Panel de Administración | Alemán y Pajarón',
+  title: 'Panel de Administración',
   robots: {
     index: false,
     follow: false,

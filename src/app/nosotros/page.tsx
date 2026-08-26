@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import PageHeader from '@/components/ui/PageHeader';
 
 export const metadata: Metadata = {
-  title: 'Sobre Nosotros | Alemán y Pajarón - Gestión de Obras en Murcia',
+  title: 'Sobre Nosotros | Gestión de Obras en Murcia',
   description: 'Alemán y Pajarón: técnicos de edificación en Murcia con +15 años en dirección de obra y gestión de proyectos. Trato directo y profesional.',
   robots: 'index, follow',
   alternates: {

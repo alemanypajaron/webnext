@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Licencia Apertura Farmacia Murcia | Desde 5.500€ | Alemán y Pajarón',
+  title: 'Licencia Apertura Farmacia Murcia | Desde 5.500€',
   description: 'Tramitación licencia apertura farmacia en Murcia desde 5.500€. Proyecto técnico completo, gestión ayuntamiento y Colegio. +15 años experiencia.',
   keywords: 'licencia apertura farmacia murcia, licencia farmacia murcia, abrir farmacia murcia, licencia actividad farmacia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/licencia-farmacia' },
   openGraph: {
-    title: 'Licencia Apertura Farmacia Murcia | Alemán y Pajarón',
+    title: 'Licencia Apertura Farmacia Murcia',
     description: 'Tramitación completa licencia apertura farmacia. Proyecto técnico y gestión.',
     url: 'https://www.alemanypajaron.es/servicios/licencia-farmacia',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Licencia Farmacia Murcia | Alemán y Pajarón',
+    title: 'Licencia Farmacia Murcia',
     description: 'Tramitación desde 5.500€. Gestión completa.',
   },
 };

@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import PageHeader from '@/components/ui/PageHeader';
 import FAQ from '@/components/ui/FAQ';
 import JsonLd from '@/components/seo/JsonLd';
+import AreaServicio from '@/components/seo/AreaServicio';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
@@ -292,7 +293,7 @@ export default function DireccionObraPage() {
               },
               {
                 title: 'Conocimiento Local',
-                desc: 'Más de 15 años trabajando en Murcia. Conocemos normativa local y procedimientos del Ayuntamiento.',
+                desc: 'Más de 15 años en Murcia capital, pedanías (El Palmar, La Alberca, Beniaján…) y urbanizaciones del anillo como Altorreal. Conocemos normativa local y cada ayuntamiento.',
               },
               {
                 title: 'Disponibilidad',
@@ -356,9 +357,10 @@ export default function DireccionObraPage() {
             <h2 className="text-4xl font-heading font-bold mb-4 text-primary">
               ¿Necesitas director de obra en Murcia?
             </h2>
-            <p className="text-xl text-gray-700 mb-8">
+            <p className="text-xl text-gray-700 mb-4">
               Solicita presupuesto sin compromiso. Más de 15 años de experiencia en Murcia.
             </p>
+            <AreaServicio className="mb-8 text-gray-600" />
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/presupuesto" className="px-8 py-4 bg-accent text-primary font-semibold rounded-lg hover:bg-accent-dark transition-all text-center text-lg shadow-lg">
                 Solicitar Presupuesto

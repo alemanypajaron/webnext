@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Reforma Gimnasio Murcia | Desde 30.000€ | Alemán y Pajarón',
+  title: 'Reforma Gimnasio Murcia | Desde 30.000€',
   description: 'Reforma integral gimnasio y box en Murcia desde 30.000€. Suelo especial, vestuarios, espejos, máquinas. +15 años experiencia.',
   keywords: 'reforma gimnasio murcia, reforma box crossfit murcia, reformar gimnasio precio murcia, reforma local deportivo',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-gimnasio' },
   openGraph: {
-    title: 'Reforma Gimnasio Murcia | Alemán y Pajarón',
+    title: 'Reforma Gimnasio Murcia',
     description: 'Reforma integral gimnasio. Diseño completo y ejecución.',
     url: 'https://www.alemanypajaron.es/servicios/reforma-gimnasio',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Reforma Gimnasio Murcia | Alemán y Pajarón',
+    title: 'Reforma Gimnasio Murcia',
     description: 'Reforma integral desde 30.000€.',
   },
 };

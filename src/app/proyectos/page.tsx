@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.alemanypajaron.es/proyectos',
   },
   openGraph: {
-    title: 'Proyectos Realizados en Murcia | Alemán y Pajarón',
+    title: 'Proyectos Realizados en Murcia',
     description: 'Más de 50 proyectos de reformas y obras completadas en Murcia. Ver portfolio con algunos de nuestros trabajos más destacados.',
     url: 'https://www.alemanypajaron.es/proyectos',
     type: 'website',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Portfolio de Proyectos | Alemán y Pajarón Murcia',
+    title: 'Portfolio de Proyectos',
     description: '+50 proyectos de arquitectura y reformas en Murcia.',
   },
 };

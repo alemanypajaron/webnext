@@ -4,10 +4,11 @@ import type { Metadata } from 'next';
 import PageHeader from '@/components/ui/PageHeader';
 import FAQ from '@/components/ui/FAQ';
 import JsonLd from '@/components/seo/JsonLd';
+import AreaServicio from '@/components/seo/AreaServicio';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Reforma Integral Piso y Vivienda en Murcia | Alemán y Pajarón',
+  title: 'Reforma Integral Piso y Vivienda en Murcia',
   description: 'Reforma integral de piso y vivienda en Murcia. Presupuesto cerrado, diseño 3D, gestión completa. +15 años reformando casas en Murcia.',
   keywords: 'reforma integral piso murcia, reforma integral vivienda murcia, reforma piso completo murcia, cuanto cuesta reforma integral murcia, precio reforma integral murcia, reformar piso murcia',
   alternates: {
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Reforma Integral Murcia | Alemán y Pajarón',
+    title: 'Reforma Integral Murcia',
     description: 'Presupuesto cerrado y personalizado.',
   },
 };
@@ -362,7 +363,8 @@ export default function ReformasIntegralesPage() {
       <section className="section bg-gray-100">
         <div className="max-w-[1280px] mx-auto px-6 text-center">
           <h2 className="text-4xl font-heading font-bold mb-4 text-primary">¿Listo para transformar tu piso en Murcia?</h2>
-          <p className="text-xl text-gray-700 mb-8">Presupuesto gratuito y sin compromiso para tu reforma integral</p>
+          <p className="text-xl text-gray-700 mb-4">Presupuesto gratuito y sin compromiso para tu reforma integral</p>
+          <AreaServicio className="mb-8 max-w-3xl mx-auto" />
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/presupuesto" className="px-8 py-4 bg-accent text-primary font-semibold rounded-lg hover:bg-accent-dark transition-all text-center text-lg shadow-lg">Solicitar Presupuesto</Link>
             <a href="tel:+34650075842" className="px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary-light transition-all text-center text-lg border-2 border-primary">650 075 842</a>

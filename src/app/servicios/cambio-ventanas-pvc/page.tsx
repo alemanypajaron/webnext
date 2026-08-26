@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Cambio Ventanas PVC Murcia | Desde 3.000€ | Alemán y Pajarón',
+  title: 'Cambio Ventanas PVC Murcia | Desde 3.000€',
   description: 'Cambio ventanas PVC en Murcia desde 3.000€. Doble vidrio, aislamiento térmico y acústico. Ahorra hasta 40% en climatización. +15 años experiencia.',
   keywords: 'cambio ventanas pvc murcia, ventanas pvc murcia precio, cambiar ventanas aluminio por pvc murcia, ventanas doble cristal murcia, ventanas eficiencia energetica murcia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/cambio-ventanas-pvc' },
   openGraph: {
-    title: 'Cambio Ventanas PVC Murcia desde 3.000€ | Alemán y Pajarón',
+    title: 'Cambio Ventanas PVC Murcia desde 3.000€',
     description: 'Ventanas PVC con doble vidrio. Ahorra hasta 40% en climatización.',
     url: 'https://www.alemanypajaron.es/servicios/cambio-ventanas-pvc',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Cambio Ventanas PVC Murcia | Alemán y Pajarón',
+    title: 'Cambio Ventanas PVC Murcia',
     description: 'Desde 3.000€. Presupuesto gratis.',
   },
 };

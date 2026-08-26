@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Cómo Instalar la PWA - Alemán y Pajarón',
+  title: 'Cómo Instalar la PWA',
   description: 'Instrucciones para instalar la aplicación PWA en tu móvil',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/instrucciones-pwa',

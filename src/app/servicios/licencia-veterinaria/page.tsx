@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Licencia Apertura Clínica Veterinaria Murcia | Desde 3.500€ | Alemán y Pajarón',
+  title: 'Licencia Apertura Clínica Veterinaria Murcia | Desde 3.500€',
   description: 'Tramitación licencia apertura clínica veterinaria en Murcia desde 3.500€. Proyecto técnico sanitario completo. +15 años experiencia.',
   keywords: 'licencia apertura clinica veterinaria murcia, licencia veterinario murcia, abrir clinica veterinaria murcia, licencia actividad veterinaria',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/licencia-veterinaria' },
   openGraph: {
-    title: 'Licencia Apertura Clínica Veterinaria Murcia | Alemán y Pajarón',
+    title: 'Licencia Apertura Clínica Veterinaria Murcia',
     description: 'Tramitación completa licencia apertura clínica veterinaria. Proyecto técnico sanitario.',
     url: 'https://www.alemanypajaron.es/servicios/licencia-veterinaria',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Licencia Clínica Veterinaria Murcia | Alemán y Pajarón',
+    title: 'Licencia Clínica Veterinaria Murcia',
     description: 'Tramitación desde 3.500€. Gestión completa.',
   },
 };

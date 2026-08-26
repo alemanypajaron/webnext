@@ -3,7 +3,7 @@ import { SITE_URL } from '@/lib/structuredData';
 import { createClient } from '@supabase/supabase-js';
 
 export const metadata = {
-  title: 'Mapa del Sitio | Alemán y Pajarón',
+  title: 'Mapa del Sitio',
   description: 'Mapa completo del sitio web de Alemán y Pajarón',
   alternates: {
     canonical: `${SITE_URL}/sitemap-html`,
@@ -192,6 +192,14 @@ export default async function SitemapHTMLPage() {
               </li>
               <li>
                 <Link
+                  href="/servicios/cambio-banera-ducha"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Cambiar Bañera por Ducha
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/servicios/reforma-cocina"
                   className="text-gray-700 hover:text-primary hover:underline transition-colors"
                 >
@@ -314,6 +322,14 @@ export default async function SitemapHTMLPage() {
               Reformas Negocios
             </h2>
             <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/servicios/reforma-local-comercial-murcia"
+                  className="text-gray-700 hover:text-primary hover:underline transition-colors"
+                >
+                  Reforma de Local Comercial
+                </Link>
+              </li>
               <li>
                 <Link
                   href="/servicios/reforma-bar"

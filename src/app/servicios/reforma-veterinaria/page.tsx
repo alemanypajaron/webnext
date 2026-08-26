@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Reforma Clínica Veterinaria Murcia | Desde 30.000€ | Alemán y Pajarón',
+  title: 'Reforma Clínica Veterinaria Murcia | Desde 30.000€',
   description: 'Reforma integral clínica veterinaria en Murcia desde 30.000€. Quirófano, hospitalización, rayos X, instalaciones sanitarias. +15 años experiencia.',
   keywords: 'reforma clinica veterinaria murcia, reforma veterinario murcia, reformar clinica veterinaria precio murcia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-veterinaria' },
   openGraph: {
-    title: 'Reforma Clínica Veterinaria Murcia | Alemán y Pajarón',
+    title: 'Reforma Clínica Veterinaria Murcia',
     description: 'Reforma integral clínica veterinaria. Diseño completo y ejecución.',
     url: 'https://www.alemanypajaron.es/servicios/reforma-veterinaria',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Reforma Clínica Veterinaria Murcia | Alemán y Pajarón',
+    title: 'Reforma Clínica Veterinaria Murcia',
     description: 'Reforma integral desde 30.000€.',
   },
 };

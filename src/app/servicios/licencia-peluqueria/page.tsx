@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Licencia Apertura Peluquería Murcia | Desde 1.800€ | Alemán y Pajarón',
+  title: 'Licencia Apertura Peluquería Murcia | Desde 1.800€',
   description: 'Tramitación licencia apertura peluquería y barbería en Murcia desde 1.800€. Proyecto técnico, gestión ayuntamiento. +15 años experiencia.',
   keywords: 'licencia apertura peluqueria murcia, licencia barberia murcia, abrir peluqueria murcia, licencia actividad peluqueria',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/licencia-peluqueria' },
   openGraph: {
-    title: 'Licencia Apertura Peluquería Murcia | Alemán y Pajarón',
+    title: 'Licencia Apertura Peluquería Murcia',
     description: 'Tramitación completa licencia apertura peluquería. Proyecto técnico y gestión.',
     url: 'https://www.alemanypajaron.es/servicios/licencia-peluqueria',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Licencia Peluquería Murcia | Alemán y Pajarón',
+    title: 'Licencia Peluquería Murcia',
     description: 'Tramitación desde 1.800€. Gestión completa.',
   },
 };

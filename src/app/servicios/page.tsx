@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import PageHeader from '@/components/ui/PageHeader';
+import AreaServicio from '@/components/seo/AreaServicio';
 
 export const metadata: Metadata = {
-  title: 'Servicios de Gestión de Obras y Proyectos en Murcia | Alemán y Pajarón',
+  title: 'Servicios de Gestión de Obras y Proyectos en Murcia',
   description: 'Servicios de gestión de obras en Murcia: dirección, reformas, licencias y coordinación. +15 años experiencia. ¡Solicita presupuesto sin compromiso!',
   keywords: 'gestión obras murcia, dirección obra murcia, técnico edificación murcia, gestor obras murcia, reformas murcia, licencias obra murcia, coordinación proyectos',
   alternates: {
@@ -137,6 +138,68 @@ export default function ServiciosPage() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section bg-white">
+        <div className="max-w-[1280px] mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-4">
+              Más demandados
+            </span>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
+              Reformas y licencias de actividad
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Las landings que más busca quien tiene una obra concreta en Murcia o el área metropolitana.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                href: '/servicios/reforma-bano',
+                title: 'Reforma de baño',
+                desc: 'Reforma completa o cambio de bañera por ducha. El servicio más pedido en viviendas y pedanías.',
+              },
+              {
+                href: '/servicios/reforma-local-comercial-murcia',
+                title: 'Reforma de local comercial',
+                desc: 'Diseño y ejecución de locales, oficinas y consultas en Murcia y el anillo metropolitano.',
+              },
+              {
+                href: '/servicios/licencia-bar',
+                title: 'Licencia de apertura de local',
+                desc: 'Tramitación de licencia de actividad. Empieza por hostelería o consulta el resto de licencias.',
+              },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="block bg-gray-100 rounded-2xl p-8 hover:shadow-xl transition-all hover:-translate-y-1"
+              >
+                <h3 className="text-xl font-heading font-semibold text-primary mb-3">{item.title}</h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">{item.desc}</p>
+                <span className="text-accent font-semibold text-sm">Ver servicio →</span>
+              </Link>
+            ))}
+          </div>
+          <p className="text-center mt-8 text-sm text-gray-500">
+            También:{' '}
+            <Link href="/servicios/licencias-permisos" className="text-accent hover:underline">
+              todas las licencias
+            </Link>
+            {' · '}
+            <Link href="/servicios/cambio-banera-ducha" className="text-accent hover:underline">
+              cambiar bañera por ducha
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      <section className="section bg-gray-50">
+        <div className="max-w-[1280px] mx-auto px-6 text-center">
+          <h2 className="text-3xl font-heading font-bold text-primary mb-4">Dónde trabajamos</h2>
+          <AreaServicio className="max-w-3xl mx-auto" />
         </div>
       </section>
 

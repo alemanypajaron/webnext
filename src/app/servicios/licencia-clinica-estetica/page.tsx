@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Licencia Apertura Clínica Estética Murcia | Desde 2.800€ | Alemán y Pajarón',
+  title: 'Licencia Apertura Clínica Estética Murcia | Desde 2.800€',
   description: 'Tramitación licencia apertura clínica estética en Murcia desde 2.800€. Proyecto técnico sanitario, gestión ayuntamiento. +15 años experiencia.',
   keywords: 'licencia apertura clinica estetica murcia, licencia centro estetico murcia, abrir clinica estetica murcia, licencia actividad estetica',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/licencia-clinica-estetica' },
   openGraph: {
-    title: 'Licencia Apertura Clínica Estética Murcia | Alemán y Pajarón',
+    title: 'Licencia Apertura Clínica Estética Murcia',
     description: 'Tramitación completa licencia apertura clínica estética. Proyecto técnico sanitario.',
     url: 'https://www.alemanypajaron.es/servicios/licencia-clinica-estetica',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Licencia Clínica Estética Murcia | Alemán y Pajarón',
+    title: 'Licencia Clínica Estética Murcia',
     description: 'Tramitación desde 2.800€. Gestión completa.',
   },
 };

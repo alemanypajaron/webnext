@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.alemanypajaron.es/presupuesto',
   },
   openGraph: {
-    title: 'Solicitar Presupuesto Sin Compromiso | Alemán y Pajarón Murcia',
+    title: 'Solicitar Presupuesto Sin Compromiso',
     description: 'Presupuesto gratuito para tu obra o reforma en Murcia. Respuesta en 24h.',
     url: 'https://www.alemanypajaron.es/presupuesto',
     type: 'website',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Presupuesto Sin Compromiso | Alemán y Pajarón',
+    title: 'Presupuesto Sin Compromiso',
     description: 'Solicita presupuesto para tu obra en Murcia. Respuesta en 24h.',
   },
 };

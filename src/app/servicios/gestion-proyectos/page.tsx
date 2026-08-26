@@ -7,7 +7,7 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Gestión de Proyectos en Murcia | Alemán y Pajarón - Técnicos de Edificación',
+  title: 'Gestión de Proyectos en Murcia | Técnicos de Edificación',
   description: 'Gestión integral de proyectos de construcción en Murcia. Planificación, coordinación, control de costes y plazos. Gestores de obras especializados.',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/gestion-proyectos' },
 };

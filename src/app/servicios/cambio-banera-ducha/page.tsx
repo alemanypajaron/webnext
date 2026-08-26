@@ -7,7 +7,7 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Cambiar Bañera por Ducha en Murcia | Desde 1.200€ | Alemán y Pajarón',
+  title: 'Cambiar Bañera por Ducha en Murcia | Desde 1.200€',
   description: 'Cambia tu bañera por ducha en Murcia desde 1.200€. Obra en 2-3 días. Plato de ducha extraplano, mampara y acabados premium. Presupuesto sin compromiso.',
   keywords: 'cambiar bañera por ducha murcia, sustituir bañera por ducha murcia, cambio bañera ducha precio murcia, quitar bañera poner ducha murcia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/cambio-banera-ducha' },

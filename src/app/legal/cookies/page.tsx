@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Política de Cookies | Alemán y Pajarón - Gestión de Obras Murcia',
+  title: 'Política de Cookies | Gestión de Obras Murcia',
   description: 'Información sobre el uso de cookies en el sitio web de Alemán y Pajarón, gestores de obras en Murcia. Cookies técnicas y analíticas. Conforme a RGPD y LSSI-CE.',
   alternates: {
     canonical: 'https://www.alemanypajaron.es/legal/cookies',

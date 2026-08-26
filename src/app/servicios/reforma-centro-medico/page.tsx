@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Reforma Centro Médico Murcia | Desde 35.000€ | Alemán y Pajarón',
+  title: 'Reforma Centro Médico Murcia | Desde 35.000€',
   description: 'Reforma integral centro médico y clínica en Murcia desde 35.000€. Consultas, sala exploraciones, quirófano menor. +15 años experiencia.',
   keywords: 'reforma centro medico murcia, reforma clinica medica murcia, reformar centro medico precio murcia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-centro-medico' },
   openGraph: {
-    title: 'Reforma Centro Médico Murcia | Alemán y Pajarón',
+    title: 'Reforma Centro Médico Murcia',
     description: 'Reforma integral centro médico. Diseño completo y ejecución.',
     url: 'https://www.alemanypajaron.es/servicios/reforma-centro-medico',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Reforma Centro Médico Murcia | Alemán y Pajarón',
+    title: 'Reforma Centro Médico Murcia',
     description: 'Reforma integral desde 35.000€.',
   },
 };

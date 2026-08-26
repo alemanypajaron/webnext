@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Licencia Apertura Bar y Restaurante Murcia | Desde 2.500€ | Alemán y Pajarón',
+  title: 'Licencia Apertura Bar y Restaurante Murcia | Desde 2.500€',
   description: 'Tramitación licencia apertura bar y restaurante en Murcia desde 2.500€. Proyecto técnico completo, gestión ayuntamiento. +15 años experiencia.',
   keywords: 'licencia apertura bar murcia, licencia restaurante murcia, abrir bar murcia, licencia actividad bar, tramitar licencia bar murcia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/licencia-bar' },
   openGraph: {
-    title: 'Licencia Apertura Bar y Restaurante Murcia | Alemán y Pajarón',
+    title: 'Licencia Apertura Bar y Restaurante Murcia',
     description: 'Tramitación completa licencia apertura bar y restaurante. Proyecto técnico y gestión.',
     url: 'https://www.alemanypajaron.es/servicios/licencia-bar',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Licencia Bar Murcia | Alemán y Pajarón',
+    title: 'Licencia Bar Murcia',
     description: 'Tramitación desde 2.500€. Gestión completa.',
   },
 };

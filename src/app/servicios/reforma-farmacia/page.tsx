@@ -7,12 +7,12 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, localBusinessJsonLd, serviceJsonLd, SITE_URL } from '@/lib/structuredData';
 
 export const metadata: Metadata = {
-  title: 'Reforma Farmacia Murcia | Desde 40.000€ | Alemán y Pajarón',
+  title: 'Reforma Farmacia Murcia | Desde 40.000€',
   description: 'Reforma integral farmacia en Murcia desde 40.000€. Mostrador, cámara frigorífica, laboratorio, almacén. +15 años experiencia.',
   keywords: 'reforma farmacia murcia, reformar farmacia precio murcia, reforma local farmacia murcia',
   alternates: { canonical: 'https://www.alemanypajaron.es/servicios/reforma-farmacia' },
   openGraph: {
-    title: 'Reforma Farmacia Murcia | Alemán y Pajarón',
+    title: 'Reforma Farmacia Murcia',
     description: 'Reforma integral farmacia. Diseño completo y ejecución.',
     url: 'https://www.alemanypajaron.es/servicios/reforma-farmacia',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Reforma Farmacia Murcia | Alemán y Pajarón',
+    title: 'Reforma Farmacia Murcia',
     description: 'Reforma integral desde 40.000€.',
   },
 };
