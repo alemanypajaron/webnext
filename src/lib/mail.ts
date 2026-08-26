@@ -2,6 +2,7 @@ import dns from 'dns';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import nodemailer from 'nodemailer';
+import type SMTPTransport from 'nodemailer/lib/smtp-transport';
 import sharp from 'sharp';
 
 dns.setDefaultResultOrder('ipv4first');
@@ -35,7 +36,7 @@ export function getMailFrom() {
 
 export function createTransporter() {
   const port = Number(process.env.SMTP_PORT || 465);
-  return nodemailer.createTransport({
+  const options: SMTPTransport.Options = {
     host: process.env.SMTP_HOST?.trim() || 'smtp.hostinger.com',
     port,
     secure: process.env.SMTP_SECURE !== 'false',
@@ -44,11 +45,11 @@ export function createTransporter() {
       user: requireEnv('SMTP_USER'),
       pass: requireEnv('SMTP_PASS'),
     },
-    family: 4,
     tls: {
       rejectUnauthorized: process.env.SMTP_TLS_STRICT === 'true',
     },
-  });
+  };
+  return nodemailer.createTransport(options);
 }
 
 async function getLogoAttachment() {
