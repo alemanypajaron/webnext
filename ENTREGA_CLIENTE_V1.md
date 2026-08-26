@@ -29,7 +29,7 @@
 - ✅ Home (con hero, servicios, estadísticas)
 - ✅ Nosotros (historia y valores)
 - ✅ Servicios (índice de 6 servicios)
-- ✅ Contacto (con formulario funcional)
+- ✅ Contacto (teléfono, WhatsApp, email y mapa de Murcia; sin formulario)
 - ✅ Presupuesto (con formulario funcional)
 - ✅ Blog (listado dinámico de artículos)
 - ✅ Proyectos (portfolio dinámico)
@@ -60,6 +60,7 @@
 - ✅ **Proyectos** - Gestión de portfolio con galerías
 - ✅ **Multimedia** - Gestión de imágenes en Supabase Storage
 - ✅ **Newsletter** - Lista de suscriptores
+- ✅ **Email SMTP Hostinger** - Envío local a clientes desde `contacto@alemanypajaron.es`
 
 #### Características del Panel
 - ✅ Login seguro con Supabase Auth
@@ -445,6 +446,7 @@ El proyecto **Alemán y Pajarón** ha sido completado exitosamente y está **100
 - ✅ **PWA instalable** que funciona como app nativa
 - ✅ **Notificaciones push** en tiempo real
 - ✅ **SEO optimizado** para aparecer en Google
+- ✅ **Email SMTP Hostinger** para escribir a clientes desde local
 - ✅ **Deploy automático** sin intervención manual
 - ✅ **Responsive** perfecto en todos los dispositivos
 

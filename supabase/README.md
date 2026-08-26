@@ -10,7 +10,7 @@
 **Formularios básicos** (Ejecutar primero)
 
 **Tablas incluidas:**
-- `contactos` → Formulario de contacto
+- `contactos` → Histórico del formulario de contacto (ya no está en la web pública)
 - `presupuestos` → Solicitudes de presupuesto  
 - `newsletter` → Suscriptores al newsletter
 
@@ -220,7 +220,7 @@ Después de ejecutar ambos schemas tendrás **7 tablas:**
 - ✅ Row Level Security (RLS) habilitado
 - ✅ Políticas configuradas:
   - **Lectura pública:** Proyectos y blog publicados
-  - **Escritura pública:** Solo formularios (contacto, presupuesto)
+  - **Escritura pública:** Solo formularios activos (presupuesto, newsletter). La tabla `contactos` conserva INSERT por si se reactivara el form.
   - **Admin:** Todo lo demás requiere service_role
 
 ---

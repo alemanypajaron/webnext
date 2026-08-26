@@ -13,6 +13,7 @@
 **Blog:** Sistema CMS completo con editor TinyMCE, agentes de IA (redacción + imágenes) y artículos guía  
 **Newsletter:** Formulario de suscripción funcional  
 **Admin:** Panel completo de gestión  
+**Email:** Envío SMTP Hostinger en local (`contacto@alemanypajaron.es`, plantilla navy/dorado)
 
 ---
 
@@ -507,10 +508,10 @@ Para evitar canibalización SEO, los términos de búsqueda amplios como "abrir 
 
 ### Contacto (/contacto)
 **Contenido:**
-- Formulario de contacto
-- Información de contacto
-- Horarios
-- Ubicación
+- Teléfono, WhatsApp, email, horario y zona (Murcia y alrededores)
+- Mapa Leaflet + Carto Positron (tinte navy/oro, pin dorado)
+- Enlace a `/presupuesto` (único formulario público de leads)
+- Sin formulario de contacto (se retiró por spam; el componente `ContactForm` queda como legacy)
 
 ### Presupuesto (/presupuesto)
 **Contenido:**
@@ -726,12 +727,12 @@ image="/images/mi-imagen.jpg"
 ## 📞 Contacto para Contenido
 
 **Para solicitar cambios de contenido:**
-📧 ivan@alemanypajaron.es  
+📧 [contacto@alemanypajaron.es](mailto:contacto@alemanypajaron.es) · [ivan@alemanypajaron.es](mailto:ivan@alemanypajaron.es)  
 💬 WhatsApp: +34 650 075 842
 
 ---
 
-**📅 Contenido completo:** Enero 2026  
+**📅 Contenido completo:** Enero 2026 (email SMTP actualizado agosto 2026)  
 **✅ SEO optimizado**  
 **📈 1,500-2,500 palabras por servicio**
 

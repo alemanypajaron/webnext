@@ -73,7 +73,7 @@ Password: [la que configuraste]
 **El panel admin incluye 5 secciones:**
 
 ### **1. 📊 Contactos** (`/administrator`)
-- Ver mensajes del formulario de contacto
+- Ver mensajes históricos del formulario de contacto (la página pública ya no envía nuevos)
 - Marcar como leído/respondido
 - Eliminar contactos
 - Estadísticas
@@ -150,10 +150,19 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGc...
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGc...  ← CRÍTICA
 NEXT_PUBLIC_TINYMCE_API_KEY=hzc5ul...
 OPENAI_API_KEY=sk-proj-...            ← agentes de blog
+SMTP_HOST=smtp.hostinger.com          ← email local
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=contacto@alemanypajaron.es
+SMTP_PASS=...                         ← contraseña del buzón Hostinger
+MAIL_FROM_NAME=Alemán y Pajarón
+MAIL_FROM=contacto@alemanypajaron.es
+MAIL_REPLY_TO=contacto@alemanypajaron.es
 ```
 
 **Vercel (Producción):**
-- Las mismas variables en Settings → Environment Variables (incluye `OPENAI_API_KEY`)
+- Las mismas variables de la web en Settings → Environment Variables (incluye `OPENAI_API_KEY`)
+- SMTP es para envío local; no hace falta en Vercel salvo que se conecten los formularios
 - **Redeploy** después de añadirlas
 
 📖 **Guía completa:** [`CREAR_ENV_LOCAL.md`](CREAR_ENV_LOCAL.md)
@@ -303,4 +312,5 @@ Antes de usar el panel admin, verifica:
 
 **📅 Última actualización:** Agosto 2026  
 **✅ Panel completamente funcional**  
-**🔒 Bloqueado de indexación y Analytics**
+**🔒 Bloqueado de indexación y Analytics**  
+**✉️ SMTP Hostinger documentado en CREAR_ENV_LOCAL.md y README.md**

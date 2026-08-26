@@ -4,7 +4,7 @@
 
 ---
 
-## 🎯 Variables Requeridas (5 para CMS + agentes)
+## 🎯 Variables Requeridas (CMS + agentes + email local)
 
 Tu aplicación necesita estas variables de entorno:
 
@@ -15,6 +15,9 @@ Tu aplicación necesita estas variables de entorno:
 | `SUPABASE_SERVICE_ROLE_KEY` | **Privada** | Key admin (bypasea RLS) |
 | `NEXT_PUBLIC_TINYMCE_API_KEY` | Pública | Editor de blog |
 | `OPENAI_API_KEY` | **Privada** | Agentes de blog (redacción e imágenes) |
+| `SMTP_HOST` / `SMTP_PORT` / `SMTP_SECURE` | **Privada** | Servidor SMTP Hostinger (local) |
+| `SMTP_USER` / `SMTP_PASS` | **Privada** | Buzón `contacto@alemanypajaron.es` |
+| `MAIL_FROM_NAME` / `MAIL_FROM` / `MAIL_REPLY_TO` | **Privada** | Remitente y respuesta de los emails |
 
 ---
 
@@ -64,6 +67,19 @@ SUPABASE_SERVICE_ROLE_KEY=
 NEXT_PUBLIC_TINYMCE_API_KEY=
 
 # =====================================================
+# HOSTINGER EMAIL (SMTP, envío local)
+# =====================================================
+# Buzón en hPanel → Emails → Mailboxes
+SMTP_HOST=smtp.hostinger.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=contacto@alemanypajaron.es
+SMTP_PASS=
+MAIL_FROM_NAME=Alemán y Pajarón
+MAIL_FROM=contacto@alemanypajaron.es
+MAIL_REPLY_TO=contacto@alemanypajaron.es
+
+# =====================================================
 # OPENAI (agentes de blog: redacción + imágenes)
 # =====================================================
 # Obtén tu key en: https://platform.openai.com/api-keys
@@ -80,6 +96,14 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzd
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFiY2RlZmdoaWprbG1ub3BxcnN0Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY0NjA1ODAyNywiZXhwIjoxOTYxNjM0MDI3fQ.Yyyyyyyyyyyyyyyyyyyyyyyyyyy
 NEXT_PUBLIC_TINYMCE_API_KEY=hzc5ul9u051j4hya4cc4dxrtf8gq7mzrmluchwsgptgkz15g
 OPENAI_API_KEY=sk-proj-xxxxxxxx
+SMTP_HOST=smtp.hostinger.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=contacto@alemanypajaron.es
+SMTP_PASS=tu-password-del-buzon
+MAIL_FROM_NAME=Alemán y Pajarón
+MAIL_FROM=contacto@alemanypajaron.es
+MAIL_REPLY_TO=contacto@alemanypajaron.es
 ```
 
 ### **4. Guarda el archivo**
@@ -150,6 +174,41 @@ Sin esta key, el panel admin no puede redactar ni generar imágenes.
 El redactor usa **Web Search nativo** de `gpt-5.6-terra` (Responses API). No hace falta SerpAPI.
 
 📖 **Guía de agentes:** [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
+
+### **✉️ SMTP Hostinger (envío de emails en local)**
+
+El dominio está en Hostinger. El envío sale del buzón `contacto@alemanypajaron.es`.
+
+1. Entra en [hPanel](https://hpanel.hostinger.com) → **Emails → Mailboxes**
+2. Crea o abre `contacto@alemanypajaron.es`
+3. Copia la contraseña del buzón (o restablécela) en `SMTP_PASS`
+4. Comprueba la conexión:
+
+```bash
+npm run mail:verificar
+```
+
+5. Envío de prueba:
+
+```bash
+npx tsx scripts/enviar-email.ts --to=contacto@alemanypajaron.es --subject="Prueba" --body="Hola"
+```
+
+**Servidores Hostinger:**
+
+| Uso | Host | Puerto | Cifrado |
+|-----|------|--------|---------|
+| SMTP (script local) | `smtp.hostinger.com` | `587` | STARTTLS (`SMTP_SECURE=false`) |
+| SMTP (Outlook, alternativa) | `smtp.hostinger.com` | `465` | SSL/TLS |
+| IMAP (Outlook) | `imap.hostinger.com` | `993` | SSL/TLS |
+
+En Outlook deja **SPA desmarcado**. Usuario = el email completo.
+
+La plantilla HTML está en `src/lib/mail.ts` (navy `#0A2230`, dorado `#F9B513`, logo, firma y pie).
+
+⚠️ **Nunca subas `SMTP_PASS` a GitHub.** `.env.local` ya está en `.gitignore`.
+
+Estas variables SMTP **no son obligatorias en Vercel** mientras el envío se haga solo en local.
 
 ---
 
@@ -305,7 +364,7 @@ https://www.alemanypajaron.es/administrator/blog/nuevo
 
 ### **Reglas de Oro:**
 1. ❌ **NUNCA** subas `.env.local` a GitHub (ya está en `.gitignore`)
-2. ❌ **NUNCA** compartas tu Service Role Key
+2. ❌ **NUNCA** compartas tu Service Role Key ni `SMTP_PASS`
 3. ✅ **SIEMPRE** regenera keys si se comprometen
 4. ✅ Guarda las keys en un gestor de contraseñas
 
@@ -341,6 +400,12 @@ https://www.alemanypajaron.es/administrator/blog/nuevo
 - ✅ En Vercel: misma variable + Redeploy
 - ✅ Guía: [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
 
+### **El email no conecta (`ECONNREFUSED` o certificado)**
+- Usa puerto `587` y `SMTP_SECURE=false` (STARTTLS). El 465 a veces falla en Windows/IPv6
+- `src/lib/mail.ts` fuerza IPv4 y admite la cadena TLS local (antivirus)
+- Verifica usuario = email completo y contraseña del buzón en hPanel
+- Prueba: `npm run mail:verificar`
+
 ---
 
 ## 📚 Documentación Relacionada
@@ -348,12 +413,13 @@ https://www.alemanypajaron.es/administrator/blog/nuevo
 - **Supabase setup completo:** Ver [`SUPABASE_CONFIG.md`](SUPABASE_CONFIG.md)
 - **Panel admin setup:** Ver [`ADMIN_SETUP.md`](ADMIN_SETUP.md)
 - **Agentes de IA del blog:** Ver [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
+- **Email SMTP Hostinger:** Ver [`README.md`](README.md)
 - **Deploy y CI/CD:** Ver [`DEPLOY.md`](DEPLOY.md)
 - **README principal:** Ver [`README.md`](README.md)
 
 ---
 
 **📅 Última actualización:** Agosto 2026  
-**✅ Variables de entorno documentadas (incluye OpenAI)**  
+**✅ Variables de entorno documentadas (incluye OpenAI y SMTP Hostinger)**  
 **🔐 Seguridad implementada**
 

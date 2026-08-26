@@ -6,7 +6,7 @@
 
 ## 📋 Variables de Entorno Requeridas
 
-Tu proyecto necesita **3 variables de Supabase** + **1 de TinyMCE**:
+Tu proyecto necesita **3 variables de Supabase** + **1 de TinyMCE**. El resto (OpenAI, SMTP Hostinger, VAPID) está en [`CREAR_ENV_LOCAL.md`](CREAR_ENV_LOCAL.md).
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co

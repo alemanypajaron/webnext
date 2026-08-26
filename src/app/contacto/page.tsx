@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageHeader from '@/components/ui/PageHeader';
+import MurciaMap from '@/components/ui/MurciaMap';
 
 export const metadata: Metadata = {
   title: 'Contacto | Arquitectos Técnicos en Murcia - Alemán y Pajarón',
@@ -26,9 +27,6 @@ export const metadata: Metadata = {
 const WHATSAPP_URL =
   'https://wa.me/34650075842?text=' +
   encodeURIComponent('Hola, me gustaría solicitar información sobre sus servicios');
-
-const OSM_EMBED =
-  'https://www.openstreetmap.org/export/embed.html?bbox=-1.200%2C37.960%2C-1.060%2C38.025&layer=mapnik&marker=37.9861%2C-1.1303';
 
 const OSM_LINK = 'https://www.openstreetmap.org/?mlat=37.9861&mlon=-1.1303#map=13/37.9861/-1.1303';
 
@@ -128,13 +126,7 @@ export default function ContactoPage() {
             <div>
               <h2 className="text-3xl font-heading font-bold text-primary mb-8">Dónde trabajamos</h2>
               <div className="rounded-2xl overflow-hidden border border-gray-200 bg-gray-50">
-                <iframe
-                  title="Mapa de Murcia, zona de trabajo de Alemán y Pajarón"
-                  src={OSM_EMBED}
-                  className="w-full h-[360px] lg:h-[480px] border-0"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
+                <MurciaMap />
               </div>
               <p className="mt-3 text-sm text-gray-500">
                 <a

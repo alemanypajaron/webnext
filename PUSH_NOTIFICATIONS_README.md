@@ -133,7 +133,7 @@ npm run dev
 1. Ve a `http://localhost:3000/administrator`
 2. Inicia sesión
 3. Activa las notificaciones push
-4. Envía un formulario de prueba desde `/contacto`
+4. Envía un formulario de prueba desde `/presupuesto`
 5. ¡Deberías recibir la notificación!
 
 ---
@@ -176,9 +176,9 @@ git push origin main
 ## 📊 Flujo Completo
 
 ```
-1. Usuario web → Envía formulario de contacto
+1. Usuario web → Envía formulario de presupuesto
    ↓
-2. Supabase → INSERT en tabla contactos
+2. Supabase → INSERT en tabla presupuestos
    ↓
 3. Trigger SQL → Detecta nuevo registro
    ↓

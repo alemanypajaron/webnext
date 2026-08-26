@@ -288,6 +288,11 @@ Settings → Environment Variables → Add
 **3. OpenAI (agentes de blog):**
 - `OPENAI_API_KEY` → Key de servidor para redactar e ilustrar artículos
 
+**4. SMTP Hostinger (opcional en Vercel):**
+- El envío a clientes se hace **en local** con `SMTP_*` en `.env.local`
+- No es obligatorio en Vercel mientras los formularios no disparen email
+- Guía: [`CREAR_ENV_LOCAL.md`](CREAR_ENV_LOCAL.md) y sección *Email SMTP* del [`README.md`](README.md)
+
 📖 **Guía de agentes:** [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
 
 **Environments:** Marca ✅ Production, ✅ Preview, ✅ Development en todas
@@ -506,7 +511,8 @@ git push
 
 ---
 
-**📅 Última actualización:** Enero 2026  
+**📅 Última actualización:** Agosto 2026  
 **🚀 Deploy automático activo**  
-**✅ Proyecto en producción**
+**✅ Proyecto en producción**  
+**✉️ Email SMTP Hostinger documentado (envío local)**
 

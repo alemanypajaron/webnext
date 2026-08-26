@@ -249,8 +249,8 @@ Deberías ver un registro con:
 ### Paso 3: Prueba enviando un formulario
 
 1. Abre otra ventana en modo incógnito
-2. Ve a `https://alemanypajaron.com/contacto`
-3. Envía un mensaje de prueba
+2. Ve a `https://www.alemanypajaron.es/presupuesto`
+3. Envía una solicitud de prueba
 4. Deberías recibir una notificación push en tu dispositivo
 
 ### Paso 4: Verifica los logs de la Edge Function

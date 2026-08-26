@@ -343,7 +343,8 @@ GPT-5.x no admite `temperature` custom; el código ya lo contempla (`src/lib/ope
 
 ## 11. Documentación relacionada
 
-- Variables: [`CREAR_ENV_LOCAL.md`](CREAR_ENV_LOCAL.md)
+- Variables: [`CREAR_ENV_LOCAL.md`](CREAR_ENV_LOCAL.md) (incluye SMTP Hostinger)
+- Email SMTP local: [`README.md`](README.md) (sección Email SMTP Hostinger)
 - Panel admin: [`ADMIN_SETUP.md`](ADMIN_SETUP.md)
 - Contenido y CMS: [`CONTENIDO.md`](CONTENIDO.md)
 - Storage: [`SUPABASE_CONFIG.md`](SUPABASE_CONFIG.md) y [`supabase/README.md`](supabase/README.md)

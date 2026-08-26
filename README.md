@@ -39,6 +39,7 @@ Sitio web completo para **Alemán y Pajarón**, técnicos de edificación y gest
 - ✅ **Deploy automático** con Vercel
 - ✅ **Base de datos** Supabase PostgreSQL
 - ✅ **Storage** para imágenes y multimedia
+- ✅ **Email SMTP Hostinger** (envío local desde `contacto@alemanypajaron.es`)
 - ✅ **Responsive** perfecto en todos los dispositivos
 
 ---
@@ -96,12 +97,53 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=tu-anon-key
 SUPABASE_SERVICE_ROLE_KEY=tu-service-role-key
 NEXT_PUBLIC_TINYMCE_API_KEY=tu-tinymce-api-key
 OPENAI_API_KEY=tu-openai-api-key
+
+# Email SMTP (Hostinger) — solo local
+SMTP_HOST=smtp.hostinger.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=contacto@alemanypajaron.es
+SMTP_PASS=tu-password-del-buzon
+MAIL_FROM_NAME=Alemán y Pajarón
+MAIL_FROM=contacto@alemanypajaron.es
+MAIL_REPLY_TO=contacto@alemanypajaron.es
 ```
 
-**En Vercel estas variables ya están configuradas** en Settings → Environment Variables.
+**En Vercel las variables de la web ya están configuradas** en Settings → Environment Variables. El SMTP de Hostinger se usa en local para enviar correos a clientes; no hace falta subirlo a Vercel salvo que más adelante se conecten los formularios.
 
 📖 **Más info:** Ver [`CREAR_ENV_LOCAL.md`](CREAR_ENV_LOCAL.md)  
 📖 **Agentes de blog:** Ver [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
+
+---
+
+## ✉️ Email SMTP (Hostinger)
+
+Envío de correos desde local con el buzón `contacto@alemanypajaron.es` (dominio en Hostinger). La plantilla HTML usa la identidad de la web: navy `#0A2230`, dorado `#F9B513`, logo blanco, firma y pie.
+
+### Comandos
+
+```bash
+# Comprobar usuario y contraseña SMTP
+npm run mail:verificar
+
+# Enviar (en Windows PowerShell usa npx tsx para pasar bien los argumentos)
+npx tsx scripts/enviar-email.ts --to=cliente@correo.com --subject="Asunto" --body="Mensaje"
+
+# Cuerpo largo desde archivo
+npx tsx scripts/enviar-email.ts --to=cliente@correo.com --subject="Asunto" --body-file=mensaje.txt
+```
+
+### Outlook / clientes IMAP
+
+| Campo | Entrante | Saliente |
+|---|---|---|
+| Servidor | `imap.hostinger.com` | `smtp.hostinger.com` |
+| Puerto | `993` | `465` (o `587` si 465 falla) |
+| Cifrado | SSL/TLS | SSL/TLS (o STARTTLS en 587) |
+| Usuario | `contacto@alemanypajaron.es` | igual |
+| SPA | Desmarcado | Desmarcado |
+
+El script local usa puerto **587 + STARTTLS** (más fiable en Windows). No subas `SMTP_PASS` a Git.
 
 ---
 
@@ -126,7 +168,7 @@ La aplicación está configurada como **PWA instalable** en dispositivos móvile
 ### Notificaciones Push en Tiempo Real
 
 El administrador recibe **notificaciones push automáticas** cuando lleguen:
-- 📧 **Nuevos contactos** desde el formulario web
+- 📧 **Nuevos contactos** (histórico; /contacto ya no tiene formulario)
 - 💼 **Nuevos presupuestos** solicitados
 - 📰 **Nuevas suscripciones** al newsletter
 
@@ -176,7 +218,7 @@ webnext/
 │   │   ├── robots.ts                 # Robots.txt
 │   │   ├── middleware.ts             # Protección rutas admin
 │   │   ├── nosotros/                 # Sobre nosotros
-│   │   ├── contacto/                 # Contacto + formulario
+│   │   ├── contacto/                 # Contacto (tel, WhatsApp, email, mapa)
 │   │   ├── presupuesto/              # Solicitud presupuesto
 │   │   ├── servicios/                # 6 servicios + índice
 │   │   │   ├── page.tsx              # Índice de servicios
@@ -207,7 +249,7 @@ webnext/
 │   │   ├── blog/
 │   │   │   └── VisitasTracker.tsx    # Contador de visitas
 │   │   ├── forms/                    # Formularios con Supabase
-│   │   │   ├── ContactForm.tsx       # Formulario de contacto
+│   │   │   ├── ContactForm.tsx       # Legacy (ya no se usa en /contacto)
 │   │   │   ├── PresupuestoForm.tsx   # Formulario de presupuesto
 │   │   │   └── NewsletterForm.tsx    # Formulario de newsletter
 │   │   ├── layout/
@@ -216,11 +258,13 @@ webnext/
 │   │   ├── ui/
 │   │   │   ├── FAQ.tsx               # Componente preguntas frecuentes
 │   │   │   ├── PageHeader.tsx        # Header de páginas internas
+│   │   │   ├── MurciaMap.tsx         # Mapa Carto Positron (navy/oro)
 │   │   │   ├── ScrollToTop.tsx       # Botón volver arriba
 │   │   │   └── WhatsAppButton.tsx    # Botón WhatsApp flotante
 │   │   └── seo/
 │   │       └── JsonLd.tsx            # Structured data
 │   └── lib/
+│       ├── mail.ts                   # SMTP Hostinger + plantilla HTML
 │       ├── openai-config.ts          # Modelos OpenAI (texto / imagen)
 │       ├── blog/                     # Agentes IA: redactor + portada + cuerpo
 │       ├── supabase.ts               # Cliente de Supabase (público)
@@ -229,6 +273,7 @@ webnext/
 │       ├── data.ts                   # Funciones de fetch de datos
 │       └── structuredData.ts         # Helpers para JSON-LD
 ├── scripts/
+│   ├── enviar-email.ts               # CLI envío SMTP
 │   ├── redact-blog-article.ts        # CLI redactor
 │   ├── generate-blog-cover.ts        # CLI portada
 │   ├── generate-blog-body-images.ts  # CLI imágenes de cuerpo
@@ -262,7 +307,9 @@ webnext/
 | **Supabase** | Latest | Base de datos PostgreSQL + Auth + Storage |
 | **TinyMCE** | Latest | Editor WYSIWYG para blog |
 | **OpenAI** | 4.x | Redactor de artículos + generación de imágenes |
+| **Nodemailer** | Latest | Envío SMTP Hostinger (local) |
 | **React Hot Toast** | Latest | Notificaciones toast |
+| **Leaflet + CARTO** | Latest | Mapa de Murcia en /contacto (estilo Positron) |
 | **Google Fonts** | - | Inter + Poppins |
 
 ---
@@ -301,7 +348,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=tu-anon-key
 3. **Verifica las tablas:**
    
    **Formularios:**
-   - ✅ `contactos` → Formulario de contacto
+   - ✅ `contactos` → Histórico del formulario de contacto (página pública sin form)
    - ✅ `presupuestos` → Solicitudes de presupuesto
    - ✅ `newsletter` → Suscriptores (opcional)
    
@@ -326,7 +373,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=tu-anon-key
 - ✅ **/** - Home con hero, servicios, stats
 - ✅ **/nosotros** - Historia y valores del estudio
 - ✅ **/servicios** - Índice de servicios
-- ✅ **/contacto** - Formulario de contacto (conectado a Supabase)
+- ✅ **/contacto** - Teléfono, WhatsApp, email, horario y mapa de Murcia (sin formulario)
 - ✅ **/presupuesto** - Solicitud de presupuesto (conectado a Supabase)
 - ✅ **/blog** - Listado dinámico de artículos desde Supabase
 - ✅ **/proyectos** - Portfolio dinámico desde Supabase
@@ -534,9 +581,10 @@ Accent Dark:   #E0A410
 - Cards de blog con categorías
 - FAQ con acordeones animados
 - **Formularios funcionales** con Supabase:
-  - Formulario de contacto con validación
-  - Formulario de presupuesto completo
+  - Formulario de presupuesto (canal principal de leads)
+  - Newsletter
   - Feedback en tiempo real (éxito/error)
+- Mapa de Murcia en /contacto (Carto Positron, tinte navy/oro)
   - Estados de carga (loading spinners)
 
 **Componentes de Servicio:**
@@ -605,6 +653,10 @@ npm run redact:blog -- --slug=tu-slug
 npm run generate:blog-cover -- "https://www.alemanypajaron.es/blog/tu-slug"
 npm run generate:blog-body-images -- "https://www.alemanypajaron.es/blog/tu-slug" --force
 npm run generate:blog-cover-and-body -- "https://www.alemanypajaron.es/blog/tu-slug"
+
+# Email SMTP Hostinger (requiere SMTP_* en .env.local)
+npm run mail:verificar
+npx tsx scripts/enviar-email.ts --to=cliente@correo.com --subject="Asunto" --body="Mensaje"
 ```
 
 📖 **Guía completa de agentes:** [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
@@ -824,10 +876,10 @@ El panel de administración (`/administrator`) está **completamente oculto**:
 - ✅ Contador de visitas en artículos
 - ✅ Editor profesional de blog
 - ✅ Agentes de IA del blog (redacción + portada + imágenes de cuerpo)
+- ✅ Email SMTP Hostinger en local (`contacto@alemanypajaron.es` + plantilla de marca)
 
 ### Corto Plazo
-- [ ] Configurar dominio personalizado `alemanypajaron.es`
-- [ ] Conectar formularios a servicio de email (Resend/SendGrid para notificaciones)
+- [ ] Conectar formularios web al mismo SMTP (aviso interno al recibir contacto/presupuesto)
 - [ ] Implementar envío masivo de newsletters
 - [ ] Añadir más casos de estudio de proyectos con imágenes
 
@@ -854,7 +906,7 @@ El panel de administración (`/administrator`) está **completamente oculto**:
 
 ### Alemán y Pajarón
 - 📱 **Teléfono:** 650 075 842
-- 📧 **Email:** ivan@alemanypajaron.es
+- 📧 **Email:** [contacto@alemanypajaron.es](mailto:contacto@alemanypajaron.es) · [ivan@alemanypajaron.es](mailto:ivan@alemanypajaron.es)
 - 📍 **Ubicación:** Murcia, España
 - 🕐 **Horario:** Lunes a Viernes, 8:00 - 16:00
 - 🌐 **Web:** https://www.alemanypajaron.es

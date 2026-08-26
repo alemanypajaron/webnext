@@ -8,7 +8,7 @@
 - `PUSH_NOTIFICATIONS_README.md` - Resumen notificaciones push ✅
 - `PUSH_NOTIFICATIONS_SETUP.md` - Setup notificaciones push ✅
 - `DEPLOY.md` - Guía de deployment ✅
-- `CREAR_ENV_LOCAL.md` - Variables de entorno ✅
+- `CREAR_ENV_LOCAL.md` - Variables de entorno (incluye SMTP Hostinger) ✅
 - `SUPABASE_CONFIG.md` - Configuración Supabase ✅
 - `URL_CANONICA_CONFIG.md` - Configuración URL canónica ✅
 - `VAPID_KEYS_GENERADAS.md` - Claves VAPID (NO SUBIR A GIT) ✅
@@ -35,6 +35,11 @@
 - `public/limpiar-pwa-completo.html` - Herramienta limpieza PWA ✅
 - `public/manifest.json` - Manifest PWA ✅
 - `public/service-worker.js` - Service Worker v2 ✅
+
+### Email SMTP Hostinger (local)
+- `src/lib/mail.ts` - Transporte SMTP + plantilla HTML de marca ✅
+- `scripts/enviar-email.ts` - CLI `mail:verificar` / `mail:enviar` ✅
+- Variables `SMTP_*` y `MAIL_*` en `.env.local` (NO GIT) ✅
 
 ---
 

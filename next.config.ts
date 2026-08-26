@@ -114,7 +114,7 @@ const nextConfig: NextConfig = {
               "img-src 'self' data: blob: https: *.unsplash.com *.supabase.co",
               "font-src 'self' fonts.gstatic.com data:",
               "connect-src 'self' *.supabase.co *.googleanalytics.com *.google-analytics.com *.tiny.cloud vercel.live",
-              "frame-src 'self' *.tiny.cloud *.openstreetmap.org",
+              "frame-src 'self' *.tiny.cloud",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",
