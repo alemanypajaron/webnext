@@ -2,9 +2,11 @@
 
 Guía operativa de los agentes que redactan artículos y generan imágenes para el blog de Alemán y Pajarón.
 
-**Origen:** misma arquitectura que el blog de Furgocasa, adaptada a arquitectura, licencias, reformas y normativa en Murcia.
+**Origen:** misma arquitectura que el blog de Furgocasa, adaptada a arquitectura, licencias, reformas y normativa en Murcia y radio 50 km.
 
-**Última actualización:** agosto 2026
+**Última actualización:** 26 agosto 2026
+
+Los artículos deben apoyar money pages (dirección de obra, licencias, reformas), no crear “servicio + pedanía”. Thin content o IA sin revisión profunda: marcar `seo_noindex` en el admin. Ver [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md).
 
 ---
 

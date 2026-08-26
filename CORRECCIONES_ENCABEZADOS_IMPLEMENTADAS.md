@@ -1,7 +1,8 @@
-# ✅ Correcciones SEO de Encabezados - IMPLEMENTADAS
+> **Histórico (enero 2026).** Correcciones de H1/H2. Vigente: [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md).
 
-**Fecha:** Enero 2026  
-**Cliente:** Alemán y Pajarón
+# Correcciones de encabezados (históricas)
+
+**Fecha:** Enero 2026
 
 ---
 

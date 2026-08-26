@@ -1,5 +1,6 @@
-# ✅ CAMBIOS SEO IMPLEMENTADOS
-## Optimización H1, H2, H3 - Páginas de Servicios
+> **Histórico (16 enero 2026).** Ronda de H2. La fase de agosto 2026 (50 km, titles, hub) está en [`RESUMEN_MEJORAS_SEO_IMPLEMENTADAS.md`](RESUMEN_MEJORAS_SEO_IMPLEMENTADAS.md) y [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md).
+
+# Cambios SEO de encabezados (enero 2026)
 
 **Fecha:** 16 enero 2026  
 **Total de cambios:** 30+ optimizaciones  

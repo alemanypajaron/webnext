@@ -1,7 +1,8 @@
-# 📋 REVISIÓN COMPLETA DE TÍTULOS SEO - ALEMÁN Y PAJARÓN
+> **Histórico (16 enero 2026).** Los titles ya no deben incluir `| Alemán y Pajarón` (el layout lo añade). Vigente: [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md).
 
-**Fecha:** 16 Enero 2026
-**Alcance:** Todas las páginas estáticas y dinámicas del sitio web
+# Revisión de títulos SEO (histórica)
+
+**Fecha:** 16 enero 2026
 
 ---
 

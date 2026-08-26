@@ -1,7 +1,24 @@
-# 🚀 RESUMEN MEJORAS SEO IMPLEMENTADAS - Alemán y Pajarón
+# Resumen de mejoras SEO implementadas
 
-**Fecha:** Enero 2026  
-**Estado:** COMPLETADAS ✅
+**Última actualización:** 26 agosto 2026  
+**Estrategia vigente:** [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md)
+
+---
+
+## Fase 5 — SEO local 50 km (agosto 2026)
+
+- Copy de cobertura (corta / completa) en `AreaServicio` + `COBERTURA_CORTA`
+- `/contacto#donde-trabajamos`: texto de pedanías y anillo; mapa zoom 9 + círculo 50 km
+- Money pages y hub `/servicios` (baño, local, licencia de apertura)
+- JSON-LD `areaServed`: Murcia, Alcantarilla, Molina, Torres, Santomera, Beniel
+- Titles: quitada la marca duplicada; home con `title.absolute`
+- Sitemap: `cambio-banera-ducha` y `reforma-local-comercial-murcia`
+
+**No creado:** URLs de pedanía ni de Molina.
+
+---
+
+## Fases 1–4 (enero 2026)
 
 ---
 
@@ -253,32 +270,21 @@ git push origin main
 
 ## 📞 PRÓXIMOS PASOS RECOMENDADOS
 
-### Corto Plazo (1-3 meses):
-1. Monitorear métricas en GSC
-2. Auditar artículos de blog existentes
-3. Marcar thin content como noindex si necesario
+### Corto plazo
+1. Ficha Google: zona de servicio 50 km
+2. Reseñas que nombren pueblo/municipio
+3. GSC: queries no de marca
+4. Auditar blog y marcar thin content (`seo_noindex`)
 
-### Medio Plazo (3-6 meses):
-1. Estrategia de internal linking
-2. Crear contenido pilar (pillar pages)
-3. Link building local (directorios Murcia)
-
-### Largo Plazo (6-12 meses):
-1. Expansión de contenido de calidad
-2. Video marketing (YouTube SEO)
-3. Reseñas y testimonios (Local SEO)
+### Medio plazo
+1. FAQ / Article schema
+2. Sacar legales del sitemap
+3. Proyectos con `ubicacion` real
+4. Molina solo si hay caso
 
 ---
 
-## 🎉 CONCLUSIÓN
+## Conclusión
 
-**Estado final del SEO:** EXCELENTE (9/10)
-
-**Mejoras implementadas:** 4 fases completadas  
-**Archivos modificados:** 23  
-**Tiempo invertido:** ~2-3 horas  
-**ROI esperado:** +30-50% tráfico orgánico en 6 meses  
-
-El sitio web de Alemán y Pajarón ahora tiene una base SEO sólida y profesional, optimizada para búsquedas locales en Murcia y lista para escalar en tráfico orgánico.
-
-✅ **Listo para producción**
+Base on-page y de indexación al día. El radio de 50 km se gana en **web (Murcia + copy)** y en **Maps (ficha + reseñas)**, no con más landings.  
+Detalle: [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md) y [`PLAN_MEJORAS_SEO_COMPLETO.md`](PLAN_MEJORAS_SEO_COMPLETO.md).

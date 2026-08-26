@@ -16,7 +16,9 @@
 
 ### Documentación de Referencia
 - `ADMIN_SETUP.md` - Setup panel admin
-- `AUDITORIA_SEO.md` - Auditoría SEO
+- `ESTRATEGIA_SEO_INDEXACION.md` - **Estrategia SEO vigente** (local 50 km + indexación)
+- `PLAN_MEJORAS_SEO_COMPLETO.md` - Checklist y pendientes SEO
+- `AUDITORIA_SEO.md` - Auditoría SEO (histórica enero 2026)
 - `CONTENIDO.md` - Gestión de contenido
 - `FAVICON_GUIA.md` - Guía de favicons
 

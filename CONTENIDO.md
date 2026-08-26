@@ -1,15 +1,15 @@
-# 📝 Guía de Contenido - Alemán y Pajarón
+# Guía de contenido — Alemán y Pajarón
 
-**Documentación sobre el contenido y estructura del sitio web**
+**Última actualización:** 26 agosto 2026  
+**SEO vigente:** [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md)
 
 ---
 
-## 📊 Resumen del Contenido
+## Resumen del contenido
 
-**Total de páginas:** 46 estáticas + dinámicas (blog y proyectos)  
-**Páginas de servicios:** 27 especializadas (6 generales + 7 vivienda + 7 licencias + 7 reformas)  
-**Palabras totales:** ~50,000+  
-**Optimizado para:** SEO local Murcia  
+**Total de páginas:** ~48 estáticas + dinámicas (blog y proyectos)  
+**Páginas de servicios:** 29 landings + hub (6 generales + 8 vivienda + 7 licencias + 8 reformas negocio)  
+**Optimizado para:** SEO local Murcia + radio 50 km (pedanías en copy, no en URL)  
 **Blog:** Sistema CMS completo con editor TinyMCE, agentes de IA (redacción + imágenes) y artículos guía  
 **Newsletter:** Formulario de suscripción funcional  
 **Admin:** Panel completo de gestión  
@@ -215,7 +215,7 @@ Requiere `OPENAI_API_KEY`. También se puede lanzar por terminal (`npm run redac
 
 ### Estructura de Servicios
 
-**Total: 27 páginas de servicios especializados:**
+**Total: 29 landings + hub `/servicios`:**
 
 #### 1. Servicios Generales (6 páginas)
 Páginas corporativas con enfoque amplio:
@@ -226,9 +226,10 @@ Páginas corporativas con enfoque amplio:
 - ✅ `/servicios/licencias-permisos`
 - ✅ `/servicios/reformas-integrales`
 
-#### 2. Reformas Vivienda (7 páginas)
-Landings específicas para particulares:
-- ✅ `/servicios/reforma-bano` - Reforma integral de baños
+#### 2. Reformas Vivienda (8 páginas)
+Landings de particular (Murcia cubre pedanías):
+- ✅ `/servicios/reforma-bano` — money page
+- ✅ `/servicios/cambio-banera-ducha` — apoyo
 - ✅ `/servicios/reforma-cocina` - Reforma de cocinas modernas
 - ✅ `/servicios/reforma-tejados` - Reparación e impermeabilización
 - ✅ `/servicios/reforma-terraza` - Reformas de terrazas y pérgolas
@@ -246,8 +247,8 @@ Páginas especializadas por sector de negocio:
 - ✅ `/servicios/licencia-centro-medico` - Centro médico, clínica
 - ✅ `/servicios/licencia-farmacia` - Farmacia, parafarmacia
 
-#### 4. Reformas de Negocios (7 páginas)
-Reformas específicas por tipo de negocio:
+#### 4. Reformas de Negocios (8 páginas)
+- ✅ `/servicios/reforma-local-comercial-murcia` — hub de local
 - ✅ `/servicios/reforma-bar` - Reforma bar/restaurante
 - ✅ `/servicios/reforma-peluqueria` - Reforma peluquería/salón
 - ✅ `/servicios/reforma-gimnasio` - Reforma gimnasio/box
@@ -508,8 +509,8 @@ Para evitar canibalización SEO, los términos de búsqueda amplios como "abrir 
 
 ### Contacto (/contacto)
 **Contenido:**
-- Teléfono, WhatsApp, email, horario y zona (Murcia y alrededores)
-- Mapa Leaflet + Carto Positron (tinte navy/oro, pin dorado)
+- Teléfono, WhatsApp, email, horario y zona (Murcia capital + radio 50 km: pedanías y área metropolitana)
+- Mapa Leaflet + Carto Positron (círculo 50 km, ancla `#donde-trabajamos`)
 - Enlace a `/presupuesto` (único formulario público de leads)
 - Sin formulario de contacto (se retiró por spam; el componente `ContactForm` queda como legacy)
 

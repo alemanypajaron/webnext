@@ -10,7 +10,7 @@
 
 ## 🎯 Sobre el Proyecto
 
-Sitio web completo para **Alemán y Pajarón**, técnicos de edificación y gestores de obras especializados en gestión de proyectos en Murcia:
+Sitio web completo para **Alemán y Pajarón**, técnicos de edificación y gestores de obras en **Murcia capital y un radio de ~50 km** (pedanías + área metropolitana):
 - ✅ Dirección de obra
 - ✅ Reformas integrales
 - ✅ Gestión de proyectos
@@ -25,8 +25,8 @@ Sitio web completo para **Alemán y Pajarón**, técnicos de edificación y gest
 **🎉 VERSIÓN 1.0 - PRODUCCIÓN ESTABLE**
 
 ### Funcionalidades Principales
-- ✅ **46 páginas** completamente funcionales
-- ✅ **25 servicios especializados** con contenido SEO optimizado
+- ✅ **~48 páginas estáticas** + blog y proyectos dinámicos
+- ✅ **29 landings de servicio** + hub `/servicios` (SEO local Murcia / 50 km)
 - ✅ **Blog dinámico** con editor TinyMCE profesional
 - ✅ **Agentes de IA del blog** (redacción, portada e imágenes de cuerpo)
 - ✅ **Portfolio de proyectos** con galería de imágenes
@@ -34,7 +34,7 @@ Sitio web completo para **Alemán y Pajarón**, técnicos de edificación y gest
 - ✅ **PWA instalable** (funciona como app nativa)
 - ✅ **Notificaciones PUSH** en tiempo real
 - ✅ **Sesión persistente** (nunca expira en móvil)
-- ✅ **SEO completo** (metadata, sitemap, JSON-LD)
+- ✅ **SEO local** (titles, sitemap, JSON-LD `areaServed`, cobertura 50 km, `seo_noindex` en blog)
 - ✅ **Analytics integrado** con Google Analytics
 - ✅ **Deploy automático** con Vercel
 - ✅ **Base de datos** Supabase PostgreSQL
@@ -218,16 +218,15 @@ webnext/
 │   │   ├── robots.ts                 # Robots.txt
 │   │   ├── middleware.ts             # Protección rutas admin
 │   │   ├── nosotros/                 # Sobre nosotros
-│   │   ├── contacto/                 # Contacto (tel, WhatsApp, email, mapa)
+│   │   ├── contacto/                 # Contacto + cobertura 50 km + mapa
 │   │   ├── presupuesto/              # Solicitud presupuesto
-│   │   ├── servicios/                # 6 servicios + índice
-│   │   │   ├── page.tsx              # Índice de servicios
-│   │   │   ├── asesoramiento-tecnico/ # Con íconos amarillos
-│   │   │   ├── direccion-obra/        # Con íconos amarillos
-│   │   │   ├── diseno-espacios/       # Con íconos amarillos
-│   │   │   ├── gestion-proyectos/     # Con íconos amarillos
-│   │   │   ├── licencias-permisos/    # Con íconos amarillos
-│   │   │   └── reformas-integrales/   # Con íconos amarillos
+│   │   ├── servicios/                # Hub + 29 landings
+│   │   │   ├── page.tsx              # Índice (6 generales + demandados)
+│   │   │   ├── direccion-obra/       # Money page
+│   │   │   ├── licencias-permisos/   # Money page
+│   │   │   ├── reformas-integrales/  # Money page
+│   │   │   ├── reforma-bano/         # Money page
+│   │   │   └── …                     # Resto de landings (vivienda, licencias, negocios)
 │   │   ├── blog/                     # Blog dinámico
 │   │   │   ├── page.tsx              # Lista de artículos + Newsletter
 │   │   │   └── [slug]/               # Artículo individual + Visitas
@@ -258,11 +257,12 @@ webnext/
 │   │   ├── ui/
 │   │   │   ├── FAQ.tsx               # Componente preguntas frecuentes
 │   │   │   ├── PageHeader.tsx        # Header de páginas internas
-│   │   │   ├── MurciaMap.tsx         # Mapa Carto Positron (navy/oro)
+│   │   │   ├── MurciaMap.tsx         # Mapa radio 50 km (Carto Positron)
 │   │   │   ├── ScrollToTop.tsx       # Botón volver arriba
 │   │   │   └── WhatsAppButton.tsx    # Botón WhatsApp flotante
 │   │   └── seo/
-│   │       └── JsonLd.tsx            # Structured data
+│   │       ├── JsonLd.tsx            # Structured data
+│   │       └── AreaServicio.tsx      # Copy de cobertura (corta / completa)
 │   └── lib/
 │       ├── mail.ts                   # SMTP Hostinger + plantilla HTML
 │       ├── openai-config.ts          # Modelos OpenAI (texto / imagen)
@@ -309,7 +309,7 @@ webnext/
 | **OpenAI** | 4.x | Redactor de artículos + generación de imágenes |
 | **Nodemailer** | Latest | Envío SMTP Hostinger (local) |
 | **React Hot Toast** | Latest | Notificaciones toast |
-| **Leaflet + CARTO** | Latest | Mapa de Murcia en /contacto (estilo Positron) |
+| **Leaflet + CARTO** | Latest | Mapa de cobertura 50 km en /contacto (Positron) |
 | **Google Fonts** | - | Inter + Poppins |
 
 ---
@@ -373,7 +373,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=tu-anon-key
 - ✅ **/** - Home con hero, servicios, stats
 - ✅ **/nosotros** - Historia y valores del estudio
 - ✅ **/servicios** - Índice de servicios
-- ✅ **/contacto** - Teléfono, WhatsApp, email, horario y mapa de Murcia (sin formulario)
+- ✅ **/contacto** - Teléfono, WhatsApp, email, horario, cobertura 50 km y mapa (sin formulario)
 - ✅ **/presupuesto** - Solicitud de presupuesto (conectado a Supabase)
 - ✅ **/blog** - Listado dinámico de artículos desde Supabase
 - ✅ **/proyectos** - Portfolio dinámico desde Supabase
@@ -404,16 +404,17 @@ Cada una con descripción detallada, proceso, beneficios, casos de uso, FAQ y SE
 5. ✅ **/servicios/licencias-permisos**
 6. ✅ **/servicios/reformas-integrales**
 
-### Reformas Vivienda (7 páginas especializadas)
-Landings específicas optimizadas para SEO local en Murcia:
+### Reformas Vivienda (8 páginas)
+Landings de particular. SEO local = **Murcia** (las pedanías se cubren en copy, no con URL propia):
 
-1. ✅ **/servicios/reforma-bano** - Reforma integral de baños
-2. ✅ **/servicios/reforma-cocina** - Reforma de cocinas modernas
-3. ✅ **/servicios/reforma-tejados** - Reparación e impermeabilización de tejados
-4. ✅ **/servicios/reforma-terraza** - Reformas de terrazas y pérgolas
-5. ✅ **/servicios/cambio-ventanas-pvc** - Sustitución ventanas PVC eficientes
-6. ✅ **/servicios/reforma-piscina** - Construcción y rehabilitación piscinas
-7. ✅ **/servicios/certificado-energetico** - Certificados energéticos viviendas
+1. ✅ **/servicios/reforma-bano** — money page
+2. ✅ **/servicios/cambio-banera-ducha** — apoyo de baño
+3. ✅ **/servicios/reforma-cocina**
+4. ✅ **/servicios/reforma-tejados**
+5. ✅ **/servicios/reforma-terraza**
+6. ✅ **/servicios/cambio-ventanas-pvc**
+7. ✅ **/servicios/reforma-piscina**
+8. ✅ **/servicios/certificado-energetico**
 
 ### Licencias de Apertura (7 páginas por sector)
 Páginas específicas para licencias de actividad de negocios en Murcia:
@@ -426,18 +427,18 @@ Páginas específicas para licencias de actividad de negocios en Murcia:
 6. ✅ **/servicios/licencia-centro-medico** - Centro médico, clínica
 7. ✅ **/servicios/licencia-farmacia** - Farmacia, parafarmacia
 
-### Reformas de Negocios (7 páginas por sector)
-Reformas específicas para cada tipo de negocio:
+### Reformas de Negocios (8 páginas)
+1. ✅ **/servicios/reforma-local-comercial-murcia** — hub de local
+2. ✅ **/servicios/reforma-bar**
+3. ✅ **/servicios/reforma-peluqueria**
+4. ✅ **/servicios/reforma-gimnasio**
+5. ✅ **/servicios/reforma-clinica-estetica**
+6. ✅ **/servicios/reforma-veterinaria**
+7. ✅ **/servicios/reforma-centro-medico**
+8. ✅ **/servicios/reforma-farmacia**
 
-1. ✅ **/servicios/reforma-bar** - Reforma bar/restaurante
-2. ✅ **/servicios/reforma-peluqueria** - Reforma peluquería/salón
-3. ✅ **/servicios/reforma-gimnasio** - Reforma gimnasio/box
-4. ✅ **/servicios/reforma-clinica-estetica** - Reforma clínica estética
-5. ✅ **/servicios/reforma-veterinaria** - Reforma clínica veterinaria
-6. ✅ **/servicios/reforma-centro-medico** - Reforma centro médico
-7. ✅ **/servicios/reforma-farmacia** - Reforma farmacia
-
-**Total: 27 páginas de servicios especializados**
+**Total: 29 landings de servicio + hub `/servicios`.**  
+Estrategia y money pages: [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md)
 
 ### Páginas Legales (3)
 - ✅ **/legal/aviso-legal**
@@ -448,7 +449,7 @@ Reformas específicas para cada tipo de negocio:
 - ✅ **/sitemap-html** - Sitemap HTML para usuarios
 - ✅ **/sitemap.xml** - Sitemap XML para buscadores
 
-**Total: 46 páginas estáticas + Páginas dinámicas ilimitadas (proyectos y blog)**
+**Total: ~48 páginas estáticas + dinámicas ilimitadas (proyectos y blog)**
 
 ---
 
@@ -584,7 +585,7 @@ Accent Dark:   #E0A410
   - Formulario de presupuesto (canal principal de leads)
   - Newsletter
   - Feedback en tiempo real (éxito/error)
-- Mapa de Murcia en /contacto (Carto Positron, tinte navy/oro)
+- Mapa de cobertura 50 km en /contacto (Carto Positron, círculo desde Murcia)
   - Estados de carga (loading spinners)
 
 **Componentes de Servicio:**
@@ -598,38 +599,32 @@ Accent Dark:   #E0A410
 
 ## 🔍 SEO & Performance
 
-### Optimizaciones Implementadas
+**Documento vivo:** [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md)
 
-✅ **Metadata completa** en todas las páginas:
-- Title dinámico por página
-- Description optimizada
-- Keywords locales (Murcia)
-- Canonical URLs
-- Open Graph (Facebook, LinkedIn)
-- Twitter Cards
+### Estrategia local (agosto 2026)
 
-✅ **Structured Data (JSON-LD)**:
-- LocalBusiness
-- Service (en cada servicio)
-- WebSite
-- BreadcrumbList
+- **Plaza única:** Murcia capital + pedanías en el mismo copy. Sin URLs por pueblo.
+- **Radio 50 km:** Alcantarilla, Molina de Segura, Las Torres de Cotillas, Santomera, Beniel (schema + texto).
+- **Money pages:** home, `/servicios`, dirección de obra, licencias, reformas integrales, reforma baño, asesoramiento, contacto.
+- **Titles:** el layout añade `| Alemán y Pajarón`. No repetir la marca en el `title` de cada página. La home usa `title.absolute` con marca una vez.
+- **Indexación:** legales `noindex, follow`; blog con `seo_noindex` y exclusión del sitemap.
 
-✅ **Archivos SEO**:
-- `sitemap.xml` dinámico (incluye páginas estáticas, blog, proyectos)
-- `robots.txt` configurado (bloquea `/administrator`)
-- OpenGraph image dinámica
-- Twitter image dinámica
-- **Google Analytics** integrado (excluye `/administrator`)
-- **Google Search Console** verificado
+### On-page y técnica
 
-✅ **Performance**:
-- Imágenes optimizadas con `next/image`
-- Server Components por defecto
-- **Static Generation** (21 páginas base + proyectos y blog dinámicos)
-- **ISR (Incremental Static Regeneration)** listo
-- CSS optimizado con Tailwind
-- Fonts optimizados con `next/font`
-- **Edge-ready** para deploy global
+✅ **Metadata** (title, description, canonical, Open Graph, Twitter Cards)  
+✅ **JSON-LD:** ProfessionalService + `areaServed` del anillo, Service, WebSite, BreadcrumbList  
+✅ **`sitemap.xml`** dinámico (servicios, blog indexable, proyectos)  
+✅ **`robots.txt`** bloquea `/administrator/`  
+✅ **Componente** `AreaServicio` + mapa 50 km en `/contacto#donde-trabajamos`  
+✅ **Google Analytics** (excluye admin) y **Search Console**
+
+Pendiente fuera de código: ficha Google con zona de servicio, reseñas con pueblo, FAQ/Article schema.
+
+### Performance
+
+- `next/image`, Server Components, ISR en blog/proyectos
+- Tailwind + `next/font`
+- Edge-ready (Vercel)
 
 ---
 
@@ -881,7 +876,9 @@ El panel de administración (`/administrator`) está **completamente oculto**:
 ### Corto Plazo
 - [ ] Conectar formularios web al mismo SMTP (aviso interno al recibir contacto/presupuesto)
 - [ ] Implementar envío masivo de newsletters
-- [ ] Añadir más casos de estudio de proyectos con imágenes
+- [ ] Añadir más casos de estudio de proyectos con imágenes (ubicacion real: pedanía o municipio)
+- [ ] Google Business Profile: zona de servicio 50 km + reseñas locales
+- [ ] Sacar páginas legales del sitemap XML
 
 ### Medio Plazo
 - [ ] Panel para gestionar suscriptores de newsletter (exportar, enviar)
@@ -907,7 +904,7 @@ El panel de administración (`/administrator`) está **completamente oculto**:
 ### Alemán y Pajarón
 - 📱 **Teléfono:** 650 075 842
 - 📧 **Email:** [contacto@alemanypajaron.es](mailto:contacto@alemanypajaron.es) · [ivan@alemanypajaron.es](mailto:ivan@alemanypajaron.es)
-- 📍 **Ubicación:** Murcia, España
+- 📍 **Ubicación:** Murcia capital y radio ~50 km (área metropolitana y pedanías)
 - 🕐 **Horario:** Lunes a Viernes, 8:00 - 16:00
 - 🌐 **Web:** https://www.alemanypajaron.es
 
@@ -968,4 +965,4 @@ npm install
 
 **✨ Proyecto en producción desde Enero 2026**  
 **🚀 Deploy automático configurado**  
-**📈 SEO optimizado para Murcia**
+**📈 SEO local: Murcia + radio 50 km**

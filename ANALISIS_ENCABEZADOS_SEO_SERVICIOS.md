@@ -1,3 +1,5 @@
+> **Histórico (16 enero 2026).** No es la guía de titles vigente. Ver [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md).
+
 # Análisis SEO de Encabezados H1, H2 y H3 - Páginas de Servicios
 ## Fecha: 16 enero 2026
 

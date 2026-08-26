@@ -1,204 +1,154 @@
-# 🎯 Estrategia SEO de Indexación - Alemán y Pajarón
+# Estrategia SEO vigente — Alemán y Pajarón
 
-**Fecha:** Enero 2026  
-**Objetivo:** Optimizar la autoridad del dominio eliminando dilución por exceso de URLs indexables sin valor SEO
-
----
-
-## 📋 Problema Identificado
-
-### ❌ Exceso de URLs Indexables Sin Valor
-
-El sitio tenía múltiples tipos de páginas que diluyen la autoridad del dominio:
-
-- ✅ **Páginas legales** (privacidad, cookies, aviso legal)
-- ⚠️ **Posts de blog irrelevantes o con contenido pobre**
-- ⚠️ **Taxonomías sin valor estratégico**
-- ⚠️ **URLs de blog con thin content**
-
-**Consecuencia:** Dilución de autoridad de dominio y mala experiencia para motores de búsqueda.
+**Última actualización:** 26 agosto 2026  
+**Dominio:** https://www.alemanypajaron.es  
+**Documento vivo:** este archivo manda sobre auditorías de enero 2026.
 
 ---
 
-## ✅ Solución Implementada
+## Objetivo de negocio
 
-### 1. **Páginas Legales - COMPLETADO ✓**
-
-Todas las páginas legales tienen configurado `noindex, follow`:
-
-```typescript
-// src/app/legal/privacidad/page.tsx
-// src/app/legal/cookies/page.tsx
-// src/app/legal/aviso-legal/page.tsx
-export const metadata: Metadata = {
-  // ...
-  robots: {
-    index: false,
-    follow: true,
-  },
-};
-```
-
-**Páginas afectadas:**
-- `/legal/privacidad` → `noindex, follow` ✓
-- `/legal/cookies` → `noindex, follow` ✓
-- `/legal/aviso-legal` → `noindex, follow` ✓
-
-**Efecto:** 
-- ✅ Estas páginas NO aparecen en índice de Google
-- ✅ Los enlaces salientes transmiten autoridad (follow)
-- ✅ Eliminadas del sitemap (priority: 0.3 para referencia interna)
+Ser la referencia de **dirección de obra, licencias y reformas** en **Murcia capital + radio de ~50 km**.  
+Quien busca la marca ya llega a la web. El SEO debe captar demanda no de marca en ese radio.
 
 ---
 
-### 2. **Artículos de Blog - Sistema Granular Implementado ✓**
+## Geografía (qué hacer y qué no)
 
-#### **Migración de Base de Datos**
+| Zona | Tratamiento SEO |
+|------|-----------------|
+| Murcia capital + pedanías (El Palmar, La Alberca, Beniaján, Torreagüera, Guadalupe, Sangonera…) | Una sola plaza: **Murcia**. Se nombran en copy, **nunca** como URL. Mismo Ayuntamiento. |
+| Anillo (Alcantarilla, Molina de Segura, Las Torres de Cotillas, Santomera, Beniel) | Copy + schema `areaServed` + ficha de Google. **Sin landing por pueblo** salvo Molina, y solo cuando haya proyecto o trámite propio. |
+| 25–50 km (Alhama, Archena, Fortuna…) | Cobertura (“pregunta si encaja”). Sin URLs. |
+| Cartagena / costa | Otro mercado. No ahora. |
 
-Se agregó el campo `seo_noindex` a la tabla `blog_articulos`:
+**Prohibido:** `reforma-bano-beniajan`, `licencia-el-palmar` y similares. Son doorway pages con volumen nulo.
 
-```sql
--- Archivo: supabase/add-seo-noindex-column.sql
-ALTER TABLE blog_articulos 
-ADD COLUMN IF NOT EXISTS seo_noindex BOOLEAN DEFAULT FALSE;
+### Dónde está implementado
 
-CREATE INDEX IF NOT EXISTS idx_blog_seo_noindex ON blog_articulos(seo_noindex);
-```
+- Texto corto: `COBERTURA_CORTA` en `src/lib/structuredData.ts` + componente `src/components/seo/AreaServicio.tsx`
+- Texto completo + mapa 50 km: `/contacto#donde-trabajamos` (`MurciaMap` zoom 9 + círculo 50 km)
+- Money pages: home, dirección de obra, licencias, reformas integrales, reforma baño, asesoramiento, hub `/servicios`
+- JSON-LD `areaServed`: Murcia, Alcantarilla, Molina de Segura, Las Torres de Cotillas, Santomera, Beniel, Región de Murcia
 
-**Campo:** `seo_noindex BOOLEAN DEFAULT FALSE`
-- `FALSE` (default) → Artículo se indexa normalmente
-- `TRUE` → Artículo tiene `noindex, follow`
+### Fuera de la web (imprescindible)
 
-#### **Integración en el Código**
-
-**TypeScript Types** (`src/lib/supabase.ts`):
-```typescript
-export interface BlogArticulo {
-  // ... otros campos
-  seo_noindex?: boolean; // Control SEO: true = noindex,follow
-}
-```
-
-**Metadata Dinámica** (`src/app/blog/[slug]/page.tsx`):
-```typescript
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const articulo = await getBlogArticuloBySlug(slug);
-  
-  return {
-    title: `${articulo.titulo} | Blog`,
-    description: articulo.meta_descripcion || articulo.resumen,
-    keywords: articulo.meta_keywords,
-    robots: articulo.seo_noindex
-      ? {
-          index: false,
-          follow: true,
-        }
-      : undefined, // index: true por defecto
-    // ... openGraph, etc.
-  };
-}
-```
-
-**Sitemap Automático** (`src/app/sitemap.ts`):
-```typescript
-// Artículos de blog dinámicos (excluir artículos con seo_noindex = true)
-const { data: articulos } = await supabase
-  .from('blog_articulos')
-  .select('slug, actualizado_at, seo_noindex')
-  .eq('publicado', true)
-  .neq('seo_noindex', true) // ← Excluir de sitemap
-  .order('fecha_publicacion', { ascending: false });
-```
+1. Google Business Profile con **zona de servicio** = esos municipios (no solo “Murcia”).
+2. Reseñas que nombren el pueblo (“reforma en El Palmar”).
+3. Campo `ubicacion` de proyectos con pedanía o municipio real.
 
 ---
 
-## 🎯 Criterios para Aplicar `noindex, follow` al Blog
+## Tipología de servicio (prioridad)
 
-### ✅ Aplicar `noindex` (seo_noindex = TRUE) a:
+No multiplicar geografía × catálogo. Primero pocas money pages; el resto se mantiene, no se expande.
 
-1. **Contenido No Estratégico:**
-   - Noticias de actualidad sin evergreen value
-   - Posts sobre eventos pasados
-   - Contenido temporal o estacional ya caducado
+### Potenciar (8 URLs)
 
-2. **Thin Content:**
-   - Artículos con menos de 300 palabras
-   - Contenido superficial sin profundidad técnica
-   - Artículos sin valor único (duplicate intent)
+1. `/` — plaza Murcia + marca en el title
+2. `/servicios` — hub (generales + baño, local, licencia de apertura)
+3. `/servicios/direccion-obra`
+4. `/servicios/licencias-permisos` (Ayuntamiento Murcia vs Molina/Alcantarilla)
+5. `/servicios/reformas-integrales`
+6. `/servicios/reforma-bano`
+7. `/servicios/asesoramiento-tecnico`
+8. `/contacto` — NAP + cobertura 50 km
 
-3. **Artículos Experimentales:**
-   - Tests de contenido A/B
-   - Borradores en revisión (mejor usar `publicado = false`)
-   - Contenido interno para clientes específicos
+### Apoyo (enlazar, no clonar)
 
-4. **Contenido de Baja Calidad:**
-   - Artículos con métricas pobres (alto bounce rate, bajo tiempo en página)
-   - Posts con pocas visitas tras 6+ meses publicados
-   - Contenido generado por IA sin revisión humana profunda
+- `/servicios/cambio-banera-ducha`
+- `/servicios/reforma-local-comercial-murcia`
+- `/servicios/licencia-bar` (licencia de actividad)
 
-### ❌ NO aplicar `noindex` (mantener indexable) a:
+### No expandir
 
-1. **Contenido Pilar (Pillar Content):**
-   - Guías completas sobre servicios clave
-   - Artículos evergreen con búsquedas mensuales consistentes
-   - Contenido que genera conversiones
+Reformas/licencias de veterinaria, farmacia, clínica estética, gimnasio, peluquería: se quedan publicadas, **sin hijas por pueblo**.
 
-2. **Páginas Money:**
-   - Artículos que hablan de servicios específicos
-   - Posts que generan leads cualificados
-   - Contenido con alto valor comercial
+### Molina
 
-3. **Contenido de Autoridad:**
-   - Estudios de caso detallados
-   - Análisis técnicos profundos
-   - Contenido único y diferenciador
-
-4. **Artículos con Tráfico Orgánico:**
-   - Posts que reciben tráfico SEO mensual consistente
-   - Páginas con backlinks externos
-   - Contenido rankeando en Top 10 de Google
+Única URL de municipio prevista, **más adelante**: `/zonas/molina-de-segura`  
+Solo si hay trámite del Ayuntamiento de Molina + un proyecto real. No crear `/servicios/reforma-bano-molina`.
 
 ---
 
-## 📊 Métricas de Éxito
+## Titles
 
-### KPIs a Monitorear (Google Search Console)
+El layout usa `template: '%s | Alemán y Pajarón'`.  
+Las páginas hijas **no** deben llevar `| Alemán y Pajarón` en `metadata.title` (evita marca duplicada en Google).
 
-1. **Autoridad de Dominio**
-   - Domain Rating (Ahrefs) / Domain Authority (Moz)
-   - **Objetivo:** Incremento del 5-10% en 6 meses
+La home no hereda el template: usa `title.absolute` con la marca **una vez**:
 
-2. **Páginas Indexadas**
-   - Antes: X páginas indexadas
-   - Después: Reducir páginas sin valor en 20-30%
-   - **Comando Google:** `site:alemanypajaron.es`
+`Gestión de Obras y Proyectos en Murcia | Alemán y Pajarón`
 
-3. **Click-Through Rate (CTR)**
-   - CTR promedio en SERP
-   - **Objetivo:** Incremento del 10-15% al mostrar solo contenido de calidad
-
-4. **Core Web Vitals**
-   - Tiempo de carga (LCP)
-   - Interactividad (FID/INP)
-   - **Objetivo:** Mantener/mejorar con menos URLs a crawlear
-
-5. **Rankings de Keywords Estratégicas**
-   - Posicionamiento de términos clave
-   - **Objetivo:** Mejora en Top 3 para keywords money
+Open Graph puede llevar marca; no usa el template.
 
 ---
 
-## 🛠️ Gestión y Mantenimiento
+## Indexación
 
-### Desde el Panel Admin
+### Legales — `noindex, follow`
 
-Los administradores pueden gestionar `seo_noindex` desde:
-- **Panel Admin** → **Blog** → **Editar Artículo**
-- Campo de checkbox: "No indexar (noindex, follow)"
+- `/legal/privacidad`
+- `/legal/cookies`
+- `/legal/aviso-legal`
 
-### SQL Directo (Para Cambios Masivos)
+Siguen en el sitemap XML con prioridad 0.3 (inconsistencia conocida). Preferible sacarlas del sitemap en un siguiente pase.
 
-#### Ver artículos marcados como `noindex`:
+### Blog — `seo_noindex`
+
+Campo `blog_articulos.seo_noindex` (default `false`).  
+Si es `true`: `noindex, follow` y **fuera del sitemap**.
+
+**Marcar noindex:** thin content (<300 palabras), actualidad caducada, posts IA sin revisión, <50 visitas en 6+ meses sin plan de mejora.  
+**No marcar:** pilares, money content, posts con tráfico o backlinks.
+
+UI: Admin → Blog → checkbox “No indexar en Google”.
+
+Migración: `supabase/add-seo-noindex-column.sql`
+
+### Admin
+
+`/administrator/` bloqueado en `robots.ts`. Meta noindex en el layout admin.
+
+---
+
+## Sitemap
+
+`src/app/sitemap.ts` incluye:
+
+- Home, nosotros, contacto, presupuesto
+- Hub + landings de servicios (incluidas `cambio-banera-ducha` y `reforma-local-comercial-murcia`)
+- Blog (publicados, fecha ≤ ahora, `seo_noindex` ≠ true)
+- Proyectos
+- Legales (ver nota arriba)
+
+HTML: `/sitemap-html`
+
+---
+
+## Schema
+
+`src/lib/structuredData.ts`
+
+- `ProfessionalService` + `areaServed` del anillo
+- `Service` en landings
+- `WebSite`, `BreadcrumbList`
+
+Pendiente: `FAQPage` (hay FAQ visible sin schema), `Article` en blog.
+
+---
+
+## Enlazado interno
+
+- Header/footer: 6 servicios generales
+- Hub `/servicios`: esos 6 + bloque “más demandados” (baño, local, licencia)
+- Pares licencia ↔ reforma del mismo vertical
+- `AreaServicio` enlaza a `/contacto#donde-trabajamos`
+
+---
+
+## Queries SQL útiles (blog)
+
 ```sql
 SELECT titulo, slug, seo_noindex, visitas, fecha_publicacion
 FROM blog_articulos
@@ -206,143 +156,36 @@ WHERE seo_noindex = TRUE
 ORDER BY fecha_publicacion DESC;
 ```
 
-#### Marcar artículo específico como `noindex`:
-```sql
-UPDATE blog_articulos 
-SET seo_noindex = TRUE 
-WHERE slug = 'articulo-no-estrategico';
-```
+Candidatos a noindex:
 
-#### Marcar artículos por categoría (ejemplo: noticias):
 ```sql
-UPDATE blog_articulos 
-SET seo_noindex = TRUE 
-WHERE categoria_id = (
-  SELECT id FROM categorias_blog WHERE slug = 'noticias'
-);
-```
-
-#### Marcar artículos con pocas visitas (< 50 visitas en 6+ meses):
-```sql
-UPDATE blog_articulos 
-SET seo_noindex = TRUE 
-WHERE visitas < 50 
+SELECT titulo, slug, visitas, fecha_publicacion
+FROM blog_articulos
+WHERE visitas < 100
   AND fecha_publicacion < NOW() - INTERVAL '6 months'
-  AND seo_noindex = FALSE; -- Evitar sobrescribir decisiones manuales
-```
-
-#### Revertir `noindex` de artículos con buen rendimiento:
-```sql
-UPDATE blog_articulos 
-SET seo_noindex = FALSE 
-WHERE visitas > 500 
-  AND seo_noindex = TRUE;
+  AND seo_noindex = FALSE
+ORDER BY visitas ASC;
 ```
 
 ---
 
-## 📈 Proceso de Auditoría Trimestral
+## Fuera de alcance de la web (siguiente)
 
-### Cada 3 meses, revisar:
-
-1. **Google Search Console:**
-   - Exportar páginas con impresiones > 0
-   - Identificar thin content con bajo CTR (<2%)
-   - Marcar como `noindex` si no hay intención de mejora
-
-2. **Google Analytics:**
-   - Páginas con bounce rate > 80%
-   - Tiempo en página < 30 segundos
-   - Evaluar si son candidatas a `noindex` o mejora
-
-3. **Artículos de Blog:**
-   ```sql
-   SELECT 
-     titulo, 
-     slug, 
-     visitas, 
-     fecha_publicacion,
-     AGE(NOW(), fecha_publicacion) as antiguedad
-   FROM blog_articulos
-   WHERE visitas < 100 
-     AND fecha_publicacion < NOW() - INTERVAL '6 months'
-     AND seo_noindex = FALSE
-   ORDER BY visitas ASC;
-   ```
-
-4. **Revisar Artículos IA:**
-   - Todos los posts con disclaimer de IA
-   - Evaluar calidad y profundidad
-   - Marcar thin content como `noindex`
+- [ ] Ficha Google: zona de servicio 50 km
+- [ ] Reseñas con municipio/pedanía
+- [ ] Sacar legales del sitemap XML
+- [ ] FAQ schema y Article schema
+- [ ] Landing Molina solo con caso real
+- [ ] Medir en GSC queries no de marca (no solo “Alemán y Pajarón”)
 
 ---
 
-## 🔄 Roadmap Futuro
+## Documentación relacionada
 
-### Fase 1: Implementación Base ✅ (Completado)
-- [x] Campo `seo_noindex` en base de datos
-- [x] Integración en metadata dinámica
-- [x] Exclusión automática del sitemap
-- [x] Tipos TypeScript actualizados
-
-### Fase 2: UI Admin (Próxima)
-- [ ] Campo checkbox en formulario de artículos
-- [ ] Vista de artículos `noindex` en tabla admin
-- [ ] Bulk actions para marcar múltiples artículos
-
-### Fase 3: Automatización Inteligente (Futuro)
-- [ ] Script automatizado mensual para detectar thin content
-- [ ] Alertas de artículos con bajo rendimiento (6+ meses)
-- [ ] Dashboard de métricas SEO en admin
-
-### Fase 4: Optimización Avanzada (Futuro)
-- [ ] Canonical tags para contenido duplicado
-- [ ] Estructura de clusters de contenido (topic clusters)
-- [ ] Internal linking automation
-
----
-
-## 📚 Referencias y Recursos
-
-### Documentación Next.js
-- [Metadata Object - robots](https://nextjs.org/docs/app/api-reference/functions/generate-metadata#robots)
-- [Dynamic Sitemaps](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap)
-
-### SEO Best Practices
-- [Google: Noindex Guidelines](https://developers.google.com/search/docs/crawling-indexing/block-indexing)
-- [Moz: When to Use Noindex](https://moz.com/learn/seo/meta-robots)
-
-### Herramientas de Monitoreo
-- [Google Search Console](https://search.google.com/search-console)
-- [Google Analytics 4](https://analytics.google.com)
-- [Ahrefs Site Audit](https://ahrefs.com)
-
----
-
-## 📞 Contacto
-
-**Responsable SEO:** Narciso Pardo (Eskala IA)  
-**Cliente:** Alemán y Pajarón  
-**Última actualización:** Enero 2026
-
----
-
-## 🔖 Resumen Ejecutivo
-
-### ✅ Implementado:
-1. ✓ Páginas legales con `noindex, follow`
-2. ✓ Sistema granular de `seo_noindex` en blog
-3. ✓ Exclusión automática del sitemap
-4. ✓ Documentación completa
-
-### 📊 Resultado Esperado:
-- **-20-30%** de URLs indexadas sin valor
-- **+5-10%** de autoridad de dominio en 6 meses
-- **+10-15%** de CTR promedio en SERP
-- **Mejor experiencia** para crawlers de Google
-
-### 🎯 Próximos Pasos:
-1. Ejecutar migración SQL en Supabase
-2. Auditar artículos existentes del blog
-3. Marcar thin content como `noindex`
-4. Monitorear Google Search Console mensualmente
+| Archivo | Rol |
+|---------|-----|
+| `PLAN_MEJORAS_SEO_COMPLETO.md` | Checklist y pendientes |
+| `RESUMEN_MEJORAS_SEO_IMPLEMENTADAS.md` | Historial de cambios |
+| `INSTRUCCIONES_SEO_DEPLOYMENT.md` | Activar `seo_noindex` en Supabase |
+| `SERVICIOS_ESPECIALIZADOS.md` | Catálogo de landings |
+| Auditorías de enero 2026 | Históricas; no contradicen este archivo |

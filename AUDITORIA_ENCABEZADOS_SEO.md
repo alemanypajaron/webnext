@@ -1,8 +1,7 @@
-# 🔍 Auditoría SEO - Estructura de Encabezados H1/H2/H3
+# Auditoría de encabezados H1/H2/H3 (histórica)
 
-**Fecha:** Enero 2026  
-**Cliente:** Alemán y Pajarón  
-**Objetivo:** Verificar que los encabezados siguen las mejores prácticas SEO de Google
+> **Histórico (enero 2026).** No crear landings de pedanía ni meter el pueblo en todos los H2.  
+> **Vigente:** [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md).
 
 ---
 

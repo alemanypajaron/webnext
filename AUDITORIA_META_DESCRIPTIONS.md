@@ -1,7 +1,8 @@
-# 📊 Auditoría SEO: Meta Descriptions - Alemán y Pajarón
+> **Histórico (enero 2026).** Auditoría de descriptions. Estrategia vigente: [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md).
 
-**Fecha:** Enero 2026  
-**Estado:** EXCELENTE ✅
+# Auditoría de meta descriptions (histórica)
+
+**Fecha:** Enero 2026
 
 ---
 

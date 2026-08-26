@@ -1,8 +1,10 @@
-# 🎉 Alemán y Pajarón - Proyecto Completado v1.0.0
+# Alemán y Pajarón — Entrega v1.0.0
 
-## 📋 RESUMEN EJECUTIVO
+> Snapshot de entrega (16 enero 2026). El SEO vigente (Murcia + 50 km, titles, hub) está en [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md) y el README.
 
-**Fecha de entrega:** 16 Enero 2026  
+## Resumen ejecutivo
+
+**Fecha de entrega:** 16 enero 2026  
 **Versión:** 1.0.0 - Producción Estable  
 **Estado:** ✅ LISTO PARA PRODUCCIÓN
 

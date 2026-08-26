@@ -27,7 +27,7 @@
 - `proyectos` → Portfolio de proyectos realizados
 - `imagenes_proyectos` → Galería de imágenes por proyecto
 - `categorias_blog` → Categorías para el blog
-- `blog_articulos` → Artículos del blog completos
+- `blog_articulos` → Artículos del blog completos (campo `seo_noindex` vía `add-seo-noindex-column.sql`)
 
 **Incluye además:**
 - ✅ Row Level Security (RLS) configurado
@@ -107,7 +107,14 @@
 
 ---
 
-## 🚀 Orden de Ejecución
+### 7. `add-seo-noindex-column.sql` ✅
+**Control de indexación por artículo de blog**
+
+Añade `blog_articulos.seo_noindex` (default `false`). Si es `true`, el artículo sale con `noindex` y no entra en el sitemap. Criterios: [`ESTRATEGIA_SEO_INDEXACION.md`](../ESTRATEGIA_SEO_INDEXACION.md).
+
+---
+
+## Orden de ejecución
 
 ### ✅ Instalación Inicial Completa (RECOMENDADO):
 

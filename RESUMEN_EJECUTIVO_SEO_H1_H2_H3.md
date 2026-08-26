@@ -1,5 +1,6 @@
-# RESUMEN EJECUTIVO: Análisis SEO Encabezados H1-H3
-## Páginas de Servicios - Licencias, Reformas y Viviendas
+> **Histórico (16 enero 2026).** Meter “Murcia” en todos los H2 ya no es la prioridad. Vigente: [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md).
+
+# Resumen ejecutivo: encabezados H1-H3 (histórico)
 
 **Fecha:** 16 enero 2026  
 **Páginas analizadas:** 20+  

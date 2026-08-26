@@ -1,21 +1,24 @@
-# 🎯 Servicios Especializados - Alemán y Pajarón
+# Servicios especializados — Alemán y Pajarón
 
-**Documentación completa de las 27 páginas de servicios especializados**
+**Última actualización:** 26 agosto 2026  
+**Landings:** 29 + hub `/servicios`  
+**Estrategia vigente:** [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md)
 
-**Fecha:** Enero 2026  
-**Total páginas:** 27 landings especializadas  
-**Estrategia:** SEO Local Murcia + Contenido único por sector
+SEO local = **Murcia + radio 50 km**. Pedanías en el texto, **nunca** como URL.  
+Money pages: dirección de obra, licencias, reformas integrales, reforma baño, asesoramiento, contacto, hub.
+
+No crear landings de Beniaján, El Palmar, La Alberca, Torreagüera ni “servicio + pueblo”.
 
 ---
 
 ## 📊 Resumen Ejecutivo
 
-### Estructura de Servicios (27 páginas)
+### Estructura de servicios (29 landings)
 
 ```
 SERVICIOS ALEMÁN Y PAJARÓN
 │
-├── 🏢 Servicios Generales (6)
+├── 🏢 Servicios Generales (6) — money: dirección, licencias, reformas, asesoramiento
 │   ├── Asesoramiento Técnico
 │   ├── Dirección de Obra
 │   ├── Diseño de Espacios
@@ -23,8 +26,9 @@ SERVICIOS ALEMÁN Y PAJARÓN
 │   ├── Licencias y Permisos
 │   └── Reformas Integrales
 │
-├── 🏠 Reformas Vivienda (7)
-│   ├── Reforma Baño
+├── 🏠 Reformas Vivienda (8)
+│   ├── Reforma Baño          ← money
+│   ├── Cambiar Bañera/Ducha  ← apoyo
 │   ├── Reforma Cocina
 │   ├── Reforma Tejados
 │   ├── Reforma Terraza
@@ -41,7 +45,8 @@ SERVICIOS ALEMÁN Y PAJARÓN
 │   ├── Licencia Centro Médico
 │   └── Licencia Farmacia
 │
-└── 🏗️ Reformas de Negocios (7)
+└── 🏗️ Reformas de Negocios (8)
+    ├── Reforma Local Comercial  ← hub
     ├── Reforma Bar/Restaurante
     ├── Reforma Peluquería
     ├── Reforma Gimnasio
@@ -63,7 +68,12 @@ SERVICIOS ALEMÁN Y PAJARÓN
 
 ---
 
-## 🏠 REFORMAS VIVIENDA (7 páginas)
+## Reformas vivienda (8 páginas)
+
+### 0. Cambiar bañera por ducha
+**URL:** `/servicios/cambio-banera-ducha`  
+**Rol:** apoyo de reforma baño (no money page propia de geografía).  
+**Keywords:** cambiar bañera por ducha Murcia, plato de ducha Murcia.
 
 ### 1. Reforma de Baño
 **URL:** `/servicios/reforma-bano`
@@ -417,6 +427,10 @@ SERVICIOS ALEMÁN Y PAJARÓN
 - **Enfoque:** Obra + diseño
 - **Contenido único por sector**
 - **Cross-sell:** Link a Licencia correspondiente
+
+### 0. Reforma local comercial
+**URL:** `/servicios/reforma-local-comercial-murcia`  
+Hub de reforma de local (tiendas, oficinas, consultas). Enlazada desde `/servicios`.
 
 ---
 
@@ -815,13 +829,10 @@ LANDING REFORMA BAR
 - 12,000 palabras totales
 - 0 sectores especializados
 
-### Después (Enero 2026)
-- **27 servicios especializados**
-- **61,000 palabras totales**
-- **7 sectores cubiertos** (vivienda + 6 tipos negocios)
-- **21 landings nuevas** con contenido único
-- **7 artículos blog** guía completa
-- **Estrategia SEO 3 niveles** sin canibalización
+### Agosto 2026
+- **29 landings + hub** (añadidas cambio bañera/ducha y reforma local comercial en el recuento y el sitemap)
+- Cobertura **Murcia + 50 km** en copy/schema/mapa
+- Sin URLs de pedanía. Money pages priorizadas. Ver `ESTRATEGIA_SEO_INDEXACION.md`.
 
 ---
 
@@ -854,6 +865,4 @@ LANDING REFORMA BAR
 
 ---
 
-**📅 Documento creado:** Enero 2026  
-**✅ Estado:** Todas las páginas en producción  
-**🎯 Próximo paso:** Monitoreo SEO y optimización continua
+**Documento creado:** Enero 2026 · **Actualizado:** 26 agosto 2026

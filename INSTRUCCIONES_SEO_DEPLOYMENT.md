@@ -1,4 +1,7 @@
-# 📋 Instrucciones de Implementación - SEO Indexación
+# Instrucciones SEO — indexación y deploy
+
+> **Estrategia vigente (26 agosto 2026):** [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md).  
+> Este archivo cubre solo activar `seo_noindex` en producción. La cobertura de 50 km ya está en código (no requiere SQL).
 
 ## ✅ CAMBIOS IMPLEMENTADOS
 
@@ -93,7 +96,7 @@ Las siguientes páginas **ya tienen** `noindex, follow`:
 **Efecto:**
 - ❌ No aparecen en Google Search
 - ✅ Los enlaces internos transmiten autoridad (follow)
-- ✅ Excluidas del sitemap automáticamente
+- ⚠️ Siguen en el sitemap XML (prioridad 0.3). Pendiente sacarlas.
 
 ---
 
@@ -209,9 +212,8 @@ Incluye:
 **Cliente:** Alemán y Pajarón  
 **Fecha:** Enero 2026
 
-**Próximos pasos recomendados:**
-1. Ejecutar migración SQL ✓
-2. Deploy a producción ✓
-3. Auditar artículos existentes
-4. Marcar thin content como noindex
-5. Monitorear GSC mensualmente
+**Próximos pasos:**
+1. Confirmar columna `seo_noindex` en Supabase
+2. Auditar artículos y marcar thin content
+3. Configurar zona de servicio 50 km en Google Business Profile
+4. Monitorear GSC (queries no de marca)

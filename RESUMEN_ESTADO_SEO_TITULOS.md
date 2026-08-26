@@ -1,7 +1,8 @@
-# ✅ RESUMEN ESTADO SEO - TÍTULOS Y ENCABEZADOS
+> **Parcialmente obsoleto (16 enero 2026).** En agosto 2026 se corrigió la marca duplicada en titles (`template` del layout). Vigente: [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md).
 
-**Fecha:** 16 Enero 2026  
-**Estado:** ✅ **TODO CORRECTO**
+# Estado de títulos y encabezados (histórico)
+
+**Fecha:** 16 enero 2026
 
 ---
 

@@ -1,8 +1,9 @@
-# 🔍 Auditoría SEO Completa - Alemán y Pajarón
+# Auditoría SEO (histórica)
 
-**Fecha:** 7 de enero de 2026  
-**Dominio:** https://www.alemanypajaron.es  
-**Estado:** En revisión completa
+> **Histórico (7 enero 2026).** Varios hallazgos de esta auditoría (titles cortos, OG faltante) ya se corrigieron.  
+> **Vigente:** [`ESTRATEGIA_SEO_INDEXACION.md`](ESTRATEGIA_SEO_INDEXACION.md) — Murcia + radio 50 km, titles sin marca duplicada, hub de servicios.
+
+**Dominio:** https://www.alemanypajaron.es
 
 ---
 
