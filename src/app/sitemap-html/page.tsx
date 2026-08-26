@@ -5,6 +5,9 @@ import { createClient } from '@supabase/supabase-js';
 export const metadata = {
   title: 'Mapa del Sitio | Alemán y Pajarón',
   description: 'Mapa completo del sitio web de Alemán y Pajarón',
+  alternates: {
+    canonical: `${SITE_URL}/sitemap-html`,
+  },
   robots: {
     index: false,
     follow: false,

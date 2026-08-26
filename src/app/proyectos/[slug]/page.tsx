@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getProyectoBySlug, getImagenesProyecto, getProyectosSlugs } from '@/lib/data';
+import { SITE_URL } from '@/lib/structuredData';
 
 // ============================================
 // ISR: Regenerar página cada minuto (para cambios rápidos en el admin)
@@ -24,12 +25,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const canonical = `${SITE_URL}/proyectos/${slug}`;
+
   return {
     title: `${proyecto.titulo} | Proyectos`,
     description: proyecto.descripcion_corta,
+    alternates: {
+      canonical,
+    },
     openGraph: {
       title: proyecto.titulo,
       description: proyecto.descripcion_corta,
+      url: canonical,
       images: [proyecto.imagen_principal],
     },
   };

@@ -107,7 +107,7 @@ export async function createBlogArticulo(data: {
   resumen: string;
   contenido: string;
   autor: string;
-  imagen_destacada: string;
+  imagen_destacada?: string;
   categoria_id: string;
   publicado: boolean;
   destacado: boolean;
@@ -152,6 +152,7 @@ export async function updateBlogArticulo(
     meta_descripcion?: string;
     meta_keywords?: string[];
     fecha_publicacion?: string;
+    tiempo_lectura?: number;
   }
 ) {
   console.log('[UPDATE BLOG] Starting update for ID:', id);

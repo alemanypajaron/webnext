@@ -126,6 +126,10 @@ WHERE schemaname = 'public';
 ### **3. Bucket de Storage:**
 ```
 Storage → Buckets → Deberías ver: "blog-images" (público)
+
+Las imágenes generadas por IA se guardan en el mismo bucket:
+- `ai-covers/{slug}-{timestamp}.webp` → portada (`imagen_destacada`)
+- `ai-body/{slug}-{n}-{timestamp}.webp` → fotos del cuerpo del artículo
 ```
 
 ### **4. Datos de ejemplo:**
@@ -171,6 +175,7 @@ Deberías ver 1 proyecto, 1 artículo, 4 categorías de ejemplo.
 
 ### **Contenido:**
 - 📝 **Gestión de contenido:** [`CONTENIDO.md`](CONTENIDO.md)
+- 🤖 **Agentes de IA del blog:** [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
 
 ---
 
@@ -188,8 +193,11 @@ Deberías ver 1 proyecto, 1 artículo, 4 categorías de ejemplo.
 ### **Imágenes no se suben**
 → Ver [`/supabase/crear-bucket-imagenes.md`](supabase/crear-bucket-imagenes.md)
 
+### **Los agentes de blog no generan imágenes**
+→ Ver [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md) (OPENAI_API_KEY + bucket `blog-images`)
+
 ---
 
-**📅 Última actualización:** Enero 2026  
+**📅 Última actualización:** Agosto 2026  
 **✅ Sistema completo en producción**  
 **🌐 URL:** https://www.alemanypajaron.es

@@ -271,7 +271,7 @@ Vercel Dashboard → Settings → Build & Development Settings
 
 ### Variables de Entorno
 
-**Variables requeridas en Vercel (4 total):**
+**Variables requeridas en Vercel:**
 
 ```
 Settings → Environment Variables → Add
@@ -284,6 +284,11 @@ Settings → Environment Variables → Add
 
 **2. TinyMCE (1 variable obligatoria):**
 - `NEXT_PUBLIC_TINYMCE_API_KEY` → Tu API Key de TinyMCE (editor de blog)
+
+**3. OpenAI (agentes de blog):**
+- `OPENAI_API_KEY` → Key de servidor para redactar e ilustrar artículos
+
+📖 **Guía de agentes:** [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
 
 **Environments:** Marca ✅ Production, ✅ Preview, ✅ Development en todas
 

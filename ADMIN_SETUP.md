@@ -89,10 +89,14 @@ Password: [la que configuraste]
 - **Crear/editar/eliminar** artículos
 - **Editor TinyMCE** profesional (menús completos)
 - **Gestor de imágenes** integrado (Supabase Storage)
+- **Agentes de IA** (redactar artículo, generar portada, imágenes del cuerpo)
 - Marcar como destacado
 - Editar fecha de publicación
 - Categorías y tags
 - Contador de visitas
+- Borrador solo con título + categoría (contenido e imagen obligatorios al publicar)
+
+📖 **Guía de agentes:** [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
 
 ### **4. 🏗️ Proyectos** (`/administrator/proyectos`)
 - Crear/editar/eliminar proyectos
@@ -145,10 +149,11 @@ NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGc...
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGc...  ← CRÍTICA
 NEXT_PUBLIC_TINYMCE_API_KEY=hzc5ul...
+OPENAI_API_KEY=sk-proj-...            ← agentes de blog
 ```
 
 **Vercel (Producción):**
-- Las mismas 4 variables en Settings → Environment Variables
+- Las mismas variables en Settings → Environment Variables (incluye `OPENAI_API_KEY`)
 - **Redeploy** después de añadirlas
 
 📖 **Guía completa:** [`CREAR_ENV_LOCAL.md`](CREAR_ENV_LOCAL.md)
@@ -225,6 +230,18 @@ NEXT_PUBLIC_TINYMCE_API_KEY=hzc5ul...
 5. Limpia caché (Ctrl + Shift + R)
 ```
 
+### **❌ "Los botones de IA fallan"**
+
+**Causa:** Falta `OPENAI_API_KEY` o la sesión admin ha caducado
+
+**Solución:**
+```
+1. Añade OPENAI_API_KEY en .env.local y reinicia npm run dev
+2. En producción: Vercel → Environment Variables → Redeploy
+3. Vuelve a iniciar sesión en /administrator/login
+4. Guía completa: AGENTES_BLOG_IA.md
+```
+
 ### **❌ "No puedo subir imágenes"**
 
 **Causa:** Bucket no creado o políticas faltantes
@@ -244,7 +261,7 @@ Antes de usar el panel admin, verifica:
 
 ```
 ✅ Usuario creado en Supabase (email confirmado)
-✅ Variables de entorno en Vercel (4 total)
+✅ Variables de entorno en Vercel (incluye OPENAI_API_KEY para agentes)
 ✅ Schemas SQL ejecutados (7 archivos)
 ✅ Bucket "blog-images" creado en Storage
 ✅ Último deploy exitoso en Vercel
@@ -259,6 +276,7 @@ Antes de usar el panel admin, verifica:
 - **Schemas SQL:** [`/supabase/README.md`](supabase/README.md)
 - **Configuración Supabase:** [`SUPABASE_CONFIG.md`](SUPABASE_CONFIG.md)
 - **Funcionalidades del admin:** [`CONTENIDO.md`](CONTENIDO.md)
+- **Agentes de IA del blog:** [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
 - **Deploy y monitoreo:** [`DEPLOY.md`](DEPLOY.md)
 - **README principal:** [`README.md`](README.md)
 
@@ -283,6 +301,6 @@ Antes de usar el panel admin, verifica:
 
 ---
 
-**📅 Última actualización:** Enero 2026  
+**📅 Última actualización:** Agosto 2026  
 **✅ Panel completamente funcional**  
 **🔒 Bloqueado de indexación y Analytics**

@@ -415,6 +415,22 @@ article.prose img {
   height: auto !important;
 }
 
+article.prose figure {
+  margin: 2.5rem 0 !important;
+}
+
+article.prose figure img {
+  margin-bottom: 0.75rem !important;
+}
+
+article.prose figcaption {
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  color: #6B7280 !important;
+  text-align: center !important;
+  font-style: italic !important;
+}
+
 /* Líneas horizontales */
 article.prose hr {
   border: none !important;

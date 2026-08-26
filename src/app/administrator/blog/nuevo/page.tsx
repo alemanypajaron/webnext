@@ -26,7 +26,7 @@ export default async function NuevoBlogArticuloPage() {
           Crear Nuevo Artículo
         </h1>
         <p className="text-gray-600">
-          Completa todos los campos para publicar un nuevo artículo en el blog
+          Puedes guardar un borrador solo con título y categoría, y luego usar los agentes de IA para redactar e ilustrar
         </p>
       </div>
 

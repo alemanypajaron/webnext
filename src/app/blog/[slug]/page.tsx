@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getBlogArticuloBySlug, getBlogArticulosSlugs, getBlogArticulosDestacados } from '@/lib/data';
+import { SITE_URL } from '@/lib/structuredData';
 import VisitasTracker from '@/components/blog/VisitasTracker';
 import VisitasDisplay from '@/components/blog/VisitasDisplay';
 
@@ -26,19 +27,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const canonical = `${SITE_URL}/blog/${slug}`;
+
   return {
     title: `${articulo.titulo} | Blog`,
     description: articulo.meta_descripcion || articulo.resumen,
     keywords: articulo.meta_keywords,
+    alternates: {
+      canonical,
+    },
     robots: articulo.seo_noindex
       ? {
           index: false,
           follow: true,
         }
-      : undefined, // Si no hay noindex, Next.js usará valores por defecto (index: true, follow: true)
+      : undefined,
     openGraph: {
       title: articulo.titulo,
       description: articulo.resumen,
+      url: canonical,
       images: [articulo.imagen_destacada],
       type: 'article',
       publishedTime: articulo.fecha_publicacion,

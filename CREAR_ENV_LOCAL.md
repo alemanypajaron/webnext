@@ -4,9 +4,9 @@
 
 ---
 
-## 🎯 Variables Requeridas (4 total)
+## 🎯 Variables Requeridas (5 para CMS + agentes)
 
-Tu aplicación necesita **4 variables de entorno**:
+Tu aplicación necesita estas variables de entorno:
 
 | Variable | Tipo | Propósito |
 |----------|------|-----------|
@@ -14,6 +14,7 @@ Tu aplicación necesita **4 variables de entorno**:
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Pública | Key pública para frontend |
 | `SUPABASE_SERVICE_ROLE_KEY` | **Privada** | Key admin (bypasea RLS) |
 | `NEXT_PUBLIC_TINYMCE_API_KEY` | Pública | Editor de blog |
+| `OPENAI_API_KEY` | **Privada** | Agentes de blog (redacción e imágenes) |
 
 ---
 
@@ -61,6 +62,12 @@ SUPABASE_SERVICE_ROLE_KEY=
 
 # Tu API Key de TinyMCE
 NEXT_PUBLIC_TINYMCE_API_KEY=
+
+# =====================================================
+# OPENAI (agentes de blog: redacción + imágenes)
+# =====================================================
+# Obtén tu key en: https://platform.openai.com/api-keys
+OPENAI_API_KEY=
 ```
 
 ### **3. Rellena los valores**
@@ -72,6 +79,7 @@ NEXT_PUBLIC_SUPABASE_URL=https://abcdefghijklmnopqrst.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFiY2RlZmdoaWprbG1ub3BxcnN0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDYwNTgwMjcsImV4cCI6MTk2MTYzNDAyN30.Xxxxxxxxxxxxxxxxxxxxxxxxxx
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFiY2RlZmdoaWprbG1ub3BxcnN0Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY0NjA1ODAyNywiZXhwIjoxOTYxNjM0MDI3fQ.Yyyyyyyyyyyyyyyyyyyyyyyyyyy
 NEXT_PUBLIC_TINYMCE_API_KEY=hzc5ul9u051j4hya4cc4dxrtf8gq7mzrmluchwsgptgkz15g
+OPENAI_API_KEY=sk-proj-xxxxxxxx
 ```
 
 ### **4. Guarda el archivo**
@@ -130,6 +138,19 @@ npm run dev
 
 **⚠️ IMPORTANTE:** Sin esta key, el editor mostrará "This domain is not registered"
 
+### **🤖 OPENAI_API_KEY** (Agentes de blog)
+
+1. Ve a: https://platform.openai.com/api-keys
+2. Crea una key de proyecto (`sk-proj-...`)
+3. Pégala **solo** en `.env.local` y en Vercel (nunca en el frontend)
+4. Reinicia `npm run dev`
+
+Sin esta key, el panel admin no puede redactar ni generar imágenes.
+
+El redactor usa **Web Search nativo** de `gpt-5.6-terra` (Responses API). No hace falta SerpAPI.
+
+📖 **Guía de agentes:** [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
+
 ---
 
 ## ✅ Verificar que Funciona
@@ -184,7 +205,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzd
 
 ## 🌐 PARTE 2: Configurar en Vercel (Producción)
 
-**⚠️ Las mismas 4 variables deben estar en Vercel para que funcione en producción.**
+**⚠️ Las mismas variables deben estar en Vercel para que funcione en producción (incluye `OPENAI_API_KEY` si usas los agentes).**
 
 ### **1. Acceder a Vercel Dashboard**
 
@@ -224,6 +245,13 @@ Environments: ✅ Production ✅ Preview ✅ Development
 ```
 Key: NEXT_PUBLIC_TINYMCE_API_KEY
 Value: hzc5ul9u051j4hya4cc4dxrtf8gq7mzrmluchwsgptgkz15g
+Environments: ✅ Production ✅ Preview ✅ Development
+```
+
+**Variable 5:**
+```
+Key: OPENAI_API_KEY
+Value: sk-proj-... (privada, solo servidor)
 Environments: ✅ Production ✅ Preview ✅ Development
 ```
 
@@ -308,18 +336,24 @@ https://www.alemanypajaron.es/administrator/blog/nuevo
 - ✅ Redesplegar en Vercel
 - ✅ Ver "Runtime Logs" en Vercel para errores
 
+### **Los agentes de blog fallan (redactar / portada / cuerpo)**
+- ✅ Verifica `OPENAI_API_KEY` en `.env.local` y reinicia `npm run dev`
+- ✅ En Vercel: misma variable + Redeploy
+- ✅ Guía: [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
+
 ---
 
 ## 📚 Documentación Relacionada
 
 - **Supabase setup completo:** Ver [`SUPABASE_CONFIG.md`](SUPABASE_CONFIG.md)
 - **Panel admin setup:** Ver [`ADMIN_SETUP.md`](ADMIN_SETUP.md)
+- **Agentes de IA del blog:** Ver [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
 - **Deploy y CI/CD:** Ver [`DEPLOY.md`](DEPLOY.md)
 - **README principal:** Ver [`README.md`](README.md)
 
 ---
 
-**📅 Última actualización:** Enero 2026  
-**✅ 4 variables de entorno configuradas**  
+**📅 Última actualización:** Agosto 2026  
+**✅ Variables de entorno documentadas (incluye OpenAI)**  
 **🔐 Seguridad implementada**
 

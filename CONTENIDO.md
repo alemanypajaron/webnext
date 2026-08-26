@@ -10,7 +10,7 @@
 **Páginas de servicios:** 27 especializadas (6 generales + 7 vivienda + 7 licencias + 7 reformas)  
 **Palabras totales:** ~50,000+  
 **Optimizado para:** SEO local Murcia  
-**Blog:** Sistema CMS completo con editor TinyMCE + 7 artículos guía "Cómo abrir X en Murcia"  
+**Blog:** Sistema CMS completo con editor TinyMCE, agentes de IA (redacción + imágenes) y artículos guía  
 **Newsletter:** Formulario de suscripción funcional  
 **Admin:** Panel completo de gestión  
 
@@ -57,6 +57,8 @@ El panel admin está **completamente oculto** de motores de búsqueda:
 - Editar fecha de publicación
 - Gestión de categorías
 - Tags y etiquetas
+- **Agentes de IA** en el formulario (redactar, portada, imágenes de cuerpo)
+- Borrador sin contenido ni imagen; ambos son obligatorios al publicar
 
 ✅ **Gestión de Proyectos:**
 - Crear proyectos nuevos
@@ -138,6 +140,27 @@ RemoveFormat | Image Link | Code | Help
 
 ---
 
+## 🤖 Agentes de IA del Blog
+
+El formulario de artículo incluye un bloque **Agentes de IA** (solo cuando el artículo ya está guardado):
+
+1. **Redactar artículo** — escribe el HTML SEO a partir del título y la categoría.
+2. **Generar portada** — foto de cabecera (`imagen_destacada`) en `blog-images/ai-covers/`.
+3. **Imágenes del cuerpo** — 2–3 fotos tras los H2, en `blog-images/ai-body/`.
+
+**Flujo de trabajo:**
+1. Crear borrador (título + categoría, sin publicar).
+2. Redactar con IA.
+3. Generar portada.
+4. Generar imágenes del cuerpo.
+5. Revisar en TinyMCE y publicar.
+
+Requiere `OPENAI_API_KEY`. También se puede lanzar por terminal (`npm run redact:blog`, etc.).
+
+📖 **Guía completa:** [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
+
+---
+
 ## 🎨 Homogeneización de Íconos en Servicios
 
 **Estilo aplicado a todas las páginas de servicios:**
@@ -176,6 +199,7 @@ RemoveFormat | Image Link | Code | Help
 - **Tablas:** Headers oscuros, filas alternadas, bordes sutiles
 - **Enlaces:** Color amarillo, subrayado en hover
 - **Imágenes:** Border-radius: 0.75rem, sombra, margin vertical
+- **Figuras IA del cuerpo:** `<figure>` + `figcaption` centrado e itálico
 
 ### Espaciado:
 - **Párrafos:** margin-bottom: 1rem

@@ -48,9 +48,6 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL('https://www.alemanypajaron.es'),
-  alternates: {
-    canonical: '/',
-  },
   // Next.js 14+ detecta automáticamente icon.png y apple-icon.png desde src/app/
   icons: {
     icon: [

@@ -78,6 +78,12 @@
 - Permite a admins autenticados: subir, actualizar, eliminar imágenes
 - Permite a todos: ver imágenes (SELECT público)
 
+**Carpetas usadas por los agentes de IA (se crean al subir):**
+- `ai-covers/` → portadas WebP (`imagen_destacada`)
+- `ai-body/` → ilustraciones insertadas en el HTML del artículo
+
+📖 **Agentes:** [`../AGENTES_BLOG_IA.md`](../AGENTES_BLOG_IA.md)
+
 **Requisito previo:**
 - Crear el bucket `blog-images` en Supabase Storage (ver `crear-bucket-imagenes.md`)
 
@@ -286,9 +292,10 @@ Si necesitas crear nuevos schemas o actualizaciones:
 Para más información sobre la configuración de Supabase, consulta:
 - **Archivo raíz:** `/SUPABASE_CONFIG.md`
 - **README principal:** `/README.md` (sección "Supabase")
+- **Agentes de IA del blog:** `/AGENTES_BLOG_IA.md`
 
 ---
 
-**Última actualización:** Enero 2026  
+**Última actualización:** Agosto 2026  
 **Versión de schemas:** 2.0 (Proyectos y Blog completos)
 

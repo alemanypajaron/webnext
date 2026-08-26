@@ -28,6 +28,7 @@ Sitio web completo para **Alemán y Pajarón**, técnicos de edificación y gest
 - ✅ **46 páginas** completamente funcionales
 - ✅ **25 servicios especializados** con contenido SEO optimizado
 - ✅ **Blog dinámico** con editor TinyMCE profesional
+- ✅ **Agentes de IA del blog** (redacción, portada e imágenes de cuerpo)
 - ✅ **Portfolio de proyectos** con galería de imágenes
 - ✅ **Panel de administración** completo y seguro
 - ✅ **PWA instalable** (funciona como app nativa)
@@ -94,11 +95,13 @@ NEXT_PUBLIC_SUPABASE_URL=tu-project-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=tu-anon-key
 SUPABASE_SERVICE_ROLE_KEY=tu-service-role-key
 NEXT_PUBLIC_TINYMCE_API_KEY=tu-tinymce-api-key
+OPENAI_API_KEY=tu-openai-api-key
 ```
 
 **En Vercel estas variables ya están configuradas** en Settings → Environment Variables.
 
-📖 **Más info:** Ver [`CREAR_ENV_LOCAL.md`](CREAR_ENV_LOCAL.md) y [`CONFIGURAR_TINYMCE_VERCEL.md`](CONFIGURAR_TINYMCE_VERCEL.md)
+📖 **Más info:** Ver [`CREAR_ENV_LOCAL.md`](CREAR_ENV_LOCAL.md)  
+📖 **Agentes de blog:** Ver [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
 
 ---
 
@@ -162,7 +165,8 @@ webnext/
 │   │   │   ├── proyectos/            # Gestión proyectos
 │   │   │   └── layout.tsx            # Layout admin con navegación
 │   │   ├── api/                      # API Routes
-│   │   │   └── blog/imagenes/        # Subida de imágenes a Supabase Storage
+│   │   │   ├── blog/imagenes/        # Subida de imágenes a Supabase Storage
+│   │   │   └── admin/blog/           # Agentes IA: redact, portada, cuerpo
 │   │   ├── layout.tsx                # Layout principal (Header + Footer)
 │   │   ├── page.tsx                  # Home
 │   │   ├── globals.css               # Estilos globales + Tailwind + Blog
@@ -217,11 +221,18 @@ webnext/
 │   │   └── seo/
 │   │       └── JsonLd.tsx            # Structured data
 │   └── lib/
+│       ├── openai-config.ts          # Modelos OpenAI (texto / imagen)
+│       ├── blog/                     # Agentes IA: redactor + portada + cuerpo
 │       ├── supabase.ts               # Cliente de Supabase (público)
 │       ├── supabase-server.ts        # Cliente Supabase con auth
 │       ├── supabase-admin.ts         # Cliente admin (Service Role)
 │       ├── data.ts                   # Funciones de fetch de datos
 │       └── structuredData.ts         # Helpers para JSON-LD
+├── scripts/
+│   ├── redact-blog-article.ts        # CLI redactor
+│   ├── generate-blog-cover.ts        # CLI portada
+│   ├── generate-blog-body-images.ts  # CLI imágenes de cuerpo
+│   └── generate-blog-cover-and-body.ts
 ├── public/
 │   ├── img/                          # Logos
 │   └── images/                       # Imágenes
@@ -250,6 +261,7 @@ webnext/
 | **Tailwind CSS** | 3.4.1 | Estilos utility-first |
 | **Supabase** | Latest | Base de datos PostgreSQL + Auth + Storage |
 | **TinyMCE** | Latest | Editor WYSIWYG para blog |
+| **OpenAI** | 4.x | Redactor de artículos + generación de imágenes |
 | **React Hot Toast** | Latest | Notificaciones toast |
 | **Google Fonts** | - | Inter + Poppins |
 
@@ -407,6 +419,7 @@ Reformas específicas para cada tipo de negocio:
   - Vista previa de imagen destacada
   - Campo de fecha de publicación editable
   - Marcar artículos como destacados
+  - **Agentes de IA:** redactar artículo, generar portada y fotos del cuerpo
 - ✅ **Gestión de Proyectos** (crear, editar, eliminar, marcar como destacado)
 - ✅ **Gestión de Newsletter** (ver suscriptores)
 - ✅ **Gestión de Multimedia** (subir, eliminar, organizar imágenes de Supabase Storage)
@@ -586,7 +599,15 @@ npm start            # Servidor de producción
 
 # Calidad de código
 npm run lint         # ESLint check
+
+# Agentes de IA del blog (requieren OPENAI_API_KEY)
+npm run redact:blog -- --slug=tu-slug
+npm run generate:blog-cover -- "https://www.alemanypajaron.es/blog/tu-slug"
+npm run generate:blog-body-images -- "https://www.alemanypajaron.es/blog/tu-slug" --force
+npm run generate:blog-cover-and-body -- "https://www.alemanypajaron.es/blog/tu-slug"
 ```
+
+📖 **Guía completa de agentes:** [`AGENTES_BLOG_IA.md`](AGENTES_BLOG_IA.md)
 
 **Para cambios en producción:** Solo haz `git push` y Vercel hace el build y deploy automáticamente.
 
@@ -802,6 +823,7 @@ El panel de administración (`/administrator`) está **completamente oculto**:
 - ✅ Formulario de newsletter integrado
 - ✅ Contador de visitas en artículos
 - ✅ Editor profesional de blog
+- ✅ Agentes de IA del blog (redacción + portada + imágenes de cuerpo)
 
 ### Corto Plazo
 - [ ] Configurar dominio personalizado `alemanypajaron.es`

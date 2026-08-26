@@ -24,7 +24,7 @@ interface BlogArticuloFormProps {
     resumen: string;
     contenido: string;
     autor: string;
-    imagen_destacada: string;
+    imagen_destacada?: string;
     categoria_id: string;
     publicado: boolean;
     destacado: boolean;
@@ -40,6 +40,9 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [generatingRedact, setGeneratingRedact] = useState(false);
+  const [generatingCover, setGeneratingCover] = useState(false);
+  const [generatingBody, setGeneratingBody] = useState(false);
   const imagePickerCallbackRef = useRef<((url: string) => void) | null>(null);
   // Función auxiliar para convertir fecha ISO a formato datetime-local
   const formatDateForInput = (isoDate?: string) => {
@@ -152,33 +155,33 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
         setLoading(false);
         return;
       }
-      if (!formData.contenido.trim() || formData.contenido === '<p></p>') {
-        toast.error('El contenido es obligatorio');
-        setLoading(false);
-        return;
-      }
-      if (!formData.imagen_destacada.trim()) {
-        toast.error('La imagen destacada es obligatoria');
-        setLoading(false);
-        return;
-      }
       if (!formData.categoria_id) {
         toast.error('Selecciona una categoría');
         setLoading(false);
         return;
       }
+      if (formData.publicado) {
+        if (!formData.contenido.trim() || formData.contenido === '<p></p>') {
+          toast.error('El contenido es obligatorio para publicar');
+          setLoading(false);
+          return;
+        }
+        if (!formData.imagen_destacada.trim()) {
+          toast.error('La imagen destacada es obligatoria para publicar');
+          setLoading(false);
+          return;
+        }
+      }
 
-      // Auto-generar resumen del primer párrafo si está vacío
       const resumenFinal = formData.resumen.trim() || extractFirstParagraph(formData.contenido);
 
-      // Preparar datos
       const data = {
         titulo: formData.titulo.trim(),
         slug: formData.slug.trim(),
         resumen: resumenFinal,
-        contenido: formData.contenido,
+        contenido: formData.contenido?.trim() && formData.contenido !== '<p></p>' ? formData.contenido : '<p></p>',
         autor: formData.autor.trim(),
-        imagen_destacada: formData.imagen_destacada.trim(),
+        imagen_destacada: formData.imagen_destacada.trim() || '',
         categoria_id: formData.categoria_id,
         publicado: formData.publicado,
         destacado: formData.destacado,
@@ -189,16 +192,19 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
       };
 
       if (articulo) {
-        // Actualizar
         await updateBlogArticulo(articulo.id, data);
         toast.success('Artículo actualizado correctamente');
+        router.push('/administrator/blog');
       } else {
-        // Crear
-        await createBlogArticulo(data);
-        toast.success('Artículo creado correctamente');
+        const created = await createBlogArticulo(data);
+        toast.success('Artículo creado. Ya puedes usar los agentes de IA.');
+        if (created?.articulo?.id) {
+          router.push(`/administrator/blog/${created.articulo.id}/editar`);
+        } else {
+          router.push('/administrator/blog');
+        }
       }
 
-      router.push('/administrator/blog');
       router.refresh();
     } catch (error: any) {
       toast.error(error.message || 'Error al guardar el artículo');
@@ -208,8 +214,169 @@ export default function BlogArticuloForm({ categorias, articulo }: BlogArticuloF
     }
   };
 
+  const parseAgentError = async (response: Response, fallback: string) => {
+    try {
+      const result = await response.json();
+      return result?.error || fallback;
+    } catch {
+      if (response.status === 504 || response.status === 502) {
+        return 'La generación ha tardado demasiado (timeout). Vuelve a intentarlo.';
+      }
+      return `${fallback} (${response.status})`;
+    }
+  };
+
+  const handleRedactArticle = async () => {
+    if (!articulo?.id) {
+      toast.error('Guarda primero el artículo como borrador (título y categoría).');
+      return;
+    }
+    if (formData.contenido && formData.contenido !== '<p></p>') {
+      const ok = window.confirm('Esto reescribirá el contenido actual del artículo. ¿Continuar?');
+      if (!ok) return;
+    }
+
+    setGeneratingRedact(true);
+    const toastId = toast.loading('Redactando artículo con IA. Puede tardar 1-3 minutos...');
+    try {
+      const response = await fetch('/api/admin/blog/redact', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ postId: articulo.id }),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.ok) {
+        throw new Error(result?.error || await parseAgentError(response, 'No se pudo redactar el artículo'));
+      }
+
+      setFormData((prev) => ({
+        ...prev,
+        contenido: result.content || prev.contenido,
+        resumen: result.excerpt || prev.resumen,
+        meta_descripcion: result.metaDescription || prev.meta_descripcion,
+        meta_keywords: Array.isArray(result.metaKeywords)
+          ? result.metaKeywords.join(', ')
+          : prev.meta_keywords,
+        tags: Array.isArray(result.metaKeywords)
+          ? result.metaKeywords.slice(0, 8).join(', ')
+          : prev.tags,
+      }));
+      toast.success(`Artículo redactado (${result.wordCount || 0} palabras). Revisa y guarda si quieres ajustar algo.`, { id: toastId });
+    } catch (error: any) {
+      toast.error(error.message || 'Error al redactar el artículo', { id: toastId });
+    } finally {
+      setGeneratingRedact(false);
+    }
+  };
+
+  const handleGenerateCover = async () => {
+    if (!articulo?.id) {
+      toast.error('Guarda primero el artículo como borrador (título y categoría).');
+      return;
+    }
+
+    setGeneratingCover(true);
+    const toastId = toast.loading('Generando portada con IA. Puede tardar hasta 1 minuto...');
+    try {
+      const response = await fetch('/api/admin/blog/generate-cover', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ postId: articulo.id, forceRegenerate: true }),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.ok) {
+        throw new Error(result?.error || await parseAgentError(response, 'No se pudo generar la portada'));
+      }
+      if (result.featuredImage) {
+        setFormData((prev) => ({ ...prev, imagen_destacada: result.featuredImage }));
+      }
+      toast.success('Portada generada y asignada al artículo', { id: toastId });
+    } catch (error: any) {
+      toast.error(error.message || 'Error al generar la portada', { id: toastId });
+    } finally {
+      setGeneratingCover(false);
+    }
+  };
+
+  const handleGenerateBodyImages = async () => {
+    if (!articulo?.id) {
+      toast.error('Guarda primero el artículo como borrador (título y categoría).');
+      return;
+    }
+    if (!formData.contenido || formData.contenido === '<p></p>') {
+      toast.error('Redacta primero el artículo. Se necesitan al menos 2 apartados H2.');
+      return;
+    }
+
+    setGeneratingBody(true);
+    const toastId = toast.loading('Generando imágenes del cuerpo. Puede tardar 2-4 minutos...');
+    try {
+      const response = await fetch('/api/admin/blog/generate-body-images', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ postId: articulo.id, forceRegenerate: true }),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.ok) {
+        throw new Error(result?.error || await parseAgentError(response, 'No se pudieron generar las imágenes'));
+      }
+      if (result.skippedReason) {
+        toast.error(result.skippedReason, { id: toastId });
+        return;
+      }
+      if (result.content) {
+        setFormData((prev) => ({ ...prev, contenido: result.content }));
+      }
+      toast.success(`Se insertaron ${result.insertedCount || 0} imágenes en el artículo`, { id: toastId });
+    } catch (error: any) {
+      toast.error(error.message || 'Error al generar las imágenes del cuerpo', { id: toastId });
+    } finally {
+      setGeneratingBody(false);
+    }
+  };
+
+  const aiBusy = generatingRedact || generatingCover || generatingBody;
+
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
+      <div className="bg-primary text-white p-6 rounded-xl shadow-sm">
+        <h2 className="text-xl font-heading font-bold mb-2">Agentes de IA</h2>
+        <p className="text-sm text-white/80 mb-4">
+          {articulo
+            ? 'Usa el título y la categoría del artículo para redactar el texto, crear la portada y las imágenes del cuerpo.'
+            : 'Guarda primero el artículo como borrador (título + categoría). Después aparecerán estos botones en la ficha de edición.'}
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <button
+            type="button"
+            onClick={handleRedactArticle}
+            disabled={!articulo || aiBusy}
+            className="px-4 py-3 bg-accent text-primary font-semibold rounded-lg hover:bg-accent-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {generatingRedact ? 'Redactando...' : 'Redactar artículo'}
+          </button>
+          <button
+            type="button"
+            onClick={handleGenerateCover}
+            disabled={!articulo || aiBusy}
+            className="px-4 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {generatingCover ? 'Generando portada...' : 'Generar portada'}
+          </button>
+          <button
+            type="button"
+            onClick={handleGenerateBodyImages}
+            disabled={!articulo || aiBusy}
+            className="px-4 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {generatingBody ? 'Generando imágenes...' : 'Imágenes del cuerpo'}
+          </button>
+        </div>
+      </div>
+
       {/* Información básica */}
       <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
         <h2 className="text-xl font-heading font-bold text-primary mb-4">
