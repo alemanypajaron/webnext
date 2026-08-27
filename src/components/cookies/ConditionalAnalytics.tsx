@@ -1,36 +1,13 @@
 'use client';
 
-import Script from 'next/script';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { usePathname } from 'next/navigation';
 
-const GA_ID = 'G-EH39D527MS';
+const GA_ID =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || process.env.NEXT_PUBLIC_GA_ID;
 
 export default function ConditionalAnalytics() {
   const pathname = usePathname();
-  if (pathname?.startsWith('/administrator')) return null;
-
-  return (
-    <>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-        strategy="afterInteractive"
-      />
-      <Script
-        id="google-analytics-init"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            window.gtag = gtag;
-            gtag('js', new Date());
-            gtag('config', '${GA_ID}', {
-              send_page_view: true,
-              anonymize_ip: true
-            });
-          `,
-        }}
-      />
-    </>
-  );
+  if (!GA_ID || pathname?.startsWith('/administrator')) return null;
+  return <GoogleAnalytics gaId={GA_ID} />;
 }

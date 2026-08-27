@@ -53,3 +53,8 @@ supabase/sql-old/
 
 # Claves privadas y credenciales
 VAPID_KEYS_GENERADAS.md
+
+# Copias de herramientas y generaciones sueltas (no van al repo del cliente)
+.claude/
+.cursor/
+Imagenes IA/

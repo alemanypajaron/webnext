@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter, Poppins } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Suspense } from 'react';
 import './globals.css';
 import ConditionalLayout from '@/components/layout/ConditionalLayout';
-import PageViewTracker from '@/components/analytics/PageViewTracker';
 import ConditionalAnalytics from '@/components/cookies/ConditionalAnalytics';
 import Script from 'next/script';
 
@@ -129,12 +127,9 @@ export default function RootLayout({
             `,
           }}
         />
-        <ConditionalAnalytics />
       </head>
       <body className="font-sans antialiased bg-white text-gray-900">
-        <Suspense fallback={null}>
-          <PageViewTracker />
-        </Suspense>
+        <ConditionalAnalytics />
         <ConditionalLayout>{children}</ConditionalLayout>
         <SpeedInsights />
       </body>

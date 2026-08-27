@@ -55,8 +55,12 @@ export default function CookiePanel() {
     
     localStorage.setItem('cookie-consent', JSON.stringify(newConsent));
     if (typeof window !== 'undefined' && (window as any).gtag) {
+      const value = analytics ? 'granted' : 'denied';
       (window as any).gtag('consent', 'update', {
-        analytics_storage: analytics ? 'granted' : 'denied',
+        analytics_storage: value,
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
       });
     }
     console.log('[Cookies] 💾 Guardando consentimiento:', newConsent);
