@@ -6,331 +6,212 @@ import Link from 'next/link';
 interface CookieConsent {
   technical: boolean;
   analytics: boolean;
+  functional?: boolean;
+  marketing?: boolean;
   timestamp: number;
 }
 
+type Prefs = {
+  analytics: boolean;
+  functional: boolean;
+  marketing: boolean;
+};
+
 export default function CookiePanel() {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [showPanel, setShowPanel] = useState(false);
-  const [consent, setConsent] = useState<CookieConsent | null>(null);
-  const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
+  const [view, setView] = useState<'hidden' | 'banner' | 'settings'>('hidden');
+  const [prefs, setPrefs] = useState<Prefs>({ analytics: true, functional: true, marketing: false });
 
   useEffect(() => {
-    // Verificar si ya existe consentimiento
     const stored = localStorage.getItem('cookie-consent');
-    console.log('[Cookies] 🔍 Verificando consentimiento al cargar:', stored);
-    
     if (stored) {
       try {
         const parsed: CookieConsent = JSON.parse(stored);
-        const ageInHours = (Date.now() - parsed.timestamp) / 1000 / 60 / 60;
-        console.log('[Cookies] ✅ Consentimiento encontrado:', parsed);
-        console.log('[Cookies] ⏰ Antigüedad del consentimiento:', ageInHours.toFixed(2), 'horas');
-        
-        setConsent(parsed);
-        setAnalyticsEnabled(parsed.analytics);
-        setShowPanel(true);
-        setIsExpanded(false); // Contraído si ya hay consentimiento
-      } catch (e) {
-        console.error('[Cookies] ⚠️ Error al parsear consentimiento:', e);
-        // Si hay error, mostrar panel expandido
-        setShowPanel(true);
-        setIsExpanded(true);
+        const next: Prefs = {
+          analytics: Boolean(parsed.analytics),
+          functional: Boolean(parsed.functional),
+          marketing: Boolean(parsed.marketing),
+        };
+        setPrefs(next);
+        applyGtag(next);
+      } catch {
+        setView('banner');
       }
     } else {
-      console.log('[Cookies] ℹ️ No hay consentimiento guardado, mostrando panel');
-      // Sin consentimiento, mostrar expandido
-      setShowPanel(true);
-      setIsExpanded(true);
-      setAnalyticsEnabled(false);
+      setView('banner');
     }
+
+    const openFromFooter = () => {
+      const raw = localStorage.getItem('cookie-consent');
+      if (raw) {
+        try {
+          const parsed: CookieConsent = JSON.parse(raw);
+          setPrefs({
+            analytics: Boolean(parsed.analytics),
+            functional: Boolean(parsed.functional),
+            marketing: Boolean(parsed.marketing),
+          });
+        } catch {
+          /* JSON roto */
+        }
+      }
+      setView('settings');
+    };
+    window.addEventListener('openCookieSettings', openFromFooter);
+    return () => window.removeEventListener('openCookieSettings', openFromFooter);
   }, []);
 
-  const saveConsent = (technical: boolean, analytics: boolean) => {
-    const newConsent: CookieConsent = {
-      technical,
-      analytics,
-      timestamp: Date.now(),
-    };
-    
-    localStorage.setItem('cookie-consent', JSON.stringify(newConsent));
+  const applyGtag = (next: Prefs) => {
     if (typeof window !== 'undefined' && (window as any).gtag) {
-      const value = analytics ? 'granted' : 'denied';
+      const ads = next.marketing ? 'granted' : 'denied';
       (window as any).gtag('consent', 'update', {
-        analytics_storage: value,
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
+        analytics_storage: next.analytics ? 'granted' : 'denied',
+        ad_storage: ads,
+        ad_user_data: ads,
+        ad_personalization: ads,
       });
     }
-    console.log('[Cookies] 💾 Guardando consentimiento:', newConsent);
-    
-    // Verificar que se guardó correctamente
-    const verification = localStorage.getItem('cookie-consent');
-    console.log('[Cookies] ✔️ Verificación inmediata:', verification);
-    
-    setConsent(newConsent);
-    setAnalyticsEnabled(analytics);
-    setIsExpanded(false);
-
-    // Disparar evento personalizado para que Analytics se cargue
-    window.dispatchEvent(new CustomEvent('cookie-consent-updated', { 
-      detail: newConsent 
-    }));
-
-    console.log('[Cookies] 🍪 Proceso completado. El panel ahora debería estar contraído.');
   };
 
-  const handleAcceptAll = () => {
-    saveConsent(true, true);
+  const saveConsent = (next: Prefs) => {
+    const newConsent: CookieConsent = {
+      technical: true,
+      analytics: next.analytics,
+      functional: next.functional,
+      marketing: next.marketing,
+      timestamp: Date.now(),
+    };
+    localStorage.setItem('cookie-consent', JSON.stringify(newConsent));
+    applyGtag(next);
+    setPrefs(next);
+    setView('hidden');
+    window.dispatchEvent(new CustomEvent('cookie-consent-updated', { detail: newConsent }));
   };
 
-  const handleRejectAll = () => {
-    saveConsent(true, false);
-  };
+  if (view === 'hidden') return null;
 
-  const handleSaveCustom = () => {
-    saveConsent(true, analyticsEnabled);
-  };
-
-  if (!showPanel) return null;
+  if (view === 'settings') {
+    return (
+      <div className="fixed inset-0 z-[400] flex items-center justify-center p-4 bg-black/50" role="dialog" aria-modal="true" aria-labelledby="cookie-settings-title">
+        <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+          <div className="flex items-center justify-between p-6 border-b border-gray-200">
+            <div className="flex items-center gap-3">
+              <CookieGlyph className="h-8 w-8 text-accent" />
+              <h2 id="cookie-settings-title" className="text-xl font-bold text-primary">Configuración de cookies</h2>
+            </div>
+            <button
+              type="button"
+              onClick={() => setView(localStorage.getItem('cookie-consent') ? 'hidden' : 'banner')}
+              className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
+              aria-label="Cerrar"
+            >
+              <span className="block w-5 h-5 text-lg leading-none">×</span>
+            </button>
+          </div>
+          <div className="flex-1 overflow-y-auto p-6">
+            <p className="text-gray-600 mb-6">
+              Elige qué tipos de cookies deseas aceptar. Las cookies necesarias no se pueden desactivar ya que son imprescindibles para el funcionamiento del sitio.
+            </p>
+            <div className="space-y-4">
+              <AlemanCategory title="Cookies necesarias" description="Estas cookies son esenciales para el funcionamiento del sitio web. Sin ellas, el sitio no funcionaría correctamente." enabled required />
+              <AlemanCategory title="Cookies analíticas" description="Nos permiten contar las visitas y analizar cómo los usuarios navegan por el sitio para mejorarlo (Google Analytics)." enabled={prefs.analytics} onChange={(v) => setPrefs((p) => ({ ...p, analytics: v }))} />
+              <AlemanCategory title="Cookies funcionales" description="Permiten recordar tus preferencias para una experiencia más personalizada." enabled={prefs.functional} onChange={(v) => setPrefs((p) => ({ ...p, functional: v }))} />
+              <AlemanCategory title="Cookies de marketing" description="Se utilizan para mostrarte anuncios relevantes y medir la efectividad de las campañas publicitarias." enabled={prefs.marketing} onChange={(v) => setPrefs((p) => ({ ...p, marketing: v }))} />
+            </div>
+            <p className="text-sm text-gray-500 mt-6">
+              Para más información sobre cómo utilizamos las cookies, consulta nuestra{' '}
+              <Link href="/legal/cookies" className="text-accent hover:underline" onClick={() => setView('hidden')}>
+                Política de Cookies
+              </Link>
+              .
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 p-6 border-t border-gray-200 bg-gray-50">
+            <button type="button" onClick={() => saveConsent({ analytics: false, functional: false, marketing: false })} className="flex-1 px-4 py-2.5 text-gray-700 border border-gray-300 rounded-lg font-medium hover:bg-white">
+              Rechazar todas
+            </button>
+            <button type="button" onClick={() => saveConsent(prefs)} className="flex-1 px-4 py-2.5 text-gray-700 bg-white border border-gray-300 rounded-lg font-medium hover:bg-gray-50">
+              Guardar preferencias
+            </button>
+            <button type="button" onClick={() => saveConsent({ analytics: true, functional: true, marketing: true })} className="flex-1 px-4 py-2.5 bg-accent text-white rounded-lg font-medium hover:bg-accent/90">
+              Aceptar todas
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <>
-      {/* Botón flotante vertical (cuando está contraído) */}
-      {!isExpanded && (
-        <button
-          onClick={() => setIsExpanded(true)}
-          className="fixed left-0 top-1/2 -translate-y-1/2 bg-primary text-white px-2 py-3 rounded-r-lg shadow-lg hover:bg-primary-dark transition-all z-[350] flex flex-col items-center gap-1"
-          aria-label="Configurar cookies"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4 sm:h-5 sm:w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-            />
-          </svg>
-          <span className="text-[9px] sm:text-[10px] font-bold tracking-tight leading-tight flex flex-col">
-            <span>C</span>
-            <span>O</span>
-            <span>O</span>
-            <span>K</span>
-            <span>I</span>
-            <span>E</span>
-            <span>S</span>
-          </span>
-        </button>
-      )}
-
-      {/* Panel expandido */}
-      {isExpanded && (
-        <>
-          {/* Overlay oscuro */}
-          <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-[390] transition-opacity"
-            onClick={() => setIsExpanded(false)}
-          />
-
-          {/* Panel lateral */}
-          <div className="fixed left-0 top-0 h-full w-full sm:w-96 bg-white shadow-2xl z-[400] overflow-y-auto animate-slide-in-left">
-            <div className="p-4 sm:p-5">
-              {/* Header */}
-              <div className="flex items-start justify-between mb-4 sm:mb-5">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="bg-accent/10 p-1.5 sm:p-2 rounded-lg">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 sm:h-6 sm:w-6 text-accent"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h2 className="text-base sm:text-lg font-bold text-primary">
-                      Configuración de Cookies
-                    </h2>
-                    <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5">
-                      Gestiona tus preferencias
-                    </p>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setIsExpanded(false)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors p-1"
-                  aria-label="Cerrar"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 sm:h-6 sm:w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              {/* Descripción */}
-              <p className="text-xs sm:text-sm text-gray-700 mb-4 sm:mb-5 leading-relaxed">
-                Utilizamos cookies para mejorar tu experiencia de navegación y analizar el uso de
-                nuestro sitio web. Puedes gestionar tus preferencias a continuación.
+    <div className="fixed bottom-0 left-0 right-0 z-[350] p-4 bg-white border-t border-gray-200 shadow-lg md:p-6" role="region" aria-label="Banner de consentimiento de cookies">
+      <div className="container mx-auto max-w-6xl">
+        <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+          <div className="flex-1 flex items-start gap-3">
+            <CookieGlyph className="h-8 w-8 text-accent flex-shrink-0 mt-1" />
+            <div>
+              <h3 className="text-lg font-bold text-primary mb-1">Utilizamos cookies</h3>
+              <p className="text-gray-600 text-sm">
+                Usamos cookies propias y de terceros para mejorar tu experiencia, analizar el tráfico y mostrarte contenido personalizado. Puedes aceptar todas o configurar tus preferencias.{' '}
+                <Link href="/legal/cookies" className="text-accent hover:underline">Política de cookies</Link>
               </p>
-
-              {/* Cookies Técnicas (siempre activas) */}
-              <div className="bg-gray-50 p-3 sm:p-4 rounded-lg mb-3 sm:mb-4 border border-gray-200">
-                <div className="flex items-center justify-between mb-1.5 sm:mb-2">
-                  <h3 className="font-semibold text-gray-900 text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 sm:h-5 sm:w-5 text-green-600"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Cookies Técnicas
-                  </h3>
-                  <span className="text-[10px] sm:text-xs font-medium text-green-600 bg-green-100 px-2 py-0.5 sm:py-1 rounded-full">
-                    Siempre activas
-                  </span>
-                </div>
-                <p className="text-[10px] sm:text-xs text-gray-600 leading-relaxed">
-                  Necesarias para el funcionamiento básico del sitio web. No se pueden
-                  desactivar.
-                </p>
-              </div>
-
-              {/* Cookies de Análisis */}
-              <div className="bg-gray-50 p-3 sm:p-4 rounded-lg mb-4 sm:mb-5 border border-gray-200">
-                <div className="flex items-center justify-between mb-1.5 sm:mb-2">
-                  <h3 className="font-semibold text-gray-900 text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-                    </svg>
-                    Cookies de Análisis
-                  </h3>
-                  <label className="relative inline-flex items-center cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={analyticsEnabled}
-                      onChange={(e) => setAnalyticsEnabled(e.target.checked)}
-                      className="sr-only peer"
-                    />
-                    <div className="w-10 h-5 sm:w-11 sm:h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-accent/20 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 sm:after:h-5 sm:after:w-5 after:transition-all peer-checked:bg-accent"></div>
-                  </label>
-                </div>
-                <p className="text-[10px] sm:text-xs text-gray-600 leading-relaxed">
-                  Nos ayudan a entender cómo interactúas con nuestro sitio mediante Google
-                  Analytics. Tu IP es anonimizada.
-                </p>
-              </div>
-
-              {/* Botones de acción */}
-              <div className="space-y-2 sm:space-y-3">
-                <button
-                  onClick={handleAcceptAll}
-                  className="w-full bg-accent text-white py-2.5 sm:py-3 px-4 rounded-lg text-xs sm:text-sm font-semibold hover:bg-accent/90 transition-colors shadow-md flex items-center justify-center gap-2"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 sm:h-5 sm:w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Aceptar todas
-                </button>
-                <button
-                  onClick={handleSaveCustom}
-                  className="w-full bg-primary text-white py-2.5 sm:py-3 px-4 rounded-lg text-xs sm:text-sm font-semibold hover:bg-primary-dark transition-colors"
-                >
-                  Guardar preferencias
-                </button>
-                <button
-                  onClick={handleRejectAll}
-                  className="w-full bg-gray-200 text-gray-700 py-2.5 sm:py-3 px-4 rounded-lg text-xs sm:text-sm font-semibold hover:bg-gray-300 transition-colors"
-                >
-                  Rechazar todas
-                </button>
-              </div>
-
-              {/* Estado actual */}
-              {consent && (
-                <div className="mt-4 sm:mt-5 p-2.5 sm:p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                  <p className="text-[10px] sm:text-xs text-blue-800 font-medium mb-1">
-                    ℹ️ Estado actual:
-                  </p>
-                  <p className="text-[10px] sm:text-xs text-blue-700">
-                    Cookies de análisis:{' '}
-                    <span className="font-bold">
-                      {consent.analytics ? '✅ Activadas' : '❌ Desactivadas'}
-                    </span>
-                  </p>
-                </div>
-              )}
-
-              {/* Links legales */}
-              <div className="mt-4 sm:mt-5 pt-3 sm:pt-4 border-t border-gray-200 flex flex-wrap gap-3 sm:gap-4 justify-center text-[10px] sm:text-xs">
-                <Link
-                  href="/legal/cookies"
-                  className="text-primary hover:text-accent underline transition-colors"
-                >
-                  Política de Cookies
-                </Link>
-                <Link
-                  href="/legal/privacidad"
-                  className="text-primary hover:text-accent underline transition-colors"
-                >
-                  Privacidad
-                </Link>
-                <Link
-                  href="/legal/aviso-legal"
-                  className="text-primary hover:text-accent underline transition-colors"
-                >
-                  Aviso Legal
-                </Link>
-              </div>
             </div>
           </div>
-        </>
-      )}
-    </>
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 flex-shrink-0">
+            <button type="button" onClick={() => setView('settings')} className="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg font-medium hover:bg-gray-200 text-sm">
+              Configurar
+            </button>
+            <button type="button" onClick={() => saveConsent({ analytics: true, functional: true, marketing: true })} className="px-4 py-2 bg-accent text-white rounded-lg font-medium hover:bg-accent/90 text-sm">
+              Aceptar todas
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
+function CookieGlyph({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 2a9.5 9.5 0 0 0-1.2 18.93A10 10 0 1 0 21.8 11.4 7 7 0 0 1 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <circle cx="8.2" cy="10" r="1.1" fill="currentColor" />
+      <circle cx="12.5" cy="8" r="1" fill="currentColor" />
+      <circle cx="10.5" cy="14.2" r="1.15" fill="currentColor" />
+    </svg>
+  );
+}
+
+function AlemanCategory({
+  title,
+  description,
+  enabled,
+  required,
+  onChange,
+}: {
+  title: string;
+  description: string;
+  enabled: boolean;
+  required?: boolean;
+  onChange?: (v: boolean) => void;
+}) {
+  return (
+    <div className={`p-4 rounded-xl border-2 ${enabled ? 'border-accent bg-accent/5' : 'border-gray-200 bg-gray-50'}`}>
+      <div className="flex items-start gap-4">
+        <div className="flex-1">
+          <div className="flex items-center justify-between gap-3 mb-1">
+            <h3 className="font-semibold text-primary">{title}</h3>
+            {required ? (
+              <span className="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full whitespace-nowrap">Siempre activas</span>
+            ) : (
+              <label className="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" className="sr-only peer" checked={enabled} onChange={(e) => onChange?.(e.target.checked)} aria-label={title} />
+                <span className="w-11 h-6 bg-gray-200 rounded-full peer-checked:bg-accent transition-colors" />
+                <span className="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full border border-gray-300 shadow transition-transform peer-checked:translate-x-5" />
+              </label>
+            )}
+          </div>
+          <p className="text-sm text-gray-600">{description}</p>
+        </div>
+      </div>
+    </div>
+  );
+}

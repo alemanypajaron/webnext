@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -7,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="bg-primary text-white">
       <div className="max-w-[1280px] mx-auto px-6 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
           {/* Brand Column */}
           <div className="space-y-4">
             <Link href="/" className="inline-block">
@@ -250,36 +252,53 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+
+          {/* Legal */}
+          <div>
+            <h4 className="text-lg font-heading font-semibold mb-4">Legal</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/legal/aviso-legal"
+                  className="text-gray-300 hover:text-accent transition-colors text-sm"
+                >
+                  Aviso legal
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/legal/privacidad"
+                  className="text-gray-300 hover:text-accent transition-colors text-sm"
+                >
+                  Política de privacidad
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/legal/cookies"
+                  className="text-gray-300 hover:text-accent transition-colors text-sm"
+                >
+                  Política de cookies
+                </Link>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new Event('openCookieSettings'))}
+                  className="text-gray-300 hover:text-accent transition-colors text-sm text-left bg-transparent p-0 border-0 cursor-pointer"
+                >
+                  Configurar cookies
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Footer Bottom */}
         <div className="mt-8 pt-6 border-t border-primary-light space-y-4">
-          {/* Copyright y Links Legales */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0">
-            <p className="text-gray-400 text-xs md:text-sm text-center md:text-left">
-              © {currentYear} Alemán y Pajarón. Todos los derechos reservados.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-              <Link
-                href="/legal/aviso-legal"
-                className="text-gray-400 hover:text-accent transition-colors text-xs md:text-sm"
-              >
-                Aviso Legal
-              </Link>
-              <Link
-                href="/legal/privacidad"
-                className="text-gray-400 hover:text-accent transition-colors text-xs md:text-sm"
-              >
-                Privacidad
-              </Link>
-              <Link
-                href="/legal/cookies"
-                className="text-gray-400 hover:text-accent transition-colors text-xs md:text-sm"
-              >
-                Cookies
-              </Link>
-            </div>
-          </div>
+          <p className="text-gray-400 text-xs md:text-sm text-center">
+            © {currentYear} Alemán y Pajarón. Todos los derechos reservados.
+          </p>
           
           {/* Línea con corazón y créditos - Optimizado para móvil */}
           <div className="text-center text-gray-400 text-xs md:text-sm leading-relaxed">
